@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/drawer_category_create">
+        <menu>
+            <item
+                android:id="@+id/drawer_journal"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="@string/drawer_journal"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/drawer_category_view">
+        <menu>
+            <item
+                android:id="@+id/drawer_reports"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="@string/drawer_reports"/>
+            <item
+                android:id="@+id/drawer_calendar"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="@string/drawer_calendar"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/drawer_category_manage">
+        <menu>
+            <item
+                android:id="@+id/drawer_templates"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="@string/drawer_templates"/>
+        </menu>
+    </item>
+
+</menu>
