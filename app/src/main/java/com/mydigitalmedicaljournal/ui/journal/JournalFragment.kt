@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.tools
+package com.mydigitalmedicaljournal.ui.journal
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mydigitalmedicaljournal.R
 
-class ToolsFragment : Fragment() {
+class JournalFragment : Fragment() {
 
-    private lateinit var toolsViewModel: ToolsViewModel
+    private lateinit var homeViewModel: JournalViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        toolsViewModel =
-            ViewModelProviders.of(this).get(ToolsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_tools, container, false)
-        val textView: TextView = root.findViewById(R.id.text_tools)
-        toolsViewModel.text.observe(this, Observer {
+        homeViewModel =
+            ViewModelProviders.of(this).get(JournalViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_journal, container, false)
+        val textView: TextView = root.findViewById(R.id.text_journal)
+        homeViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

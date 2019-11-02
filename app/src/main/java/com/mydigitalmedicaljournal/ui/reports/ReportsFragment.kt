@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.gallery
+package com.mydigitalmedicaljournal.ui.reports
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mydigitalmedicaljournal.R
 
-class GalleryFragment : Fragment() {
+class ReportsFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var reportsViewModel: ReportsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-            ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(this, Observer {
+        reportsViewModel =
+            ViewModelProviders.of(this).get(ReportsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_reports, container, false)
+        val textView: TextView = root.findViewById(R.id.text_reports)
+        reportsViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

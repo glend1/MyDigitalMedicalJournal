@@ -3,41 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_journal">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.mydigitalmedicaljournal.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_journal"
+        android:name="com.mydigitalmedicaljournal.ui.journal.JournalFragment"
+        android:label="@string/drawer_journal"
+        tools:layout="@layout/fragment_journal" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.mydigitalmedicaljournal.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_reports"
+        android:name="com.mydigitalmedicaljournal.ui.reports.ReportsFragment"
+        android:label="@string/drawer_reports"
+        tools:layout="@layout/fragment_reports" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.mydigitalmedicaljournal.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_calendar"
+        android:name="com.mydigitalmedicaljournal.ui.calendar.CalendarFragment"
+        android:label="@string/drawer_calendar"
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.mydigitalmedicaljournal.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_templates"
+        android:name="com.mydigitalmedicaljournal.ui.templates.TemplatesFragment"
+        android:label="@string/drawer_templates"
+        tools:layout="@layout/fragment_templates" />
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.mydigitalmedicaljournal.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.mydigitalmedicaljournal.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

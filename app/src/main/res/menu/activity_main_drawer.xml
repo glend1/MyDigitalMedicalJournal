@@ -6,7 +6,7 @@
     <item android:title="@string/drawer_category_create">
         <menu>
             <item
-                android:id="@+id/drawer_journal"
+                android:id="@+id/nav_journal"
                 android:icon="@drawable/ic_launcher_background"
                 android:title="@string/drawer_journal"/>
         </menu>
@@ -15,11 +15,11 @@
     <item android:title="@string/drawer_category_view">
         <menu>
             <item
-                android:id="@+id/drawer_reports"
+                android:id="@+id/nav_reports"
                 android:icon="@drawable/ic_launcher_background"
                 android:title="@string/drawer_reports"/>
             <item
-                android:id="@+id/drawer_calendar"
+                android:id="@+id/nav_calendar"
                 android:icon="@drawable/ic_launcher_background"
                 android:title="@string/drawer_calendar"/>
         </menu>
@@ -28,7 +28,7 @@
     <item android:title="@string/drawer_category_manage">
         <menu>
             <item
-                android:id="@+id/drawer_templates"
+                android:id="@+id/nav_templates"
                 android:icon="@drawable/ic_launcher_background"
                 android:title="@string/drawer_templates"/>
         </menu>

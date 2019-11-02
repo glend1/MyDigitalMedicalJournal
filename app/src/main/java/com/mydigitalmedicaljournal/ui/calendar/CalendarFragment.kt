@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.share
+package com.mydigitalmedicaljournal.ui.calendar
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mydigitalmedicaljournal.R
 
-class ShareFragment : Fragment() {
+class CalendarFragment : Fragment() {
 
-    private lateinit var shareViewModel: ShareViewModel
+    private lateinit var calendarViewModel: CalendarViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        shareViewModel =
-            ViewModelProviders.of(this).get(ShareViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_share, container, false)
-        val textView: TextView = root.findViewById(R.id.text_share)
-        shareViewModel.text.observe(this, Observer {
+        calendarViewModel =
+            ViewModelProviders.of(this).get(CalendarViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_calendar, container, false)
+        val textView: TextView = root.findViewById(R.id.text_calendar)
+        calendarViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

@@ -1,13 +1,13 @@
-package com.mydigitalmedicaljournal.ui.gallery
+package com.mydigitalmedicaljournal.ui.journal
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GalleryViewModel : ViewModel() {
+class JournalViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+        value = "This is journal Fragment"
     }
     val text: LiveData<String> = _text
 }
