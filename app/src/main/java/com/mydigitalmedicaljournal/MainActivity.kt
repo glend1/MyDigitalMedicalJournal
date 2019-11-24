@@ -1,8 +1,6 @@
 package com.mydigitalmedicaljournal
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -13,34 +11,43 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.util.Log
+import android.view.MenuItem
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    private var mTablet = false
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        this.title = resources.getString(R.string.app_name)
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
+        if (drawerLayout == null) {
+            mTablet = true
         }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
+        navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_journal, R.id.nav_reports, R.id.nav_calendar,
-                R.id.nav_templates), drawerLayout
+        val navSet = setOf(
+            R.id.nav_journal, R.id.nav_reports, R.id.nav_calendar,
+            R.id.nav_templates, R.id.nav_copyright, R.id.nav_instructions,
+            R.id.nav_settings, R.id.nav_social, R.id.nav_support
         )
+        appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
         navView.setupWithNavController(navController)
     }
 
@@ -48,6 +55,27 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> {
+                navController.navigate(R.id.nav_settings)
+            }
+            R.id.action_support -> {
+                navController.navigate(R.id.nav_support)
+            }
+            R.id.action_social -> {
+                navController.navigate(R.id.nav_social)
+            }
+            R.id.action_instructions -> {
+                navController.navigate(R.id.nav_instructions)
+            }
+            R.id.action_copyright -> {
+                navController.navigate(R.id.nav_copyright)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

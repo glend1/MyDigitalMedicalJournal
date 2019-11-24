@@ -1,7 +1,6 @@
-package com.mydigitalmedicaljournal.ui.templates
+package com.mydigitalmedicaljournal.ui.copyright
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mydigitalmedicaljournal.R
 
-class TemplatesFragment : Fragment() {
+class CopyrightFragment : Fragment() {
 
-    private lateinit var templatesViewModel: TemplatesViewModel
+    private lateinit var copyrightViewModel: CopyrightViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        templatesViewModel =
-            ViewModelProviders.of(this).get(TemplatesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_templates, container, false)
-        val textView: TextView = root.findViewById(R.id.text_templates)
-        templatesViewModel.text.observe(this, Observer {
+        copyrightViewModel =
+            ViewModelProviders.of(this).get(CopyrightViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_copyright, container, false)
+        val textView: TextView = root.findViewById(R.id.text_copyright)
+        copyrightViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

@@ -29,4 +29,33 @@
         android:label="@string/drawer_templates"
         tools:layout="@layout/fragment_templates" />
 
+    <fragment
+        android:id="@+id/nav_copyright"
+        android:name="com.mydigitalmedicaljournal.ui.copyright.CopyrightFragment"
+        android:label="@string/action_copyright"
+        tools:layout="@layout/fragment_copyright" />
+
+    <fragment
+        android:id="@+id/nav_instructions"
+        android:name="com.mydigitalmedicaljournal.ui.instructions.InstructionsFragment"
+        android:label="@string/action_instructions"
+        tools:layout="@layout/fragment_instructions" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.mydigitalmedicaljournal.ui.settings.SettingsFragment"
+        android:label="@string/action_settings" />
+
+    <fragment
+        android:id="@+id/nav_social"
+        android:name="com.mydigitalmedicaljournal.ui.social.SocialFragment"
+        android:label="@string/action_social"
+        tools:layout="@layout/fragment_social" />
+
+    <fragment
+        android:id="@+id/nav_support"
+        android:name="com.mydigitalmedicaljournal.ui.support.SupportFragment"
+        android:label="@string/action_support"
+        tools:layout="@layout/fragment_support" />
+
 </navigation>

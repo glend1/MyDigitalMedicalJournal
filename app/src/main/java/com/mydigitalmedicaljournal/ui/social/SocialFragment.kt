@@ -1,7 +1,6 @@
-package com.mydigitalmedicaljournal.ui.templates
+package com.mydigitalmedicaljournal.ui.social
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mydigitalmedicaljournal.R
 
-class TemplatesFragment : Fragment() {
+class SocialFragment : Fragment() {
 
-    private lateinit var templatesViewModel: TemplatesViewModel
+    private lateinit var socialViewModel: SocialViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        templatesViewModel =
-            ViewModelProviders.of(this).get(TemplatesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_templates, container, false)
-        val textView: TextView = root.findViewById(R.id.text_templates)
-        templatesViewModel.text.observe(this, Observer {
+        socialViewModel =
+            ViewModelProviders.of(this).get(SocialViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_social, container, false)
+        val textView: TextView = root.findViewById(R.id.text_social)
+        socialViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
