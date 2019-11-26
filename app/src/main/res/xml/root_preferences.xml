@@ -16,35 +16,51 @@
 
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="@string/settings_measures">
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
+        <ListPreference
+            app:defaultValue="kilograms"
+            app:entries="@array/weight_entries"
+            app:entryValues="@array/weight_values"
+            app:key="weight"
+            app:title="@string/settings_weight"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:defaultValue="liters"
+            app:entries="@array/volume_entries"
+            app:entryValues="@array/volume_values"
+            app:key="volume"
+            app:title="@string/settings_volume"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="centimeters"
+            app:entries="@array/length_entries"
+            app:entryValues="@array/length_values"
+            app:key="length"
+            app:title="@string/settings_length"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory app:title="@string/settings_duration">
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+        <ListPreference
+            app:defaultValue="12hours"
+            app:entries="@array/time_entries"
+            app:entryValues="@array/time_values"
+            app:key="time"
+            app:title="@string/settings_time"
+            app:useSimpleSummaryProvider="true" />
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+        <ListPreference
+            app:defaultValue="dayDash"
+            app:entries="@array/date_entries"
+            app:entryValues="@array/date_values"
+            app:key="date"
+            app:title="@string/settings_date"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 

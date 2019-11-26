@@ -1,12 +1,65 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+
+    <string-array name="weight_entries">
+        <item>Kilograms (kg)</item>
+        <item>Pounds (lb)</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="weight_values">
+        <item>kilograms</item>
+        <item>pounds</item>
     </string-array>
+
+
+    <string-array name="volume_entries">
+        <item>Liters (ml)</item>
+        <item>Pints (p)</item>
+    </string-array>
+
+    <string-array name="volume_values">
+        <item>liters</item>
+        <item>pints</item>
+    </string-array>
+
+
+    <string-array name="length_entries">
+        <item>Centimeters (cm)</item>
+        <item>Inches (in)</item>
+    </string-array>
+
+    <string-array name="length_values">
+        <item>centimeters</item>
+        <item>inches</item>
+    </string-array>
+
+
+    <string-array name="time_entries">
+        <item>12 Hours</item>
+        <item>24 Hours</item>
+    </string-array>
+
+    <string-array name="time_values">
+        <item>12hours</item>
+        <item>24hours</item>
+    </string-array>
+
+
+    <string-array name="date_entries">
+        <item>Day-Month-Year</item>
+        <item>Month-Day-Year</item>
+        <item>Year-Month-Day</item>
+        <item>Day/Month/Year</item>
+        <item>Month/Day/Year</item>
+        <item>Year/Month/Day</item>
+    </string-array>
+
+    <string-array name="date_values">
+        <item>dayDash</item>
+        <item>monthDash</item>
+        <item>yearDash</item>
+        <item>daySlash</item>
+        <item>monthSlash</item>
+        <item>yearSlash</item>
+    </string-array>
+
 </resources>
