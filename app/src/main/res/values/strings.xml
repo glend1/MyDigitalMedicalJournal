@@ -16,7 +16,6 @@
     <string name="action_instructions">Instructions</string>
     <string name="action_social">Social</string>
     <string name="action_support">Support</string>
-    <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

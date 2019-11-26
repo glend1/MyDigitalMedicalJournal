@@ -11,11 +11,8 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
-import android.util.Log
 import android.view.MenuItem
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph
-
 
 class MainActivity : AppCompatActivity() {
 
