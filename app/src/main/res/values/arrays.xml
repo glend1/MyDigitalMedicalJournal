@@ -62,4 +62,16 @@
         <item>yearSlash</item>
     </string-array>
 
+
+    <string-array name="template_list">
+        <item>Backup</item>
+        <item>Import</item>
+        <item>Manage</item>
+        <item>Export</item>
+        <item>Manage Categories</item>
+        <item>Manage Bad Days</item>
+        <item>Download</item>
+        <item>Upload</item>
+    </string-array>
+
 </resources>
