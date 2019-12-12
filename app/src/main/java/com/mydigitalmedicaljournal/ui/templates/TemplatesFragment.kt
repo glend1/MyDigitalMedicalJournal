@@ -1,7 +1,5 @@
 package com.mydigitalmedicaljournal.ui.templates
 
-import android.graphics.Canvas
-import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
