@@ -27,7 +27,11 @@
         android:id="@+id/nav_templates"
         android:name="com.mydigitalmedicaljournal.ui.templates.TemplatesFragment"
         android:label="@string/drawer_templates"
-        tools:layout="@layout/fragment_templates" />
+        tools:layout="@layout/fragment_templates" >
+        <action
+            android:id="@+id/action_nav_templates_to_manageTemplates"
+            app:destination="@id/manageTemplates" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_copyright"
@@ -57,5 +61,10 @@
         android:name="com.mydigitalmedicaljournal.ui.support.SupportFragment"
         android:label="@string/action_support"
         tools:layout="@layout/fragment_support" />
+    <fragment
+        android:id="@+id/manageTemplates"
+        android:name="com.mydigitalmedicaljournal.ui.templates.manage.ManageTemplates"
+        android:label="Manage Templates"
+        tools:layout="@layout/fragment_manage_templates" />
 
 </navigation>
