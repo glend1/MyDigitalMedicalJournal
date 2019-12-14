@@ -64,7 +64,7 @@
     <fragment
         android:id="@+id/manageTemplates"
         android:name="com.mydigitalmedicaljournal.ui.templates.manage.ManageTemplates"
-        android:label="Manage Templates"
+        android:label="@string/templates_manage"
         tools:layout="@layout/fragment_manage_templates" />
 
 </navigation>

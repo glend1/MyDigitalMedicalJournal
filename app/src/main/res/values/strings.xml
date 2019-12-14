@@ -23,7 +23,5 @@
     <string name="settings_date">Date Format</string>
     <string name="settings_duration">Duration</string>
     <string name="settings_measures">Measures</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="templates_manage">Manage Templates</string>
 </resources>
