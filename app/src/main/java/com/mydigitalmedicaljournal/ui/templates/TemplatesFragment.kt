@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -32,13 +31,7 @@ class TemplatesFragment : Fragment() {
             // you provide access to all the views for a data item in a view holder.
             // Each data item is just a string in this case that is shown in a TextView.
             inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-                val textView: TextView
-
-                init {
-
-                    // Define click listener for the ViewHolder's View.
-                    textView = v.findViewById(R.id.text_item)
-                }
+                val textView: TextView = v.findViewById(R.id.text_item)
             }
 
             // Create new views (invoked by the layout manager)
@@ -67,14 +60,13 @@ class TemplatesFragment : Fragment() {
                             Log.d("TEXT", "import")
                         }
                         2 -> {
-                            Log.d("TEXT", "manage")
                             navController.navigate(R.id.manageTemplates)
                         }
                         3 -> {
                             Log.d("TEXT", "export")
                         }
                         4 -> {
-                            Log.d("TEXT", "categories")
+                            navController.navigate(R.id.manageCategories)
                         }
                         5 -> {
                             Log.d("TEXT", "bad days")

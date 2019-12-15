@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.templates.manage
+package com.mydigitalmedicaljournal.ui.templates.templates
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

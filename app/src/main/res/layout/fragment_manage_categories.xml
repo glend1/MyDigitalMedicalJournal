@@ -7,12 +7,9 @@
     tools:context=".ui.templates.templates.ManageTemplates">
 
     <!-- TODO: Update blank fragment layout
-        list of data tables
-        fav management
         add
-        delete
-        rename
-        create copy
+        remove
+        categorize
     -->
 
     <androidx.recyclerview.widget.RecyclerView

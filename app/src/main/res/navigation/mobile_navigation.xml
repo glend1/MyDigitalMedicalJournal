@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_nav_templates_to_manageTemplates"
             app:destination="@id/manageTemplates" />
+        <action
+            android:id="@+id/action_nav_templates_to_manageCategories"
+            app:destination="@id/manageCategories" />
     </fragment>
 
     <fragment
@@ -63,8 +66,12 @@
         tools:layout="@layout/fragment_support" />
     <fragment
         android:id="@+id/manageTemplates"
-        android:name="com.mydigitalmedicaljournal.ui.templates.manage.ManageTemplates"
+        android:name="com.mydigitalmedicaljournal.ui.templates.templates.ManageTemplates"
         android:label="@string/templates_manage"
         tools:layout="@layout/fragment_manage_templates" />
+    <fragment
+        android:id="@+id/manageCategories"
+        android:name="com.mydigitalmedicaljournal.ui.templates.categories.ManageCategories"
+        android:label="@string/manage_categories" />
 
 </navigation>

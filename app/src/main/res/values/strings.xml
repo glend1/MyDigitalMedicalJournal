@@ -24,4 +24,5 @@
     <string name="settings_duration">Duration</string>
     <string name="settings_measures">Measures</string>
     <string name="templates_manage">Manage Templates</string>
+    <string name="manage_categories">Manage Categories</string>
 </resources>
