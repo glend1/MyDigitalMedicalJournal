@@ -9,11 +9,12 @@
     <!-- TODO: Update blank fragment layout
         add
         remove
+        rename
         categorize
     -->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/template_manage_list"
+        android:id="@+id/template_manage_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager" />
