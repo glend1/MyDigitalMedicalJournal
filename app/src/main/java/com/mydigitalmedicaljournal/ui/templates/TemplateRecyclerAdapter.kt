@@ -8,7 +8,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 
-class TemplateListAdapter(private val myDataset: Array<String>, private val fragment: Fragment) :
+class TemplateRecyclerAdapter(private val myDataset: Array<String>, private val fragment: Fragment) :
     RecyclerView.Adapter<TemplateViewHolder>() {
 
     // Create new views (invoked by the layout manager)

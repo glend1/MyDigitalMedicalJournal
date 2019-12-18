@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 
-class CategoryListAdapter(private val myDataset: Array<String>) :
+class CategoryRecyclerAdapter(private val myDataset: Array<String>) :
     RecyclerView.Adapter<CategoryViewHolder>() {
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
