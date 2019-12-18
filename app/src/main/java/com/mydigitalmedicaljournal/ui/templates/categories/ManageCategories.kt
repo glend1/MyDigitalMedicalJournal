@@ -19,10 +19,6 @@ class ManageCategories : Fragment() {
     ): View? {
         //TODO make json for categories
 
-
-
-        // Provide a reference to the views for each data item
-
         val root = inflater.inflate(R.layout.fragment_manage_categories, container, false)
         val array = arrayOf("this", "is", "a", "test")
         val viewAdapter = CategoryRecyclerAdapter(array)

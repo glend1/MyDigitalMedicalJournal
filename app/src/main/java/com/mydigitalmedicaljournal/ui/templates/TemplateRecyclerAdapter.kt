@@ -11,23 +11,18 @@ import com.mydigitalmedicaljournal.R
 class TemplateRecyclerAdapter(private val myDataset: Array<String>, private val fragment: Fragment) :
     RecyclerView.Adapter<TemplateViewHolder>() {
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): TemplateViewHolder {
-        // create a new view
         val layout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item, parent, false)
 
-        // set the view's size, margins, paddings and layout parameters
         return TemplateViewHolder(layout)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+
     override fun onBindViewHolder(holder: TemplateViewHolder, position: Int) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         holder.itemView.setOnClickListener {
             val navController = findNavController(fragment)
             when (position) {
@@ -59,8 +54,6 @@ class TemplateRecyclerAdapter(private val myDataset: Array<String>, private val 
         }
         holder.textView.text = myDataset[position]
     }
-
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 
 }
