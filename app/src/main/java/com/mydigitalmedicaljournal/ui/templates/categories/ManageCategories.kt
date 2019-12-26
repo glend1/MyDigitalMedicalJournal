@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.mydigitalmedicaljournal.R
 
 
@@ -18,7 +20,6 @@ class ManageCategories : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //TODO make json for categories
-
         val root = inflater.inflate(R.layout.fragment_manage_categories, container, false)
         val array = arrayOf("this", "is", "a", "test")
         val viewAdapter = CategoryRecyclerAdapter(array)
