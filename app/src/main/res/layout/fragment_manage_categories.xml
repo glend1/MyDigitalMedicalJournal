@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.templates.templates.ManageTemplates">
 
-    <!-- TODO: Update blank fragment layout
-        add
-        remove
-        rename
-        categorize
-    -->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/template_manage_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

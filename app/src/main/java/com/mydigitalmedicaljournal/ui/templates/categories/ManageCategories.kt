@@ -1,6 +1,7 @@
 package com.mydigitalmedicaljournal.ui.templates.categories
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,10 @@ class ManageCategories : Fragment() {
         val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
-
+        root.findViewById<View>(R.id.add).setOnClickListener {
+            //TODO set action
+            Log.i("ADD", "button clicked")
+        }
         return root
 
     }

@@ -1,9 +1,9 @@
 package com.mydigitalmedicaljournal.ui.templates.categories
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 
@@ -11,23 +11,22 @@ import com.mydigitalmedicaljournal.R
 
 class CategoryRecyclerAdapter(private val myDataset: Array<String>) : RecyclerView.Adapter<CategoryRecyclerViewHolder>() {
 
+    lateinit var textView: TextView
+    lateinit var pagerAdapter: CategoryPagerAdapter
+    lateinit var pager: ViewPager2
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryRecyclerViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_category, parent, false)
-        return CategoryRecyclerViewHolder(layout)
+        val view = CategoryRecyclerViewHolder(layout)
+        pagerAdapter = CategoryPagerAdapter(CategoryModel.values())
+        pager = view.itemView.findViewById(R.id.category_pager)
+        pager.adapter = pagerAdapter
+        return view
     }
 
     override fun onBindViewHolder(holder: CategoryRecyclerViewHolder, position: Int) {
-        val pagerAdapter = CategoryPagerAdapter()
-        val pager: ViewPager2 = holder.itemView.findViewById(R.id.category_pager)
-        pager.adapter = pagerAdapter
-        holder.itemView.setOnClickListener {
-            when (position) {
-                0 -> {
-                    Log.d("TEXT", "backup")
-                }
-            }
-        }
-        //holder.pagerAdapter.setText(myDataset[position])
+        pagerAdapter.text = myDataset[position]
+        pagerAdapter.pager = pager
     }
 
     override fun getItemCount() = myDataset.size
