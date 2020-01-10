@@ -22,6 +22,7 @@ class ManageCategories : Fragment() {
     ): View? {
         //TODO make json for categories
         val root = inflater.inflate(R.layout.fragment_manage_categories, container, false)
+
         val array = arrayOf("this", "is", "a", "test")
         val viewAdapter = CategoryRecyclerAdapter(array)
         val templateList = root.findViewById<RecyclerView>(R.id.template_manage_category)

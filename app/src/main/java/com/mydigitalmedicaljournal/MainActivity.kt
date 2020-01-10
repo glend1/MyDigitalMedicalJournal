@@ -1,6 +1,7 @@
 package com.mydigitalmedicaljournal
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +15,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.mydigitalmedicaljournal.db.DataSource
-
+import com.mydigitalmedicaljournal.json.JsonData
+import com.mydigitalmedicaljournal.model.Categories
 
 class MainActivity : AppCompatActivity() {
 
