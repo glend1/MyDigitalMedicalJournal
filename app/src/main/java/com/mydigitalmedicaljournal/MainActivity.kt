@@ -53,6 +53,18 @@ class MainActivity : AppCompatActivity() {
 
         dataSource = DataSource(this)
         dataSource.open()
+
+        val cat = Categories(this)
+        cat.file.delete()
+        cat.data = Categories.Data()
+        cat.data.add(Categories.Entry("red"))
+        cat.data.add(Categories.Entry("green"))
+        cat.data.add(Categories.Entry("blue"))
+        cat.data.add(Categories.Entry("cyan"))
+        cat.data.add(Categories.Entry("magenta"))
+        cat.data.add(Categories.Entry("yellow"))
+        cat.data.add(Categories.Entry("key"))
+        cat.save()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

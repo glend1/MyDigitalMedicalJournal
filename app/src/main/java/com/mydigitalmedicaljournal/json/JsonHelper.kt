@@ -12,7 +12,6 @@ class JsonHelper(private var type: Type) {
     private var data: Any? = null
 
     fun convert(string: String): Any? {
-        Log.i("JSON", type.toString())
         data = json.fromJson(string, type)
         return data
     }

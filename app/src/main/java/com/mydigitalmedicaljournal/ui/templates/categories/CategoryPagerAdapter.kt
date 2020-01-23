@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.ui.templates.categories
 
+import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.dialog.Confirm
 
-class CategoryPagerAdapter(private val model: Array<CategoryModel>): RecyclerView.Adapter<CategoryPagerViewHolder>() {
+class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val parent: CategoryRecyclerAdapter ): RecyclerView.Adapter<CategoryPagerViewHolder>() {
 
+    var position: Int = 0
     var text: String? = null
     var pager: ViewPager2? = null
 
@@ -46,8 +49,20 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>): RecyclerVie
                 Log.i("MANAGE", "button pressed")
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
-                //TODO set action
-                Log.i("DELETE", "button pressed")
+                val listener = DialogInterface.OnClickListener { dialog, which->
+                    //pager?.currentItem = 0
+                    parent.cat.data.removeAt(this.position)
+                    parent.cat.save()
+                    //parent.notifyDataSetChanged()
+                    parent.notifyDataSetChanged()
+                }
+                val alert = Confirm(
+                    "Are you sure you want to delete Category named \"${parent.cat.data[this.position].name}\"?",
+                    "You will not loose any data or any saved templates. This action cannot be undone.",
+                    listener,
+                    parent.pager.context
+                )
+                alert.show()
             }
         }
     }

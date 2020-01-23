@@ -7,7 +7,6 @@ import kotlin.reflect.full.createInstance
 
 
 abstract class JsonData() {
-    //TODO returning wrong type
     abstract val data: Any
     abstract val json: JsonHelper
     abstract val file: FileHelper

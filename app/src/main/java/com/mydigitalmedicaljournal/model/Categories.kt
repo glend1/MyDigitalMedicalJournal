@@ -32,4 +32,14 @@ class Categories(context: Context): JsonData() {
     data class Entry(
         var name: String
     )
+
+    fun toArray(): ArrayList<String> {
+        val array = ArrayList<String>()
+        data.forEach { entry: Entry -> array.add(entry.name) }
+        return array
+    }
+
+    fun remove(i: Int) {
+        data.removeAt(i)
+    }
 }
