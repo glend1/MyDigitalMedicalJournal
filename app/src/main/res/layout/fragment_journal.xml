@@ -26,7 +26,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
-    <!-- TODO add functionality for FAB -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

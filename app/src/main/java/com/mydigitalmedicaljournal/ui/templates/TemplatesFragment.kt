@@ -13,8 +13,6 @@ import com.mydigitalmedicaljournal.R
 
 class TemplatesFragment : Fragment() {
 
-    lateinit var navController: NavController
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -17,12 +17,12 @@ class Categories(context: Context): JsonData() {
     override var file = FileHelper(fileName, context)
 
     init {
-        when (file.exists()) {
+        data = when (file.exists()) {
             true -> {
-                data = json.convert(file.read()) as Data<Entry>
+                json.convert(file.read()) as Data<Entry>
             }
             false -> {
-                data = Data()
+                Data()
             }
         }
     }
@@ -33,13 +33,4 @@ class Categories(context: Context): JsonData() {
         var name: String
     )
 
-    fun toArray(): ArrayList<String> {
-        val array = ArrayList<String>()
-        data.forEach { entry: Entry -> array.add(entry.name) }
-        return array
-    }
-
-    fun remove(i: Int) {
-        data.removeAt(i)
-    }
 }

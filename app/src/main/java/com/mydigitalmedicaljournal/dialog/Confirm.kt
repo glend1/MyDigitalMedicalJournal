@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 
 
-class Confirm(title: String, message: String, private val listener: DialogInterface.OnClickListener, private val context: Context) {
+class Confirm(title: String, message: String, private val listener: DialogInterface.OnClickListener, context: Context) {
 
     private val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog
@@ -15,7 +15,7 @@ class Confirm(title: String, message: String, private val listener: DialogInterf
         create(title, message)
     }
 
-    fun create(title: String, message: String) {
+    private fun create(title: String, message: String) {
         // Set the alert dialog title
         builder.setTitle(title)
 

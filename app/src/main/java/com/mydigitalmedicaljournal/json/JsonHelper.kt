@@ -1,8 +1,6 @@
 package com.mydigitalmedicaljournal.json
 
-import android.util.Log
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 class JsonHelper(private var type: Type) {

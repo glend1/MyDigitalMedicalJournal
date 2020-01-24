@@ -31,7 +31,6 @@ class ManageCategories : Fragment() {
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
-            //TODO set action
             val listener = DialogInterface.OnClickListener { dialog, which->
                 viewAdapter.cat.data.add(Categories.Entry(add!!.getText()))
                 viewAdapter.cat.save()

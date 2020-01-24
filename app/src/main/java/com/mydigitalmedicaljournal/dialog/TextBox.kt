@@ -8,24 +8,24 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 
 
-class TextBox(title: String, message: String, text: String, private val listener: DialogInterface.OnClickListener, private val context: Context) {
+class TextBox(title: String, message: String, text: String, private val listener: DialogInterface.OnClickListener, context: Context) {
 
     private val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog
-    var input = EditText(context)
+    private var input = EditText(context)
 
     init {
         create(title, message, text)
     }
 
-    fun create(title: String, message: String, text: String) {
+    private fun create(title: String, message: String, text: String) {
         // Set the alert dialog title
         builder.setTitle(title)
 
         // Display a message on alert dialog
         builder.setMessage(message)
 
-        input.setInputType(InputType.TYPE_CLASS_TEXT)
+        input.inputType = InputType.TYPE_CLASS_TEXT
         input.setText(text)
         input.selectAll()
         builder.setView(input)

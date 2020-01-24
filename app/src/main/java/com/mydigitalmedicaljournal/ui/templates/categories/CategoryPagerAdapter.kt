@@ -17,13 +17,12 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
     var position: Int = 0
     var text: String? = null
     var pager: ViewPager2? = null
-    var rename: TextBox? = null
+    private var rename: TextBox? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryPagerViewHolder {
         val view = model[viewType].layoutResId
         val layout = LayoutInflater.from(parent.context).inflate(view, parent, false)
-        val holder = CategoryPagerViewHolder(layout)
-        return holder
+        return CategoryPagerViewHolder(layout)
     }
 
     override fun getItemViewType(position: Int): Int = position
@@ -60,7 +59,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                 rename?.show()
             }
             item.findViewById<View>(R.id.manage).setOnClickListener {
-                //TODO set action
+                //TODO set action manage categories
                 Log.i("MANAGE", "button pressed")
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
