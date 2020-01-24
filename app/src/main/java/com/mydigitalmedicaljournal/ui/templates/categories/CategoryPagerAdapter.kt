@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.Confirm
+import com.mydigitalmedicaljournal.dialog.TextBox
 
 class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val parent: CategoryRecyclerAdapter ): RecyclerView.Adapter<CategoryPagerViewHolder>() {
 
     var position: Int = 0
     var text: String? = null
     var pager: ViewPager2? = null
+    var rename: TextBox? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryPagerViewHolder {
         val view = model[viewType].layoutResId
@@ -29,6 +31,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
     override fun getItemCount() = model.size
 
     override fun onBindViewHolder(holder: CategoryPagerViewHolder, position: Int) {
+
         val item = holder.itemView
         if (position == 0 && text != null) {
             val textView = item.findViewById<TextView>(R.id.test_view)
@@ -41,8 +44,20 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                 pager?.currentItem = 0
             }
             item.findViewById<View>(R.id.rename).setOnClickListener {
-                //TODO set action
-                Log.i("RENAME", "button pressed")
+                val listener = DialogInterface.OnClickListener { dialog, which->
+                    pager?.currentItem = 0
+                    parent.cat.data[this.position].name = rename!!.getText()
+                    parent.cat.save()
+                    parent.notifyDataSetChanged()
+                }
+                rename = TextBox(
+                    "Rename",
+                    "Please type the new name for \"${parent.cat.data[this.position].name}\"",
+                    parent.cat.data[this.position].name,
+                    listener,
+                    parent.pager.context
+                )
+                rename?.show()
             }
             item.findViewById<View>(R.id.manage).setOnClickListener {
                 //TODO set action
@@ -50,10 +65,8 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
                 val listener = DialogInterface.OnClickListener { dialog, which->
-                    //pager?.currentItem = 0
                     parent.cat.data.removeAt(this.position)
                     parent.cat.save()
-                    //parent.notifyDataSetChanged()
                     parent.notifyDataSetChanged()
                 }
                 val alert = Confirm(
