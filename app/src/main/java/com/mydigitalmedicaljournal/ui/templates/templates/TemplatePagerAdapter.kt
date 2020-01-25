@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.templates.categories
+package com.mydigitalmedicaljournal.ui.templates.templates
 
 import android.content.DialogInterface
 import android.util.Log
@@ -12,24 +12,24 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.Confirm
 import com.mydigitalmedicaljournal.dialog.TextBox
 
-class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val parent: CategoryRecyclerAdapter): RecyclerView.Adapter<CategoryPagerViewHolder>() {
+class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val parent: TemplateRecyclerAdapter): RecyclerView.Adapter<TemplatePagerViewHolder>() {
 
     var position: Int = 0
     var text: String? = null
     var pager: ViewPager2? = null
     private var rename: TextBox? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryPagerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemplatePagerViewHolder {
         val view = model[viewType].layoutResId
         val layout = LayoutInflater.from(parent.context).inflate(view, parent, false)
-        return CategoryPagerViewHolder(layout)
+        return TemplatePagerViewHolder(layout)
     }
 
     override fun getItemViewType(position: Int): Int = position
 
     override fun getItemCount() = model.size
 
-    override fun onBindViewHolder(holder: CategoryPagerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TemplatePagerViewHolder, position: Int) {
 
         val item = holder.itemView
         if (position == 0 && text != null) {
@@ -80,4 +80,4 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
     }
 }
 
-class CategoryPagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+class TemplatePagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

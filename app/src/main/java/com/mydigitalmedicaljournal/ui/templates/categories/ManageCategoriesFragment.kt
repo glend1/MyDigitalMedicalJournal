@@ -14,7 +14,7 @@ import com.mydigitalmedicaljournal.dialog.TextBox
 import com.mydigitalmedicaljournal.model.Categories
 
 
-class ManageCategories : Fragment() {
+class ManageCategoriesFragment : Fragment() {
 
     var add: TextBox? = null
 
