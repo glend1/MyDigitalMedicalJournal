@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.mydigitalmedicaljournal.db.DataSource
 import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.model.Templates
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,17 +53,23 @@ class MainActivity : AppCompatActivity() {
         dataSource = DataSource(this)
         dataSource.open()
 
+        //TODO delete these setup scripts
         val cat = Categories(this)
         cat.file.delete()
         cat.data = Categories.Data()
-        cat.data.add(Categories.Entry("red"))
-        cat.data.add(Categories.Entry("green"))
-        cat.data.add(Categories.Entry("blue"))
         cat.data.add(Categories.Entry("cyan"))
         cat.data.add(Categories.Entry("magenta"))
         cat.data.add(Categories.Entry("yellow"))
         cat.data.add(Categories.Entry("key"))
         cat.save()
+
+        val templates = Templates(this)
+        templates.file.delete()
+        templates.data = Templates.Data()
+        templates.data.add(Templates.Entry("red"))
+        templates.data.add(Templates.Entry("green"))
+        templates.data.add(Templates.Entry("blue"))
+        templates.save()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -16,14 +16,14 @@ class CategoryRecyclerAdapter(val cat: Categories) : RecyclerView.Adapter<Catego
     lateinit var pager: ViewPager2
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryRecyclerViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_category, parent, false)
+        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_pager, parent, false)
         //registerAdapterDataObserver(cat)
         return CategoryRecyclerViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: CategoryRecyclerViewHolder, position: Int) {
         pagerAdapter = CategoryPagerAdapter(CategoryModel.values(), this)
-        pager = holder.itemView.findViewById(R.id.category_pager)
+        pager = holder.itemView.findViewById(R.id.pager)
         pager.adapter = pagerAdapter
         pagerAdapter.text = cat.data[position].name
         pagerAdapter.pager = pager
@@ -32,6 +32,7 @@ class CategoryRecyclerAdapter(val cat: Categories) : RecyclerView.Adapter<Catego
 
     override fun getItemCount() = cat.data.size
 
+    //TODO add sort feature?
 }
 
 class CategoryRecyclerViewHolder(v: View) : RecyclerView.ViewHolder(v)

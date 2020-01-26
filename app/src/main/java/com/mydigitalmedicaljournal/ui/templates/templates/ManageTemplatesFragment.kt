@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.TextBox
 import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.model.Templates
 
 
 class ManageTemplatesFragment : Fragment() {
@@ -23,20 +24,17 @@ class ManageTemplatesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_manage_templates, container, false)
-
-        /*val root = inflater.inflate(R.layout.fragment_manage_categories, container, false)
-        val cat = Categories(context!!)
-        val viewAdapter = CategoryRecyclerAdapter(cat)
-        val templateList = root.findViewById<RecyclerView>(R.id.template_manage_category)
+        val root = inflater.inflate(R.layout.fragment_manage_templates, container, false)
+        val templates = Templates(context!!)
+        val viewAdapter = TemplateRecyclerAdapter(templates)
+        val templateList = root.findViewById<RecyclerView>(R.id.template_manage_template)
         val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
             val listener = DialogInterface.OnClickListener { dialog, which->
-                viewAdapter.cat.data.add(Categories.Entry(add!!.getText()))
-                viewAdapter.cat.save()
+                viewAdapter.templates.data.add(Templates.Entry(add!!.getText()))
+                viewAdapter.templates.save()
                 viewAdapter.notifyDataSetChanged()
             }
             add = TextBox(
@@ -48,7 +46,7 @@ class ManageTemplatesFragment : Fragment() {
             )
             add?.show()
         }
-        return root*/
+        return root
 
     }
 }

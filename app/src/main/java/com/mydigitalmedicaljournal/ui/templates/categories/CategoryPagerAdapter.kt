@@ -76,6 +76,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                 )
                 alert.show()
             }
+            //TODO add a pinned feature?
         }
     }
 }

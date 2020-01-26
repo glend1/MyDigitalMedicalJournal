@@ -45,14 +45,14 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
             item.findViewById<View>(R.id.rename).setOnClickListener {
                 val listener = DialogInterface.OnClickListener { dialog, which->
                     pager?.currentItem = 0
-                    parent.cat.data[this.position].name = rename!!.getText()
-                    parent.cat.save()
+                    parent.templates.data[this.position].name = rename!!.getText()
+                    parent.templates.save()
                     parent.notifyDataSetChanged()
                 }
                 rename = TextBox(
                     "Rename",
-                    "Please type the new name for \"${parent.cat.data[this.position].name}\"",
-                    parent.cat.data[this.position].name,
+                    "Please type the new name for \"${parent.templates.data[this.position].name}\"",
+                    parent.templates.data[this.position].name,
                     listener,
                     parent.pager.context
                 )
@@ -64,12 +64,12 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
                 val listener = DialogInterface.OnClickListener { dialog, which->
-                    parent.cat.data.removeAt(this.position)
-                    parent.cat.save()
+                    parent.templates.data.removeAt(this.position)
+                    parent.templates.save()
                     parent.notifyDataSetChanged()
                 }
                 val alert = Confirm(
-                    "Are you sure you want to delete Category named \"${parent.cat.data[this.position].name}\"?",
+                    "Are you sure you want to delete Category named \"${parent.templates.data[this.position].name}\"?",
                     "You will not loose any data or any saved templates. This action cannot be undone.",
                     listener,
                     parent.pager.context
