@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_keyboard_arrow_left"
-            android:contentDescription="back icon" />
+            android:contentDescription="@string/back_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_rename"
-                android:contentDescription="rename icon" />
+                android:contentDescription="@string/rename_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_manage"
-                android:contentDescription="manage icon" />
+                android:contentDescription="@string/manage_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_delete"
-                android:contentDescription="delete icon" />
+                android:contentDescription="@string/delete_icon" />
 
             <TextView
                 android:layout_width="wrap_content"

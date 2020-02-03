@@ -25,6 +25,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_keyboard_arrow_right"
-        android:contentDescription="arrow right" />
+        android:contentDescription="@string/arrow_right" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
