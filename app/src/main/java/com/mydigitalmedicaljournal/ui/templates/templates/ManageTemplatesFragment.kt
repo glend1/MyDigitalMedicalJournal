@@ -14,8 +14,6 @@ import com.mydigitalmedicaljournal.model.Templates
 
 class ManageTemplatesFragment : Fragment() {
 
-    //TODO this needs to show templates
-
     var add: TextBox? = null
 
     override fun onCreateView(
