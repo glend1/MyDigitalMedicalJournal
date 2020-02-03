@@ -1,6 +1,17 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
+import android.content.DialogInterface
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
+import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.dialog.TextBox
+import com.mydigitalmedicaljournal.model.Templates
+import com.mydigitalmedicaljournal.ui.templates.TemplateRecyclerAdapter
 
 //import com.mydigitalmedicaljournal.model.Templates
 
@@ -9,7 +20,7 @@ class ManageTemplatesFragment : Fragment() {
 
     //TODO this needs to show templates
 
-    /*var add: TextBox? = null
+    var add: TextBox? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +36,7 @@ class ManageTemplatesFragment : Fragment() {
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
             val listener = DialogInterface.OnClickListener { dialog, which->
-                viewAdapter.templates.data.add(Templates.Entry(add!!.getText()))
+                viewAdapter.templates.data.add(Templates.Template(add!!.getText()))
                 viewAdapter.templates.save()
                 viewAdapter.notifyDataSetChanged()
             }
@@ -40,6 +51,6 @@ class ManageTemplatesFragment : Fragment() {
         }
         return root
 
-    }*/
+    }
 }
 

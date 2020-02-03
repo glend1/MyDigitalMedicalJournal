@@ -1,6 +1,18 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
-/*class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val parent: TemplateRecyclerAdapter): RecyclerView.Adapter<TemplatePagerViewHolder>() {
+import android.content.DialogInterface
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.dialog.Confirm
+import com.mydigitalmedicaljournal.dialog.TextBox
+
+class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val parent: TemplateRecyclerAdapter): RecyclerView.Adapter<TemplatePagerViewHolder>() {
 
     var position: Int = 0
     var text: String? = null
@@ -68,4 +80,4 @@ package com.mydigitalmedicaljournal.ui.templates.templates
     }
 }
 
-class TemplatePagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)*/
+class TemplatePagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
