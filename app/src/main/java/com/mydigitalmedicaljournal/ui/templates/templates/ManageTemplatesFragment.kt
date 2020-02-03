@@ -11,10 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.TextBox
 import com.mydigitalmedicaljournal.model.Templates
-import com.mydigitalmedicaljournal.ui.templates.TemplateRecyclerAdapter
-
-//import com.mydigitalmedicaljournal.model.Templates
-
 
 class ManageTemplatesFragment : Fragment() {
 
