@@ -33,6 +33,7 @@ class CategoryRecyclerAdapter(val cat: Categories) : RecyclerView.Adapter<Catego
     override fun getItemCount() = cat.data.size
 
     //TODO add sort feature?
+    // alphabetical then frequently used
 }
 
 class CategoryRecyclerViewHolder(v: View) : RecyclerView.ViewHolder(v)

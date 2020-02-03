@@ -1,8 +1,14 @@
 package com.mydigitalmedicaljournal.json
 
+import java.lang.reflect.Type
 
 abstract class JsonData {
-    abstract val data: Any
+    protected abstract val fileName: String
+    protected abstract val type: Type
+    abstract val data: MutableList<out Entry>
+
+    abstract class Entry(open var name: String)
+
     abstract val json: JsonHelper
     abstract val file: FileHelper
 
@@ -14,8 +20,7 @@ abstract class JsonData {
         file.write(fromJson())
     }
 
-    private fun fromFile(): String {
+    protected fun fromFile(): String {
         return file.read()
     }
-
 }

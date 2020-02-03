@@ -1,15 +1,8 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.model.Templates
+//import com.mydigitalmedicaljournal.model.Templates
 
-class TemplateRecyclerAdapter(val templates: Templates) : RecyclerView.Adapter<TemplateRecyclerViewHolder>() {
+/*class TemplateRecyclerAdapter(val templates: Templates) : RecyclerView.Adapter<TemplateRecyclerViewHolder>() {
 
     lateinit var textView: TextView
     private lateinit var pagerAdapter: TemplatePagerAdapter
@@ -36,3 +29,4 @@ class TemplateRecyclerAdapter(val templates: Templates) : RecyclerView.Adapter<T
 
 class TemplateRecyclerViewHolder(v: View) : RecyclerView.ViewHolder(v)
 
+*/

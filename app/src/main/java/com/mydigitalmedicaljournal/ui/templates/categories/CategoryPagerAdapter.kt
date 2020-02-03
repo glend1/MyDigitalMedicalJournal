@@ -45,14 +45,14 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
             item.findViewById<View>(R.id.rename).setOnClickListener {
                 val listener = DialogInterface.OnClickListener { dialog, which->
                     pager?.currentItem = 0
-                    parent.cat.data[this.position].name = rename!!.getText()
+                    parent.cat.data[position].name = rename!!.getText()
                     parent.cat.save()
                     parent.notifyDataSetChanged()
                 }
                 rename = TextBox(
                     "Rename",
-                    "Please type the new name for \"${parent.cat.data[this.position].name}\"",
-                    parent.cat.data[this.position].name,
+                    "Please type the new name for \"${parent.cat.data[position].name}\"",
+                    parent.cat.data[position].name,
                     listener,
                     parent.pager.context
                 )
@@ -69,14 +69,13 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                     parent.notifyDataSetChanged()
                 }
                 val alert = Confirm(
-                    "Are you sure you want to delete Category named \"${parent.cat.data[this.position].name}\"?",
+                    "Are you sure you want to delete Category named \"${parent.cat.data[position].name}\"?",
                     "You will not loose any data or any saved templates. This action cannot be undone.",
                     listener,
                     parent.pager.context
                 )
                 alert.show()
             }
-            //TODO add a pinned feature?
         }
     }
 }

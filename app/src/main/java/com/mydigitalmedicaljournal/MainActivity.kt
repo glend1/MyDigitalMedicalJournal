@@ -17,6 +17,8 @@ import com.mydigitalmedicaljournal.db.DataSource
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.model.Templates
 
+//import com.mydigitalmedicaljournal.model.Templates
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -54,21 +56,22 @@ class MainActivity : AppCompatActivity() {
         dataSource.open()
 
         //TODO delete these setup scripts
+
         val cat = Categories(this)
         cat.file.delete()
-        cat.data = Categories.Data()
-        cat.data.add(Categories.Entry("cyan"))
-        cat.data.add(Categories.Entry("magenta"))
-        cat.data.add(Categories.Entry("yellow"))
-        cat.data.add(Categories.Entry("key"))
+        cat.data = ArrayList()
+        cat.data.add(Categories.Category("cyan"))
+        cat.data.add(Categories.Category("magenta"))
+        cat.data.add(Categories.Category("yellow"))
+        cat.data.add(Categories.Category("key"))
         cat.save()
 
         val templates = Templates(this)
         templates.file.delete()
-        templates.data = Templates.Data()
-        templates.data.add(Templates.Entry("red"))
-        templates.data.add(Templates.Entry("green"))
-        templates.data.add(Templates.Entry("blue"))
+        templates.data = ArrayList()
+        templates.data.add(Templates.Template("red"))
+        templates.data.add(Templates.Template("green"))
+        templates.data.add(Templates.Template("blue"))
         templates.save()
     }
 

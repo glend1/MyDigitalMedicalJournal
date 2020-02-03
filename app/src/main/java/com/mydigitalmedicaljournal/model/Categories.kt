@@ -1,36 +1,32 @@
 package com.mydigitalmedicaljournal.model
 
 import android.content.Context
-import android.util.Log
-import com.google.common.reflect.TypeToken
+import com.google.gson.reflect.TypeToken
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.json.JsonData
 import com.mydigitalmedicaljournal.json.JsonHelper
 
 
 class Categories(context: Context): JsonData() {
-    private val fileName = "categories.json"
-    private var type = object: TypeToken<Data<Entry>>(){}.type
+    override val fileName = "categories.json"
+    override val type = object: TypeToken<MutableList<Category>>(){}.type
+    override lateinit var data: MutableList<Category>
 
-    override lateinit var data: Data<Entry>
+    class Category(
+        name: String
+    ):Entry(name)
+
     override var json = JsonHelper(type)
     override var file = FileHelper(fileName, context)
 
     init {
         data = when (file.exists()) {
             true -> {
-                json.convert(file.read()) as Data<Entry>
+                json.convert(file.read()) as MutableList<Category>
             }
             false -> {
-                Data()
+                ArrayList()
             }
         }
     }
-
-    class Data<Entry> : ArrayList<Entry>()
-
-    data class Entry(
-        var name: String
-    )
-
 }

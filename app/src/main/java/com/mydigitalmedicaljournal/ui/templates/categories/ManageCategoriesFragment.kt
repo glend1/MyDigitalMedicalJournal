@@ -32,7 +32,7 @@ class ManageCategoriesFragment : Fragment() {
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
             val listener = DialogInterface.OnClickListener { dialog, which->
-                viewAdapter.cat.data.add(Categories.Entry(add!!.getText()))
+                viewAdapter.cat.data.add(Categories.Category(add!!.getText()))
                 viewAdapter.cat.save()
                 viewAdapter.notifyDataSetChanged()
             }

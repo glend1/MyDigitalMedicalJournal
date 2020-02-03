@@ -9,9 +9,9 @@ class JsonHelper(private var type: Type) {
     private var contents: String? = null
     private var data: Any? = null
 
-    fun convert(string: String): Any? {
+    fun convert(string: String): ArrayList<JsonData.Entry> {
         data = json.fromJson(string, type)
-        return data
+        return data as ArrayList<JsonData.Entry>
     }
 
     fun convert(obj: Any): String? {
