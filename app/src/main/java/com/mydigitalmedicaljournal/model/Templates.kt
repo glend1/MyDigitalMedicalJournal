@@ -29,4 +29,8 @@ class Templates(context: Context): JsonData() {
             }
         }
     }
+
+    fun sort() {
+        data = data.sortedWith(compareBy { it.name }).toMutableList()
+    }
 }

@@ -46,6 +46,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                 val listener = DialogInterface.OnClickListener { dialog, which->
                     pager?.currentItem = 0
                     parent.templates.data[this.position].name = rename!!.getText()
+                    parent.templates.sort()
                     parent.templates.save()
                     parent.notifyDataSetChanged()
                 }

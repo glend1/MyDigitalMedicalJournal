@@ -14,7 +14,7 @@ import com.mydigitalmedicaljournal.model.Templates
 
 class ManageTemplatesFragment : Fragment() {
 
-    var add: TextBox? = null
+    private var add: TextBox? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +31,7 @@ class ManageTemplatesFragment : Fragment() {
         root.findViewById<View>(R.id.add).setOnClickListener {
             val listener = DialogInterface.OnClickListener { dialog, which->
                 viewAdapter.templates.data.add(Templates.Template(add!!.getText()))
+                viewAdapter.templates.sort()
                 viewAdapter.templates.save()
                 viewAdapter.notifyDataSetChanged()
             }

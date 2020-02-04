@@ -16,7 +16,7 @@ import com.mydigitalmedicaljournal.model.Categories
 
 class ManageCategoriesFragment : Fragment() {
 
-    var add: TextBox? = null
+    private var add: TextBox? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +33,7 @@ class ManageCategoriesFragment : Fragment() {
         root.findViewById<View>(R.id.add).setOnClickListener {
             val listener = DialogInterface.OnClickListener { dialog, which->
                 viewAdapter.cat.data.add(Categories.Category(add!!.getText()))
+                viewAdapter.cat.sort()
                 viewAdapter.cat.save()
                 viewAdapter.notifyDataSetChanged()
             }

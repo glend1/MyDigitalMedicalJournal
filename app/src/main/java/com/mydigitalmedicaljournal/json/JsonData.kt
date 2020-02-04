@@ -6,6 +6,7 @@ abstract class JsonData {
     protected abstract val fileName: String
     protected abstract val type: Type
     abstract val data: MutableList<out Entry>
+    //TODO need good way to sort this
 
     abstract class Entry(open var name: String)
 
@@ -23,4 +24,5 @@ abstract class JsonData {
     protected fun fromFile(): String {
         return file.read()
     }
+
 }

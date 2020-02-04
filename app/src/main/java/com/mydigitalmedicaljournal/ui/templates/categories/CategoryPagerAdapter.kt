@@ -46,6 +46,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                 val listener = DialogInterface.OnClickListener { dialog, which->
                     pager?.currentItem = 0
                     parent.cat.data[position].name = rename!!.getText()
+                    parent.cat.sort()
                     parent.cat.save()
                     parent.notifyDataSetChanged()
                 }
