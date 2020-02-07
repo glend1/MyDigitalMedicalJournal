@@ -5,6 +5,8 @@ import com.google.gson.reflect.TypeToken
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.json.JsonData
 import com.mydigitalmedicaljournal.json.JsonHelper
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Categories(context: Context): JsonData() {
@@ -12,9 +14,15 @@ class Categories(context: Context): JsonData() {
     override val type = object: TypeToken<MutableList<Category>>(){}.type
     override lateinit var data: MutableList<Category>
 
-    class Category(
-        name: String
-    ):Entry(name)
+    class Category : Entry {
+        //TODO you need to be able to set the templates sometimes
+        var templates = mutableSetOf<UUID>()
+        constructor(name: String) : super(name)
+        constructor(id: UUID, name: String) : super(id, name)
+        constructor(id: UUID, name: String, templates: MutableSet<UUID>) : this(id, name) {
+            this.templates = templates
+        }
+    }
 
     override var json = JsonHelper(type)
     override var file = FileHelper(fileName, context)
