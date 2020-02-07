@@ -15,8 +15,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.mydigitalmedicaljournal.db.DataSource
 
-//import com.mydigitalmedicaljournal.model.Templates
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

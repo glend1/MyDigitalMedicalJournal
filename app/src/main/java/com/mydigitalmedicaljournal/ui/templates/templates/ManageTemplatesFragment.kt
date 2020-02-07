@@ -36,8 +36,8 @@ class ManageTemplatesFragment : Fragment() {
                 viewAdapter.notifyDataSetChanged()
             }
             add = TextBox(
-                "Add New Category",
-                "Please type the name for the new category",
+                "Add New Template",
+                "Please type the name for the new template",
                 "",
                 listener,
                 context!!

@@ -70,8 +70,8 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                     parent.notifyDataSetChanged()
                 }
                 val alert = Confirm(
-                    "Are you sure you want to delete Category named \"${parent.templates.data[this.position].name}\"?",
-                    "You will not loose any data or any saved templates. This action cannot be undone.",
+                    "Are you sure you want to delete Template named \"${parent.templates.data[this.position].name}\"?",
+                    "Data wont be lost. This action cannot be undone.",
                     listener,
                     parent.pager.context
                 )
