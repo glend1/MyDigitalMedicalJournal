@@ -19,6 +19,7 @@ class SocialFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         socialViewModel =
             ViewModelProviders.of(this).get(SocialViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_social, container, false)

@@ -19,6 +19,7 @@ class CalendarFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         calendarViewModel =
             ViewModelProviders.of(this).get(CalendarViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_calendar, container, false)

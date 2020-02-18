@@ -17,7 +17,6 @@ class TemplateRecyclerAdapter(val templates: Templates) : RecyclerView.Adapter<T
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemplateRecyclerViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_pager, parent, false)
-        //registerAdapterDataObserver(cat)
         return TemplateRecyclerViewHolder(layout)
     }
 

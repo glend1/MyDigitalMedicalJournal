@@ -29,7 +29,7 @@ class ManageTemplatesFragment : Fragment() {
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
-            val listener = DialogInterface.OnClickListener { dialog, which->
+            val listener = DialogInterface.OnClickListener { _, _ ->
                 viewAdapter.templates.data.add(Templates.Template(add!!.getText()))
                 viewAdapter.templates.sort()
                 viewAdapter.templates.save()
@@ -42,6 +42,7 @@ class ManageTemplatesFragment : Fragment() {
                 listener,
                 context!!
             )
+            viewAdapter.notifyDataSetChanged()
             add?.show()
         }
         return root

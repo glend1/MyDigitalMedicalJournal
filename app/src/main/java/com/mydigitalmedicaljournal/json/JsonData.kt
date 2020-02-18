@@ -34,8 +34,4 @@ abstract class JsonData {
         file.write(fromJson())
     }
 
-    protected fun fromFile(): String {
-        return file.read()
-    }
-
 }

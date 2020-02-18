@@ -19,6 +19,7 @@ class CopyrightFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         copyrightViewModel =
             ViewModelProviders.of(this).get(CopyrightViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_copyright, container, false)

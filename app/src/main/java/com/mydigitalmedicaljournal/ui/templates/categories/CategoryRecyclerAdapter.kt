@@ -17,7 +17,6 @@ class CategoryRecyclerAdapter(val cat: Categories) : RecyclerView.Adapter<Catego
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryRecyclerViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_pager, parent, false)
-        //registerAdapterDataObserver(cat)
         return CategoryRecyclerViewHolder(layout)
     }
 
@@ -27,7 +26,7 @@ class CategoryRecyclerAdapter(val cat: Categories) : RecyclerView.Adapter<Catego
         pager.adapter = pagerAdapter
         pagerAdapter.text = cat.data[position].name
         pagerAdapter.pager = pager
-        pagerAdapter.position = position
+        pagerAdapter.thisItem = position
     }
 
     override fun getItemCount() = cat.data.size

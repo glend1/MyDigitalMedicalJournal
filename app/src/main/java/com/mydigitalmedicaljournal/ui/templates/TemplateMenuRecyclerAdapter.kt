@@ -10,7 +10,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 
-class TemplateRecyclerAdapter(private val myDataset: Array<String>, private val fragment: Fragment) : RecyclerView.Adapter<TemplateRecyclerAdapter.TemplateViewHolder>() {
+class TemplateRecyclerAdapter(private val myDataSet: Array<String>, private val fragment: Fragment) : RecyclerView.Adapter<TemplateRecyclerAdapter.TemplateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemplateViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
@@ -48,10 +48,10 @@ class TemplateRecyclerAdapter(private val myDataset: Array<String>, private val 
                 }
             }
         }
-        holder.textView.text = myDataset[position]
+        holder.textView.text = myDataSet[position]
     }
 
-    override fun getItemCount() = myDataset.size
+    override fun getItemCount() = myDataSet.size
 
     inner class TemplateViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val textView: TextView = v.findViewById(R.id.text_item)

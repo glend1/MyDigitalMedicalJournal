@@ -19,6 +19,7 @@ class ReportsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         reportsViewModel =
             ViewModelProviders.of(this).get(ReportsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_reports, container, false)

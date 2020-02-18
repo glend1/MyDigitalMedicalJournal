@@ -19,6 +19,7 @@ class SupportFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         supportViewModel =
             ViewModelProviders.of(this).get(SupportViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_support, container, false)

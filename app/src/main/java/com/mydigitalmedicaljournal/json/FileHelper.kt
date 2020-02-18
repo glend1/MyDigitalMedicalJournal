@@ -6,7 +6,7 @@ import com.google.common.io.Files
 import java.io.File
 import java.nio.charset.Charset
 
-class FileHelper (private val name: String, private val context: Context) {
+class FileHelper (name: String, context: Context) {
 
     //external storage
     //context.getExternalFilesDir(null)
@@ -20,11 +20,7 @@ class FileHelper (private val name: String, private val context: Context) {
     }
 
     fun write(text: String?) {
-        file.write(text?.toByteArray(charset))
-    }
-
-    fun delete(): Boolean {
-        return context.deleteFile(name)
+        file.write(text!!.toByteArray(charset))
     }
 
     fun read(): String {

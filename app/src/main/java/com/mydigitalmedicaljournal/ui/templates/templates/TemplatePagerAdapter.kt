@@ -30,7 +30,6 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
     override fun getItemCount() = model.size
 
     override fun onBindViewHolder(holder: TemplatePagerViewHolder, position: Int) {
-
         val item = holder.itemView
         if (position == 0 && text != null) {
             val textView = item.findViewById<TextView>(R.id.test_view)
@@ -43,7 +42,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                 pager?.currentItem = 0
             }
             item.findViewById<View>(R.id.rename).setOnClickListener {
-                val listener = DialogInterface.OnClickListener { dialog, which->
+                val listener = DialogInterface.OnClickListener { _, _->
                     pager?.currentItem = 0
                     parent.templates.data[this.position].name = rename!!.getText()
                     parent.templates.sort()
@@ -57,14 +56,16 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                     listener,
                     parent.pager.context
                 )
+                parent.notifyDataSetChanged()
                 rename?.show()
             }
             item.findViewById<View>(R.id.manage).setOnClickListener {
-                //TODO set action manage categories
+                //TODO set action manage templates
                 Log.i("MANAGE", "button pressed")
+                parent.notifyDataSetChanged()
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
-                val listener = DialogInterface.OnClickListener { dialog, which->
+                val listener = DialogInterface.OnClickListener { _, _ ->
                     parent.templates.data.removeAt(this.position)
                     parent.templates.save()
                     parent.notifyDataSetChanged()
@@ -75,6 +76,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                     listener,
                     parent.pager.context
                 )
+                parent.notifyDataSetChanged()
                 alert.show()
             }
         }

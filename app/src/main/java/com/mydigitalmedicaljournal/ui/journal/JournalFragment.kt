@@ -19,6 +19,7 @@ class JournalFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         journalViewModel =
             ViewModelProviders.of(this).get(JournalViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_journal, container, false)
@@ -33,6 +34,6 @@ class JournalFragment : Fragment() {
 // TODO add functionality for TAB
 /*val fab: FloatingActionButton = findViewById(R.id.fab)
 fab.setOnClickListener { view ->
-    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+    SnackBar.make(view, "Replace with your own action", SnackBar.LENGTH_LONG)
         .setAction("Action", null).show()
 }*/

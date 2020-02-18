@@ -19,6 +19,7 @@ class InstructionsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //TODO complete this fragment
         instructionsViewModel =
             ViewModelProviders.of(this).get(InstructionsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_instructions, container, false)
