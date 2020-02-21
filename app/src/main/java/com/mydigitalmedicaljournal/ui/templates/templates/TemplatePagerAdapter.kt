@@ -42,7 +42,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                 pager?.currentItem = 0
             }
             item.findViewById<View>(R.id.rename).setOnClickListener {
-                val listener = DialogInterface.OnClickListener { _, _->
+                /*val listener = DialogInterface.OnClickListener { _, _->
                     pager?.currentItem = 0
                     parent.templates.data[this.position].name = rename!!.getText()
                     parent.templates.sort()
@@ -57,7 +57,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                     parent.pager.context
                 )
                 parent.notifyDataSetChanged()
-                rename?.show()
+                rename?.show()*/
             }
             item.findViewById<View>(R.id.manage).setOnClickListener {
                 //TODO set action manage templates
@@ -65,7 +65,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                 parent.notifyDataSetChanged()
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
-                val listener = DialogInterface.OnClickListener { _, _ ->
+                /*val listener = DialogInterface.OnClickListener { _, _ ->
                     parent.templates.data.removeAt(this.position)
                     parent.templates.save()
                     parent.notifyDataSetChanged()
@@ -77,7 +77,7 @@ class TemplatePagerAdapter(private val model: Array<TemplateModel>, private val 
                     parent.pager.context
                 )
                 parent.notifyDataSetChanged()
-                alert.show()
+                alert.show()*/
             }
         }
     }

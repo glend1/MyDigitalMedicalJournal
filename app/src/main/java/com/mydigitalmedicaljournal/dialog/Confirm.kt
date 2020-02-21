@@ -5,10 +5,10 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 
 
-class Confirm(title: String, message: String, listener: DialogInterface.OnClickListener, context: Context) {
+class Confirm(title: String, message: String, context: Context) {
 
     private val builder = AlertDialog.Builder(context)
-    private var dialog: AlertDialog
+    private lateinit var dialog: AlertDialog
 
     init {
         // Set the alert dialog title
@@ -17,14 +17,18 @@ class Confirm(title: String, message: String, listener: DialogInterface.OnClickL
         // Display a message on alert dialog
         builder.setMessage(message)
 
-        // Set a positive button and its click listener on alert dialog
-        builder.setPositiveButton("Yes", listener)
-
         // Display a negative button on alert dialog
         //builder.setNegativeButton("No", null)
 
         // Display a neutral button on alert dialog
         builder.setNeutralButton("Cancel", null)
+
+
+    }
+
+    fun setListener(listener: DialogInterface.OnClickListener) {
+        // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton("Yes", listener)
 
         // Finally, make the alert dialog using builder
         dialog = builder.create()

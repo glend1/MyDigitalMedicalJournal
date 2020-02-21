@@ -7,10 +7,10 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 
 
-class TextBox(title: String, message: String, text: String, listener: DialogInterface.OnClickListener, context: Context) {
+class TextBox(title: String, message: String, text: String, context: Context) {
 
     private val builder = AlertDialog.Builder(context)
-    private var dialog: AlertDialog
+    private lateinit var dialog: AlertDialog
     private var input = EditText(context)
 
     init {
@@ -24,18 +24,20 @@ class TextBox(title: String, message: String, text: String, listener: DialogInte
         input.inputType = InputType.TYPE_CLASS_TEXT
         input.setText(text)
         input.selectAll()
-        //TODO this line deletes the parent view
+        //TODO this line deletes the parent view, added a temporary fix
         //this happens occurs on all views showing position 1
         builder.setView(input)
-
-        // Set a positive button and its click listener on alert dialog
-        builder.setPositiveButton("Yes", listener)
 
         // Display a negative button on alert dialog
         //builder.setNegativeButton("No", null)
 
         // Display a neutral button on alert dialog
         builder.setNeutralButton("Cancel", null)
+    }
+
+    fun setListener(listener: DialogInterface.OnClickListener) {
+        // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton("Yes", listener)
 
         // Finally, make the alert dialog using builder
         dialog = builder.create()

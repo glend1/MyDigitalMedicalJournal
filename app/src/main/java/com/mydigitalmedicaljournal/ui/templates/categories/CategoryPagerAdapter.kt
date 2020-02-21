@@ -42,7 +42,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                 pager?.currentItem = 0
             }
             item.findViewById<View>(R.id.rename).setOnClickListener {
-                val listener = DialogInterface.OnClickListener { _, _ ->
+                /*val listener = DialogInterface.OnClickListener { _, _ ->
                     parent.cat.data[thisItem].name = rename!!.getText()
                     parent.cat.sort()
                     parent.cat.save()
@@ -56,7 +56,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                     parent.pager.context
                 )
                 parent.notifyDataSetChanged()
-                rename?.show()
+                rename?.show()*/
             }
             item.findViewById<View>(R.id.manage).setOnClickListener {
                 //TODO set action manage categories
@@ -64,7 +64,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                 parent.notifyDataSetChanged()
             }
             item.findViewById<View>(R.id.delete).setOnClickListener {
-                val listener = DialogInterface.OnClickListener { _, _ ->
+                /*val listener = DialogInterface.OnClickListener { _, _ ->
                     parent.cat.data.removeAt(thisItem)
                     parent.cat.save()
                     parent.notifyDataSetChanged()
@@ -76,7 +76,7 @@ class CategoryPagerAdapter(private val model: Array<CategoryModel>, private val 
                     parent.pager.context
                 )
                 parent.notifyDataSetChanged()
-                alert.show()
+                alert.show()*/
             }
         }
     }

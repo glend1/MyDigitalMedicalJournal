@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.TextBox
 import com.mydigitalmedicaljournal.model.Templates
+import com.mydigitalmedicaljournal.ui.supers.ManagableListRecycler
 
 class ManageTemplatesFragment : Fragment() {
 
@@ -23,12 +23,12 @@ class ManageTemplatesFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_manage_templates, container, false)
         val templates = Templates(context!!)
-        val viewAdapter = TemplateRecyclerAdapter(templates)
+        val viewAdapter = ManagableListRecycler(templates)
         val templateList = root.findViewById<RecyclerView>(R.id.template_manage_template)
         val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
-        root.findViewById<View>(R.id.add).setOnClickListener {
+        /*root.findViewById<View>(R.id.add).setOnClickListener {
             val listener = DialogInterface.OnClickListener { _, _ ->
                 viewAdapter.templates.data.add(Templates.Template(add!!.getText()))
                 viewAdapter.templates.sort()
@@ -44,7 +44,7 @@ class ManageTemplatesFragment : Fragment() {
             )
             viewAdapter.notifyDataSetChanged()
             add?.show()
-        }
+        }*/
         return root
 
     }
