@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 
 class Confirm(title: String, message: String, context: Context) {
 
+    //TODO this uses default styling
     private val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog
 

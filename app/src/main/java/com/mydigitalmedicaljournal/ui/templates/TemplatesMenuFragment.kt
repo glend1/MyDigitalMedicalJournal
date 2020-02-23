@@ -23,6 +23,7 @@ class TemplatesFragment : Fragment() {
         val viewAdapter = TemplateRecyclerAdapter(resources.getStringArray(R.array.template_list), this)
         val templateList = root.findViewById<RecyclerView>(R.id.template_list)
         val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        // TODO the divider here leaves a divider at the end
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
 

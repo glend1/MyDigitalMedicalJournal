@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="15dp">
+    android:orientation="vertical">
 
-    <!-- TODO make dimens generic -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
+        android:layout_marginTop="@dimen/large"
+        android:textSize="@dimen/title_text"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,6 +35,8 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:paddingTop="@dimen/medium"
+                android:paddingBottom="@dimen/large"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/small"
                     android:text="@string/rename" />
 
             </LinearLayout>
@@ -72,6 +72,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/medium"
+                android:paddingBottom="@dimen/large"
                 android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -90,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/small"
                     android:text="@string/manage" />
             </LinearLayout>
 
@@ -109,6 +111,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/medium"
+                android:paddingBottom="@dimen/large"
                 android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -127,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/small"
                     android:text="@string/delete" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- TODO delete this -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/back"
         android:layout_width="wrap_content"
@@ -98,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="@dimen/small"
                 android:text="@string/manage" />
         </LinearLayout>
 

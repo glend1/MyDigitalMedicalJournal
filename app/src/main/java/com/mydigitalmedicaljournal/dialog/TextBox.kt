@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 
 class TextBox(title: String, message: String, text: String, context: Context) {
 
+    //TODO this uses default styling
     private val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog
     private var input = EditText(context)
