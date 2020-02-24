@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.generics
+package com.mydigitalmedicaljournal.ui._generics
 
 import android.view.LayoutInflater
 import android.view.View

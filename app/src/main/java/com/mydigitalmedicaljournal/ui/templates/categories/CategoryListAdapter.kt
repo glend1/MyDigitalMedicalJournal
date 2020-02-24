@@ -4,10 +4,10 @@ import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.dialog.Confirm
-import com.mydigitalmedicaljournal.dialog.TextBox
+import com.mydigitalmedicaljournal.ui._generics.ConfirmDialog
+import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.ui.generics.ManageableListAdapter
+import com.mydigitalmedicaljournal.ui._generics.ManageableListAdapter
 
 class CategoryListAdapter(override var json: Categories, layout: Int) : ManageableListAdapter(json, layout) {
     override fun bindEvents(holder: ViewHolder, position: Int) {
@@ -19,7 +19,7 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
     private fun bindDelete(holder: ViewHolder, position: Int) {
         val delete = holder.itemView.findViewById<View>(R.id.delete)
         delete.setOnClickListener {
-            val alert = Confirm(
+            val alert = ConfirmDialog(
                 "Are you sure you want to delete Category named \"${json.data[position].name}\"?",
                 "You will not loose any data or any saved templates. This action cannot be undone.",
                 delete.context
@@ -44,7 +44,7 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
     private fun bindRename(holder: ViewHolder, position: Int) {
         val rename = holder.itemView.findViewById<View>(R.id.rename)
         rename.setOnClickListener {
-            val textBox = TextBox(
+            val textBox = TextBoxDialog(
                 "Rename",
                 "Please type the new name for \"${json.data[position].name}\"",
                 json.data[position].name,
