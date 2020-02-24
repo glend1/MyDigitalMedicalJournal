@@ -13,39 +13,36 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.TextBox
 import com.mydigitalmedicaljournal.model.Categories
 
-
 class ManageCategoriesFragment : Fragment() {
-
-    private var add: TextBox? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_manage_categories, container, false)
-        val cat = Categories(context!!)
-        val viewAdapter = CategoryRecyclerAdapter(cat)
-        val templateList = root.findViewById<RecyclerView>(R.id.template_manage_category)
+        val root = inflater.inflate(R.layout.fragment_manage_list, container, false)
+        val categories = Categories(context!!)
+        val viewAdapter = CategoryListAdapter(categories, R.layout.list_manage)
+        val templateList = root.findViewById<RecyclerView>(R.id.recycler)
+        // TODO the divider here leaves a divider at the end
         val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
-            /*val listener = DialogInterface.OnClickListener { _, _ ->
-                viewAdapter.cat.data.add(Categories.Category(add!!.getText()))
-                viewAdapter.cat.sort()
-                viewAdapter.cat.save()
-                viewAdapter.notifyDataSetChanged()
-            }
-            add = TextBox(
-                "Add New Category",
-                "Please type the name for the new category",
+            val add = TextBox(
+                "Add New Template",
+                "Please type the name for the new template",
                 "",
-                listener,
                 context!!
             )
+            add.setListener(DialogInterface.OnClickListener { _, _ ->
+                viewAdapter.json.data.add(Categories.Category(add.getText()))
+                viewAdapter.json.sort()
+                viewAdapter.json.save()
+                viewAdapter.notifyDataSetChanged()
+            })
             viewAdapter.notifyDataSetChanged()
-            add?.show()*/
+            add.show()
         }
         return root
 

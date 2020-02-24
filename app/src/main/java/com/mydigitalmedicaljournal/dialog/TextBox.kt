@@ -25,8 +25,6 @@ class TextBox(title: String, message: String, text: String, context: Context) {
         input.inputType = InputType.TYPE_CLASS_TEXT
         input.setText(text)
         input.selectAll()
-        //TODO this line deletes the parent view, added a temporary fix
-        //this happens occurs on all views showing position 1
         builder.setView(input)
 
         // Display a negative button on alert dialog

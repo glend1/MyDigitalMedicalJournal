@@ -4,11 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <!-- TODO: this should probably be the template layout too -->
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/template_manage_category"
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager" />
@@ -21,6 +18,6 @@
         android:layout_margin="@dimen/large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@drawable/ic_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

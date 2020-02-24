@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_journal">
 
     <fragment
         android:id="@+id/nav_journal"
         android:name="com.mydigitalmedicaljournal.ui.journal.JournalFragment"
-        android:label="@string/drawer_journal"
-        tools:layout="@layout/fragment_journal" />
+        android:label="@string/drawer_journal" />
 
     <fragment
         android:id="@+id/nav_reports"
         android:name="com.mydigitalmedicaljournal.ui.reports.ReportsFragment"
-        android:label="@string/drawer_reports"
-        tools:layout="@layout/fragment_reports" />
+        android:label="@string/drawer_reports" />
 
     <fragment
         android:id="@+id/nav_calendar"
         android:name="com.mydigitalmedicaljournal.ui.calendar.CalendarFragment"
-        android:label="@string/drawer_calendar"
-        tools:layout="@layout/fragment_calendar" />
-
+        android:label="@string/drawer_calendar" />
     <fragment
         android:id="@+id/nav_templates"
         android:name="com.mydigitalmedicaljournal.ui.templates.TemplatesFragment"
-        android:label="@string/drawer_templates"
-        tools:layout="@layout/fragment_templates" >
+        android:label="@string/drawer_templates">
         <action
             android:id="@+id/action_nav_templates_to_manageTemplates"
             app:destination="@id/manageTemplates" />
@@ -35,43 +29,32 @@
             android:id="@+id/action_nav_templates_to_manageCategories"
             app:destination="@id/manageCategories" />
     </fragment>
-
     <fragment
         android:id="@+id/nav_copyright"
         android:name="com.mydigitalmedicaljournal.ui.copyright.CopyrightFragment"
-        android:label="@string/action_copyright"
-        tools:layout="@layout/fragment_copyright" />
-
+        android:label="@string/action_copyright" />
     <fragment
         android:id="@+id/nav_instructions"
         android:name="com.mydigitalmedicaljournal.ui.instructions.InstructionsFragment"
-        android:label="@string/action_instructions"
-        tools:layout="@layout/fragment_instructions" />
-
+        android:label="@string/action_instructions" />
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.mydigitalmedicaljournal.ui.settings.SettingsFragment"
         android:label="@string/action_settings" />
-
     <fragment
         android:id="@+id/nav_social"
         android:name="com.mydigitalmedicaljournal.ui.social.SocialFragment"
-        android:label="@string/action_social"
-        tools:layout="@layout/fragment_social" />
-
+        android:label="@string/action_social" />
     <fragment
         android:id="@+id/nav_support"
         android:name="com.mydigitalmedicaljournal.ui.support.SupportFragment"
-        android:label="@string/action_support"
-        tools:layout="@layout/fragment_support" />
+        android:label="@string/action_support" />
     <fragment
         android:id="@+id/manageTemplates"
         android:name="com.mydigitalmedicaljournal.ui.templates.templates.ManageTemplatesFragment"
-        android:label="@string/templates_manage"
-        tools:layout="@layout/fragment_manage_templates" />
+        android:label="@string/templates_manage"/>
     <fragment
         android:id="@+id/manageCategories"
         android:name="com.mydigitalmedicaljournal.ui.templates.categories.ManageCategoriesFragment"
         android:label="@string/manage_categories" />
-
 </navigation>

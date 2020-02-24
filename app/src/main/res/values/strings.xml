@@ -28,9 +28,7 @@
     <string name="rename">Rename</string>
     <string name="manage">Manage</string>
     <string name="delete">Delete</string>
-    <string name="back_icon">Back</string>
     <string name="rename_icon">Rename</string>
     <string name="manage_icon">Manage</string>
     <string name="delete_icon">Delete</string>
-    <string name="arrow_right">Right</string>
 </resources>

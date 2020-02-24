@@ -1,38 +1,16 @@
-package com.mydigitalmedicaljournal.ui.supers
+package com.mydigitalmedicaljournal.ui.templates.categories
 
 import android.content.DialogInterface
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.dialog.Confirm
 import com.mydigitalmedicaljournal.dialog.TextBox
-import com.mydigitalmedicaljournal.json.JsonData
-import com.mydigitalmedicaljournal.model.Templates
+import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.ui.generics.ManageableListAdapter
 
-class ManagableListRecycler(json: JsonData) : RecyclerView.Adapter<ManagableListRecycler.ViewHolder>() {
-
-    var json = json as Templates
-
-    override fun getItemCount() = json.data.size
-
-    inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_manage, parent, false)
-        return ViewHolder(layout)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val title = holder.itemView.findViewById<TextView>(R.id.title)
-        title.text = json.data[position].name
-        bindEvents(holder, position)
-    }
-
-    private fun bindEvents(holder: ViewHolder, position: Int) {
+class CategoryListAdapter(override var json: Categories, layout: Int) : ManageableListAdapter(json, layout) {
+    override fun bindEvents(holder: ViewHolder, position: Int) {
         bindRename(holder, position)
         bindManage(holder, position)
         bindDelete(holder, position)
@@ -66,7 +44,7 @@ class ManagableListRecycler(json: JsonData) : RecyclerView.Adapter<ManagableList
     private fun bindRename(holder: ViewHolder, position: Int) {
         val rename = holder.itemView.findViewById<View>(R.id.rename)
         rename.setOnClickListener {
-            var textBox = TextBox(
+            val textBox = TextBox(
                 "Rename",
                 "Please type the new name for \"${json.data[position].name}\"",
                 json.data[position].name,
