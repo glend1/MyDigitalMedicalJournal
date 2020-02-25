@@ -20,7 +20,7 @@
         android:label="@string/drawer_calendar" />
     <fragment
         android:id="@+id/nav_templates"
-        android:name="com.mydigitalmedicaljournal.ui.templates.TemplatesFragment"
+        android:name="com.mydigitalmedicaljournal.ui.templates.TemplatesMenuFragment"
         android:label="@string/drawer_templates">
         <action
             android:id="@+id/action_nav_templates_to_manageTemplates"

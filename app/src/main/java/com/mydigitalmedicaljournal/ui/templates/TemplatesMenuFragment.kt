@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 
 
-class TemplatesFragment : Fragment() {
+class TemplatesMenuFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,7 +18,7 @@ class TemplatesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_templates, container, false)
-        val viewAdapter = TemplateRecyclerAdapter(resources.getStringArray(R.array.template_list), this)
+        val viewAdapter = TemplateMenuRecyclerAdapter(resources.getStringArray(R.array.template_list), this)
         val templateList = root.findViewById<RecyclerView>(R.id.template_list)
         val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         // TODO the divider here leaves a divider at the end

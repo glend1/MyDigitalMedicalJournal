@@ -8,6 +8,7 @@ import com.mydigitalmedicaljournal.ui._generics.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.ui._generics.ManageableListAdapter
+import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class CategoryListAdapter(override var json: Categories, layout: Int) : ManageableListAdapter(json, layout) {
     override fun bindEvents(holder: ViewHolder, position: Int) {
