@@ -18,23 +18,27 @@ import com.mydigitalmedicaljournal.db.DataSource
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-
     private var mTablet = false
     private lateinit var navController: NavController
     private lateinit var dataSource: DataSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
-        if (drawerLayout == null) {
-            mTablet = true
-        }
+        isTablet(drawerLayout)
+        setupNav(drawerLayout)
+        databaseConnect()
+    }
 
+    private fun databaseConnect() {
+        dataSource = DataSource(this)
+        dataSource.open()
+    }
+
+    private fun setupNav(drawerLayout: DrawerLayout?) {
         val navView: NavigationView = findViewById(R.id.nav_view)
         navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -47,9 +51,12 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
 
-        dataSource = DataSource(this)
-        dataSource.open()
+    private fun isTablet(drawerLayout: DrawerLayout?) {
+        if (drawerLayout == null) {
+            mTablet = true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

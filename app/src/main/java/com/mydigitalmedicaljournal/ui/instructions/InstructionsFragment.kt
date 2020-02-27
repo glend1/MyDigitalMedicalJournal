@@ -24,7 +24,7 @@ class InstructionsFragment : Fragment() {
             ViewModelProviders.of(this).get(InstructionsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_instructions, container, false)
         val textView: TextView = root.findViewById(R.id.text_instructions)
-        instructionsViewModel.text.observe(this, Observer {
+        instructionsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

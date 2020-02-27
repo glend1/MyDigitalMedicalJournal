@@ -24,7 +24,7 @@ class CopyrightFragment : Fragment() {
             ViewModelProviders.of(this).get(CopyrightViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_copyright, container, false)
         val textView: TextView = root.findViewById(R.id.text_copyright)
-        copyrightViewModel.text.observe(this, Observer {
+        copyrightViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

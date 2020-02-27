@@ -24,7 +24,7 @@ class JournalFragment : Fragment() {
             ViewModelProviders.of(this).get(JournalViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_journal, container, false)
         val textView: TextView = root.findViewById(R.id.text_journal)
-        journalViewModel.text.observe(this, Observer {
+        journalViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

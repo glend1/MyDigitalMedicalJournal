@@ -24,7 +24,7 @@ class SupportFragment : Fragment() {
             ViewModelProviders.of(this).get(SupportViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_support, container, false)
         val textView: TextView = root.findViewById(R.id.text_support)
-        supportViewModel.text.observe(this, Observer {
+        supportViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
