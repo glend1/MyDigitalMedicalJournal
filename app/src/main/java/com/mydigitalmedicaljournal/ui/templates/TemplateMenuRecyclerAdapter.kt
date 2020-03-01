@@ -21,29 +21,24 @@ class TemplateMenuRecyclerAdapter(private val myDataSet: Array<String>, private 
         holder.itemView.setOnClickListener {
             val navController = findNavController(fragment)
             when (position) {
+                //TODO this is kind of fragile, changing the list order breaks navigation
                 0 -> {
-                    Log.d("TEXT", "backup")
-                }
-                1 -> {
-                    Log.d("TEXT", "import")
-                }
-                2 -> {
-                    navController.navigate(R.id.manageTemplates)
-                }
-                3 -> {
-                    Log.d("TEXT", "export")
-                }
-                4 -> {
                     navController.navigate(R.id.manageCategories)
                 }
+                1 -> {
+                    navController.navigate(R.id.manageTemplates)
+                }
+                2 -> {
+                }
+                3 -> {
+                }
+                4 -> {
+                }
                 5 -> {
-                    Log.d("TEXT", "bad days")
                 }
                 6 -> {
-                    Log.d("TEXT", "download")
                 }
                 7 -> {
-                    Log.d("TEXT", "upload")
                 }
             }
         }
