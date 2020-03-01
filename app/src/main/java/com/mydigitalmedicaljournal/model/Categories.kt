@@ -15,11 +15,10 @@ class Categories(context: Context): JsonData() {
     override lateinit var data: MutableList<Category>
 
     class Category : Entry {
-        //TODO you need to be able to set the templates sometimes
-        var templates = mutableSetOf<UUID>()
+        var templates = mutableListOf<UUID>()
         constructor(name: String) : super(name)
         constructor(id: UUID, name: String) : super(id, name)
-        constructor(id: UUID, name: String, templates: MutableSet<UUID>) : this(id, name) {
+        constructor(id: UUID, name: String, templates: MutableList<UUID>) : this(id, name) {
             this.templates = templates
         }
     }

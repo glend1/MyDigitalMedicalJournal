@@ -1,14 +1,11 @@
 package com.mydigitalmedicaljournal.ui.templates.categories
 
 import android.content.DialogInterface
-import android.util.Log
 import android.view.View
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.ui._generics.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.ui._generics.ManageableListAdapter
-import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import com.mydigitalmedicaljournal.model.Templates
+import com.mydigitalmedicaljournal.ui._generics.*
 
 class CategoryListAdapter(override var json: Categories, layout: Int) : ManageableListAdapter(json, layout) {
     override fun bindEvents(holder: ViewHolder, position: Int) {
@@ -37,8 +34,22 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
     private fun bindManage(holder: ViewHolder, position: Int) {
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
-            //TODO write this method
-            Log.i("MANAGE", position.toString())
+            val adapter =
+                ManageCategoriesAdapter(
+                    Templates(manage.context),
+                    json.data[position].templates
+                )
+            val listDialog = ListDialog(
+                "Manage",
+                "Please select which Templates should belong to \"${json.data[position].name}\"",
+                manage.context,
+                adapter
+                )
+            listDialog.setListener(DialogInterface.OnClickListener { _, _ ->
+                json.data[position].templates = adapter.localData
+                json.save()
+            })
+            listDialog.show()
         }
     }
 
