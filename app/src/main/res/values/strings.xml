@@ -31,4 +31,12 @@
     <string name="rename_icon">Rename</string>
     <string name="manage_icon">Manage</string>
     <string name="delete_icon">Delete</string>
+    <string name="ManageCategories">Manage Categories</string>
+    <string name="ManageTemplates">Manage Templates</string>
+    <string name="ManageFlares">Manage Flares</string>
+    <string name="Import">Import</string>
+    <string name="Export">Export</string>
+    <string name="Backup">Backup</string>
+    <string name="Download">Download</string>
+    <string name="Upload">Upload</string>
 </resources>
