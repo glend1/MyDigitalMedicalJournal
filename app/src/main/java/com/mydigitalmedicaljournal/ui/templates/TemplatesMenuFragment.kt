@@ -21,7 +21,6 @@ class TemplatesMenuFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_templates, container, false)
         //TODO some fragments are missing here
-        //TODO this might be replaceable with a MENU resource item
         val menu = mutableListOf(
             NamedResource(R.string.ManageCategories, R.id.manageCategories),
             NamedResource(R.string.ManageTemplates, R.id.manageTemplates),

@@ -30,8 +30,8 @@ class ManageCategoriesFragment : Fragment() {
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
             val add = TextBoxDialog(
-                "Add New Template",
-                "Please type the name for the new template",
+                "Add New Category",
+                "Please type the name for the new category",
                 "",
                 context!!
             )

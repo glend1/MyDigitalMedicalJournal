@@ -15,12 +15,13 @@ class Templates(context: Context): JsonData() {
     override lateinit var data: MutableList<Template>
 
     class Template : Entry {
-        //TODO need to be able to set the TemplateFormat sometimes
-        //TODO should i record TemplateFormat as a UUID so that i can use that reference
-        lateinit var template: UUID
-        //use id as filename
+        //TODO use id as filename
+        var template = UUID.randomUUID()
         constructor(name: String) : super(name)
         constructor(id: UUID, name: String) : super(id, name)
+        constructor(id: UUID, name: String, template: UUID) : this(id, name) {
+            this.template = template
+        }
     }
 
     override var json = JsonHelper(type)

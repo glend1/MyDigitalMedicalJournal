@@ -17,7 +17,7 @@ abstract class ManageableListAdapter(open val json: JsonData, val layout: Int) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val title = holder.itemView.findViewById<TextView>(R.id.title)
+        val title = holder.itemView.findViewById<TextView>(R.id.text)
         title.text = json.data[position].name
         bindEvents(holder, position)
     }
