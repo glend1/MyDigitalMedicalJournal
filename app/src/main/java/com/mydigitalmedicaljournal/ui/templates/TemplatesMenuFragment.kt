@@ -25,11 +25,11 @@ class TemplatesMenuFragment : Fragment() {
             NamedResource(R.string.ManageCategories, R.id.manageCategories),
             NamedResource(R.string.ManageTemplates, R.id.manageTemplates),
             NamedResource(R.string.ManageFlares, null),
-            NamedResource(R.string.Import, null),
-            NamedResource(R.string.Export, null),
-            NamedResource(R.string.Backup, null),
-            NamedResource(R.string.Download, null),
-            NamedResource(R.string.Upload, null)
+            //NamedResource(R.string.Import, null),
+            //NamedResource(R.string.Export, null),
+            NamedResource(R.string.Backup, null)
+            //NamedResource(R.string.Download, null),
+            //NamedResource(R.string.Upload, null)
         )
         val viewAdapter = TemplateMenuRecyclerAdapter(menu, findNavController())
         val templateList = root.findViewById<RecyclerView>(R.id.template_list)
