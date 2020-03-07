@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Templates
@@ -20,7 +21,7 @@ class ManageTemplatesFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_manage_list, container, false)
         val templates = Templates(context!!)
-        val viewAdapter = TemplateListAdapter(templates, R.layout.list_item)
+        val viewAdapter = TemplateListAdapter(templates, R.layout.list_item, findNavController())
         val templateList = root.findViewById<RecyclerView>(R.id.recycler)
         val itemDecoration = CustomDivider(context!!)
         templateList.addItemDecoration(itemDecoration)

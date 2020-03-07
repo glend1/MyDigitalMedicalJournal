@@ -1,15 +1,16 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
-import android.util.Log
+import androidx.navigation.NavController
+import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Templates
 import com.mydigitalmedicaljournal.ui._generics.ManageableListAdapter
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
-class TemplateListAdapter(override var json: Templates, layout: Int) : ManageableListAdapter(json, layout) {
+class TemplateListAdapter(override var json: Templates, layout: Int, private val navController: NavController) : ManageableListAdapter(json, layout) {
 
     override fun bindEvents(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            Log.i("TEST", "position $position clicked")
+            navController.navigate(R.id.editorFragment)
         }
     }
 

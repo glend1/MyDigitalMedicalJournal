@@ -45,4 +45,5 @@
     <string name="New_Text">Please type the name for the new category</string>
     <string name="Cancel">Cancel</string>
     <string name="Yes">Yes</string>
+    <string name="Template_editor">Template Editor</string>
 </resources>
