@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
 import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.ui._generics.CustomDivider
+import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
 
 class ManageCategoriesFragment : Fragment() {
 
@@ -24,12 +23,12 @@ class ManageCategoriesFragment : Fragment() {
         val categories = Categories(context!!)
         val viewAdapter = CategoryListAdapter(categories, R.layout.list_manage)
         val templateList = root.findViewById<RecyclerView>(R.id.recycler)
-        // TODO the divider here leaves a divider at the end
-        val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        val itemDecoration = CustomDivider(context!!)
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
             val add = TextBoxDialog(
+                //TODO this should use string resources
                 "Add New Category",
                 "Please type the name for the new category",
                 "",

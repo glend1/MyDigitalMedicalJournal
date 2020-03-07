@@ -1,17 +1,15 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Templates
-import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 
 class ManageTemplatesFragment : Fragment() {
 
@@ -24,8 +22,7 @@ class ManageTemplatesFragment : Fragment() {
         val templates = Templates(context!!)
         val viewAdapter = TemplateListAdapter(templates, R.layout.list_item)
         val templateList = root.findViewById<RecyclerView>(R.id.recycler)
-        val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        // TODO the divider here leaves a divider at the end
+        val itemDecoration = CustomDivider(context!!)
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
