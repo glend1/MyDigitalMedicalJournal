@@ -18,8 +18,8 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
         val delete = holder.itemView.findViewById<View>(R.id.delete)
         delete.setOnClickListener {
             val alert = ConfirmDialog(
-                "Are you sure you want to delete Category named \"${json.data[position].name}\"?",
-                "You will not loose any data or any saved templates. This action cannot be undone.",
+                delete.context.getString(R.string.Confirm, json.data[position].name),
+                delete.context.getString(R.string.Confirm_Warning),
                 delete.context
             )
             alert.setListener(DialogInterface.OnClickListener { _, _ ->
@@ -40,8 +40,8 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
                     json.data[position].templates
                 )
             val listDialog = ListDialog(
-                "Manage",
-                "Please select which Templates should belong to \"${json.data[position].name}\"",
+                manage.context.getString(R.string.Manage),
+                manage.context.getString(R.string.Manage_Text, json.data[position].name),
                 manage.context,
                 adapter
                 )
@@ -57,8 +57,8 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
         val rename = holder.itemView.findViewById<View>(R.id.rename)
         rename.setOnClickListener {
             val textBox = TextBoxDialog(
-                "Rename",
-                "Please type the new name for \"${json.data[position].name}\"",
+                rename.context.getString(R.string.Rename),
+                rename.context.getString(R.string.Rename_Text, json.data[position].name),
                 json.data[position].name,
                 rename.context
             )

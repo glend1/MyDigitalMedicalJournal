@@ -3,9 +3,10 @@ package com.mydigitalmedicaljournal.ui._generics
 import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
+import com.mydigitalmedicaljournal.R
 
 
-class ConfirmDialog(title: String, message: String, context: Context) {
+class ConfirmDialog(title: String, message: String, val context: Context) {
 
     //TODO this uses default styling
     private val builder = AlertDialog.Builder(context)
@@ -22,14 +23,14 @@ class ConfirmDialog(title: String, message: String, context: Context) {
         //builder.setNegativeButton("No", null)
 
         // Display a neutral button on alert dialog
-        builder.setNeutralButton("Cancel", null)
+        builder.setNeutralButton(context.getString(R.string.Cancel), null)
 
 
     }
 
     fun setListener(listener: DialogInterface.OnClickListener) {
         // Set a positive button and its click listener on alert dialog
-        builder.setPositiveButton("Yes", listener)
+        builder.setPositiveButton(context.getString(R.string.Yes), listener)
 
         // Finally, make the alert dialog using builder
         dialog = builder.create()

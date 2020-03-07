@@ -34,9 +34,15 @@
     <string name="ManageCategories">Manage Categories</string>
     <string name="ManageTemplates">Manage Templates</string>
     <string name="ManageFlares">Manage Flares</string>
-    <string name="Import">Import</string>
-    <string name="Export">Export</string>
     <string name="Backup">Backup</string>
-    <string name="Download">Download</string>
-    <string name="Upload">Upload</string>
+    <string name="Rename">Rename</string>
+    <string name="Rename_Text">Please type the new name for \"%1$s\"</string>
+    <string name="Manage">Manage</string>
+    <string name="Manage_Text">Please select which Templates should belong to \"%1$s\"</string>
+    <string name="Confirm">Are you sure you want to delete Category named \"%1$s\"</string>
+    <string name="Confirm_Warning">You will not loose any data or any saved templates. This action cannot be undone.</string>
+    <string name="New">Add New Category</string>
+    <string name="New_Text">Please type the name for the new category</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Yes">Yes</string>
 </resources>
