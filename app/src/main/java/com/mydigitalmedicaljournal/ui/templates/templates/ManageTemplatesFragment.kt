@@ -1,7 +1,6 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +13,7 @@ import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 
 class ManageTemplatesFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_manage_list, container, false)
         val templates = Templates(context!!)
         val viewAdapter = TemplateListAdapter(templates, R.layout.list_item, findNavController())
@@ -27,8 +22,7 @@ class ManageTemplatesFragment : Fragment() {
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
-            //TODO implement this method
-            Log.i("ADD", "add clicked")
+            findNavController().navigate(R.id.editorFragment)
         }
         return root
     }

@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.ui.templates.templates
 
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Templates
@@ -10,7 +11,8 @@ class TemplateListAdapter(override var json: Templates, layout: Int, private val
 
     override fun bindEvents(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            navController.navigate(R.id.editorFragment)
+            val bundle = bundleOf("data" to json.data[position].id)
+            navController.navigate(R.id.editorFragment, bundle)
         }
     }
 
