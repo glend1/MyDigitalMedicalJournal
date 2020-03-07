@@ -27,10 +27,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        databaseConnect()
+    }
+
+    override fun onStart() {
+        super.onStart()
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         isTablet(drawerLayout)
         setupNav(drawerLayout)
-        databaseConnect()
     }
 
     private fun databaseConnect() {

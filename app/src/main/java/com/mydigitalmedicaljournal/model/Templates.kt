@@ -11,12 +11,12 @@ import kotlin.collections.ArrayList
 
 class Templates(context: Context): JsonData() {
     override val fileName = "templates.json"
-    override val type = object: TypeToken<MutableList<Template>>(){}.type
+    override val type = object: TypeToken<MutableList<Template>>(){}.type!!
     override lateinit var data: MutableList<Template>
 
     class Template : Entry {
         //TODO use id as filename
-        var template = UUID.randomUUID()
+        var template = UUID.randomUUID()!!
         constructor(name: String) : super(name)
         constructor(id: UUID, name: String) : super(id, name)
         constructor(id: UUID, name: String, template: UUID) : this(id, name) {

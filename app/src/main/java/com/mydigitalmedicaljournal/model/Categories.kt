@@ -11,7 +11,7 @@ import kotlin.collections.ArrayList
 
 class Categories(context: Context): JsonData() {
     override val fileName = "categories.json"
-    override val type = object: TypeToken<MutableList<Category>>(){}.type
+    override val type = object: TypeToken<MutableList<Category>>(){}.type!!
     override lateinit var data: MutableList<Category>
 
     class Category : Entry {
