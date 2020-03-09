@@ -46,4 +46,9 @@
     <string name="Cancel">Cancel</string>
     <string name="Yes">Yes</string>
     <string name="Template_editor">Template Editor</string>
+    <string name="save">Save</string>
+    <string name="save_icon">save icon</string>
+    <string name="name_label">Name:</string>
+    <string name="add_field">Add new field</string>
+    <string name="add_icon">add icon</string>
 </resources>
