@@ -23,7 +23,9 @@ class TextBoxDialog(title: String, message: String, text: String, val context: C
         builder.setMessage(message)
         //builder.setMessage(text)
 
-        input.inputType = InputType.TYPE_CLASS_TEXT
+        //TODO this might need more options
+        //TODO not sure this flag is being set
+        input.inputType = InputType.TYPE_TEXT_FLAG_CAP_WORDS
         input.setText(text)
         input.selectAll()
         builder.setView(input)
