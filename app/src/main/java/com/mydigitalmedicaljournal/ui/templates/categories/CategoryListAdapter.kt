@@ -32,6 +32,7 @@ class CategoryListAdapter(override var json: Categories, layout: Int) : Manageab
     }
 
     private fun bindManage(holder: ViewHolder, position: Int) {
+        //TODO what happens if there aren't any templates?
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
             val adapter =

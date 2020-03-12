@@ -15,13 +15,9 @@ class Templates(context: Context): JsonData() {
     override lateinit var data: MutableList<Template>
 
     class Template : Entry {
-        //TODO use id as filename
-        var template = UUID.randomUUID()!!
         constructor(name: String) : super(name)
         constructor(id: UUID, name: String) : super(id, name)
-        constructor(id: UUID, name: String, template: UUID) : this(id, name) {
-            this.template = template
-        }
+        //TODO use id as filename
     }
 
     override var json = JsonHelper(type)

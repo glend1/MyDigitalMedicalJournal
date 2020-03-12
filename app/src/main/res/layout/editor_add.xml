@@ -19,6 +19,7 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/add_field"
         android:textSize="@dimen/title_text"
         android:padding="@dimen/large" />
 

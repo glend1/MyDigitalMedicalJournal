@@ -51,4 +51,7 @@
     <string name="name_label">Name:</string>
     <string name="add_field">Add new field</string>
     <string name="add_icon">add icon</string>
+    <string name="add">add</string>
+    <string name="test1">test1</string>
+    <string name="test2">test2</string>
 </resources>
