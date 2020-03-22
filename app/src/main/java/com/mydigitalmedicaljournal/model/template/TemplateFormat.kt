@@ -1,8 +1,9 @@
-package com.mydigitalmedicaljournal.model
+package com.mydigitalmedicaljournal.model.template
 
-class TemplateFormat(val type: Int) {
+import com.mydigitalmedicaljournal.ui.templates.templates.editor.TemplateView
+
+open class TemplateFormat(val type: TemplateView) {
     //TODO implement this class
-    //TODO should this be a data class?
     /*
         this should not store its own name as
         i never need multiple template definitions so this being singular is fine

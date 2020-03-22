@@ -34,9 +34,7 @@ class ManageCategoriesFragment : Fragment() {
                 context!!
             )
             add.setListener(DialogInterface.OnClickListener { _, _ ->
-                viewAdapter.json.data.add(Categories.Category(add.getText()))
-                viewAdapter.json.sort()
-                viewAdapter.json.save()
+                viewAdapter.json.add(Categories.Category(add.getText()))
                 viewAdapter.notifyDataSetChanged()
             })
             viewAdapter.notifyDataSetChanged()

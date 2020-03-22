@@ -9,7 +9,7 @@ import com.mydigitalmedicaljournal.json.JsonData
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import java.util.*
 
-class ManageCategoriesAdapter(var json: JsonData, private var savedList: MutableList<UUID>) : RecyclerView.Adapter<ViewHolder>() {
+class ManageCategoriesAdapter(var json: JsonData /*TODO update this reference with new template class*/, private var savedList: MutableList<UUID>) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun getItemCount() = json.data.size
     var localData = mutableListOf<UUID>()

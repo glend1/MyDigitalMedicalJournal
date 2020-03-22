@@ -6,8 +6,7 @@ import com.google.common.io.Files
 import java.io.File
 import java.nio.charset.Charset
 
-class FileHelper (name: String, context: Context) {
-
+class FileHelper(name: String, context: Context) {
     //external storage
     //context.getExternalFilesDir(null)
     private val path = context.filesDir

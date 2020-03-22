@@ -9,7 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.model.TemplateFormat
+import com.mydigitalmedicaljournal.model.template.TemplateFormat
 import com.mydigitalmedicaljournal.model.Templates
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 
@@ -84,7 +84,6 @@ class EditorFragment : Fragment() {
             templateName.id
             templateDefinition
         } else {
-            //TODO create empty template
             templateDefinition = mutableListOf()
         }
     }

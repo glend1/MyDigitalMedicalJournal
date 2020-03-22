@@ -8,7 +8,7 @@ import com.mydigitalmedicaljournal.json.JsonHelper
 import java.util.*
 import kotlin.collections.ArrayList
 
-
+//TODO this class will be replaced by template, it will generate a list of templates
 class Templates(context: Context): JsonData() {
     override val fileName = "templates.json"
     override val type = object: TypeToken<MutableList<Template>>(){}.type!!

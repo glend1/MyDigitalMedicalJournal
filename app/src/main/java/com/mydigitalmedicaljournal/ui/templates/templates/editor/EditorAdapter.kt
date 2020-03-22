@@ -4,34 +4,55 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mydigitalmedicaljournal.model.TemplateFormat
+import com.mydigitalmedicaljournal.model.Template
+import com.mydigitalmedicaljournal.model.template.TemplateFormat
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class EditorAdapter(var templateDefinition:  MutableList<TemplateFormat>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //TODO complete this adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = TemplateView.getView(viewType)!!
-        val layout = LayoutInflater.from(parent.context).inflate(view.layout, parent, false)
+        val layout = LayoutInflater.from(parent.context).inflate(TemplateView.getView(viewType)!!.layout, parent, false)
         return ViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TemplateView.getView(position)?.setEvent(holder.itemView, this)
+        val thisView = getItemViewType(position)
+        TemplateView.getView(thisView)?.setEvent(holder.itemView, this)
     }
 
-    override fun getItemCount(): Int = templateDefinition.size + 1
+    override fun getItemCount(): Int {
+        var i = templateDefinition.size + 1
+        if (getTime() == null) {
+            i++
+        }
+        return i
+    }
+
+    fun getTime(): TemplateFormat? {
+        //TODO this might change as development continues
+        for (template in templateDefinition) {
+            if (template.type == TemplateView.TIMETYPE) {
+                return template
+            }
+        }
+        return null
+    }
 
     override fun getItemId(position: Int): Long {
         //TODO I cant really figure out what this does
-        Log.i("ID", position.toString())
+        Log.i("EDITORADAPTER", "Item ID")
         return super.getItemId(position)
     }
 
     override fun getItemViewType(position: Int): Int {
         return if (itemCount == position + 1) {
             0
+        } else if (getTime() == null && position == 0) {
+            1
+        } else if (getTime() != null && templateDefinition.getOrNull(position) != null) {
+            templateDefinition[position].type.id
         } else {
-            templateDefinition[position].type
+            templateDefinition[position - 1].type.id
         }
     }
 

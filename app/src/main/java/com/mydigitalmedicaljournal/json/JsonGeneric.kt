@@ -1,14 +1,33 @@
 package com.mydigitalmedicaljournal.json
 
-import java.lang.reflect.Type
-import java.util.*
+import com.google.gson.Gson
 
-abstract class JsonData {
-    //TODO delete this
+abstract class JsonGeneric {
+
+    protected abstract val file: FileHelper
+    protected val json by lazy { Gson() }
+
+    //JSON
+
+    /*
+    private var contents: String? = null
+    private var data: Any? = null
+
+    fun convert(string: String): ArrayList<JsonData.Entry> {
+        data = json.fromJson(string, type)
+        return data as ArrayList<JsonData.Entry>
+    }
+
+    fun convert(obj: Any): String? {
+        contents = json.toJson(obj)
+        return contents
+    }
+
+    //DATA
+
     protected abstract val fileName: String
     protected abstract val type: Type
     abstract val data: MutableList<out Entry>
-    //TODO need good way to sort this
 
     abstract class Entry {
         var id: UUID
@@ -34,5 +53,7 @@ abstract class JsonData {
     fun save() {
         file.write(fromJson())
     }
+
+     */
 
 }
