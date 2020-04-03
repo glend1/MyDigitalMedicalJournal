@@ -1,18 +1,18 @@
 package com.mydigitalmedicaljournal.model
 
 import android.content.Context
+import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mydigitalmedicaljournal.json.FileHelper
-import com.mydigitalmedicaljournal.json.JsonGeneric
 import java.util.*
 
-class Categories(context: Context): JsonGeneric() {
-    override val file = FileHelper("categories.json", context)
-    val type = object: TypeToken<MutableList<Category>>(){}.type!!
-    var data: MutableList<Category>
+class Categories(context: Context) {
+    private val json by lazy { Gson() }
+    private val file = FileHelper("categories.json", context)
+    private val type = object: TypeToken<MutableList<Category>>(){}.type!!
+    private var data: MutableList<Category>
 
     class Category {
-        //TODO this seems messy
         val id: UUID
         var name: String
         var templates: MutableList<UUID>

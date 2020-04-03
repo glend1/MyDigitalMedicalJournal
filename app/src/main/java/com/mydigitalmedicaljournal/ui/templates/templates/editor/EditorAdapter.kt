@@ -4,11 +4,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mydigitalmedicaljournal.model.Template
-import com.mydigitalmedicaljournal.model.template.TemplateFormat
+import com.mydigitalmedicaljournal.template.editor.TemplateView
+import com.mydigitalmedicaljournal.template.file.TemplateDefinition
+import com.mydigitalmedicaljournal.template.file.properties.TemplateFormat
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
-class EditorAdapter(var templateDefinition:  MutableList<TemplateFormat>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EditorAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    val localData = TemplateDefinition()
     //TODO complete this adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(TemplateView.getView(viewType)!!.layout, parent, false)
@@ -20,15 +22,9 @@ class EditorAdapter(var templateDefinition:  MutableList<TemplateFormat>) : Recy
         TemplateView.getView(thisView)?.setEvent(holder.itemView, this)
     }
 
-    override fun getItemCount(): Int {
-        var i = templateDefinition.size + 1
-        if (getTime() == null) {
-            i++
-        }
-        return i
-    }
+    override fun getItemCount(): Int = localData.data.size + 2
 
-    fun getTime(): TemplateFormat? {
+    /*fun getTime(): TemplateFormat? {
         //TODO this might change as development continues
         for (template in templateDefinition) {
             if (template.type == TemplateView.TIMETYPE) {
@@ -36,7 +32,7 @@ class EditorAdapter(var templateDefinition:  MutableList<TemplateFormat>) : Recy
             }
         }
         return null
-    }
+    }*/
 
     override fun getItemId(position: Int): Long {
         //TODO I cant really figure out what this does
@@ -45,15 +41,31 @@ class EditorAdapter(var templateDefinition:  MutableList<TemplateFormat>) : Recy
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (itemCount == position + 1) {
-            0
-        } else if (getTime() == null && position == 0) {
-            1
-        } else if (getTime() != null && templateDefinition.getOrNull(position) != null) {
-            templateDefinition[position].type.id
-        } else {
-            templateDefinition[position - 1].type.id
+        return when (position) {
+            0 -> {
+                TemplateView.NAME.id
+            }
+            1 -> {
+                TemplateView.TIMEFORMAT.id
+            }
+            else -> {
+                localData.data[position - 2].type.id
+                //Log.i("ARRAY", viewList[position - 2].id.toString())
+            }
         }
+        /*return if (itemCount == position + 1) {
+            Log.i("TRIGGER", "1")
+            0
+        } else if (templateDefinition.time == null && position == 0) {
+            Log.i("TRIGGER", "2")
+            1
+        } else if (templateDefinition.time != null && templateDefinition.data.getOrNull(position) != null) {
+            Log.i("TRIGGER", "3")
+            templateDefinition.data[position].type.id
+        } else {
+            Log.i("TRIGGER", "4")
+            templateDefinition.data[position - 1].type.id
+        }*/
     }
 
     /*

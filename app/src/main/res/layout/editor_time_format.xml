@@ -3,18 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/large"
-        android:text="@string/time_type"
+        android:text="@string/time_format"
+        android:padding="@dimen/medium"
         android:textSize="@dimen/title_text" />
 
     <RadioGroup
-        android:id="@+id/time_type"
+        android:id="@+id/time_format"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -24,21 +24,24 @@
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/large"
+            android:textSize="@dimen/title_text"
+            android:padding="@dimen/medium"
             android:text="@string/date" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/large"
+            android:textSize="@dimen/title_text"
+            android:padding="@dimen/medium"
             android:text="@string/date_time" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/large"
+            android:textSize="@dimen/title_text"
+            android:padding="@dimen/medium"
             android:text="@string/duration" />
     </RadioGroup>
 

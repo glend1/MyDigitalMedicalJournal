@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.model.Templates
-import com.mydigitalmedicaljournal.ui._generics.*
+import com.mydigitalmedicaljournal.ui._generics.ConfirmDialog
+import com.mydigitalmedicaljournal.ui._generics.ListDialog
+import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -49,11 +52,7 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
             //TODO set action
-            /*val adapter =
-                ManageCategoriesAdapter(
-                    Templates(manage.context),
-                    json.getTemplate(position)
-                )
+            val adapter = ManageCategoriesAdapter(FileHelper.getFileList(manage.context, arrayOf("Templates")), json.getTemplate(position))
             val listDialog = ListDialog(
                 manage.context.getString(R.string.Manage),
                 manage.context.getString(R.string.Manage_Text, json.getName(position)),
@@ -63,7 +62,7 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
             listDialog.setListener(DialogInterface.OnClickListener { _, _ ->
                 json.setTemplate(position, adapter.localData)
             })
-            listDialog.show()*/
+            listDialog.show()
         }
     }
 

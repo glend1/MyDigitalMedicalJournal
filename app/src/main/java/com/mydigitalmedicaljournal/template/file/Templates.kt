@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.model
+package com.mydigitalmedicaljournal.template.file
 
 import android.content.Context
 import com.google.gson.reflect.TypeToken
@@ -9,7 +9,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 //TODO this class will be replaced by template, it will generate a list of templates
-class Templates(context: Context): JsonData() {
+class OldTemplates(context: Context): JsonData() {
     override val fileName = "templates.json"
     override val type = object: TypeToken<MutableList<Template>>(){}.type!!
     override lateinit var data: MutableList<Template>
@@ -26,7 +26,7 @@ class Templates(context: Context): JsonData() {
     init {
         data = when (file.exists()) {
             true -> {
-                json.convert(file.read()) as MutableList<Template>
+                json.convert(file.read()!!) as MutableList<Template>
             }
             false -> {
                 ArrayList()

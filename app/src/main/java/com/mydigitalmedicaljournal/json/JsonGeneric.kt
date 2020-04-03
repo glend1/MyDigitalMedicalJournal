@@ -1,11 +1,9 @@
 package com.mydigitalmedicaljournal.json
 
-import com.google.gson.Gson
-
+//TODO Delete this?
 abstract class JsonGeneric {
 
-    protected abstract val file: FileHelper
-    protected val json by lazy { Gson() }
+
 
     //JSON
 

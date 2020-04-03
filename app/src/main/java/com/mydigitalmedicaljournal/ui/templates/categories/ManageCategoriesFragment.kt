@@ -19,7 +19,7 @@ class ManageCategoriesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_manage_list, container, false)
+        val root = inflater.inflate(R.layout.fragment_categories, container, false)
         val categories = Categories(context!!)
         val viewAdapter = CategoryListAdapter(categories, R.layout.list_manage)
         val templateList = root.findViewById<RecyclerView>(R.id.recycler)

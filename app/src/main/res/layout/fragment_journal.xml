@@ -26,7 +26,8 @@
         android:layout_margin="@dimen/large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/ic_add"
+        android:tint="@color/textAlt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
