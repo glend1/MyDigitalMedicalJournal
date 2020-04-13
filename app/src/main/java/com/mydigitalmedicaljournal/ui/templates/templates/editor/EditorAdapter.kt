@@ -6,11 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.template.editor.TemplateView
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
-import com.mydigitalmedicaljournal.template.file.properties.TemplateFormat
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
-class EditorAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    val localData = TemplateDefinition()
+class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //TODO complete this adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(TemplateView.getView(viewType)!!.layout, parent, false)
@@ -18,8 +16,9 @@ class EditorAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val thisView = getItemViewType(position)
-        TemplateView.getView(thisView)?.setEvent(holder.itemView, this)
+        val viewInt = getItemViewType(position)
+        val view = TemplateView.getView(viewInt)
+        view?.setup(holder.itemView, this)
     }
 
     override fun getItemCount(): Int = localData.data.size + 2

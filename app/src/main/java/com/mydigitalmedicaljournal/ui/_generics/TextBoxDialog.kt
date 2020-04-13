@@ -8,10 +8,10 @@ import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
 
 
-class TextBoxDialog(title: String, message: String, text: String, val context: Context) {
+open class TextBoxDialog(title: String, message: String, text: String, val context: Context) {
 
     //TODO this uses default styling
-    private val builder = AlertDialog.Builder(context)
+    protected val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog
     private var input = EditText(context)
 
@@ -23,13 +23,20 @@ class TextBoxDialog(title: String, message: String, text: String, val context: C
         builder.setMessage(message)
         //builder.setMessage(text)
 
+        setInput(text)
+        setCancel()
+    }
+
+    private fun setInput(text: String) {
         //TODO this might need more options
         //TODO not sure this flag is being set
         input.inputType = InputType.TYPE_TEXT_FLAG_CAP_WORDS
         input.setText(text)
         input.selectAll()
         builder.setView(input)
+    }
 
+    protected open fun setCancel() {
         // Display a negative button on alert dialog
         //builder.setNegativeButton("No", null)
 

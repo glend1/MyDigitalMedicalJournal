@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <include layout="@layout/toolbar"
+    <include
         android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,17 +21,17 @@
         android:id="@+id/nav_view"
         android:layout_width="300dp"
         android:layout_height="0dp"
-        app:theme="@style/Drawer"
         app:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/nav_host_fragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        app:theme="@style/Drawer" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="androidx.navigation.fragment.NavHostFragment"
         android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"

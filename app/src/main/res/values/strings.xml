@@ -60,4 +60,5 @@
     <string name="date_time">Date/Time</string>
     <string name="name">Name</string>
     <string name="time">Time Format</string>
+    <string name="Rename_Template_Text">Please make a new name for this Template</string>
 </resources>

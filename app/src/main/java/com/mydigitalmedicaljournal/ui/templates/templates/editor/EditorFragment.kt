@@ -2,36 +2,31 @@ package com.mydigitalmedicaljournal.ui.templates.templates.editor
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.editor.TemplateView
 import com.mydigitalmedicaljournal.template.editor.TemplateView.Companion.getStringList
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.OptionDialog
 
 class EditorFragment : Fragment() {
 
-    //private lateinit var templateName: Template.Template
-    //private lateinit var templateDefinition: TemplateDefinition
-    private lateinit var templateManager: TemplateManager
     //private lateinit var recycler: RecyclerView
+    //private lateinit var templateName: Template.Template
     private lateinit var adapter: EditorAdapter
+    private lateinit var templateManager: TemplateManager
     lateinit var root: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //TODO this should mostly only effect the template file
-        /*val templateFound = getTemplateId()
-        getTemplate(templateFound)*/
+        setTemplate()
         root = inflater.inflate(R.layout.fragment_editor, container, false)
-        setTemplateText()
         initRecycler()
         setupSaveButton()
         setupDeleteButton()
@@ -52,7 +47,7 @@ class EditorFragment : Fragment() {
             selectType.setListener(DialogInterface.OnClickListener { _, _ ->
                 //TODO this is too easily broken
                 val template = TemplateView.getView(selectType.getSelected() + 2)!!.getObj()
-                //TODO this adds a generic type but i need to add specific data
+                //TODO this adds a generic type but i need to add specific data, i think
                 adapter.localData.data.add(template)
                 adapter.notifyDataSetChanged()
             })
@@ -61,11 +56,16 @@ class EditorFragment : Fragment() {
     }
 
     private fun setupDeleteButton() {
-        root.findViewById<View>(R.id.delete).setOnClickListener {
+        val v = root.findViewById<View>(R.id.delete)
+        v.setOnClickListener {
             //TODO set this action
-            // this should delete the reference in categories json too
-            // this should delete the reference in templates json too
-            Log.i("DELETE", "Delete clicked")
+            /*Log.i("DELETE", "Delete clicked")
+            Log.i("FABBEFORE", v.isFocused.toString())
+            v.isFocusable = true
+            v.isFocusableInTouchMode = true ///add this line
+            v.requestFocus()
+            Log.i("FABAFTER", v.isFocused.toString())*/
+            navigateUp()
         }
     }
 
@@ -73,13 +73,12 @@ class EditorFragment : Fragment() {
         root.findViewById<View>(R.id.save).setOnClickListener {
             templateManager = TemplateManager(adapter.localData.id.toString(), context!!)
             templateManager.setData(adapter.localData)
-            /*Log.i("SAVE", templateDefinition.toString())
-            //TODO set this action
-            // this should update the name in templates json too
-            Log.i("SAVE", "Save clicked")
-            templateDefinition = adapter.localData
-            templateDefinition.save()*/
+            navigateUp()
         }
+    }
+
+    private fun navigateUp() {
+        findNavController().navigateUp()
     }
 
     private fun initRecycler() {
@@ -92,34 +91,16 @@ class EditorFragment : Fragment() {
             is the uuid which will be the filename for the json data
         open <uuid>.json convert it to a object or create an empty one
          */
-        adapter = EditorAdapter()
+        adapter = EditorAdapter(templateManager.getData())
         recycler.adapter = adapter
     }
 
-    private fun setTemplateText() {
-        val editText = root.findViewById<EditText>(R.id.editText)
-        //editText.setText(templateName.name)
-    }
-
-    /*private fun getTemplateId(): Boolean {
+    private fun setTemplate() {
         val extra = arguments?.get("data")
-        /*for (data in Template(context!!).data) {
-            if (extra == data.id) {
-                templateName = data
-                return true
-            }
-        }
-        templateName = Template.Template("")*/
-        return false
-    }
-
-    private fun getTemplate(templateFound: Boolean) {
-        if (templateFound) {
-            //TODO get json from this value
-            //templateName.id
-            templateDefinition
+        if (extra != null) {
+            templateManager = TemplateManager(extra.toString(), context!!)
         } else {
-            templateDefinition = TemplateDefinition()
+            //TODO need to set an empty manager to be used if needed
         }
-    }*/
+    }
 }
