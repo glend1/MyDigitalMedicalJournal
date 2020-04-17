@@ -13,7 +13,7 @@ import com.mydigitalmedicaljournal.template.editor.TemplateView
 import com.mydigitalmedicaljournal.template.editor.TemplateView.Companion.getStringList
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.OptionDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
 
 class EditorFragment : Fragment() {
 
@@ -36,14 +36,15 @@ class EditorFragment : Fragment() {
 
     private fun setupAddButton() {
         root.findViewById<View>(R.id.add).setOnClickListener {
-            val selectType = OptionDialog(
-                context!!.getString(R.string.New),
-                context!!.getString(R.string.New_Text),
-                getStringList(
+            val selectType =
+                OptionDialog(
+                    context!!.getString(R.string.New),
+                    context!!.getString(R.string.New_Text),
+                    getStringList(
+                        context!!
+                    ),
                     context!!
-                ),
-                context!!
-            )
+                )
             selectType.setListener(DialogInterface.OnClickListener { _, _ ->
                 //TODO this is too easily broken
                 val template = TemplateView.getView(selectType.getSelected() + 2)!!.getObj()

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 
 class ManageCategoriesFragment : Fragment() {
 
@@ -27,13 +27,14 @@ class ManageCategoriesFragment : Fragment() {
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
-            val add = TextBoxDialog(
-                getString(R.string.New),
-                getString(R.string.New_Text),
-                "",
-                context!!
-            )
-            add.setListener(DialogInterface.OnClickListener { _, _ ->
+            val add =
+                TextBoxDialog(
+                    getString(R.string.New),
+                    getString(R.string.New_Text),
+                    "",
+                    context!!
+                )
+            add.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 viewAdapter.json.add(Categories.Category(add.getText()))
                 viewAdapter.notifyDataSetChanged()
             })

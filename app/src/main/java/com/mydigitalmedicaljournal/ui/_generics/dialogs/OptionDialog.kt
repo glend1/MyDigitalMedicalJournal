@@ -1,19 +1,18 @@
-package com.mydigitalmedicaljournal.ui._generics
+package com.mydigitalmedicaljournal.ui._generics.dialogs
 
 import android.content.Context
 import android.content.DialogInterface
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.ui.templates.categories.ManageCategoriesAdapter
 
-class ListDialog(title: String, message: String, val context: Context, adapter: ManageCategoriesAdapter) {
+class OptionDialog(title: String, message: String, data: MutableList<String>, val context: Context) {
 
     //TODO this uses default styling
     private val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog
-    private var input = RecyclerView(context)
+    private var spinner = Spinner(context)
 
     init {
         // Set the alert dialog title
@@ -23,9 +22,8 @@ class ListDialog(title: String, message: String, val context: Context, adapter: 
         builder.setMessage(message)
         //builder.setMessage(text)
 
-        input.layoutManager = LinearLayoutManager(context)
-        input.adapter = adapter
-        builder.setView(input)
+        spinner.adapter = ArrayAdapter(context, R.layout.spinner_item, data)
+        builder.setView(spinner)
 
         // Display a negative button on alert dialog
         //builder.setNegativeButton("No", null)
@@ -37,7 +35,6 @@ class ListDialog(title: String, message: String, val context: Context, adapter: 
     fun setListener(listener: DialogInterface.OnClickListener) {
         // Set a positive button and its click listener on alert dialog
         builder.setPositiveButton(context.getString(R.string.Yes), listener)
-
         // Finally, make the alert dialog using builder
         dialog = builder.create()
     }
@@ -45,5 +42,9 @@ class ListDialog(title: String, message: String, val context: Context, adapter: 
     fun show() {
         // Display the alert dialog on app interface
         dialog.show()
+    }
+
+    fun getSelected(): Int {
+        return spinner.selectedItemPosition
     }
 }

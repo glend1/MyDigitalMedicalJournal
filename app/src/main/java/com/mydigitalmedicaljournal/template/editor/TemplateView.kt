@@ -13,7 +13,7 @@ import com.mydigitalmedicaljournal.template.file.properties.Name
 import com.mydigitalmedicaljournal.template.file.properties.TemplateFormat
 import com.mydigitalmedicaljournal.template.file.properties.Test
 import com.mydigitalmedicaljournal.template.file.properties.Time
-import com.mydigitalmedicaljournal.ui._generics.ClearKeyboardEditText
+import com.mydigitalmedicaljournal.ui._generics.dialogs.ClearKeyboardEditText
 import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
 
 enum class TemplateView(val id: Int, private val listName: Int, val layout: Int) {
@@ -73,14 +73,15 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
             et.setOnFocusChangeListener{v: View, hasFocus: Boolean ->
                 Log.i("FOCUS", hasFocus.toString())
                 if (hasFocus) {
-                    val add = ClearKeyboardEditText(
-                        v.context.getString(R.string.Rename),
-                        v.context.getString(R.string.Rename_Template_Text),
-                        et.text.toString(),
-                        v.context!!,
-                        view
-                    )
-                    add.setListener(DialogInterface.OnClickListener { _, _ ->
+                    val add =
+                        ClearKeyboardEditText(
+                            v.context.getString(R.string.Rename),
+                            v.context.getString(R.string.Rename_Template_Text),
+                            et.text.toString(),
+                            v.context!!,
+                            view
+                        )
+                    add.setConfirm(DialogInterface.OnClickListener { _, _ ->
                         //TODO this isn't triggered regardless of behaviour
                         changeData(adapter.localData, add.getText())
                         v.clearFocus()

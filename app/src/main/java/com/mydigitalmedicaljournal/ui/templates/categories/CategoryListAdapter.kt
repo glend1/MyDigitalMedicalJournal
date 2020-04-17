@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.ui._generics.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.ListDialog
-import com.mydigitalmedicaljournal.ui._generics.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {
@@ -34,12 +34,13 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
     private fun bindDelete(holder: ViewHolder, position: Int) {
         val delete = holder.itemView.findViewById<View>(R.id.delete)
         delete.setOnClickListener {
-            val alert = ConfirmDialog(
-                delete.context.getString(R.string.Confirm, json.getName(position)),
-                delete.context.getString(R.string.Confirm_Warning),
-                delete.context
-            )
-            alert.setListener(DialogInterface.OnClickListener { _, _ ->
+            val alert =
+                ConfirmDialog(
+                    delete.context.getString(R.string.Confirm, json.getName(position)),
+                    delete.context.getString(R.string.Confirm_Warning),
+                    delete.context
+                )
+            alert.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 json.remove(position)
                 notifyDataSetChanged()
             })
@@ -53,11 +54,12 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
         manage.setOnClickListener {
             //TODO set action
             val adapter = ManageCategoriesAdapter(FileHelper.getFileList(manage.context, arrayOf("Templates")), json.getTemplate(position))
-            val listDialog = ListDialog(
-                manage.context.getString(R.string.Manage),
-                manage.context.getString(R.string.Manage_Text, json.getName(position)),
-                manage.context,
-                adapter
+            val listDialog =
+                ListDialog(
+                    manage.context.getString(R.string.Manage),
+                    manage.context.getString(R.string.Manage_Text, json.getName(position)),
+                    manage.context,
+                    adapter
                 )
             listDialog.setListener(DialogInterface.OnClickListener { _, _ ->
                 json.setTemplate(position, adapter.localData)
@@ -69,13 +71,14 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
     private fun bindRename(holder: ViewHolder, position: Int) {
         val rename = holder.itemView.findViewById<View>(R.id.rename)
         rename.setOnClickListener {
-            val textBox = TextBoxDialog(
-                rename.context.getString(R.string.Rename),
-                rename.context.getString(R.string.Rename_Text, json.getName(position)),
-                json.getName(position),
-                rename.context
-            )
-            textBox.setListener(DialogInterface.OnClickListener { _, _ ->
+            val textBox =
+                TextBoxDialog(
+                    rename.context.getString(R.string.Rename),
+                    rename.context.getString(R.string.Rename_Text, json.getName(position)),
+                    json.getName(position),
+                    rename.context
+                )
+            textBox.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 json.setName(position, textBox.getText())
                 notifyDataSetChanged()
             })
