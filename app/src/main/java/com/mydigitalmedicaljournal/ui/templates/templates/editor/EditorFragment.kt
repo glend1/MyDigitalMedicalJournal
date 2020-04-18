@@ -45,7 +45,7 @@ class EditorFragment : Fragment() {
                     ),
                     requireContext()
                 )
-            selectType.setListener(DialogInterface.OnClickListener { _, _ ->
+            selectType.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 //TODO this is too easily broken
                 val template = TemplateView.getView(selectType.getSelected() + 2)!!.getObj()
                 //TODO this adds a generic type but i need to add specific data, i think

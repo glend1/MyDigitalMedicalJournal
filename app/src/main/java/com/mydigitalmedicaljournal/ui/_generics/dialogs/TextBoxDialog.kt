@@ -1,19 +1,18 @@
-package com.mydigitalmedicaljournal.ui._generics
+package com.mydigitalmedicaljournal.ui._generics.dialogs
 
 import android.content.Context
 import android.content.DialogInterface
 import android.text.InputType
 import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui._generics.dialogs.Dialog
 
 
-open class TextBoxDialog(title: String, message: String, text: String, context: Context): Dialog(title, message, context) {
+class TextBoxDialog(title: String, message: String, text: String, context: Context): Dialog(title, message, context) {
 
-    private var input = EditText(context)
+    private val input = EditText(context)
 
-    init{
+    init {
         setInput(text)
         setCancel()
     }
@@ -27,12 +26,8 @@ open class TextBoxDialog(title: String, message: String, text: String, context: 
         builder.setView(input)
     }
 
-    fun setCancel() {
+    private fun setCancel() {
         builder.setNeutralButton(context.getString(R.string.Cancel), null)
-    }
-
-    fun setConfirm(listener: DialogInterface.OnClickListener) {
-        builder.setPositiveButton(context.getString(R.string.Yes), listener)
     }
 
     fun getText(): String {

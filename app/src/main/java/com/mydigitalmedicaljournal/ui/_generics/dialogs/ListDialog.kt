@@ -2,48 +2,28 @@ package com.mydigitalmedicaljournal.ui._generics.dialogs
 
 import android.content.Context
 import android.content.DialogInterface
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui.templates.categories.ManageCategoriesAdapter
 
-class ListDialog(title: String, message: String, val context: Context, adapter: ManageCategoriesAdapter) {
+class ListDialog(title: String, message: String, context: Context, adapter: ManageCategoriesAdapter) : Dialog(title, message, context) {
 
-    //TODO this uses default styling
-    private val builder = AlertDialog.Builder(context)
-    private lateinit var dialog: AlertDialog
     private var input = RecyclerView(context)
 
     init {
-        // Set the alert dialog title
-        builder.setTitle(title)
+        setInput(adapter)
+        setCancel()
+    }
 
-        // Display a message on alert dialog
-        builder.setMessage(message)
-        //builder.setMessage(text)
-
-        input.layoutManager = LinearLayoutManager(context)
-        input.adapter = adapter
-        builder.setView(input)
-
-        // Display a negative button on alert dialog
-        //builder.setNegativeButton("No", null)
-
-        // Display a neutral button on alert dialog
+    private fun setCancel() {
         builder.setNeutralButton(context.getString(R.string.Cancel), null)
     }
 
-    fun setListener(listener: DialogInterface.OnClickListener) {
-        // Set a positive button and its click listener on alert dialog
-        builder.setPositiveButton(context.getString(R.string.Yes), listener)
-
-        // Finally, make the alert dialog using builder
-        dialog = builder.create()
+    private fun setInput(adapter: ManageCategoriesAdapter) {
+        input.layoutManager = LinearLayoutManager(context)
+        input.adapter = adapter
+        builder.setView(input)
     }
 
-    fun show() {
-        // Display the alert dialog on app interface
-        dialog.show()
-    }
 }

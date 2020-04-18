@@ -61,7 +61,7 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
                     manage.context,
                     adapter
                 )
-            listDialog.setListener(DialogInterface.OnClickListener { _, _ ->
+            listDialog.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 json.setTemplate(position, adapter.localData)
             })
             listDialog.show()

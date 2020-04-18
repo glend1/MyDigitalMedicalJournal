@@ -6,12 +6,12 @@ import com.mydigitalmedicaljournal.R
 
 class ConfirmDialog(title: String, message: String, context: Context) : Dialog(title, message, context) {
 
-    init{
-        builder.setNeutralButton(context.getString(R.string.Cancel), null)
+    init {
+        setCancel()
     }
 
-    fun setConfirm(listener: DialogInterface.OnClickListener) {
-        builder.setPositiveButton(context.getString(R.string.Yes), listener)
+    private fun setCancel() {
+        builder.setNeutralButton(context.getString(R.string.Cancel), null)
     }
 
 }
