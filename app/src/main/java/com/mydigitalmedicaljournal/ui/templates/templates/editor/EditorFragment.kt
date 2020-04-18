@@ -38,12 +38,12 @@ class EditorFragment : Fragment() {
         root.findViewById<View>(R.id.add).setOnClickListener {
             val selectType =
                 OptionDialog(
-                    context!!.getString(R.string.New),
-                    context!!.getString(R.string.New_Text),
+                    requireContext().getString(R.string.New),
+                    requireContext().getString(R.string.New_Text),
                     getStringList(
-                        context!!
+                        requireContext()
                     ),
-                    context!!
+                    requireContext()
                 )
             selectType.setListener(DialogInterface.OnClickListener { _, _ ->
                 //TODO this is too easily broken
@@ -72,7 +72,7 @@ class EditorFragment : Fragment() {
 
     private fun setupSaveButton() {
         root.findViewById<View>(R.id.save).setOnClickListener {
-            templateManager = TemplateManager(adapter.localData.id.toString(), context!!)
+            templateManager = TemplateManager(adapter.localData.id.toString(), requireContext())
             templateManager.setData(adapter.localData)
             navigateUp()
         }
@@ -84,7 +84,7 @@ class EditorFragment : Fragment() {
 
     private fun initRecycler() {
         val recycler = root.findViewById<RecyclerView>(R.id.template)
-        val itemDecoration = CustomDivider(context!!)
+        val itemDecoration = CustomDivider(requireContext())
         recycler.addItemDecoration(itemDecoration)
         //TODO need some logic to get a TemplateFormat to pass it in
         /*
@@ -99,7 +99,7 @@ class EditorFragment : Fragment() {
     private fun setTemplate() {
         val extra = arguments?.get("data")
         if (extra != null) {
-            templateManager = TemplateManager(extra.toString(), context!!)
+            templateManager = TemplateManager(extra.toString(), requireContext())
         } else {
             //TODO need to set an empty manager to be used if needed
         }

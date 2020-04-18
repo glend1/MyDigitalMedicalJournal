@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {

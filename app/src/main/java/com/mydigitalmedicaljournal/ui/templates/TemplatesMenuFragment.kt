@@ -33,7 +33,7 @@ class TemplatesMenuFragment : Fragment() {
         )
         val viewAdapter = TemplateMenuRecyclerAdapter(menu, findNavController())
         val templateList = root.findViewById<RecyclerView>(R.id.template_list)
-        val itemDecoration = CustomDivider(context!!)
+        val itemDecoration = CustomDivider(requireContext())
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         return root
