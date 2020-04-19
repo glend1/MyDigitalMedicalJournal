@@ -3,15 +3,12 @@ package com.mydigitalmedicaljournal.ui._generics.dialogs
 import android.content.Context
 import android.content.DialogInterface
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.AbstractDialogCancel
+import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.DialogCancelNull
+import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
+import com.mydigitalmedicaljournal.ui._generics.dialogs.input.DialogInputNull
 
-class ConfirmDialog(title: String, message: String, context: Context) : Dialog(title, message, context) {
-
-    init {
-        setCancel()
-    }
-
-    private fun setCancel() {
-        builder.setNeutralButton(context.getString(R.string.Cancel), null)
-    }
-
+class ConfirmDialog(title: String, message: String, context: Context) : AbstractDialog(title, message, context) {
+    override var cancel: AbstractDialogCancel = DialogCancelNull(builder, context)
+    override var input: AbstractDialogInput = DialogInputNull()
 }

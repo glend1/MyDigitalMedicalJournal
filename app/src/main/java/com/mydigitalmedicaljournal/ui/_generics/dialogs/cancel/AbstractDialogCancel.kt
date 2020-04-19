@@ -1,0 +1,3 @@
+package com.mydigitalmedicaljournal.ui._generics.dialogs.cancel
+
+interface AbstractDialogCancel
