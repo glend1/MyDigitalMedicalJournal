@@ -45,31 +45,17 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
                 drop down?
      */
     NAME(0, R.string.name, R.layout.editor_name) {
-        lateinit var et: EditText
+        private lateinit var et: EditText
         override fun setup(view: View, adapter: EditorAdapter) {
             et = view.findViewById(R.id.editText)
             setEvent(adapter, view)
             setField(adapter.localData.name!!)
         }
 
-        /*private fun keyboardBehaviour() {
-            et.setOnFocusChangeListener{ v: View, hasFocus: Boolean ->
-                if (hasFocus) {
-                    Log.i("FOCUS", "true")
-                    //TODO when edittext gets focus open a dialog to edit
-                } else {
-                    Log.i("FOCUS", "false")
-                    val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.windowToken, 0)
-                }
-            }
-        }*/
-
         override fun getObj(): Name {
             return Name()
         }
         private fun setEvent(adapter: EditorAdapter, view: View) {
-            //TODO this should call keyboardBehvaiour directly
             et.setOnFocusChangeListener{v: View, hasFocus: Boolean ->
                 Log.i("FOCUS", hasFocus.toString())
                 if (hasFocus) {
@@ -89,9 +75,6 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
                     add.show()
                 }
             }
-            /*et.addTextChangedListener {
-                adapter.localData.name = et.text.toString()
-            }*/
         }
         private fun setField(text: String) {
             et.setText(text)
@@ -102,7 +85,7 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
         }
     },
     TIMEFORMAT(1, R.string.time, R.layout.editor_time_format) {
-        lateinit var rg: RadioGroup
+        private lateinit var rg: RadioGroup
         override fun setup(view: View, adapter: EditorAdapter) {
             rg = view.findViewById(R.id.time_format)
             setEvent(view, adapter)

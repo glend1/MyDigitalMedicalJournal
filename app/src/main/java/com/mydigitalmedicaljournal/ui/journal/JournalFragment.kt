@@ -1,14 +1,9 @@
 package com.mydigitalmedicaljournal.ui.journal
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -33,19 +28,6 @@ class JournalFragment : Fragment() {
         journalViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        root.findViewById<Button>(R.id.button).setOnClickListener { v: View ->
-            Log.i("FABBEFORE", v.isFocused.toString())
-            v.isFocusable = true
-            v.isFocusableInTouchMode = true ///add this line
-            v.requestFocus()
-            Log.i("FABAFTER", v.isFocused.toString())
-        }
-        root.findViewById<EditText>(R.id.editText2).setOnFocusChangeListener { v:View, hasFocus:Boolean ->
-            if (!hasFocus) {
-                val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
-            }
-        }
         return root
     }
 }
