@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
@@ -52,10 +52,9 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
         //TODO what happens if there aren't any templates?
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
-            //TODO set action
-            val adapter = ManageCategoriesAdapter(FileHelper.getFileList(manage.context, arrayOf("Templates")), json.getTemplate(position))
-            val listDialog =
-                ListDialog(
+            val templateList = TemplateList.getTemplates(manage.context, arrayOf("templates"))
+            val adapter = ManageCategoriesAdapter(templateList, json.getTemplate(position))
+            val listDialog = ListDialog(
                     manage.context.getString(R.string.Manage),
                     manage.context.getString(R.string.Manage_Text, json.getName(position)),
                     manage.context,
