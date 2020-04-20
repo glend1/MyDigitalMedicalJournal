@@ -14,11 +14,11 @@ class TemplateManager(name: String, context: Context) {
     private lateinit var data: TemplateDefinition
     init {
         val dataString = file.read()
-        if (dataString == null) {
-            data = TemplateDefinition()
+        data = if (dataString == null) {
+            TemplateDefinition()
         } else {
             val type = object: TypeToken<TemplateDefinition>(){}.type!!
-            data = json.fromJson(dataString!!, type)
+            json.fromJson(dataString, type)
         }
     }
     fun setData(input: TemplateDefinition) {

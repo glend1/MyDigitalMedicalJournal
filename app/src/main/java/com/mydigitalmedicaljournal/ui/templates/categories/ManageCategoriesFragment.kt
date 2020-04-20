@@ -20,10 +20,10 @@ class ManageCategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_categories, container, false)
-        val categories = Categories(context!!)
+        val categories = Categories(requireContext())
         val viewAdapter = CategoryListAdapter(categories, R.layout.list_manage)
         val templateList = root.findViewById<RecyclerView>(R.id.recycler)
-        val itemDecoration = CustomDivider(context!!)
+        val itemDecoration = CustomDivider(requireContext())
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
         root.findViewById<View>(R.id.add).setOnClickListener {
@@ -32,7 +32,7 @@ class ManageCategoriesFragment : Fragment() {
                     getString(R.string.New),
                     getString(R.string.New_Text),
                     "",
-                    context!!
+                    requireContext()
                 )
             add.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 viewAdapter.json.add(Categories.Category(add.getText()))
