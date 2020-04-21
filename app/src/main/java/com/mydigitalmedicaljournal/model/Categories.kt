@@ -23,7 +23,7 @@ class Categories(context: Context) {
             this.templates = mutableListOf()
         }
 
-        constructor(id: UUID, name: String) {
+        /*constructor(id: UUID, name: String) {
             this.name = name
             this.id = id
             this.templates = mutableListOf()
@@ -33,7 +33,7 @@ class Categories(context: Context) {
             this.name = name
             this.id = id
             this.templates = templates
-        }
+        }*/
     }
 
     init {

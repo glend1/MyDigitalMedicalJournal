@@ -17,8 +17,6 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
 
 class EditorFragment : Fragment() {
 
-    //private lateinit var recycler: RecyclerView
-    //private lateinit var templateName: Template.Template
     private lateinit var adapter: EditorAdapter
     private lateinit var templateManager: TemplateManager
     lateinit var root: View
@@ -38,8 +36,8 @@ class EditorFragment : Fragment() {
         root.findViewById<View>(R.id.add).setOnClickListener {
             val selectType =
                 OptionDialog(
-                    requireContext().getString(R.string.New),
-                    requireContext().getString(R.string.New_Text),
+                    requireContext().getString(R.string.add_field),
+                    requireContext().getString(R.string.add_field_text),
                     getStringList(
                         requireContext()
                     ),
@@ -60,12 +58,6 @@ class EditorFragment : Fragment() {
         val v = root.findViewById<View>(R.id.delete)
         v.setOnClickListener {
             //TODO set this action
-            /*Log.i("DELETE", "Delete clicked")
-            Log.i("FABBEFORE", v.isFocused.toString())
-            v.isFocusable = true
-            v.isFocusableInTouchMode = true ///add this line
-            v.requestFocus()
-            Log.i("FABAFTER", v.isFocused.toString())*/
             navigateUp()
         }
     }

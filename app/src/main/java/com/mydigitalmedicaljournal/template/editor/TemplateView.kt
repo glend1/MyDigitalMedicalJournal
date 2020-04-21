@@ -9,10 +9,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
-import com.mydigitalmedicaljournal.template.file.properties.Name
-import com.mydigitalmedicaljournal.template.file.properties.TemplateFormat
-import com.mydigitalmedicaljournal.template.file.properties.Test
-import com.mydigitalmedicaljournal.template.file.properties.Time
+import com.mydigitalmedicaljournal.template.file.properties.*
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ClearKeyboardEditText
 import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
 
@@ -37,7 +34,7 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
                 boolean
                 big text
                 integer
-                    need more details here mesurements/count
+                    need more details here measurements/count
                 image map
                     need more details here
                 small text
@@ -124,6 +121,18 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
 
         override fun getObj(): Test {
             return Test()
+        }
+    },
+    TEST2(3, R.string.test2, R.layout.editor_test2) {
+        override fun setup(view: View, adapter: EditorAdapter) {
+            view.setOnClickListener {
+                //TODO set the event
+                Log.i("EVENT2", "clicked")
+            }
+        }
+
+        override fun getObj(): Test2 {
+            return Test2()
         }
     };
     companion object {
