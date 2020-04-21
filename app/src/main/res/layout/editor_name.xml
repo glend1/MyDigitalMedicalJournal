@@ -12,7 +12,6 @@
         android:padding="@dimen/medium"
         android:text="@string/name_label" />
 
-    <!-- TODO this freaks out when a keyboard is being used -->
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"

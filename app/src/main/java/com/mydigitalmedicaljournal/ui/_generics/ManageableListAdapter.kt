@@ -8,7 +8,7 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Categories
 
 abstract class ManageableListAdapter(open val json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {
-    //TODO Delete this
+    //TODO reinplement this?
 
     override fun getItemCount() = 1
 

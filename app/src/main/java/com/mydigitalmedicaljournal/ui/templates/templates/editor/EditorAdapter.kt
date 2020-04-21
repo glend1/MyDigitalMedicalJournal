@@ -23,16 +23,6 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
 
     override fun getItemCount(): Int = localData.data.size + 2
 
-    /*fun getTime(): TemplateFormat? {
-        //TODO this might change as development continues
-        for (template in templateDefinition) {
-            if (template.type == TemplateView.TIMETYPE) {
-                return template
-            }
-        }
-        return null
-    }*/
-
     override fun getItemId(position: Int): Long {
         //TODO I cant really figure out what this does
         Log.i("EDITORADAPTER", "Item ID")
