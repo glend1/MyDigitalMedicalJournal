@@ -90,10 +90,10 @@ class EditorFragment : Fragment() {
 
     private fun setTemplate() {
         val extra = arguments?.get("data")
-        if (extra != null) {
-            templateManager = TemplateManager(extra.toString(), requireContext())
+        templateManager = if (extra != null) {
+             TemplateManager(extra.toString(), requireContext())
         } else {
-            //TODO need to set an empty manager to be used if needed
+            TemplateManager()
         }
     }
 }

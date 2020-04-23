@@ -46,7 +46,7 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
         override fun setup(view: View, adapter: EditorAdapter) {
             et = view.findViewById(R.id.editText)
             setEvent(adapter, view)
-            setField(adapter.localData.name!!)
+            setField(adapter.localData.name)
         }
 
         override fun getObj(): Name {
@@ -73,7 +73,7 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
                 }
             }
         }
-        private fun setField(text: String) {
+        private fun setField(text: String?) {
             et.setText(text)
         }
         private fun changeData(localData: TemplateDefinition, text: String) {
@@ -104,7 +104,7 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
         }
 
         private fun setData(localData: TemplateDefinition) {
-            rg.check(localData.time!!.view)
+            if (localData.time != null) { rg.check(localData.time!!.view) }
         }
 
         private fun getData(selected: Int): Time.TimeFormat? {

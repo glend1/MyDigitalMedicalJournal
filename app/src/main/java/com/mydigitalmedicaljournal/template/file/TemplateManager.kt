@@ -6,20 +6,27 @@ import com.mydigitalmedicaljournal.json.FileHelper
 import java.util.*
 import com.google.gson.reflect.TypeToken
 
-class TemplateManager(name: String, context: Context) {
+class TemplateManager {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
-    private val json by lazy { Gson() }
-    private val file = FileHelper(name, context, arrayOf("templates"))
-    private lateinit var data: TemplateDefinition
-    init {
-        data = if (file.exists()) {
-            val dataString = file.read()
+    constructor() {
+        data = TemplateDefinition()
+    }
+    constructor(name: String, context: Context) {
+        file = FileHelper(name, context, arrayOf("templates"))
+        data = if (file!!.exists()) {
+            val dataString = file!!.read()
             val type = object: TypeToken<TemplateDefinition>(){}.type!!
             json.fromJson(dataString, type)
         } else {
+            //TODO i think this else is unnecessary
             TemplateDefinition()
         }
     }
+
+    private val json by lazy { Gson() }
+    private var file: FileHelper? = null
+    private lateinit var data: TemplateDefinition
+
     fun setData(input: TemplateDefinition) {
         data = input
         save()
@@ -28,7 +35,8 @@ class TemplateManager(name: String, context: Context) {
         return data
     }
     private fun save() {
-        file.write(json.toJson(data))
+        //TODO This has the potential to fail if file isn't set
+        file!!.write(json.toJson(data))
     }
     fun getId(): UUID {
         return data.id
