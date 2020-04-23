@@ -6,13 +6,15 @@ import java.io.File
 
 class FileHelper(fileName: String, context: Context, directories: Array<String> = arrayOf()) {
     companion object {
-        fun getFileList(context: Context, pathArray: Array<String>): Array<File> {
+        fun getFileList(context: Context, pathArray: Array<String>): List<File> {
             val path = pathArray.joinToString("/")
             val folder = File("${context.filesDir}/$path")
             return if (folder.exists()) {
-                folder.listFiles()!!
+                //TODO make sure this is sorted
+                val list = folder.listFiles()!!
+                list.sortedWith(compareBy { it.name })
             } else {
-                arrayOf()
+                listOf()
             }
         }
     }
@@ -32,7 +34,6 @@ class FileHelper(fileName: String, context: Context, directories: Array<String> 
         }
     }
 
-    //TODO should this be private?
     fun exists(): Boolean {
         return fullPath.exists()
     }
@@ -49,12 +50,8 @@ class FileHelper(fileName: String, context: Context, directories: Array<String> 
         file.write(text!!.toByteArray(charset))
     }
 
-    fun read(): String? {
-        return if (exists()) {
-            fullPath.reader(charset).readText()
-        } else {
-            null
-        }
+    fun read(): String {
+        return fullPath.reader(charset).readText()
     }
 
 }

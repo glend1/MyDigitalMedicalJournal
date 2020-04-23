@@ -7,18 +7,17 @@ import java.util.*
 import com.google.gson.reflect.TypeToken
 
 class TemplateManager(name: String, context: Context) {
-    //TODO finish this class
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
     private val json by lazy { Gson() }
     private val file = FileHelper(name, context, arrayOf("templates"))
     private lateinit var data: TemplateDefinition
     init {
-        val dataString = file.read()
-        data = if (dataString == null) {
-            TemplateDefinition()
-        } else {
+        data = if (file.exists()) {
+            val dataString = file.read()
             val type = object: TypeToken<TemplateDefinition>(){}.type!!
             json.fromJson(dataString, type)
+        } else {
+            TemplateDefinition()
         }
     }
     fun setData(input: TemplateDefinition) {

@@ -13,7 +13,6 @@ class TemplateList {
             for (file in files) {
                 val template = TemplateManager(file.name, context)
                 val fileList = FileList(template.getName(), template.getId())
-                //TODO sort input
                 list.add(fileList)
             }
             return list
