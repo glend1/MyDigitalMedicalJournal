@@ -5,7 +5,7 @@ import com.mydigitalmedicaljournal.template.file.properties.Time
 import java.util.*
 
 class TemplateDefinition {
-    //TODO the uuid is set everytime?
+    //TODO the uuid is set every time?
     var id: UUID = UUID.randomUUID()
     var name: String? = null
     var time: Time.TimeFormat? = null
