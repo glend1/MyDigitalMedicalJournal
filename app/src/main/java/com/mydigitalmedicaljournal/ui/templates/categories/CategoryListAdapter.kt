@@ -49,7 +49,6 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
     }
 
     private fun bindManage(holder: ViewHolder, position: Int) {
-        //TODO what happens if there aren't any templates?
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
             val templateList = TemplateList.getTemplates(manage.context, arrayOf("templates"))
