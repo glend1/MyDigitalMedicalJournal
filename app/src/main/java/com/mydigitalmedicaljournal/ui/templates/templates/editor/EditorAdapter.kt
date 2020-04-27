@@ -34,4 +34,5 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
             }
         }
     }
+
 }

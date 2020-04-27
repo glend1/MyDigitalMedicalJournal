@@ -2,12 +2,14 @@ package com.mydigitalmedicaljournal.ui.templates.templates.editor
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.editor.TemplateView
 import com.mydigitalmedicaljournal.template.editor.TemplateView.Companion.getStringList
@@ -64,9 +66,30 @@ class EditorFragment : Fragment() {
 
     private fun setupSaveButton() {
         root.findViewById<View>(R.id.save).setOnClickListener {
-            templateManager = TemplateManager(adapter.localData.id.toString(), requireContext())
-            templateManager.setData(adapter.localData)
-            navigateUp()
+            val data = adapter.localData
+            templateManager = TemplateManager(data.id.toString(), requireContext())
+            val validData = templateManager.setData(data)
+            if (validData.test()) {
+                navigateUp()
+            } else {
+                Snackbar.make(root, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()
+                for (i in 0 until adapter.itemCount) {
+                    val test = adapter.getItemId(i)
+                    Log.i("TEST", test.toString())
+                }
+                adapter.notifyDataSetChanged()
+                validData.getErrors().forEach {
+                    when(it) {
+                        "name" -> {
+
+                            Log.i("NAME", "name failed")
+                        }
+                        "date" -> {
+                            Log.i("DATE", "date failed")
+                        }
+                    }
+                }
+            }
         }
     }
 

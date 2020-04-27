@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.mydigitalmedicaljournal.json.FileHelper
 import java.util.*
 import com.google.gson.reflect.TypeToken
+import com.mydigitalmedicaljournal.model.ValidData
 
 class TemplateManager {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
@@ -27,9 +28,13 @@ class TemplateManager {
     private var file: FileHelper? = null
     private lateinit var data: TemplateDefinition
 
-    fun setData(input: TemplateDefinition) {
-        data = input
-        save()
+    fun setData(input: TemplateDefinition) : ValidData {
+        val validData = input.validate()
+        if (validData.test()) {
+            //data = input
+            //save()
+        }
+        return validData
     }
     fun getData(): TemplateDefinition {
         return data

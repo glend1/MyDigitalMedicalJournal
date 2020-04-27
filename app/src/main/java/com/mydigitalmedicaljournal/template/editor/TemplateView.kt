@@ -160,6 +160,8 @@ enum class TemplateView(val id: Int, private val listName: Int, val layout: Int)
         }
     }
     abstract fun setup(view: View, adapter: EditorAdapter)
+    //TOOD needs an error message
+    //abstract fun error()
     abstract fun getObj(): TemplateFormat
     fun getNameString(context: Context) : String {
         return context.resources.getString(listName)
