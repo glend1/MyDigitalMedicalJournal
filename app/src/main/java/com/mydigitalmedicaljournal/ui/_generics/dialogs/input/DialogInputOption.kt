@@ -14,9 +14,9 @@ class DialogInputOption(builder: AlertDialog.Builder, context: Context, data: Ar
     }
 
     private fun convertArray(context: Context, data: Array<Int>): MutableList<String> {
-        val vals = mutableListOf<String>()
-        data.forEach { vals.add(context.getString(it)) }
-        return vals
+        val mutableList = mutableListOf<String>()
+        data.forEach { mutableList.add(context.getString(it)) }
+        return mutableList
     }
 
     fun getSelected(): Int {

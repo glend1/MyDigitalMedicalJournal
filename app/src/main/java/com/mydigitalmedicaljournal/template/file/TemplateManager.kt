@@ -2,11 +2,10 @@ package com.mydigitalmedicaljournal.template.file
 
 import android.content.Context
 import com.google.gson.Gson
-import com.mydigitalmedicaljournal.json.FileHelper
-import java.util.*
 import com.google.gson.reflect.TypeToken
+import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
+import java.util.*
 
 class TemplateManager {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
