@@ -1,11 +1,9 @@
-package com.mydigitalmedicaljournal.template.file.properties
+package com.mydigitalmedicaljournal.template.data
 
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.editor.TemplateView
 
 class Time: TemplateFormat() {
 
-    override val type = TemplateView.TIMEFORMAT
     var timeFormat: TimeFormat? = null
 
     enum class TimeFormat(val view: Int) {
@@ -22,9 +20,4 @@ class Time: TemplateFormat() {
         }
     }
 
-
-
-    override fun createInstance(): Time {
-        return Time()
-    }
 }

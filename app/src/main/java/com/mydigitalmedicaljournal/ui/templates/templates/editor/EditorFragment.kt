@@ -11,8 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.editor.TemplateView
-import com.mydigitalmedicaljournal.template.editor.TemplateView.Companion.getStringList
+import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
@@ -40,14 +39,12 @@ class EditorFragment : Fragment() {
                 OptionDialog(
                     requireContext().getString(R.string.add_field),
                     requireContext().getString(R.string.add_field_text),
-                    getStringList(
-                        requireContext()
-                    ),
+                    TemplateEnum.namedString,
                     requireContext()
                 )
             selectType.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 //TODO this is too easily broken
-                val template = TemplateView.getView(selectType.getSelected() + 2)!!.getObj()
+                val template = TemplateView.getView(selectType.getSelected() + 2)
                 //TODO this adds a generic type but i need to add specific data, i think
                 adapter.localData.data.add(template)
                 adapter.notifyDataSetChanged()
@@ -67,7 +64,11 @@ class EditorFragment : Fragment() {
     private fun setupSaveButton() {
         root.findViewById<View>(R.id.save).setOnClickListener {
             val data = adapter.localData
-            templateManager = TemplateManager(data.id.toString(), requireContext())
+            templateManager =
+                TemplateManager(
+                    data.id.toString(),
+                    requireContext()
+                )
             val validData = templateManager.setData(data)
             if (validData.test()) {
                 navigateUp()
@@ -114,7 +115,10 @@ class EditorFragment : Fragment() {
     private fun setTemplate() {
         val extra = arguments?.get("data")
         templateManager = if (extra != null) {
-             TemplateManager(extra.toString(), requireContext())
+            TemplateManager(
+                extra.toString(),
+                requireContext()
+            )
         } else {
             TemplateManager()
         }

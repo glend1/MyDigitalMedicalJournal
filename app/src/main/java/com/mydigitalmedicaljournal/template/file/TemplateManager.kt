@@ -6,6 +6,7 @@ import com.mydigitalmedicaljournal.json.FileHelper
 import java.util.*
 import com.google.gson.reflect.TypeToken
 import com.mydigitalmedicaljournal.model.ValidData
+import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 
 class TemplateManager {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually

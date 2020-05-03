@@ -6,7 +6,7 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.DialogCancelNull
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.DialogInputOption
 
-class OptionDialog(title: String, message: String, data: MutableList<String>, context: Context) : AbstractDialog(title, message, context) {
+class OptionDialog(title: String, message: String, data: Array<Int>, context: Context) : AbstractDialog(title, message, context) {
 
     override var cancel: AbstractDialogCancel = DialogCancelNull(builder, context)
     override var input: AbstractDialogInput = DialogInputOption(builder, context, data)

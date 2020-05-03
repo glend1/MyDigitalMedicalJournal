@@ -1,8 +1,8 @@
 package com.mydigitalmedicaljournal.template.file
 
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.file.properties.TemplateFormat
-import com.mydigitalmedicaljournal.template.file.properties.Time
+import com.mydigitalmedicaljournal.template.data.TemplateFormat
+import com.mydigitalmedicaljournal.template.data.Time
 import java.util.*
 
 class TemplateDefinition {
@@ -27,8 +27,8 @@ class TemplateDefinition {
 
     fun validate(): ValidData {
         val validData = ValidData()
-        validData.add("name", validName());
-        validData.add("date", validDate());
+        validData.add("name", validName())
+        validData.add("date", validDate())
         validData.add("data present", someData())
         return validData
     }

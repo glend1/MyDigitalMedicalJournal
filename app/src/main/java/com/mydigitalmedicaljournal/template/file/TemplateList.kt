@@ -11,8 +11,16 @@ class TemplateList {
             val files = FileHelper.getFileList(context, pathArray)
             val list = mutableListOf<FileList>()
             for (file in files) {
-                val template = TemplateManager(file.name, context)
-                val fileList = FileList(template.getName(), template.getId())
+                val template =
+                    TemplateManager(
+                        file.name,
+                        context
+                    )
+                val fileList =
+                    FileList(
+                        template.getName(),
+                        template.getId()
+                    )
                 list.add(fileList)
             }
             return list
