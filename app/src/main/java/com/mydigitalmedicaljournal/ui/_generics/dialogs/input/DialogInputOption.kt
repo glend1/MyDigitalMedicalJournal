@@ -6,7 +6,7 @@ import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
 
-class DialogInputOption(builder: AlertDialog.Builder, context: Context, data: Array<Int>) : AbstractDialogInput {
+class DialogInputOption(builder: AlertDialog.Builder, context: Context, private val data: Array<Int>) : AbstractDialogInput {
     private val spinner = Spinner(context)
     init {
         spinner.adapter = ArrayAdapter(context, R.layout.spinner_item, convertArray(context, data))
@@ -20,6 +20,6 @@ class DialogInputOption(builder: AlertDialog.Builder, context: Context, data: Ar
     }
 
     fun getSelected(): Int {
-        return spinner.selectedItemPosition
+        return data[spinner.selectedItemPosition]
     }
 }
