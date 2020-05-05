@@ -1,9 +1,11 @@
 package com.mydigitalmedicaljournal.template.data
 
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.template.TemplateEnum
 
-class Time: TemplateFormat() {
+class DataTime: GenericData() {
 
+    override val type = TemplateEnum.TIME
     var timeFormat: TimeFormat? = null
 
     enum class TimeFormat(val view: Int) {

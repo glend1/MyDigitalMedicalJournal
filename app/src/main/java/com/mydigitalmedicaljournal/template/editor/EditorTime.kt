@@ -6,7 +6,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
-import com.mydigitalmedicaljournal.template.data.Time
+import com.mydigitalmedicaljournal.template.data.DataTime
 import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
 
 class EditorTime(itemView: View) : GenericEditor(itemView) {
@@ -32,7 +32,7 @@ class EditorTime(itemView: View) : GenericEditor(itemView) {
         if (localData.time != null) { rg.check(localData.time!!.view) }
     }
 
-    private fun getData(selected: Int): Time.TimeFormat? {
-        return Time.TimeFormat.getType(selected)
+    private fun getData(selected: Int): DataTime.TimeFormat? {
+        return DataTime.TimeFormat.getType(selected)
     }
 }

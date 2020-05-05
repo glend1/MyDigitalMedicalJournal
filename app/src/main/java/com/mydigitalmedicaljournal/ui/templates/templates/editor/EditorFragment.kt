@@ -43,8 +43,7 @@ class EditorFragment : Fragment() {
                     requireContext()
                 )
             selectType.setConfirm(DialogInterface.OnClickListener { _, _ ->
-                //TODO this is too easily broken
-                val template = TemplateView.getView(selectType.getSelected() + 2)
+                val template = TemplateEnum.nameList[selectType.getSelected()]!!.createData()
                 //TODO this adds a generic type but i need to add specific data, i think
                 adapter.localData.data.add(template)
                 adapter.notifyDataSetChanged()
