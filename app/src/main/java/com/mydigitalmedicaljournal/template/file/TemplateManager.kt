@@ -31,8 +31,8 @@ class TemplateManager {
     fun setData(input: TemplateDefinition) : ValidData {
         val validData = input.validate()
         if (validData.test()) {
-            //data = input
-            //save()
+            data = input
+            save()
         }
         return validData
     }

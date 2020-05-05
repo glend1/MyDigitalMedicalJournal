@@ -72,6 +72,7 @@ class EditorFragment : Fragment() {
             if (validData.test()) {
                 navigateUp()
             } else {
+                //TODO handle errors
                 Snackbar.make(root, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()
                 for (i in 0 until adapter.itemCount) {
                     val test = adapter.getItemId(i)
