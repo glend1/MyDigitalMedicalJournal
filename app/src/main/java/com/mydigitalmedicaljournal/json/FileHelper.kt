@@ -6,15 +6,13 @@ import java.io.File
 
 class FileHelper(fileName: String, context: Context, directories: Array<String> = arrayOf()) {
     companion object {
-        fun getFileList(context: Context, pathArray: Array<String>): List<File> {
+        fun getFileList(context: Context, pathArray: Array<String>): Array<File> {
             val path = pathArray.joinToString("/")
             val folder = File("${context.filesDir}/$path")
             return if (folder.exists()) {
-                //TODO make sure this is sorted
-                val list = folder.listFiles()!!
-                list.sortedWith(compareBy { it.name })
+                folder.listFiles()!!
             } else {
-                listOf()
+                arrayOf()
             }
         }
     }
