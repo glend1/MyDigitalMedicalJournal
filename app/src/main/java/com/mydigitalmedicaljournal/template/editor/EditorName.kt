@@ -29,7 +29,6 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
                         view
                     )
                 add.setConfirm(DialogInterface.OnClickListener { _, _ ->
-                    //TODO this isn't triggered regardless of behaviour
                     changeData(adapter.localData, add.getText())
                     v.clearFocus()
                 })

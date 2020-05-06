@@ -12,7 +12,6 @@ class DialogInputList(builder: AlertDialog.Builder, context: Context, adapter: M
     private var input = RecyclerView(context)
     init {
         if (adapter.itemCount > 0) {
-            //TODO pretty sure this doesn't work
             input.layoutManager = LinearLayoutManager(context)
             input.adapter = adapter
             builder.setView(input)
