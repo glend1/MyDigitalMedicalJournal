@@ -45,8 +45,8 @@ class Categories(context: Context) {
     }
 
     private fun sort() {
-        //TODO this needs to be more efficient
-        data = data.sortedWith(compareBy { it.name }).toMutableList()
+        //TODO this could be more efficient
+        data = data.sortedBy{it.name}.toMutableList()
         save()
     }
 
