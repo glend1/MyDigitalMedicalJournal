@@ -73,7 +73,7 @@ enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
         }
     };
     companion object {
-        lateinit var values: Array<TemplateEnum>
+        private lateinit var values: Array<TemplateEnum>
         lateinit var namedString: Array<Int>
         val layoutList = hashMapOf<Int, TemplateEnum>()
         val nameList = hashMapOf<Int, TemplateEnum>()
