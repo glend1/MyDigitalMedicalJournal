@@ -103,12 +103,6 @@ class EditorFragment : Fragment() {
         val recycler = root.findViewById<RecyclerView>(R.id.template)
         val itemDecoration = CustomDivider(requireContext())
         recycler.addItemDecoration(itemDecoration)
-        //TODO need some logic to get a TemplateFormat to pass it in
-        /*
-        templateData.template
-            is the uuid which will be the filename for the json data
-        open <uuid>.json convert it to a object or create an empty one
-         */
         adapter = EditorAdapter(templateManager.getData())
         recycler.adapter = adapter
     }
