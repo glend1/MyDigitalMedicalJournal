@@ -2,6 +2,7 @@ package com.mydigitalmedicaljournal.template.editor
 
 import android.util.Log
 import android.view.View
+import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
 
 class EditorTest(itemView: View): GenericEditor(itemView) {
@@ -11,5 +12,10 @@ class EditorTest(itemView: View): GenericEditor(itemView) {
             Log.i("EVENT1", "clicked")
         }
     }
-
+    override fun errorHandling(
+        view: View,
+        validData: ValidData
+    ) {
+        //TODO implement method
+    }
 }

@@ -2,7 +2,6 @@ package com.mydigitalmedicaljournal.ui.templates.templates.editor
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +60,7 @@ class EditorFragment : Fragment() {
     }
 
     private fun setupSaveButton() {
+        //TODO cannot save files with "data fields" opening them breaks the code
         root.findViewById<View>(R.id.save).setOnClickListener {
             val data = adapter.localData
             templateManager =
@@ -68,13 +68,14 @@ class EditorFragment : Fragment() {
                     data.id.toString(),
                     requireContext()
                 )
+
             val validData = templateManager.setData(data)
             if (validData.test()) {
                 navigateUp()
             } else {
-                //TODO handle errors
                 Snackbar.make(root, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()
-                for (i in 0 until adapter.itemCount) {
+                adapter.validate(validData)
+                /*for (i in 0 until adapter.itemCount) {
                     val test = adapter.getItemId(i)
                     Log.i("TEST", test.toString())
                 }
@@ -89,7 +90,7 @@ class EditorFragment : Fragment() {
                             Log.i("DATE", "date failed")
                         }
                     }
-                }
+                }*/
             }
         }
     }

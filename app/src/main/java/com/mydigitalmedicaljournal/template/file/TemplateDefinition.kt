@@ -4,6 +4,8 @@ import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.data.GenericData
 import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.editor.EditorName
+import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
 class TemplateDefinition {
@@ -29,8 +31,8 @@ class TemplateDefinition {
 
     fun validate(): ValidData {
         val validData = ValidData()
-        validData.add("name", validName())
-        validData.add("date", validDate())
+        validData.add(EditorName.ERROR, validName())
+        validData.add(EditorTime.ERROR, validDate())
         validData.add("data present", someData())
         return validData
     }
