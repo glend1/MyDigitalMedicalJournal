@@ -39,8 +39,10 @@
     <string name="Rename_Text">Please type the new name for \"%1$s\"</string>
     <string name="Manage">Manage</string>
     <string name="Manage_Text">Please select which Templates should belong to \"%1$s\"</string>
-    <string name="Confirm">Are you sure you want to delete Category named \"%1$s\"</string>
-    <string name="Confirm_Warning">You will not loose any data or any saved templates. This action cannot be undone.</string>
+    <string name="Confirm_Category">Are you sure you want to delete Category named \"%1$s\"</string>
+    <string name="Confirm_Category_Warning">You will not loose any data or any saved templates. This action cannot be undone.</string>
+    <string name="Confirm_Template">Are you sure you want to delete Template named \"%1$s\"</string>
+    <string name="Confirm_Template_Warning">You will not loose any data. This action cannot be undone.</string>
     <string name="New">Add New Category</string>
     <string name="New_Text">Please type the name for the new category</string>
     <string name="Cancel">Cancel</string>
@@ -63,4 +65,5 @@
     <string name="error_message">Errors found. Please correct those before retrying</string>
     <string name="error_name">Error. Please enter a valid name.</string>
     <string name="error_time">Error. Please select a Time Type.</string>
+    <string name="file_not_found">You cannot delete a Template before you\'ve saved it.</string>
 </resources>

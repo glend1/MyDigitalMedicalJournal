@@ -13,6 +13,7 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
+import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
 
 class EditorFragment : Fragment() {
@@ -54,8 +55,21 @@ class EditorFragment : Fragment() {
     private fun setupDeleteButton() {
         val v = root.findViewById<View>(R.id.delete)
         v.setOnClickListener {
-            //TODO set this action
-            navigateUp()
+            if (templateManager.fileExists()) {
+                val alert =
+                    ConfirmDialog(
+                        v.context.getString(R.string.Confirm_Template, templateManager.getName()),
+                        v.context.getString(R.string.Confirm_Template_Warning),
+                        v.context
+                    )
+                alert.setConfirm(DialogInterface.OnClickListener { _, _ ->
+                    templateManager.delete()
+                    navigateUp()
+                })
+                alert.show()
+            } else {
+                Snackbar.make(root, getString(R.string.file_not_found), Snackbar.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -63,34 +77,12 @@ class EditorFragment : Fragment() {
         //TODO cannot save files with "data fields" opening them breaks the code
         root.findViewById<View>(R.id.save).setOnClickListener {
             val data = adapter.localData
-            templateManager =
-                TemplateManager(
-                    data.id.toString(),
-                    requireContext()
-                )
-
             val validData = templateManager.setData(data)
             if (validData.test()) {
                 navigateUp()
             } else {
                 Snackbar.make(root, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()
                 adapter.validate(validData)
-                /*for (i in 0 until adapter.itemCount) {
-                    val test = adapter.getItemId(i)
-                    Log.i("TEST", test.toString())
-                }
-                adapter.notifyDataSetChanged()
-                validData.getErrors().forEach {
-                    when(it) {
-                        "name" -> {
-
-                            Log.i("NAME", "name failed")
-                        }
-                        "date" -> {
-                            Log.i("DATE", "date failed")
-                        }
-                    }
-                }*/
             }
         }
     }
@@ -111,11 +103,11 @@ class EditorFragment : Fragment() {
         val extra = arguments?.get("data")
         templateManager = if (extra != null) {
             TemplateManager(
-                extra.toString(),
-                requireContext()
+                requireContext(),
+                extra.toString()
             )
         } else {
-            TemplateManager()
+            TemplateManager(requireContext())
         }
     }
 }

@@ -52,4 +52,8 @@ class FileHelper(fileName: String, context: Context, directories: Array<String> 
         return fullPath.reader(charset).readText()
     }
 
+    fun delete() {
+        fullPath.delete()
+    }
+
 }

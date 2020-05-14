@@ -13,8 +13,8 @@ class TemplateList {
             for (file in files) {
                 val template =
                     TemplateManager(
-                        file.name,
-                        context
+                        context,
+                        file.name
                     )
                 val fileList =
                     FileList(

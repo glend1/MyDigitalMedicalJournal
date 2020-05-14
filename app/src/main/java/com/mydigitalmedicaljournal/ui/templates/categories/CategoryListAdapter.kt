@@ -36,8 +36,8 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
         delete.setOnClickListener {
             val alert =
                 ConfirmDialog(
-                    delete.context.getString(R.string.Confirm, json.getName(position)),
-                    delete.context.getString(R.string.Confirm_Warning),
+                    delete.context.getString(R.string.Confirm_Category, json.getName(position)),
+                    delete.context.getString(R.string.Confirm_Category_Warning),
                     delete.context
                 )
             alert.setConfirm(DialogInterface.OnClickListener { _, _ ->

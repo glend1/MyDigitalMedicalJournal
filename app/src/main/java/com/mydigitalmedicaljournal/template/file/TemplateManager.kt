@@ -4,29 +4,24 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mydigitalmedicaljournal.json.FileHelper
+import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.model.ValidData
 import java.util.*
 
-class TemplateManager {
+//TODO i don't like how i convert from and to UUID's all the time
+class TemplateManager(private val context: Context, private val name: String = UUID.randomUUID().toString()) {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
-    constructor() {
-        data = TemplateDefinition()
-    }
-    constructor(name: String, context: Context) {
-        file = FileHelper(name, context, arrayOf("templates"))
-        data = if (file!!.exists()) {
-            val dataString = file!!.read()
-            val type = object: TypeToken<TemplateDefinition>(){}.type!!
+    private val json by lazy { Gson() }
+    private var file: FileHelper = FileHelper(name, context, arrayOf("templates"))
+    private var data = {
+        if (file.exists()) {
+            val dataString = file.read()
+            val type = object : TypeToken<TemplateDefinition>() {}.type!!
             json.fromJson(dataString, type)
         } else {
-            //TODO i think this else is unnecessary
-            TemplateDefinition()
+            TemplateDefinition(UUID.fromString(name))
         }
-    }
-
-    private val json by lazy { Gson() }
-    private var file: FileHelper? = null
-    private lateinit var data: TemplateDefinition
+    }.invoke()
 
     fun setData(input: TemplateDefinition) : ValidData {
         val validData = input.validate()
@@ -40,13 +35,22 @@ class TemplateManager {
         return data
     }
     private fun save() {
-        //TODO This has the potential to fail if file isn't set
-        file!!.write(json.toJson(data))
+        file.write(json.toJson(data))
     }
     fun getId(): UUID {
         return data.id
     }
     fun getName(): String {
         return data.name!!
+    }
+    fun delete() {
+        val cat = Categories(context)
+        val id = UUID.fromString(name)
+        if (cat.deleteTemplate(id)) {
+            file.delete()
+        }
+    }
+    fun fileExists() : Boolean {
+        return file.exists()
     }
 }

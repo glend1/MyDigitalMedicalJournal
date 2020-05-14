@@ -12,7 +12,13 @@ class Categories(context: Context) {
     private val type = object: TypeToken<MutableList<Category>>(){}.type!!
     private var data: MutableList<Category>
 
-    class Category {
+    //TODO i think i need more constructors here
+    class Category(var name: String) {
+        val id: UUID = UUID.randomUUID()
+        var templates = mutableListOf<UUID>()
+    }
+
+    /*class Category {
         val id: UUID
         var name: String
         var templates: MutableList<UUID>
@@ -23,7 +29,7 @@ class Categories(context: Context) {
             this.templates = mutableListOf()
         }
 
-        /*constructor(id: UUID, name: String) {
+        constructor(id: UUID, name: String) {
             this.name = name
             this.id = id
             this.templates = mutableListOf()
@@ -33,8 +39,8 @@ class Categories(context: Context) {
             this.name = name
             this.id = id
             this.templates = templates
-        }*/
-    }
+        }
+    }*/
 
     init {
         data = if (file.exists()) {
@@ -77,7 +83,6 @@ class Categories(context: Context) {
     }
 
     fun add(category: Category) {
-
         data.add(category)
         sort()
     }
@@ -85,6 +90,23 @@ class Categories(context: Context) {
     fun remove(i: Int) {
         data.removeAt(i)
         save()
+    }
+
+    fun deleteTemplate(id: UUID): Boolean {
+        //TODO i assume this completes but don't test for it
+        for (category in data) {
+            val templates = category.templates
+            if (templates.isNotEmpty()) {
+                for (template in templates) {
+                    if (template == id) {
+                        category.templates.remove(template)
+                        break
+                    }
+                }
+            }
+        }
+        save()
+        return true
     }
 
 }

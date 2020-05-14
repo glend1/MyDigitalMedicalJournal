@@ -8,9 +8,8 @@ import com.mydigitalmedicaljournal.template.editor.EditorName
 import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
-class TemplateDefinition {
-    //TODO the uuid is set every time?
-    var id: UUID = UUID.randomUUID()
+//TODO delete the comment that sets a default uuid
+class TemplateDefinition(var id: UUID/* = UUID.randomUUID()*/) {
     //TODO validate as data is added?
     var name: String? = null
     var time: DataTime.TimeFormat? = null
