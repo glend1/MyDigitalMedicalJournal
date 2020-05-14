@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.TemplateEnum
+import com.mydigitalmedicaljournal.template.data.GenericData
 import com.mydigitalmedicaljournal.template.editor.GenericEditor
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 
@@ -20,7 +21,6 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
         val editor = holder as GenericEditor
         val view = holder.itemView
         editor.setup(view, this)
-        //TODO this needs support for the same type of errors
         editor.errorHandling(view, validData)
     }
 
@@ -29,8 +29,12 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
     override fun getItemViewType(position: Int): Int = localData.getEditorLayout(position)
 
     fun validate(vd: ValidData) {
-        //TODO this could bug if you try to add more fields
         validData = vd
+        notifyDataSetChanged()
+    }
+
+    fun add(template: GenericData) {
+        localData.add(template)
         notifyDataSetChanged()
     }
 }

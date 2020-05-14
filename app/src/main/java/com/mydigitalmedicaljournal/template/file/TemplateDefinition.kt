@@ -13,7 +13,7 @@ class TemplateDefinition(var id: UUID/* = UUID.randomUUID()*/) {
     //TODO validate as data is added?
     var name: String? = null
     var time: DataTime.TimeFormat? = null
-    var data = mutableListOf<GenericData>()
+    private var data = mutableListOf<GenericData>()
 
     private fun validName(): Boolean {
         return !name.isNullOrBlank()
@@ -50,4 +50,8 @@ class TemplateDefinition(var id: UUID/* = UUID.randomUUID()*/) {
 
     //TODO this is fragile
     fun getSize(): Int = data.size + 2
+
+    fun add(genericData: GenericData) {
+        data.add(genericData)
+    }
 }

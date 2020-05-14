@@ -23,6 +23,5 @@
         </activity>
     </application>
     <!-- TODO add ACTION-VIEW for google index for FireBase app -->
-    <!-- TODO check with analysis for errors -->
     <!-- TODO make tests -->
 </manifest>

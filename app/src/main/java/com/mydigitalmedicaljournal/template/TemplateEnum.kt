@@ -93,5 +93,6 @@ enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
         }
     }
     abstract fun createEditor(view: View) : GenericEditor
+    //TODO this returns a generic type but i need to add specific data, i think
     abstract fun createData():  GenericData
 }

@@ -23,7 +23,6 @@ class EditorFragment : Fragment() {
     lateinit var root: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        //TODO this should mostly only effect the template file
         setTemplate()
         root = inflater.inflate(R.layout.fragment_editor, container, false)
         initRecycler()
@@ -44,9 +43,7 @@ class EditorFragment : Fragment() {
                 )
             selectType.setConfirm(DialogInterface.OnClickListener { _, _ ->
                 val template = TemplateEnum.nameList[selectType.getSelected()]!!.createData()
-                //TODO this adds a generic type but i need to add specific data, i think
-                adapter.localData.data.add(template)
-                adapter.notifyDataSetChanged()
+                adapter.add(template)
             })
             selectType.show()
         }
