@@ -9,7 +9,7 @@ import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
 //TODO delete the comment that sets a default uuid
-class TemplateDefinition(var id: UUID/* = UUID.randomUUID()*/) {
+class TemplateDefinition(val id: UUID) {
     //TODO validate as data is added?
     var name: String? = null
     var time: DataTime.TimeFormat? = null

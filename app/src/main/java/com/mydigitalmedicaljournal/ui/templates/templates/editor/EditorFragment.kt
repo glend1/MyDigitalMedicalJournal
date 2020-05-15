@@ -15,6 +15,7 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
+import java.util.*
 
 class EditorFragment : Fragment() {
 
@@ -101,7 +102,7 @@ class EditorFragment : Fragment() {
         templateManager = if (extra != null) {
             TemplateManager(
                 requireContext(),
-                extra.toString()
+                UUID.fromString(extra.toString())
             )
         } else {
             TemplateManager(requireContext())

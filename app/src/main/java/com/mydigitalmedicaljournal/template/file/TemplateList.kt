@@ -14,7 +14,7 @@ class TemplateList {
                 val template =
                     TemplateManager(
                         context,
-                        file.name
+                        UUID.fromString(file.name)
                     )
                 val fileList =
                     FileList(

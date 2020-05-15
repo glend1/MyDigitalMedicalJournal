@@ -8,18 +8,17 @@ import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.model.ValidData
 import java.util.*
 
-//TODO i don't like how i convert from and to UUID's all the time
-class TemplateManager(private val context: Context, private val name: String = UUID.randomUUID().toString()) {
+class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()) {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
     private val json by lazy { Gson() }
-    private var file: FileHelper = FileHelper(name, context, arrayOf("templates"))
+    private var file: FileHelper = FileHelper(id.toString(), context, arrayOf("templates"))
     private var data = {
         if (file.exists()) {
             val dataString = file.read()
             val type = object : TypeToken<TemplateDefinition>() {}.type!!
             json.fromJson(dataString, type)
         } else {
-            TemplateDefinition(UUID.fromString(name))
+            TemplateDefinition(id)
         }
     }.invoke()
 
@@ -45,8 +44,7 @@ class TemplateManager(private val context: Context, private val name: String = U
     }
     fun delete() {
         val cat = Categories(context)
-        val id = UUID.fromString(name)
-        if (cat.deleteTemplate(id)) {
+        if (cat.deleteTemplate(getId())) {
             file.delete()
         }
     }
