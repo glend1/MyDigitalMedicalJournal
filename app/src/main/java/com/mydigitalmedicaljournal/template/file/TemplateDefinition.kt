@@ -8,7 +8,6 @@ import com.mydigitalmedicaljournal.template.editor.EditorName
 import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
-//TODO delete the comment that sets a default uuid
 class TemplateDefinition(val id: UUID) {
     //TODO validate as data is added?
     var name: String? = null

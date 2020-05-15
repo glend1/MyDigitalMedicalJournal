@@ -7,8 +7,7 @@ import com.mydigitalmedicaljournal.template.editor.*
 
 enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
     //TODO create these types
-    //TODO abstract these types
-    /*
+    /*TODO abstract these types
         these refer to fields
             must contain only one of the following
                 date
@@ -32,13 +31,6 @@ enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
                 small text
                 sliding bar
                 drop down?
-     */
-    /*
-    TODO need to standardise
-        editor
-        viewer
-        data
-        database connection
      */
     NAME(0, R.layout.editor_name, 0) {
         override fun createEditor(view: View): GenericEditor {
