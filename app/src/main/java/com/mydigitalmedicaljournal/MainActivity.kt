@@ -18,6 +18,7 @@ import com.mydigitalmedicaljournal.db.DataSource
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    //TODO mTablet isn't used?
     private var mTablet = false
     private lateinit var navController: NavController
     private lateinit var dataSource: DataSource
@@ -42,6 +43,12 @@ class MainActivity : AppCompatActivity() {
         dataSource.open()
     }
 
+    private fun isTablet(drawerLayout: DrawerLayout?) {
+        if (drawerLayout == null) {
+            mTablet = true
+        }
+    }
+
     private fun setupNav(drawerLayout: DrawerLayout?) {
         val navView: NavigationView = findViewById(R.id.nav_view)
         navController = findNavController(R.id.nav_host_fragment)
@@ -55,12 +62,6 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
-
-    private fun isTablet(drawerLayout: DrawerLayout?) {
-        if (drawerLayout == null) {
-            mTablet = true
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
