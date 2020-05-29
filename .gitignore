@@ -125,4 +125,4 @@ lint/tmp/
 # lint/reports/
 
 #custom
-/.idea/*
+.idea/*
