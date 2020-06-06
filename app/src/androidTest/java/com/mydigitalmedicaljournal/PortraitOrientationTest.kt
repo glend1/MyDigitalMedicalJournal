@@ -26,6 +26,7 @@ class PortraitOrientationTest {
     fun forceOrientation() {
         mActivityTestRule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         //TODO would like a way where i don't have to sleep here
+        //TODO annotate with @UiThreadTest this might resolve sleep issues
         try {
             Thread.sleep(1000)
         } catch (e: InterruptedException) {
