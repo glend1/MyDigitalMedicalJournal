@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal
 
-import androidx.navigation.testing.TestNavHostController
+/*import androidx.navigation.testing.TestNavHostController
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import org.junit.Rule
@@ -20,4 +20,4 @@ class NavControllerTest {
         Thread.sleep(9000)
         //val navController = findNavController(mActivityTestRule, R.id.nav_host_fragment)
     }
-}
+}*/

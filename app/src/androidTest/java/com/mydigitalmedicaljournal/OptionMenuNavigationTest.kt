@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal
 
-import androidx.test.espresso.Espresso
+/*import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
@@ -60,4 +60,4 @@ class OptionMenuNavigationTest {
         Espresso.onView(ViewMatchers.withId(R.id.text_copyright))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
-}
+}*/

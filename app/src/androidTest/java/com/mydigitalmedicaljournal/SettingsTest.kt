@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal
 
-import org.junit.Test
+/*import org.junit.Test
 import java.lang.Boolean.TRUE
 
 class SettingsTest {
@@ -42,4 +42,4 @@ class SettingsTest {
     fun noTest() {
         assert(TRUE)
     }
-}
+}*/

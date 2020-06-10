@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal
 
-import android.content.pm.ActivityInfo
+/*import android.content.pm.ActivityInfo
 import android.view.View
 import androidx.fragment.app.FragmentContainerView
 import androidx.test.rule.ActivityTestRule
@@ -44,4 +44,4 @@ class LandscapeOrientationTest {
         assertNotNull(view)
     }
 
-}
+}*/

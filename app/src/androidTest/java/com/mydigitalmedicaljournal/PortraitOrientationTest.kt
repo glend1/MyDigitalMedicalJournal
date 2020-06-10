@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal
 
-import android.content.pm.ActivityInfo
+/*import android.content.pm.ActivityInfo
 import android.view.Gravity
 import android.view.View
 import androidx.test.espresso.Espresso.onView
@@ -63,4 +63,4 @@ class PortraitOrientationTest {
         onView(withId(R.id.text_reports))
             .check(matches(ViewMatchers.isDisplayed()))
     }
-}
+}*/

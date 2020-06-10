@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal
 
-import android.content.pm.ActivityInfo
+/*import android.content.pm.ActivityInfo
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
@@ -79,4 +79,4 @@ class MainNavigationTest {
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
-}
+}*/
