@@ -23,8 +23,8 @@
             />
 
         <androidx.fragment.app.FragmentContainerView
-            android:name="androidx.navigation.fragment.NavHostFragment"
             android:id="@+id/nav_host_fragment"
+            android:name="com.mydigitalmedicaljournal.ui.journal.JournalFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"

@@ -29,10 +29,9 @@
         app:menu="@menu/activity_main_drawer"
         app:theme="@style/Drawer" />
 
-    <!-- TODO for some reason there is two of these in the layout -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:name="com.mydigitalmedicaljournal.ui.journal.JournalFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"

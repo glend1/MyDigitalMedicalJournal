@@ -17,6 +17,7 @@ import com.mydigitalmedicaljournal.db.DataSource
 
 class MainActivity : AppCompatActivity() {
 
+    //TODO app title is wrong
     private lateinit var appBarConfiguration: AppBarConfiguration
     //TODO mTablet isn't used?
     private var mTablet = false
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         isTablet(drawerLayout)
-        setupNav(drawerLayout)
+        //setupNav(drawerLayout)
     }
 
     private fun databaseConnect() {
