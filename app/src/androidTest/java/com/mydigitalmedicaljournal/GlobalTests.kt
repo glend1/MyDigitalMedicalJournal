@@ -19,33 +19,11 @@ class GlobalTests {
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
     //TODO this opens the options menu
+    //TODO wish this was more specific
     @Test
     fun openOptionsMenu() {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
         onView(withText("Settings")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun portraitTest() {
-        activityScenarioRule.scenario.onActivity { activity ->
-            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        }
-        //TODO should this be replaced by multiple tests?
-        onView(withId(R.id.drawer_layout)).check(matches(isDisplayed()))
-        onView(withId(R.id.drawer_layout)).check(matches(isClosed(Gravity.LEFT)))
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
-        onView(withId(R.id.drawer_layout)).check(matches(isOpen(Gravity.LEFT)))
-    }
-
-    @Test
-    fun landscapeTest() {
-        activityScenarioRule.scenario.onActivity { activity ->
-            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        }
-        //TODO should this be replaced by multiple tests?
-        onView(withId(R.id.fragment_layout)).check(matches(isDisplayed()))
-        onView(withId(R.id.nav_view)).check(matches(isDisplayed()))
-        onView(withId(R.id.nav_host_fragment)).check(matches(isDisplayed()))
     }
 
 }
