@@ -18,16 +18,13 @@ class PortraitTests {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
+    //TODO need a delay here for more consistent tests
     @Before
     fun setup() {
         activityScenarioRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            Thread.sleep(400)
         }
-    }
-
-    @Test
-    fun drawerLayoutExists() {
-        onView(withId(R.id.drawer_layout)).check(matches(isDisplayed()))
     }
 
     @Test
