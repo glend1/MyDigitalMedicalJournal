@@ -4,6 +4,7 @@ import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
@@ -23,11 +24,33 @@ class PreferencesTests {
         }
     }
 
-    //TODO needs more tests here
+    private fun checkOption(string: String) {
+        onView(withText(string)).perform(click())
+        onView(withText(string)).inRoot(isDialog()).check(matches(isDisplayed()))
+    }
+
     @Test
-    fun settingsChange() {
-        onView(withText("Weight")).perform(click())
-        onView(withText("Pounds (lb)")).perform(click())//.inRoot(isDialog()).check(matches(isDisplayed()))
-        onView(withText("Pounds (lb)")).check(matches(isDisplayed()))
+    fun weightOption() {
+        checkOption("Weight")
+    }
+
+    @Test
+    fun volumeOption() {
+        checkOption("Volume")
+    }
+
+    @Test
+    fun lengthOption() {
+        checkOption("Length")
+    }
+
+    @Test
+    fun timeOption() {
+        checkOption("Time Format")
+    }
+
+    @Test
+    fun dateOption() {
+        checkOption("Date Format")
     }
 }
