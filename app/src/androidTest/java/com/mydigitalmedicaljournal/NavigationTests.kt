@@ -69,4 +69,22 @@ class NavigationTests {
         onView(withId(R.id.text_copyright)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun templateCategories() {
+        navigate(R.id.manageCategories)
+        onView(withId(R.id.category_recycler)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun templateTemplates() {
+        navigate(R.id.manageTemplates)
+        onView(withId(R.id.template_recycler)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun editTemplates() {
+        navigate(R.id.editorFragment)
+        onView(withId(R.id.template)).check(matches(isDisplayed()))
+    }
+
 }

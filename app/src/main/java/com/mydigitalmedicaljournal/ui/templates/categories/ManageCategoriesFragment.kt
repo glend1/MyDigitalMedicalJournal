@@ -22,7 +22,7 @@ class ManageCategoriesFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_categories, container, false)
         val categories = Categories(requireContext())
         val viewAdapter = CategoryListAdapter(categories, R.layout.list_manage)
-        val templateList = root.findViewById<RecyclerView>(R.id.recycler)
+        val templateList = root.findViewById<RecyclerView>(R.id.category_recycler)
         val itemDecoration = CustomDivider(requireContext())
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
