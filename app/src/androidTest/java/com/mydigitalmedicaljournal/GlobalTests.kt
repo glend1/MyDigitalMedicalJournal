@@ -19,7 +19,7 @@ class GlobalTests {
     @Test
     fun openOptionsMenu() {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
-        onView(withText("Settings")).check(matches(isDisplayed()))
+        onView(withText(R.string.action_settings)).check(matches(isDisplayed()))
     }
 
 }

@@ -24,33 +24,33 @@ class PreferencesTests {
         }
     }
 
-    private fun checkOption(string: String) {
+    private fun checkOption(string: Int) {
         onView(withText(string)).perform(click())
         onView(withText(string)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
     @Test
     fun weightOption() {
-        checkOption("Weight")
+        checkOption(R.string.settings_weight)
     }
 
     @Test
     fun volumeOption() {
-        checkOption("Volume")
+        checkOption(R.string.settings_volume)
     }
 
     @Test
     fun lengthOption() {
-        checkOption("Length")
+        checkOption(R.string.settings_length)
     }
 
     @Test
     fun timeOption() {
-        checkOption("Time Format")
+        checkOption(R.string.settings_time)
     }
 
     @Test
     fun dateOption() {
-        checkOption("Date Format")
+        checkOption(R.string.settings_date)
     }
 }

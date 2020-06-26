@@ -48,7 +48,7 @@ class NavigationTests {
     fun settings() {
         navigate(R.id.nav_settings)
         //TODO wish this was more specific
-        onView(withText("Weight")).check(matches(isDisplayed()))
+        onView(withText(R.string.settings_weight)).check(matches(isDisplayed()))
     }
 
     @Test
