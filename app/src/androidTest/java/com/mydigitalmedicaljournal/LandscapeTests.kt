@@ -14,12 +14,10 @@ class LandscapeTests {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
-    //TODO need a delay here for more consistent tests
     @Before
     fun setup() {
         activityScenarioRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-            Thread.sleep(400)
         }
     }
 

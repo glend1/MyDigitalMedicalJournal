@@ -20,12 +20,13 @@ android {
         targetCompatibility = 1.8
     }
 
-    //added this for robolectric
-    /*testOptions {
-        unitTests {
+    testOptions {
+        animationsDisabled = true
+        //added this for robolectric
+        /*unitTests {
             includeAndroidResources = true
-        }
-    }*/
+        }*/
+    }
 
     kotlinOptions {
         jvmTarget = "1.8"
