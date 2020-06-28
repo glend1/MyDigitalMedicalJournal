@@ -52,7 +52,7 @@
     <fragment
         android:id="@+id/manageTemplates"
         android:name="com.mydigitalmedicaljournal.ui.templates.templates.ManageTemplatesFragment"
-        android:label="@string/templates_manage">
+        android:label="@string/manage_templates">
         <action
             android:id="@+id/action_manageTemplates_to_editorFragment"
             app:destination="@id/editorFragment" />

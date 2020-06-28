@@ -23,7 +23,7 @@
     <string name="settings_date">Date Format</string>
     <string name="settings_duration">Duration</string>
     <string name="settings_measures">Measures</string>
-    <string name="templates_manage">Manage Templates</string>
+    <string name="manage_templates">Manage Templates</string>
     <string name="manage_categories">Manage Categories</string>
     <string name="rename">Rename</string>
     <string name="manage">Manage</string>
