@@ -14,7 +14,6 @@ class GlobalTests {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
-    //TODO this opens the options menu
     //TODO wish this was more specific
     @Test
     fun openOptionsMenu() {

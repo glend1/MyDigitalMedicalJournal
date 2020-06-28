@@ -8,7 +8,6 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import org.junit.Rule
 import org.junit.Test
 
-//TODO this tests the setup for the nav controller not the actual views
 class NavigationTests {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
