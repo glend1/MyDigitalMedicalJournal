@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.templates.categories
+package com.mydigitalmedicaljournal.ui.categories
 
 import android.content.DialogInterface
 import android.view.LayoutInflater
@@ -52,7 +52,11 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
             val templateList = TemplateList.getTemplates(manage.context, arrayOf("templates"))
-            val adapter = ManageCategoriesAdapter(templateList, json.getTemplate(position))
+            val adapter =
+                ManageCategoriesAdapter(
+                    templateList,
+                    json.getTemplate(position)
+                )
             val listDialog = ListDialog(
                     manage.context.getString(R.string.Manage),
                     manage.context.getString(R.string.Manage_Text, json.getName(position)),

@@ -9,7 +9,7 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ClearKeyboardEditText
-import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
+import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 class EditorName(itemView: View) : GenericEditor(itemView) {
     companion object { const val ERROR = "NAME_ERROR" }

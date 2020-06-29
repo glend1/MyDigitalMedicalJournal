@@ -43,6 +43,12 @@ class NavigationUITests {
     @Test
     fun templatesTest() {
         onView(allOf(isDescendantOfA(withId(R.id.nav_view)), withText(R.string.drawer_templates))).perform(click())
-        onView(withId(R.id.template_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.template_recycler)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun categoryTest() {
+        onView(allOf(isDescendantOfA(withId(R.id.nav_view)), withText(R.string.drawer_categories))).perform(click())
+        onView(withId(R.id.category_recycler)).check(matches(isDisplayed()))
     }
 }

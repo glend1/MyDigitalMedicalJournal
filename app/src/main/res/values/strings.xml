@@ -5,6 +5,7 @@
     <string name="nav_header_desc">My Digital Medical Journal Logo</string>
 
     <string name="drawer_templates">Templates</string>
+    <string name="drawer_categories">Categories</string>
     <string name="drawer_category_manage">Manage</string>
     <string name="drawer_calendar">Calendar</string>
     <string name="drawer_reports">Reports</string>
@@ -31,10 +32,6 @@
     <string name="rename_icon">Rename</string>
     <string name="manage_icon">Manage</string>
     <string name="delete_icon">Delete</string>
-    <string name="ManageCategories">Manage Categories</string>
-    <string name="ManageTemplates">Manage Templates</string>
-    <string name="ManageFlares">Manage Flares</string>
-    <string name="Backup">Backup</string>
     <string name="Rename">Rename</string>
     <string name="Rename_Text">Please type the new name for \"%1$s\"</string>
     <string name="Manage">Manage</string>

@@ -3,7 +3,7 @@ package com.mydigitalmedicaljournal.template.editor
 import android.util.Log
 import android.view.View
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
+import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 //TODO delete this
 class EditorTest2(itemView: View) : GenericEditor(itemView) {

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.ui.templates.categories.ManageCategoriesAdapter
+import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 
 class DialogInputList(builder: AlertDialog.Builder, context: Context, adapter: ManageCategoriesAdapter) : AbstractDialogInput {
     private var input = RecyclerView(context)

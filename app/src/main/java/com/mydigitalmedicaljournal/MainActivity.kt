@@ -54,9 +54,10 @@ class MainActivity : AppCompatActivity() {
         //navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        //TODO this is somehow responsible for the back button and changing the displayed name in the toolbar
         val navSet = setOf(
             R.id.nav_journal, R.id.nav_reports, R.id.nav_calendar,
-            R.id.nav_templates, R.id.nav_copyright, R.id.nav_instructions,
+            R.id.nav_templates, R.id.nav_categories, R.id.nav_copyright, R.id.nav_instructions,
             R.id.nav_settings, R.id.nav_social, R.id.nav_support
         )
         appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)

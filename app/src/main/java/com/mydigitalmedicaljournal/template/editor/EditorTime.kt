@@ -9,7 +9,7 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.template.data.DataTime
-import com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorAdapter
+import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 class EditorTime(itemView: View) : GenericEditor(itemView) {
     companion object { const val ERROR = "DATE_ERROR" }

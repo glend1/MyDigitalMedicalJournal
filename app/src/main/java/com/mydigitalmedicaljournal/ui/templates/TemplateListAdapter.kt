@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.templates.templates
+package com.mydigitalmedicaljournal.ui.templates
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

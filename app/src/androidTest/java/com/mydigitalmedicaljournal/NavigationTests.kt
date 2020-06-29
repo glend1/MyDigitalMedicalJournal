@@ -38,12 +38,6 @@ class NavigationTests {
     }
 
     @Test
-    fun templates() {
-        navigate(R.id.nav_templates)
-        onView(withId(R.id.template_list)).check(matches(isDisplayed()))
-    }
-
-    @Test
     fun settings() {
         navigate(R.id.nav_settings)
         //TODO wish this was more specific
@@ -69,14 +63,14 @@ class NavigationTests {
     }
 
     @Test
-    fun templateCategories() {
-        navigate(R.id.manageCategories)
+    fun categories() {
+        navigate(R.id.nav_categories)
         onView(withId(R.id.category_recycler)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun templateTemplates() {
-        navigate(R.id.manageTemplates)
+    fun templates() {
+        navigate(R.id.nav_templates)
         onView(withId(R.id.template_recycler)).check(matches(isDisplayed()))
     }
 

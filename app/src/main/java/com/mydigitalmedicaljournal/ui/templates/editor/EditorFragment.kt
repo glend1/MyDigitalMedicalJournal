@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui.templates.templates.editor
+package com.mydigitalmedicaljournal.ui.templates.editor
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -93,7 +93,9 @@ class EditorFragment : Fragment() {
         val recycler = root.findViewById<RecyclerView>(R.id.template)
         val itemDecoration = CustomDivider(requireContext())
         recycler.addItemDecoration(itemDecoration)
-        adapter = EditorAdapter(templateManager.getData())
+        adapter = EditorAdapter(
+            templateManager.getData()
+        )
         recycler.adapter = adapter
     }
 

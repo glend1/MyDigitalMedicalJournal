@@ -19,17 +19,6 @@
         android:name="com.mydigitalmedicaljournal.ui.calendar.CalendarFragment"
         android:label="@string/drawer_calendar" />
     <fragment
-        android:id="@+id/nav_templates"
-        android:name="com.mydigitalmedicaljournal.ui.templates.TemplatesMenuFragment"
-        android:label="@string/drawer_templates">
-        <action
-            android:id="@+id/action_nav_templates_to_manageTemplates"
-            app:destination="@id/manageTemplates" />
-        <action
-            android:id="@+id/action_nav_templates_to_manageCategories"
-            app:destination="@id/manageCategories" />
-    </fragment>
-    <fragment
         android:id="@+id/nav_copyright"
         android:name="com.mydigitalmedicaljournal.ui.copyright.CopyrightFragment"
         android:label="@string/action_copyright" />
@@ -50,19 +39,19 @@
         android:name="com.mydigitalmedicaljournal.ui.support.SupportFragment"
         android:label="@string/action_support" />
     <fragment
-        android:id="@+id/manageTemplates"
-        android:name="com.mydigitalmedicaljournal.ui.templates.templates.ManageTemplatesFragment"
+        android:id="@+id/nav_templates"
+        android:name="com.mydigitalmedicaljournal.ui.templates.ManageTemplatesFragment"
         android:label="@string/manage_templates">
         <action
             android:id="@+id/action_manageTemplates_to_editorFragment"
             app:destination="@id/editorFragment" />
     </fragment>
     <fragment
-        android:id="@+id/manageCategories"
-        android:name="com.mydigitalmedicaljournal.ui.templates.categories.ManageCategoriesFragment"
+        android:id="@+id/nav_categories"
+        android:name="com.mydigitalmedicaljournal.ui.categories.ManageCategoriesFragment"
         android:label="@string/manage_categories" />
     <fragment
         android:id="@+id/editorFragment"
-        android:name="com.mydigitalmedicaljournal.ui.templates.templates.editor.EditorFragment"
+        android:name="com.mydigitalmedicaljournal.ui.templates.editor.EditorFragment"
         android:label="@string/Template_editor" />
 </navigation>
