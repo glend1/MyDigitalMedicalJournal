@@ -17,10 +17,7 @@ import com.mydigitalmedicaljournal.db.DataSource
 
 class MainActivity : AppCompatActivity() {
 
-    //TODO app title is wrong
     private lateinit var appBarConfiguration: AppBarConfiguration
-    //TODO mTablet isn't used?
-    private var mTablet = false
     private lateinit var navController: NavController
     private lateinit var dataSource: DataSource
 
@@ -29,9 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
-        isTablet(drawerLayout)
-        setupNav(drawerLayout)
+        setupNav()
         databaseConnect()
     }
 
@@ -40,33 +35,20 @@ class MainActivity : AppCompatActivity() {
         dataSource.open()
     }
 
-    private fun isTablet(drawerLayout: DrawerLayout?) {
-        if (drawerLayout == null) {
-            mTablet = true
-        }
-    }
+    private fun setupNav() {
+        val navSet = setOf(R.id.nav_journal)
+        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
+        appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)
 
-    private fun setupNav(drawerLayout: DrawerLayout?) {
-        val navView: NavigationView = findViewById(R.id.nav_view)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        //navController = findNavController(R.id.nav_host_fragment)
-        //navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        //TODO this is somehow responsible for the back button and changing the displayed name in the toolbar
-        val navSet = setOf(
-            R.id.nav_journal, R.id.nav_reports, R.id.nav_calendar,
-            R.id.nav_templates, R.id.nav_categories, R.id.nav_copyright, R.id.nav_instructions,
-            R.id.nav_settings, R.id.nav_social, R.id.nav_support
-        )
-        appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val navView: NavigationView = findViewById(R.id.nav_view)
         navView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
