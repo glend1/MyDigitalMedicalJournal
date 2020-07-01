@@ -13,10 +13,12 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context, DB_FILE_NAME, null,
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
+        //TODO fill with real body
         Log.i("CREATE", db.toString())
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        //TODO fill with real body
         Log.i("UPGRADE", db.toString())
     }
 
