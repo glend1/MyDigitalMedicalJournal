@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal
+package com.mydigitalmedicaljournal.instrumentTests.fragment
 
 import android.view.View
 import android.widget.EditText
@@ -13,6 +13,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
+import com.mydigitalmedicaljournal.MainActivity
+import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matcher
 import org.junit.Before
@@ -35,7 +37,9 @@ class EditorTest {
     @Test
     fun saveButton() {
         onView(withId(R.id.save)).perform(click())
-        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.error_message)))
+        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(
+            R.string.error_message
+        )))
     }
 
     @Test
@@ -47,7 +51,9 @@ class EditorTest {
     @Test
     fun deleteButton() {
         onView(withId(R.id.delete)).perform(click())
-        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.file_not_found)))
+        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(
+            R.string.file_not_found
+        )))
     }
 
     inner class ClickName: ViewAction {

@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal
+package com.mydigitalmedicaljournal.instrumentTests.database
 
 import androidx.test.platform.app.InstrumentationRegistry
 import com.mydigitalmedicaljournal.db.DataSource
@@ -17,7 +17,9 @@ class DatabaseTests {
         @JvmStatic
         @BeforeClass
         fun setup() {
-            db = DataSource(context)
+            db = DataSource(
+                context
+            )
             db.open()
         }
 

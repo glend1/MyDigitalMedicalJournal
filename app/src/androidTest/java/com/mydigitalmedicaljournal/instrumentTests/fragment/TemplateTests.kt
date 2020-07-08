@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal
+package com.mydigitalmedicaljournal.instrumentTests.fragment
 
 import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
@@ -9,6 +9,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import com.mydigitalmedicaljournal.MainActivity
+import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.junit.Before

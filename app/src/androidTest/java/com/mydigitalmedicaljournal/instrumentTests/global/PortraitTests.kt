@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal
+package com.mydigitalmedicaljournal.instrumentTests.global
 
 import android.content.pm.ActivityInfo
 import android.view.Gravity
@@ -10,6 +10,8 @@ import androidx.test.espresso.contrib.DrawerMatchers.isOpen
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.activityScenarioRule
+import com.mydigitalmedicaljournal.MainActivity
+import com.mydigitalmedicaljournal.R
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

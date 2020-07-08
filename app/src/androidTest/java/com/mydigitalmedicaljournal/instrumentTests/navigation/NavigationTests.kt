@@ -1,10 +1,12 @@
-package com.mydigitalmedicaljournal
+package com.mydigitalmedicaljournal.instrumentTests.navigation
 
 import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
+import com.mydigitalmedicaljournal.MainActivity
+import com.mydigitalmedicaljournal.R
 import org.junit.Rule
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal
+package com.mydigitalmedicaljournal.instrumentTests.fragment
 
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +12,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
+import com.mydigitalmedicaljournal.MainActivity
+import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matcher
 import org.junit.Before
