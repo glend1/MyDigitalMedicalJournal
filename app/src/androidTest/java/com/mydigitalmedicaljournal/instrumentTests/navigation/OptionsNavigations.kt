@@ -13,7 +13,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class OptionsNavigation {
+class OptionsNavigations {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 

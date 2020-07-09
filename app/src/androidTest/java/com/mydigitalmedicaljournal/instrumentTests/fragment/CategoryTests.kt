@@ -21,7 +21,7 @@ import org.junit.Rule
 import org.junit.Test
 
 
-class CategoryTest {
+class CategoryTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 

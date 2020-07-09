@@ -21,7 +21,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class EditorTest {
+class EditorTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
