@@ -54,6 +54,13 @@ class FileHelper(fileName: String, context: Context, directories: Array<String> 
 
     fun delete() {
         fullPath.delete()
+        deleteEmptyFolders(fullPath.parentFile!!)
     }
 
+    private fun deleteEmptyFolders(parent: File) {
+        if (parent.list()!!.isEmpty()) {
+            parent.delete()
+            deleteEmptyFolders(parent.parentFile!!)
+        }
+    }
 }
