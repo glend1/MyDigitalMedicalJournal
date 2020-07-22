@@ -6,9 +6,9 @@ import com.google.gson.reflect.TypeToken
 import com.mydigitalmedicaljournal.json.FileHelper
 import java.util.*
 
-class Categories(context: Context) {
-    private val json by lazy { Gson() }
-    private val file = FileHelper("categories.json", context)
+class Categories(context: Context, filename: String = "categories.json") {
+    private val json = Gson()
+    private val file = FileHelper(filename, context)
     private val type = object: TypeToken<MutableList<Category>>(){}.type!!
     private var data: MutableList<Category>
 

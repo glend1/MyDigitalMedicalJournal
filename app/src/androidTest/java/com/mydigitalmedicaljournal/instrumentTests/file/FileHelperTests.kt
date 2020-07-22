@@ -12,6 +12,7 @@ import org.junit.Test
 class FileHelperTests {
     //TODO Categories
     //TODO TemplateManager
+    //TODO TemplateList
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private lateinit var file: FileHelper
     private lateinit var testText: String
