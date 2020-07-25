@@ -10,7 +10,6 @@ import org.junit.Before
 import org.junit.Test
 
 class FileHelperTests {
-    //TODO Categories
     //TODO TemplateManager
     //TODO TemplateList
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
