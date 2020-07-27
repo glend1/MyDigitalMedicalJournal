@@ -8,10 +8,10 @@ import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.model.ValidData
 import java.util.*
 
-class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()) {
+class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {
     //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
     private val json by lazy { Gson() }
-    private var file: FileHelper = FileHelper(id.toString(), context, arrayOf("templates"))
+    private var file: FileHelper = FileHelper(id.toString(), context, templateFolder)
     private var data = {
         if (file.exists()) {
             val dataString = file.read()
