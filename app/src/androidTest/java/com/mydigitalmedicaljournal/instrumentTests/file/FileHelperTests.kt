@@ -10,7 +10,6 @@ import org.junit.Before
 import org.junit.Test
 
 class FileHelperTests {
-    //TODO TemplateManager
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private lateinit var file: FileHelper
     private lateinit var testText: String
@@ -24,7 +23,9 @@ class FileHelperTests {
 
     @After
     fun teardown() {
-        file.delete()
+        if (file.exists()) {
+            file.delete()
+        }
     }
 
     @Test

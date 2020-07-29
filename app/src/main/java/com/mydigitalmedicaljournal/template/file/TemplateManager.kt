@@ -42,8 +42,7 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
     fun getName(): String {
         return data.name!!
     }
-    fun delete() {
-        val cat = Categories(context)
+    fun delete(cat: Categories = Categories(context)) {
         if (cat.deleteTemplate(getId())) {
             file.delete()
         }
