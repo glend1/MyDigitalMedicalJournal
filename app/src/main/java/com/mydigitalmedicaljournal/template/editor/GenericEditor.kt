@@ -6,6 +6,7 @@ import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 abstract class GenericEditor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    //TODO these need testing
     abstract fun setup(view: View, adapter: EditorAdapter)
     abstract fun errorHandling(
         view: View,

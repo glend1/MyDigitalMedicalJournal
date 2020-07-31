@@ -9,6 +9,7 @@ import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
 class TemplateDefinition(private val id: UUID) {
+    //TODO this needs testing
     //TODO validate as data is added?
     var name: String? = null
     var time: DataTime.TimeFormat? = null

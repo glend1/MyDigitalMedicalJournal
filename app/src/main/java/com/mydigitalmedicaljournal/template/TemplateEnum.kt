@@ -6,6 +6,7 @@ import com.mydigitalmedicaljournal.template.data.*
 import com.mydigitalmedicaljournal.template.editor.*
 
 enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
+    //TODO this needs testing
     //TODO create these types
     /*TODO abstract these types
         these refer to fields
