@@ -24,7 +24,7 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
 
     fun setData(input: TemplateDefinition) : ValidData {
         val validData = input.validate()
-        if (validData.test()) {
+        if (validData.getErrors().isEmpty()) {
             data = input
             save()
         }
@@ -37,10 +37,10 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
         file.write(json.toJson(data))
     }
     fun getId(): UUID {
-        return data.id
+        return getData().getId()
     }
     fun getName(): String {
-        return data.name!!
+        return getData().name!!
     }
     fun delete(cat: Categories = Categories(context)) {
         if (cat.deleteTemplate(getId())) {

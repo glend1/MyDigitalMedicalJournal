@@ -3,12 +3,9 @@ package com.mydigitalmedicaljournal.instrumentTests.file
 import androidx.test.platform.app.InstrumentationRegistry
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.template.file.TemplateManager
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import org.junit.After
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import java.util.*
@@ -52,14 +49,16 @@ class TemplateFile {
 
     @Test
     fun setData() {
-        //TODO finish this test
+        val data = templateManager.getData()
+        data.name = null
+        data.time = null
+        val valid = templateManager.setData(data)
+        assertEquals(valid.getErrors().size, 2)
     }
 
     @Test
     fun getData() {
-        //TODO finish this test
-        //val td = TemplateDefinition(UUID.fromString("793b7045-d572-4110-b4c7-9e1dcfa251f1"))
-        //assertEquals(templateManager.getData(), td)
+        assertNotNull(templateManager.getData())
     }
 
     @Test
@@ -68,7 +67,7 @@ class TemplateFile {
     }
 
     @Test
-    fun getNamne() {
+    fun getName() {
         assertEquals(templateManager.getName(), "another test")
     }
 }

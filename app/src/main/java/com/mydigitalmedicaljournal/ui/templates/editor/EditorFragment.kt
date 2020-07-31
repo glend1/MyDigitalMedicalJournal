@@ -77,7 +77,7 @@ class EditorFragment : Fragment() {
         root.findViewById<View>(R.id.save).setOnClickListener {
             val data = adapter.localData
             val validData = templateManager.setData(data)
-            if (validData.test()) {
+            if (validData.getErrors().isEmpty()) {
                 navigateUp()
             } else {
                 Snackbar.make(root, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()

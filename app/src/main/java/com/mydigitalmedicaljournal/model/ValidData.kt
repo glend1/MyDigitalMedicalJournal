@@ -6,14 +6,6 @@ class ValidData {
     fun add(error: String, result: Boolean) {
         data[error] = result
     }
-    fun test() : Boolean {
-        data.forEach {
-            if (!it.value) {
-                return false
-            }
-        }
-        return true
-    }
 
     fun getErrors(): Set<String> {
         val errors = mutableSetOf<String>()
