@@ -15,7 +15,6 @@ import org.junit.Rule
 import org.junit.Test
 
 class PreferencesTests {
-    //TODO tests use *.test package name can i use that to "mock" these?
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 

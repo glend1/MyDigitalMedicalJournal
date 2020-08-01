@@ -93,7 +93,6 @@ class Categories(context: Context, filename: String = "categories.json") {
     }
 
     fun deleteTemplate(id: UUID): Boolean {
-        //TODO i assume this completes but don't test for it
         for (category in data) {
             val templates = category.templates
             if (templates.isNotEmpty()) {
