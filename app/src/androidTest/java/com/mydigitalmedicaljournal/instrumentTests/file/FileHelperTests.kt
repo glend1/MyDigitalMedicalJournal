@@ -1,22 +1,19 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
-import androidx.test.platform.app.InstrumentationRegistry
+import com.mydigitalmedicaljournal.instrumentTests.Context
 import com.mydigitalmedicaljournal.json.FileHelper
 import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Assert.assertFalse
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
 class FileHelperTests {
-    private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private lateinit var file: FileHelper
     private lateinit var testText: String
 
     @Before
     fun setup() {
-        file = FileHelper("test", context)
+        file = FileHelper("test", Context.CONTEXT)
         testText = "test"
         file.write(testText)
     }

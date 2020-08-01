@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
-import androidx.test.platform.app.InstrumentationRegistry
+import com.mydigitalmedicaljournal.instrumentTests.Context
 import com.mydigitalmedicaljournal.json.FileHelper
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -9,10 +9,9 @@ import org.junit.Test
 import java.io.File
 
 class FileWithPathTests {
-    private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private val testText = "test"
-    private val path = File("${context.filesDir}/test")
-    private val file = FileHelper("test", context, arrayOf("test"))
+    private val path = File("${Context.CONTEXT.filesDir}/test")
+    private val file = FileHelper("test", Context.CONTEXT, arrayOf("test"))
 
     @Before
     fun setup() {
