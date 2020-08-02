@@ -1,7 +1,6 @@
 package com.mydigitalmedicaljournal.model
 
 class ValidData {
-    //TODO this needs testing
     //TODO this needs support for the same type of errors
     private val data = HashMap<String, Boolean>()
     fun add(error: String, result: Boolean) {
