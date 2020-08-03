@@ -9,11 +9,10 @@ import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
 class TemplateDefinition(private val id: UUID) {
-    //TODO this needs testing
     //TODO validate as data is added?
     var name: String? = null
     var time: DataTime.TimeFormat? = null
-    private var data = mutableListOf<GenericData>()
+    var data = mutableListOf<GenericData>()
 
     fun getId() : UUID {
         return id
@@ -40,22 +39,4 @@ class TemplateDefinition(private val id: UUID) {
         return validData
     }
 
-    fun getEditorLayout(position: Int) : Int {
-        //TODO this is fragile
-        return when (position) {
-            0 -> TemplateEnum.NAME.editorLayout
-            1 -> TemplateEnum.TIME.editorLayout
-            else -> {
-                val relativePosition = position - 2
-                data[relativePosition].type.editorLayout
-            }
-        }
-    }
-
-    //TODO this is fragile
-    fun getSize(): Int = data.size + 2
-
-    fun add(genericData: GenericData) {
-        data.add(genericData)
-    }
 }

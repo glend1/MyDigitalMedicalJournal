@@ -11,6 +11,9 @@ import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 
 class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var validData: ValidData = ValidData()
+    companion object {
+        private const val OFFSET = 2
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
@@ -24,9 +27,20 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
         editor.errorHandling(view, validData)
     }
 
-    override fun getItemCount(): Int = localData.getSize()
+    //TODO this is fragile
+    override fun getItemCount(): Int = localData.data.size + OFFSET
 
-    override fun getItemViewType(position: Int): Int = localData.getEditorLayout(position)
+    override fun getItemViewType(position: Int): Int {
+        //TODO this is fragile
+        return when (position) {
+            0 -> TemplateEnum.NAME.editorLayout
+            1 -> TemplateEnum.TIME.editorLayout
+            else -> {
+                val relativePosition = position - OFFSET
+                localData.data[relativePosition].type.editorLayout
+            }
+       }
+    }
 
     fun validate(vd: ValidData) {
         validData = vd
@@ -34,7 +48,7 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
     }
 
     fun add(template: GenericData) {
-        localData.add(template)
+        localData.data.add(template)
         notifyDataSetChanged()
     }
 }
