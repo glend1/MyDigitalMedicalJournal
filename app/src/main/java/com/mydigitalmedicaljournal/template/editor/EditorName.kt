@@ -12,6 +12,7 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.ClearKeyboardEditText
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 class EditorName(itemView: View) : GenericEditor(itemView) {
+    //TODO this need testing
     companion object { const val ERROR = "NAME_ERROR" }
     private lateinit var et: EditText
     override fun setup(view: View, adapter: EditorAdapter) {

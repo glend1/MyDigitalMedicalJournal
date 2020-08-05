@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.RecyclerView
 
 class CustomDivider(context: Context) : RecyclerView.ItemDecoration() {
-
+    //TODO does this need testing?
     private var mDivider: Drawable?
 
     init {

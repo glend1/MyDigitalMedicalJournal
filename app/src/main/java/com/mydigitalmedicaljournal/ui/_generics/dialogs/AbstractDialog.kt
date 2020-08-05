@@ -8,7 +8,7 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.AbstractDialogCan
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 
 abstract class AbstractDialog(title: String, message: String, protected val context: Context) {
-
+    //TODO test these
     //TODO this has default styling
     protected val builder = AlertDialog.Builder(context)
     private lateinit var dialog: AlertDialog

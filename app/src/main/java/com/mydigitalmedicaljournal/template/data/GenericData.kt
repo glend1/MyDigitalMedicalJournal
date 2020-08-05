@@ -3,7 +3,6 @@ package com.mydigitalmedicaljournal.template.data
 import com.mydigitalmedicaljournal.template.TemplateEnum
 
 abstract class GenericData {
-    //TODO these need testing
     //TODO implement this class
     /*
         this should not store its own name as

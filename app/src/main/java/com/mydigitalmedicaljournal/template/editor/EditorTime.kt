@@ -12,6 +12,7 @@ import com.mydigitalmedicaljournal.template.data.DataTime
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 class EditorTime(itemView: View) : GenericEditor(itemView) {
+    //TODO this need testing
     companion object { const val ERROR = "DATE_ERROR" }
     private lateinit var rg: RadioGroup
     override fun setup(view: View, adapter: EditorAdapter) {
