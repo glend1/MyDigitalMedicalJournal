@@ -1,9 +1,8 @@
 package com.mydigitalmedicaljournal.template.file
 
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.TemplateEnum
-import com.mydigitalmedicaljournal.template.data.GenericData
 import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.data.GenericData
 import com.mydigitalmedicaljournal.template.editor.EditorName
 import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
