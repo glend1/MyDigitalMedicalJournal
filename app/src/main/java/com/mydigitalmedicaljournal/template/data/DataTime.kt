@@ -4,7 +4,6 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 
 class DataTime: GenericData() {
-    //TODO this need testing
     override val type = TemplateEnum.TIME
     var timeFormat: TimeFormat? = null
 
