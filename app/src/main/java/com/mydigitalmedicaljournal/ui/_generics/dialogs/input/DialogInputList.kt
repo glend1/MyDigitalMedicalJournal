@@ -9,6 +9,7 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 
 class DialogInputList(builder: AlertDialog.Builder, context: Context, adapter: ManageCategoriesAdapter) : AbstractDialogInput {
+    //TODO this needs testing
     private var input = RecyclerView(context)
     init {
         if (adapter.itemCount > 0) {
