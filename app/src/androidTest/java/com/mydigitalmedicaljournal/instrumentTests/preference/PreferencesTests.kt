@@ -27,7 +27,6 @@ class PreferencesTests {
     }
 
     private fun checkOption(string: Int) {
-        //TODO this is frail. based on text rather than layout
         onView(withText(string)).perform(click())
         onView(withText(string)).inRoot(isDialog()).check(matches(isDisplayed()))
     }

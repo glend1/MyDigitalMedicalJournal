@@ -33,7 +33,7 @@
                 android:id="@+id/nav_categories"
                 android:icon="@drawable/ic_category"
                 android:title="@string/drawer_categories"/>
-            <!--TODO add flares and backup-->
+            <!--TODO add flares and backup navigation items-->
         </menu>
     </item>
 
