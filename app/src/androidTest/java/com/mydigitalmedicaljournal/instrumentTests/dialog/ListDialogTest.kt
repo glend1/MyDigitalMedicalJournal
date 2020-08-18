@@ -1,7 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.dialog
 
 import android.content.Context
-import android.content.DialogInterface
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.RootMatchers.isDialog
@@ -34,7 +33,7 @@ class ListDialogTest {
         val adapter = ManageCategoriesAdapter(list, mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
             dialog = ListDialog("test", "test", activity as Context, adapter)
-            dialog!!.setConfirm(DialogInterface.OnClickListener { _, _ -> })
+            dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }
         onView(withText(testVal)).inRoot(isDialog()).perform(click())

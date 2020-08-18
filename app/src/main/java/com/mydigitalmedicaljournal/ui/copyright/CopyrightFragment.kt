@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mydigitalmedicaljournal.R
 
@@ -24,7 +23,7 @@ class CopyrightFragment : Fragment() {
             ViewModelProviders.of(this).get(CopyrightViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_copyright, container, false)
         val textView: TextView = root.findViewById(R.id.text_copyright)
-        copyrightViewModel.text.observe(viewLifecycleOwner, Observer {
+        copyrightViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root

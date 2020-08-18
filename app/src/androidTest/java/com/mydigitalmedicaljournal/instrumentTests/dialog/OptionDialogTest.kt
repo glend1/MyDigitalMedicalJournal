@@ -1,7 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.dialog
 
 import android.content.Context
-import android.content.DialogInterface
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.RootMatchers.isDialog
@@ -26,7 +25,7 @@ class OptionDialogTest {
         var dialog: OptionDialog? = null
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
             dialog = OptionDialog("test", "test", arrayOf(R.string.drawer_categories,selected), activity as Context)
-            dialog!!.setConfirm(DialogInterface.OnClickListener { _, _ -> })
+            dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }
         onView(withId(R.id.custom)).perform(click())

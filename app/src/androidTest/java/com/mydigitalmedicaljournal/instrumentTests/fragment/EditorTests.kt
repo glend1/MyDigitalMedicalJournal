@@ -56,7 +56,7 @@ class EditorTests {
         )))
     }
 
-    inner class ClickName: ViewAction {
+    class ClickName: ViewAction {
         override fun getDescription(): String {
             return "name field was not clicked"
         }
@@ -77,7 +77,7 @@ class EditorTests {
         onView(withText(R.string.rename)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
-    inner class TimeCheckBox: ViewAction {
+    class TimeCheckBox: ViewAction {
         override fun getDescription(): String {
             return "time format was not clicked"
         }

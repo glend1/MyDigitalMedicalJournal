@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.ui.categories
 
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.template.file.TemplateList
-import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
-import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 
 class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {
     //TODO this needs testing
@@ -40,10 +39,10 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
                     delete.context.getString(R.string.Confirm_Category_Warning),
                     delete.context
                 )
-            alert.setConfirm(DialogInterface.OnClickListener { _, _ ->
+            alert.setConfirm { _, _ ->
                 json.remove(position)
                 notifyDataSetChanged()
-            })
+            }
             alert.show()
         }
     }
@@ -63,9 +62,9 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
                     manage.context,
                     adapter
                 )
-            listDialog.setConfirm(DialogInterface.OnClickListener { _, _ ->
+            listDialog.setConfirm { _, _ ->
                 json.setTemplate(position, adapter.localData)
-            })
+            }
             listDialog.show()
         }
     }
@@ -80,10 +79,10 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
                     json.getName(position),
                     rename.context
                 )
-            textBox.setConfirm(DialogInterface.OnClickListener { _, _ ->
+            textBox.setConfirm { _, _ ->
                 json.setName(position, textBox.getText())
                 notifyDataSetChanged()
-            })
+            }
             textBox.show()
         }
     }

@@ -39,7 +39,7 @@ class CategoryTests {
         onView(withText(R.string.New)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
-    inner class ClickRename: ViewAction {
+    class ClickRename: ViewAction {
         override fun getDescription(): String {
             return "rename was not clicked"
         }
@@ -60,7 +60,7 @@ class CategoryTests {
         onView(withText(R.string.rename)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
-    inner class ClickManage: ViewAction {
+    class ClickManage: ViewAction {
         override fun getDescription(): String {
             return "manage was not clicked"
         }
@@ -81,7 +81,7 @@ class CategoryTests {
         onView(withText(R.string.manage)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
-    inner class ClickDelete: ViewAction {
+    class ClickDelete: ViewAction {
         override fun getDescription(): String {
             return "delete was not clicked"
         }

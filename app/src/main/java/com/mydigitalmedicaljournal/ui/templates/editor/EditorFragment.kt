@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.ui.templates.editor
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,10 +41,10 @@ class EditorFragment : Fragment() {
                     TemplateEnum.namedString,
                     requireContext()
                 )
-            selectType.setConfirm(DialogInterface.OnClickListener { _, _ ->
+            selectType.setConfirm { _, _ ->
                 val template = TemplateEnum.nameList[selectType.getSelected()]!!.createData()
                 adapter.add(template)
-            })
+            }
             selectType.show()
         }
     }
@@ -60,10 +59,10 @@ class EditorFragment : Fragment() {
                         v.context.getString(R.string.Confirm_Template_Warning),
                         v.context
                     )
-                alert.setConfirm(DialogInterface.OnClickListener { _, _ ->
+                alert.setConfirm { _, _ ->
                     templateManager.delete()
                     navigateUp()
-                })
+                }
                 alert.show()
             } else {
                 Snackbar.make(root, getString(R.string.file_not_found), Snackbar.LENGTH_LONG).show()

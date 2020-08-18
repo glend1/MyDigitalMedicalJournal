@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.template.editor
 
-import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -44,10 +43,10 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
                         v.context!!,
                         view
                     )
-                add.setConfirm(DialogInterface.OnClickListener { _, _ ->
+                add.setConfirm { _, _ ->
                     changeData(adapter.localData, add.getText())
                     v.clearFocus()
-                })
+                }
                 add.show()
             }
         }

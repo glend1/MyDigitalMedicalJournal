@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.ui.categories
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,10 +37,10 @@ class ManageCategoriesFragment : Fragment() {
                     "",
                     requireContext()
                 )
-            add.setConfirm(DialogInterface.OnClickListener { _, _ ->
+            add.setConfirm { _, _ ->
                 viewAdapter.json.add(Categories.Category(add.getText()))
                 viewAdapter.notifyDataSetChanged()
-            })
+            }
             viewAdapter.notifyDataSetChanged()
             add.show()
         }
