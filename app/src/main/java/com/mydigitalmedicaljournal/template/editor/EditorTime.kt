@@ -7,8 +7,8 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 class EditorTime(itemView: View) : GenericEditor(itemView) {
@@ -17,7 +17,7 @@ class EditorTime(itemView: View) : GenericEditor(itemView) {
     private lateinit var rg: RadioGroup
     override fun setup(view: View, adapter: EditorAdapter) {
         rg = view.findViewById(R.id.time_format)
-        setEvent(view, adapter)
+        setEvent(adapter)
         setData(adapter.localData)
     }
     override fun errorHandling(view: View, validData: ValidData) {
@@ -29,9 +29,9 @@ class EditorTime(itemView: View) : GenericEditor(itemView) {
             error.visibility = View.GONE
         }
     }
-    private fun setEvent(view: View, adapter: EditorAdapter) {
+    private fun setEvent(adapter: EditorAdapter) {
         rg.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
-            view.findViewById<RadioButton>(i).requestFocus()
+            radioGroup.findViewById<RadioButton>(i).requestFocus()
             val data = getData(i)
             if (data != null) {
                 adapter.localData.time = getData(i)!!

@@ -16,7 +16,7 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
     private lateinit var et: EditText
     override fun setup(view: View, adapter: EditorAdapter) {
         et = view.findViewById(R.id.editText)
-        setEvent(adapter, view)
+        setEvent(adapter)
         setField(adapter.localData.name)
     }
     override fun errorHandling(
@@ -31,7 +31,7 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
             error.visibility = View.GONE
         }
     }
-    private fun setEvent(adapter: EditorAdapter, view: View) {
+    private fun setEvent(adapter: EditorAdapter) {
         et.setOnFocusChangeListener{ v: View, hasFocus: Boolean ->
             Log.i("FOCUS", hasFocus.toString())
             if (hasFocus) {
@@ -40,8 +40,7 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
                         v.context.getString(R.string.Rename),
                         v.context.getString(R.string.Rename_Template_Text),
                         et.text.toString(),
-                        v.context!!,
-                        view
+                        v
                     )
                 add.setConfirm { _, _ ->
                     changeData(adapter.localData, add.getText())
