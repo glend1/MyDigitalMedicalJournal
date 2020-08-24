@@ -56,7 +56,6 @@
     <string name="date">Date</string>
     <string name="duration">Duration</string>
     <string name="date_time">Date/Time</string>
-    <string name="Rename_Template_Text">Please make a new name for this Template</string>
     <string name="add_field_text">Please Select a new Type of Field</string>
     <string name="no_templates">No Templates found, Please add at least one.</string>
     <string name="error_message">Errors found. Please correct those before retrying</string>

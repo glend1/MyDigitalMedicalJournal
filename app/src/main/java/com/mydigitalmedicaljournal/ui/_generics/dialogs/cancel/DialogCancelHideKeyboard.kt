@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
 
 class DialogCancelHideKeyboard(builder: AlertDialog.Builder, val view: View) : AbstractDialogCancel {
-    //TODO this needs testing
+    //TODO delete this if its not used
     init {
         builder.setNeutralButton(view.context.getString(R.string.Cancel)) { _, _ -> clearKeyboard() }
         builder.setOnDismissListener { clearKeyboard() }

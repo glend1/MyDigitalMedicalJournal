@@ -1,17 +1,22 @@
 package com.mydigitalmedicaljournal.template.editor
 
+import android.content.Context
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
-import com.mydigitalmedicaljournal.ui._generics.dialogs.ClearKeyboardEditText
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
+
 
 class EditorName(itemView: View) : GenericEditor(itemView) {
     //TODO this need testing
+    //TODO handle pysical keyboard
     companion object { const val ERROR = "NAME_ERROR" }
     private lateinit var et: EditText
     override fun setup(view: View, adapter: EditorAdapter) {
@@ -32,29 +37,24 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
         }
     }
     private fun setEvent(adapter: EditorAdapter) {
-        et.setOnFocusChangeListener{ v: View, hasFocus: Boolean ->
-            Log.i("FOCUS", hasFocus.toString())
-            if (hasFocus) {
-                val add =
-                    ClearKeyboardEditText(
-                        v.context.getString(R.string.Rename),
-                        v.context.getString(R.string.Rename_Template_Text),
-                        et.text.toString(),
-                        v
-                    )
-                add.setConfirm { _, _ ->
-                    changeData(adapter.localData, add.getText())
-                    v.clearFocus()
-                }
-                add.show()
+        et.addTextChangedListener {
+            changeData(adapter.localData, it.toString())
+        }
+        et.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                Log.i("HEELO", "test")
+                et.clearFocus()
+                val imm =
+                    v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
             }
+            false
         }
     }
     private fun setField(text: String?) {
         et.setText(text)
     }
     private fun changeData(localData: TemplateDefinition, text: String) {
-        setField(text)
         localData.name = text
     }
 }

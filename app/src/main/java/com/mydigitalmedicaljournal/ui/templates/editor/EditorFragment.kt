@@ -1,9 +1,11 @@
 package com.mydigitalmedicaljournal.ui.templates.editor
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -109,5 +111,11 @@ class EditorFragment : Fragment() {
         } else {
             TemplateManager(requireContext())
         }
+    }
+
+    override fun onPause() {
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+        super.onPause()
     }
 }
