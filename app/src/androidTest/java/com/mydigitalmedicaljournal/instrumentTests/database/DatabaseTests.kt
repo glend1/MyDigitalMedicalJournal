@@ -10,7 +10,6 @@ import org.junit.BeforeClass
 import org.junit.Test
 
 class DatabaseTests {
-    //TODO this doesn't actually test anything
     companion object {
         private val context = InstrumentationRegistry.getInstrumentation().targetContext
         lateinit var db: DataSource
