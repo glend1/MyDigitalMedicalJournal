@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/save_icon"
-                    android:tint="@color/textAlt"
+                    app:tint="@color/textAlt"
                     app:srcCompat="@drawable/ic_save" />
 
                 <TextView
@@ -91,8 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/add_icon"
-                    android:tint="@color/textAlt"
-                    app:srcCompat="@drawable/ic_add" />
+                    app:srcCompat="@drawable/ic_add"
+                    app:tint="@color/textAlt" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,8 +131,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/delete_icon"
-                    android:tint="@color/textAlt"
-                    app:srcCompat="@drawable/ic_delete" />
+                    app:srcCompat="@drawable/ic_delete"
+                    app:tint="@color/textAlt" />
 
                 <TextView
                     android:layout_width="wrap_content"
