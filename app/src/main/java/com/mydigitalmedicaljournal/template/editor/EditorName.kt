@@ -13,7 +13,6 @@ import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
-
 class EditorName(itemView: View) : GenericEditor(itemView) {
     //TODO this need testing
     //TODO handle pysical keyboard
@@ -24,10 +23,7 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
         setEvent(adapter)
         setField(adapter.localData.name)
     }
-    override fun errorHandling(
-        view: View,
-        validData: ValidData
-    ) {
+    override fun errorHandling(view: View, validData: ValidData) {
         val test = validData.getErrors()
         val error = view.findViewById<TextView>(R.id.error)
         if (test.contains(ERROR)) {
