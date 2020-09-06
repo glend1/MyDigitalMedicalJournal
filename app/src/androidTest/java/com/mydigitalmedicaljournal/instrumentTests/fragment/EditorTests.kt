@@ -4,22 +4,29 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.instrumentTests.Utils
+import com.mydigitalmedicaljournal.template.data.DataTime
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
+import junit.framework.TestCase.assertEquals
 import org.hamcrest.Matcher
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+
 
 class EditorTests {
     @get:Rule
@@ -35,11 +42,18 @@ class EditorTests {
     }
 
     @Test
-    fun saveButton() {
+    fun saveButtonError() {
         onView(withId(R.id.save)).perform(click())
-        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(
-            R.string.error_message
-        )))
+        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.error_message)))
+        activityScenarioRule.scenario.onActivity(Utils.isvisible(0, R.id.error))
+        activityScenarioRule.scenario.onActivity(Utils.isvisible(1, R.id.error))
+    }
+
+    @Test
+    fun saveButtonSuccess() {
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText("hello")))
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(1, TimeCheckBox()))
+        onView(withId(R.id.save)).perform(click())
     }
 
     @Test
@@ -49,16 +63,24 @@ class EditorTests {
     }
 
     @Test
-    fun deleteButton() {
-        onView(withId(R.id.delete)).perform(click())
-        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(
-            R.string.file_not_found
-        )))
+    fun useAddButton() {
+        onView(withId(R.id.add)).perform(click())
+        onView(withId(R.id.custom)).perform(click())
+        onView(withText(R.string.test2)).inRoot(RootMatchers.isPlatformPopup()).perform(click())
+        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        //TODO this will beak when i use real data
+        onView(withId(R.id.template)).check(matches(Utils.atPosition(2, withText("This is type 2"))))
     }
 
-    class ClickName: ViewAction {
+    @Test
+    fun deleteButton() {
+        onView(withId(R.id.delete)).perform(click())
+        onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.file_not_found)))
+    }
+
+    class TypeText(private val text: String): ViewAction {
         override fun getDescription(): String {
-            return "name field was not clicked"
+            return "name field was not changed"
         }
 
         override fun getConstraints(): Matcher<View> {
@@ -66,15 +88,21 @@ class EditorTests {
         }
 
         override fun perform(uiController: UiController?, view: View?) {
-            view?.findViewById<EditText>(R.id.editText)?.requestFocus()
+            view!!.findViewById<EditText>(R.id.editText).setText(text)
         }
 
     }
 
     @Test
     fun name() {
-        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, ClickName()))
-        onView(withText(R.string.rename)).inRoot(isDialog()).check(matches(isDisplayed()))
+        val testText = "hello"
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText(testText)))
+        onView(withId(R.id.template)).check(matches(Utils.atPosition(0, withText(testText))))
+        activityScenarioRule.scenario.onActivity { activity ->
+            val recycler = activity.findViewById<RecyclerView>(R.id.template)
+            val adapter = recycler.adapter as EditorAdapter
+            assertEquals(testText, adapter.localData.name)
+        }
     }
 
     class TimeCheckBox: ViewAction {
@@ -96,5 +124,10 @@ class EditorTests {
     fun timeFormat() {
         onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(1, TimeCheckBox()))
         onView(withId(R.id.date_time)).check(matches(isChecked()))
+        activityScenarioRule.scenario.onActivity { activity ->
+            val recycler = activity.findViewById<RecyclerView>(R.id.template)
+            val adapter = recycler.adapter as EditorAdapter
+            assertEquals(DataTime.TimeFormat.DATETIME, adapter.localData.time)
+        }
     }
 }

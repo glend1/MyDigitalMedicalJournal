@@ -10,7 +10,6 @@ import com.mydigitalmedicaljournal.template.editor.GenericEditor
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 
 class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    //TODO this needs testing
     private var validData: ValidData = ValidData()
     companion object {
         private const val OFFSET = 2
