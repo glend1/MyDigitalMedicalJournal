@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
-import com.mydigitalmedicaljournal.instrumentTests.Context
+import com.mydigitalmedicaljournal.instrumentTests.Utils
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import org.junit.After
@@ -15,7 +15,7 @@ class TemplateFolder {
     private val folderName = "test_templates"
 
     private fun makeFile(fileName: String, content: String) {
-        val filePath = FileHelper(fileName, Context.CONTEXT, arrayOf(folderName))
+        val filePath = FileHelper(fileName, Utils.CONTEXT, arrayOf(folderName))
         filePath.write(content)
     }
 
@@ -24,12 +24,12 @@ class TemplateFolder {
         makeFile("793b7045-d572-4110-b4c7-9e1dcfa251f1", "{\"data\":[],\"id\":\"793b7045-d572-4110-b4c7-9e1dcfa251f1\",\"name\":\"another test\",\"time\":\"DURATION\"}")
         makeFile("8d319e52-dd89-4ca0-979b-407a1b41c8d5", "{\"data\":[],\"id\":\"8d319e52-dd89-4ca0-979b-407a1b41c8d5\",\"name\":\"last test\",\"time\":\"DATE\"}")
         makeFile("a866ce4a-c509-4d22-9bc3-734ca7c3d649", "{\"data\":[],\"id\":\"a866ce4a-c509-4d22-9bc3-734ca7c3d649\",\"name\":\"this is a test\",\"time\":\"DATETIME\"}")
-        templateList = TemplateList.getTemplates(Context.CONTEXT, arrayOf(folderName))
+        templateList = TemplateList.getTemplates(Utils.CONTEXT, arrayOf(folderName))
     }
 
     @After
     fun teardown() {
-        File("${Context.CONTEXT.filesDir}/$folderName").deleteRecursively()
+        File("${Utils.CONTEXT.filesDir}/$folderName").deleteRecursively()
     }
 
     @Test

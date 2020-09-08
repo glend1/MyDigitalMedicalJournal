@@ -1,11 +1,13 @@
 package com.mydigitalmedicaljournal.instrumentTests
 
+import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.platform.app.InstrumentationRegistry
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import junit.framework.TestCase.assertTrue
@@ -15,6 +17,9 @@ import org.hamcrest.Matcher
 class Utils {
 
     companion object {
+        @JvmStatic
+        val CONTEXT: Context = InstrumentationRegistry.getInstrumentation().targetContext
+
         fun atPosition(position: Int, itemMatcher: Matcher<View?>): Matcher<View?>? {
             return object : BoundedMatcher<View?, RecyclerView>(RecyclerView::class.java) {
                 override fun describeTo(description: Description) {

@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
-import com.mydigitalmedicaljournal.instrumentTests.Context
+import com.mydigitalmedicaljournal.instrumentTests.Utils
 import com.mydigitalmedicaljournal.json.FileHelper
 import org.junit.After
 import org.junit.Assert.*
@@ -13,7 +13,7 @@ class FileHelperTests {
 
     @Before
     fun setup() {
-        file = FileHelper("test", Context.CONTEXT)
+        file = FileHelper("test", Utils.CONTEXT)
         testText = "test"
         file.write(testText)
     }
