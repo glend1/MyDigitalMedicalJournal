@@ -15,6 +15,14 @@ class FileHelper(fileName: String, context: Context, directories: Array<String> 
                 arrayOf()
             }
         }
+
+        fun joinDirectories(directories: Array<String>): String {
+            return if (directories.isNotEmpty()) {
+                "/${directories.joinToString("/")}"
+            } else {
+                ""
+            }
+        }
     }
 
     //external storage
@@ -24,13 +32,7 @@ class FileHelper(fileName: String, context: Context, directories: Array<String> 
     private var file = Files.asByteSink(fullPath)
     private val charset = Charsets.UTF_8
 
-    private fun joinDirectories(directories: Array<String>): String {
-        return if (directories.isNotEmpty()) {
-            "/${directories.joinToString("/")}"
-        } else {
-            ""
-        }
-    }
+
 
     fun exists(): Boolean {
         return fullPath.exists()
