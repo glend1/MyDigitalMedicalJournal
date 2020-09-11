@@ -1,35 +1,26 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
-import com.mydigitalmedicaljournal.instrumentTests.Utils
-import com.mydigitalmedicaljournal.json.FileHelper
+import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import java.io.File
 import java.util.*
 
 class TemplateFolder {
     private lateinit var templateList: List<TemplateList.FileList>
     private val folderName = "test_templates"
-
-    private fun makeFile(fileName: String, content: String) {
-        val filePath = FileHelper(fileName, Utils.CONTEXT, arrayOf(folderName))
-        filePath.write(content)
-    }
+    private val dt = DummyTemplates(arrayOf(folderName))
 
     @Before
     fun setup() {
-        makeFile("793b7045-d572-4110-b4c7-9e1dcfa251f1", "{\"data\":[],\"id\":\"793b7045-d572-4110-b4c7-9e1dcfa251f1\",\"name\":\"another test\",\"time\":\"DURATION\"}")
-        makeFile("8d319e52-dd89-4ca0-979b-407a1b41c8d5", "{\"data\":[],\"id\":\"8d319e52-dd89-4ca0-979b-407a1b41c8d5\",\"name\":\"last test\",\"time\":\"DATE\"}")
-        makeFile("a866ce4a-c509-4d22-9bc3-734ca7c3d649", "{\"data\":[],\"id\":\"a866ce4a-c509-4d22-9bc3-734ca7c3d649\",\"name\":\"this is a test\",\"time\":\"DATETIME\"}")
-        templateList = TemplateList.getTemplates(Utils.CONTEXT, arrayOf(folderName))
+        templateList = dt.get()
     }
 
     @After
     fun teardown() {
-        File("${Utils.CONTEXT.filesDir}/$folderName").deleteRecursively()
+        dt.delete()
     }
 
     @Test

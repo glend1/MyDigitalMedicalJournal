@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
+import com.mydigitalmedicaljournal.instrumentTests.DummyTemplateFile
 import com.mydigitalmedicaljournal.instrumentTests.Utils
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
@@ -11,21 +12,17 @@ import org.junit.Test
 import java.util.*
 
 class TemplateFile {
-    private val fileName = "793b7045-d572-4110-b4c7-9e1dcfa251f1"
-    private val filePath = FileHelper(fileName, Utils.CONTEXT, arrayOf("test_template"))
     private lateinit var templateManager: TemplateManager
+    private val dtf = DummyTemplateFile("793b7045-d572-4110-b4c7-9e1dcfa251f1")
 
     @Before
     fun setup() {
-        filePath.write("{\"data\":[],\"id\":\"793b7045-d572-4110-b4c7-9e1dcfa251f1\",\"name\":\"another test\",\"time\":\"DURATION\"}")
-        templateManager = TemplateManager(Utils.CONTEXT, UUID.fromString(fileName), arrayOf("test_template"))
+        templateManager = dtf.get()
     }
 
     @After
     fun teardown() {
-        if (filePath.exists()) {
-            filePath.delete()
-        }
+        dtf.delete()
     }
 
     @Test
