@@ -5,7 +5,11 @@ import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.template.file.TemplateList.FileList
 import java.io.File
 
-class DummyTemplates(private val directories: Array<String> = arrayOf()) {
+class DummyTemplates(private val directories: Array<String>) {
+
+    companion object {
+        const val folderName = "test_templates"
+    }
 
     private fun makeFile(fileName: String, content: String) {
         val filePath = FileHelper(fileName, Utils.CONTEXT, directories)

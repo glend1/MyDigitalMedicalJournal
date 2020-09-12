@@ -10,8 +10,7 @@ import java.util.*
 
 class TemplateFolder {
     private lateinit var templateList: List<TemplateList.FileList>
-    private val folderName = "test_templates"
-    private val dt = DummyTemplates(arrayOf(folderName))
+    private val dt = DummyTemplates(arrayOf(DummyTemplates.folderName))
 
     @Before
     fun setup() {
