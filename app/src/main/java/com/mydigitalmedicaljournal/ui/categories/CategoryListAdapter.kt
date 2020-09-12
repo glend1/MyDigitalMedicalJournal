@@ -50,7 +50,7 @@ class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.
     private fun bindManage(holder: ViewHolder, position: Int) {
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
-            val templateList = TemplateList.getTemplates(manage.context, arrayOf("templates"))
+            val templateList = TemplateList.getTemplates(manage.context)
             val adapter =
                 ManageCategoriesAdapter(
                     templateList,

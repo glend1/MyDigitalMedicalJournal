@@ -15,7 +15,7 @@ class ManageTemplatesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_templates, container, false)
-        val template = TemplateList.getTemplates(requireContext(), arrayOf("templates"))
+        val template = TemplateList.getTemplates(requireContext())
         val viewAdapter =
             TemplateListAdapter(
                 template,

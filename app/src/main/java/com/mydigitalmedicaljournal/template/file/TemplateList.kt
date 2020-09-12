@@ -7,7 +7,7 @@ import java.util.*
 class TemplateList {
     class FileList(val name: String, val id: UUID)
     companion object {
-        fun getTemplates(context: Context, pathArray: Array<String>): List<FileList> {
+        fun getTemplates(context: Context, pathArray: Array<String> = arrayOf("templates")): List<FileList> {
             val files = FileHelper.getFileList(context, pathArray)
             val list = mutableListOf<FileList>()
             for (file in files) {
