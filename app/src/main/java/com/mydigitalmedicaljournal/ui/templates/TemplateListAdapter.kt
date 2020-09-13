@@ -11,7 +11,6 @@ import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class TemplateListAdapter(private var fileList: List<TemplateList.FileList>, val layout: Int, private val navController: NavController) : RecyclerView.Adapter<ViewHolder>() {
-    //TODO this needs testing
     override fun getItemCount() = fileList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

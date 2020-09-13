@@ -5,14 +5,17 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
+import com.mydigitalmedicaljournal.instrumentTests.Utils
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -50,4 +53,11 @@ class TemplateTests {
         onView(withId(R.id.editText)).check(matches(withText(templateList[0].name)))
     }
 
+    @Test
+    fun delete() {
+        onView(withId(R.id.template_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, click()))
+        onView(withId(R.id.delete)).perform(click())
+        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withId(R.id.template_recycler)).check(matches(not(Utils.atPosition(0, withText(templateList[0].name)))))
+    }
 }
