@@ -4,6 +4,9 @@ import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
 
 class DummyCategories(private val fileName: String) {
+    companion object {
+        const val FILENAME = "testCategories.json"
+    }
     private val file = FileHelper(fileName, Utils.CONTEXT)
 
     fun get(): Categories {
