@@ -13,7 +13,7 @@ import java.util.*
 
 class TemplateFile {
     private lateinit var templateManager: TemplateManager
-    private val dtf = DummyTemplateFile("793b7045-d572-4110-b4c7-9e1dcfa251f1")
+    private val dtf = DummyTemplateFile("793b7045-d572-4110-b4c7-9e1dcfa251f1", "test")
 
     @Before
     fun setup() {
