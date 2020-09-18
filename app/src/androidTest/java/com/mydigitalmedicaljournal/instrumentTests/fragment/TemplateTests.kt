@@ -58,6 +58,6 @@ class TemplateTests {
         onView(withId(R.id.template_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, click()))
         onView(withId(R.id.delete)).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        onView(withId(R.id.template_recycler)).check(matches(not(Utils.atPosition(0, withText(templateList[0].name)))))
+        onView(withId(R.id.template_recycler)).check(matches(Utils.atPosition(0, not(withText(templateList[0].name)))))
     }
 }
