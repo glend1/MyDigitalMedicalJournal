@@ -6,8 +6,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.RootMatchers.isDialog
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
@@ -59,5 +58,10 @@ class TemplateTests {
         onView(withId(R.id.delete)).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.template_recycler)).check(matches(Utils.atPosition(0, not(withText(templateList[0].name)))))
+    }
+
+    @Test
+    fun displayNumber() {
+        onView(withId(R.id.template_recycler)).check(matches(hasChildCount(3)))
     }
 }

@@ -7,6 +7,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.RootMatchers.isDialog
@@ -18,20 +19,29 @@ import com.mydigitalmedicaljournal.instrumentTests.DummyCategories
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplateFile
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
 class CategoryTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
     private val dc = DummyCategories("categories.json")
+    private val pathArray = arrayOf("templates")
+    private val testTemplate = "lmno template"
+    private val testCategory = "cat"
+    private val file1 = DummyTemplateFile("68aa63ff-1e34-49fd-afbd-bffecf95685c", "abc template", pathArray)
+    private val file2 = DummyTemplateFile("b132f1ab-d50b-4f84-a87e-bfbcadf91281", testTemplate, pathArray)
+    private val file3 = DummyTemplateFile("1c57893f-7f6c-4b8a-bcd2-97ca5d4cdc09", "xyz template", pathArray)
 
     @Before
     fun setup() {
         dc.get()
+        file1.get()
+        file2.get()
+        file3.get()
         activityScenarioRule.scenario.onActivity { activity ->
             val nav = activity.findNavController(R.id.nav_host_fragment)
             nav.navigate(R.id.nav_categories)
@@ -41,6 +51,9 @@ class CategoryTests {
     @After
     fun teardown() {
         dc.delete()
+        file1.delete()
+        file2.delete()
+        file3.delete()
     }
 
     @Test
@@ -66,8 +79,11 @@ class CategoryTests {
 
     @Test
     fun renameDialog() {
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickRename()))
-        onView(withText(R.string.rename)).inRoot(isDialog()).check(matches(isDisplayed()))
+        val newName = "rabbit"
+        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickRename()))
+        onView(withText(testCategory)).inRoot(isDialog()).perform(replaceText(newName))
+        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withId(R.id.category_recycler)).check(matches(hasDescendant(withText(newName))))
     }
 
     class ClickManage: ViewAction {
@@ -93,11 +109,6 @@ class CategoryTests {
 
     @Test
     fun changeManage() {
-        val pathArray = arrayOf("templates")
-        val testTemplate = "lmno template"
-        val file1 = DummyTemplateFile("68aa63ff-1e34-49fd-afbd-bffecf95685c", "abc template", pathArray).get()
-        val file2 = DummyTemplateFile("b132f1ab-d50b-4f84-a87e-bfbcadf91281", testTemplate, pathArray).get()
-        val file3 = DummyTemplateFile("1c57893f-7f6c-4b8a-bcd2-97ca5d4cdc09", "xyz template", pathArray).get()
         onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
         onView(withText(testTemplate)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
@@ -125,8 +136,14 @@ class CategoryTests {
 
     @Test
     fun deleteDialog() {
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickDelete()))
-        onView(withText(R.string.Confirm_Category_Warning)).inRoot(isDialog()).check(matches(isDisplayed()))
+        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickDelete()))
+        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withId(R.id.category_recycler)).check(matches(not(hasDescendant(withText(testCategory)))))
+    }
+
+    @Test
+    fun displayNumber() {
+        onView(withId(R.id.category_recycler)).check(matches(hasChildCount(3)))
     }
 }
 

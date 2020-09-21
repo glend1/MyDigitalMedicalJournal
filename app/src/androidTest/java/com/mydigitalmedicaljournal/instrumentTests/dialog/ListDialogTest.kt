@@ -21,6 +21,7 @@ class ListDialogTest {
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
+    //TODO test item size
     fun listDialogTest() {
         var dialog: ListDialog?
         val testVal = "test2"

@@ -14,7 +14,6 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 
 class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {
-    //TODO this needs testing
     override fun getItemCount() = json.size()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
