@@ -14,7 +14,6 @@ import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 class EditorName(itemView: View) : GenericEditor(itemView) {
-    //TODO this need testing
     //TODO handle pysical keyboard
     companion object { const val ERROR = "NAME_ERROR" }
     private lateinit var et: EditText
@@ -38,7 +37,6 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
         }
         et.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                Log.i("HEELO", "test")
                 et.clearFocus()
                 val imm =
                     v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
