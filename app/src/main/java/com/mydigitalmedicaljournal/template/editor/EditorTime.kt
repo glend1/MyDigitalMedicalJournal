@@ -31,13 +31,7 @@ class EditorTime(itemView: View) : GenericEditor(itemView) {
     private fun setEvent(adapter: EditorAdapter) {
         rg.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
             radioGroup.findViewById<RadioButton>(i).requestFocus()
-            val data = getData(i)
-            if (data != null) {
-                adapter.localData.time = getData(i)!!
-            } else {
-                //TODO not sure i need this
-                Log.i("TEST", "why null tho? $i")
-            }
+            adapter.localData.time = getData(i)
         }
     }
 
