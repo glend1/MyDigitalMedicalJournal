@@ -68,7 +68,6 @@ class EditorTests {
         onView(withId(R.id.custom)).perform(click())
         onView(withText(R.string.test2)).inRoot(RootMatchers.isPlatformPopup()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        //TODO this will beak when i use real data
         onView(withId(R.id.template)).check(matches(Utils.atPosition(2, withText("This is type 2"))))
     }
 
