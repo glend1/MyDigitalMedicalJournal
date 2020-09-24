@@ -8,8 +8,7 @@ import androidx.appcompat.app.AlertDialog
 class DialogInputEditText(builder: AlertDialog.Builder, context : Context, text: String) : AbstractDialogInput {
     private val input = EditText(context)
     init {
-        //TODO not sure this flag is being set and might need more options
-        input.inputType = InputType.TYPE_TEXT_FLAG_CAP_WORDS
+        input.inputType = InputType.TYPE_TEXT_FLAG_AUTO_CORRECT + InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
         input.setText(text)
         input.selectAll()
         builder.setView(input)
