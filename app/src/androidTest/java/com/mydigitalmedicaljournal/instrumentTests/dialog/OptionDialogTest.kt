@@ -20,7 +20,6 @@ class OptionDialogTest {
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
-    //TODO test item size
     fun optionDialogTest() {
         val selected = R.string.manage_categories
         var dialog: OptionDialog? = null

@@ -3,13 +3,15 @@ package com.mydigitalmedicaljournal.instrumentTests.dialog
 import android.content.Context
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers.isDialog
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.input.DialogInputList
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -21,7 +23,6 @@ class ListDialogTest {
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
-    //TODO test item size
     fun listDialogTest() {
         var dialog: ListDialog?
         val testVal = "test2"
@@ -33,11 +34,12 @@ class ListDialogTest {
         )
         val adapter = ManageCategoriesAdapter(list, mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
-            dialog = ListDialog("test", "test", activity as Context, adapter)
+            dialog = ListDialog("title", "message", activity as Context, adapter)
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }
         onView(withText(testVal)).inRoot(isDialog()).perform(click())
+        onView(withId(DialogInputList.id)).inRoot(isDialog()).check(matches(hasChildCount(3)))
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         assertEquals(adapter.localData[0], testUuid)
     }

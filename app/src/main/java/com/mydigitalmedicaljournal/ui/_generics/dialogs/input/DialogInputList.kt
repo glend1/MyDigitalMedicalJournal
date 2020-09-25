@@ -1,6 +1,7 @@
 package com.mydigitalmedicaljournal.ui._generics.dialogs.input
 
 import android.content.Context
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,9 +10,13 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 
 class DialogInputList(builder: AlertDialog.Builder, context: Context, adapter: ManageCategoriesAdapter) : AbstractDialogInput {
+    companion object {
+        val id = View.generateViewId()
+    }
     private var input = RecyclerView(context)
     init {
         if (adapter.itemCount > 0) {
+            input.id = id
             input.layoutManager = LinearLayoutManager(context)
             input.adapter = adapter
             builder.setView(input)
