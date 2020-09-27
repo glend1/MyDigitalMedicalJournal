@@ -62,4 +62,5 @@
     <string name="error_name">Error. Please enter a valid name.</string>
     <string name="error_time">Error. Please select a Time Type.</string>
     <string name="file_not_found">You cannot delete a Template before you\'ve saved it.</string>
+    <string name="TemplateSelector">Template Selector</string>
 </resources>
