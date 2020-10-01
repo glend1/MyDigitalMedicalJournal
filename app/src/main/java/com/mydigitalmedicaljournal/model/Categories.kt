@@ -64,6 +64,10 @@ class Categories(context: Context, filename: String = "categories.json") {
         return data.size
     }
 
+    fun get(): MutableList<Category> {
+        return data
+    }
+
     fun getTemplate(i: Int): MutableList<UUID> {
         return data[i].templates
     }

@@ -15,7 +15,7 @@ class ManageTemplatesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_templates, container, false)
-        val viewAdapter = TemplateListAdapter(TemplateList.getTemplates(requireContext()))
+        val viewAdapter = TemplateListAdapter(TemplateList(requireContext()).get())
         val templateList = root.findViewById<RecyclerView>(R.id.template_recycler)
         val itemDecoration = CustomDivider(requireContext())
         templateList.addItemDecoration(itemDecoration)
