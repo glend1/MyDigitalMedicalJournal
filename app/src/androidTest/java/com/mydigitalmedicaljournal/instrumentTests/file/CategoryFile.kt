@@ -1,8 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategories
-import com.mydigitalmedicaljournal.instrumentTests.Utils
-import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -13,7 +11,6 @@ import java.util.*
 
 class CategoryFile {
     private lateinit var categories: Categories
-    private val file = FileHelper(DummyCategories.FILENAME, Utils.CONTEXT)
     private val dc = DummyCategories(DummyCategories.FILENAME)
 
     @Before
@@ -38,9 +35,6 @@ class CategoryFile {
                 ignored
          uuids that don't convert properly will be guessed
          */
-        val fileContent = "[{\"something\":\"4\"},{\"if\":\"c71a34bd-8e95-4394-b0d6-5357c94c2250\",\"TEST\":\"HELLO\",\"name\":\"apple\",\"templates\":[]},{\"id\":\"f5c4da32-8b2c-4669-a4b4-235594d49afc\",\"name\":\"cat\",\"templates\":[\"68aa63ff-1e34-49fd-afbd-bffecf95685c\",\"b132f1ab-d50b-4f84-a87e-bfbcadf91281\"]},{\"id\":\"7838caf6-2746-42ba-9be7-7d7b072ad840\",\"name\":\"dog\",\"templates\":[]}]"
-        file.write(fileContent)
-        categories = Categories(Utils.CONTEXT, DummyCategories.FILENAME)
         assertNotNull(categories.getTemplate(1))
     }
 
@@ -80,23 +74,15 @@ class CategoryFile {
     }
 
     @Test
-    fun setTemplate() {
+    fun setGetDeleteTemplate() {
         val templates = mutableListOf<UUID>()
         templates.add(UUID.fromString("68aa63ff-1e34-49fd-afbd-bffecf95685c"))
         templates.add(UUID.fromString("b132f1ab-d50b-4f84-a87e-bfbcadf91281"))
         templates.add(UUID.fromString("4404623c-1696-42f2-b19e-fd4ff43ce544"))
         categories.setTemplate(2, templates)
         assertEquals(categories.getTemplate(2).size, 3)
-    }
-
-    @Test
-    fun getTemplate() {
-        assertEquals(categories.getTemplate(1).size, 2)
-    }
-
-    @Test
-    fun deleteTemplate() {
         categories.deleteTemplate(UUID.fromString("68aa63ff-1e34-49fd-afbd-bffecf95685c"))
-        assertEquals(categories.getTemplate(1).size, 1)
+        assertEquals(categories.getTemplate(2).size, 2)
     }
+
 }

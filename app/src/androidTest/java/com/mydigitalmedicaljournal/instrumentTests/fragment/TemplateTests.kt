@@ -28,7 +28,7 @@ class TemplateTests {
 
     @Before
     fun setup() {
-        templateList = dt.get()
+        templateList = dt.get().get()
         activityScenarioRule.scenario.onActivity { activity ->
             val nav = activity.findNavController(R.id.nav_host_fragment)
             nav.navigate(R.id.nav_templates)
