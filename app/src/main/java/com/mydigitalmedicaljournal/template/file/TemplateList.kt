@@ -43,8 +43,8 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
         return null
     }
 
-    fun getNestedList(): MutableList<NestedTemplates> {
-        val categories = Categories(context).get()
+    fun getNestedList(filename: String = "categories.json"): MutableList<NestedTemplates> {
+        val categories = Categories(context, filename).get()
         val processedCategoryList = mutableListOf<NestedTemplates>()
         categories.forEach { category ->
             val nt = NestedTemplates(category.name)
