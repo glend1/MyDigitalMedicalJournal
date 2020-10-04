@@ -15,13 +15,11 @@ class DummyCategories(private val fileName: String) {
     )
 
     fun get(): Categories {
-        //TODO this could be better
         val cats = mutableListOf<String>()
         for (category in data) {
             cats.add("{\"id\":\"${category[0]}\",\"name\":\"${category[1]}\",\"templates\":[]}")
         }
-        val fileContent = "[${cats.joinToString()}]"
-        file.write(fileContent)
+        file.write("[${cats.joinToString()}]")
         return Categories(Utils.CONTEXT, fileName)
     }
 
