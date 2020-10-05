@@ -4,6 +4,7 @@
     <dimen name="small">4dp</dimen>
     <dimen name="medium">8dp</dimen>
     <dimen name="large">16dp</dimen>
+    <dimen name="xlarge">32dp</dimen>
     <dimen name="title_text">14sp</dimen>
     <dimen name="error_text">12sp</dimen>
 </resources>
