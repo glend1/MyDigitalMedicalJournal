@@ -3,11 +3,11 @@ package com.mydigitalmedicaljournal.template.file
 import android.content.Context
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.ui.journal.selector.TemplateSelectorAdapter
 import java.util.*
 
 class TemplateList(private val context: Context, pathArray: Array<String> = arrayOf("templates")) {
     class FileList(val name: String, val id: UUID)
-    data class NestedTemplates(val category: String) { val templates = mutableListOf<FileList>() }
     private var data: List<FileList>
 
     init {
@@ -43,6 +43,9 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
         return null
     }
 
+    data class NestedTemplates(val category: String) { val templates = mutableListOf<FileList>() }
+
+    //TODO this is only used in tests, consider removing it
     fun getNestedList(filename: String = "categories.json"): MutableList<NestedTemplates> {
         val categories = Categories(context, filename).get()
         val processedCategoryList = mutableListOf<NestedTemplates>()
@@ -57,5 +60,19 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
             processedCategoryList.add(nt)
         }
         return processedCategoryList
+    }
+
+    class CategoriesTemplate(val name:String, val type:CategoriesTemplateType)
+    enum class CategoriesTemplateType { CATEGORY, TEMPLATE }
+
+    fun getCategoriesAndTemplates(filename: String = "categories.json"): MutableList<CategoriesTemplate> {
+        val flatList = mutableListOf<CategoriesTemplate>()
+        for (category in getNestedList(filename)) {
+            flatList.add(CategoriesTemplate(category.category, CategoriesTemplateType.CATEGORY))
+            for (template in category.templates) {
+                flatList.add(CategoriesTemplate(template.name, CategoriesTemplateType.TEMPLATE))
+            }
+        }
+        return flatList
     }
 }

@@ -50,4 +50,15 @@ class TemplateFolder {
         val nl = dt.get().getNestedList(DummyCategories.FILENAME)
         assertEquals(nl[1].templates.size, 2)
     }
+
+    @Test
+    fun getFlat() {
+        val dc = DummyCategories(DummyCategories.FILENAME)
+        val categories = dc.get()
+        categories.setTemplate(0, mutableListOf(data[1].id))
+        categories.setTemplate(1, mutableListOf(data[0].id, data[2].id))
+        categories.setTemplate(2, mutableListOf(data[1].id))
+        val fl = dt.get().getCategoriesAndTemplates(DummyCategories.FILENAME)
+        assertEquals(fl.size, 7)
+    }
 }

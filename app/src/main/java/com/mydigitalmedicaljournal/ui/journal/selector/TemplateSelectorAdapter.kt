@@ -8,25 +8,11 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
-class TemplateSelectorAdapter(fileList: MutableList<TemplateList.NestedTemplates>) : RecyclerView.Adapter<ViewHolder>() {
+class TemplateSelectorAdapter(private val fileList: MutableList<TemplateList.CategoriesTemplate>) : RecyclerView.Adapter<ViewHolder>() {
 
-    class CategoriesTemplate(val name:String, val type:CategoriesTemplateType)
-    enum class CategoriesTemplateType { CATEGORY, TEMPLATE }
-    private val flatList = mutableListOf<CategoriesTemplate>()
+    override fun getItemCount() = fileList.size
 
-    init {
-        for (category in fileList) {
-            flatList.add(CategoriesTemplate(category.category, CategoriesTemplateType.CATEGORY))
-            for (template in category.templates) {
-                flatList.add(CategoriesTemplate(template.name, CategoriesTemplateType.TEMPLATE))
-            }
-        }
-
-    }
-
-    override fun getItemCount() = flatList.size
-
-    override fun getItemViewType(position: Int) = flatList[position].type.ordinal
+    override fun getItemViewType(position: Int) = fileList[position].type.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layout = if (viewType == 0) {
@@ -40,7 +26,7 @@ class TemplateSelectorAdapter(fileList: MutableList<TemplateList.NestedTemplates
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = holder.itemView
         val title = item.findViewById<TextView>(R.id.text)
-        title.text = flatList[position].name
+        title.text = fileList[position].name
         //TODO this needs finishing
         /*item.setOnClickListener {
             val bundle = bundleOf("data" to fileList[position].id)
