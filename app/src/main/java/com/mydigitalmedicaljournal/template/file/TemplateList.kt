@@ -3,7 +3,6 @@ package com.mydigitalmedicaljournal.template.file
 import android.content.Context
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.ui.journal.selector.TemplateSelectorAdapter
 import java.util.*
 
 class TemplateList(private val context: Context, pathArray: Array<String> = arrayOf("templates")) {
@@ -43,14 +42,14 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
         return null
     }
 
-    data class NestedTemplates(val category: String) { val templates = mutableListOf<FileList>() }
+    data class NestedTemplates(val category: FileList) { val templates = mutableListOf<FileList>() }
 
     //TODO this is only used in tests, consider removing it
     fun getNestedList(filename: String = "categories.json"): MutableList<NestedTemplates> {
         val categories = Categories(context, filename).get()
         val processedCategoryList = mutableListOf<NestedTemplates>()
         categories.forEach { category ->
-            val nt = NestedTemplates(category.name)
+            val nt = NestedTemplates(FileList(category.name, category.id))
             category.templates.forEach { template ->
                 val t = getName(template)
                 if (t != null) {
@@ -62,7 +61,7 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
         return processedCategoryList
     }
 
-    class CategoriesTemplate(val name:String, val type:CategoriesTemplateType)
+    class CategoriesTemplate(val name: FileList, val type: CategoriesTemplateType)
     enum class CategoriesTemplateType { CATEGORY, TEMPLATE }
 
     fun getCategoriesAndTemplates(filename: String = "categories.json"): MutableList<CategoriesTemplate> {
@@ -70,7 +69,7 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
         for (category in getNestedList(filename)) {
             flatList.add(CategoriesTemplate(category.category, CategoriesTemplateType.CATEGORY))
             for (template in category.templates) {
-                flatList.add(CategoriesTemplate(template.name, CategoriesTemplateType.TEMPLATE))
+                flatList.add(CategoriesTemplate(template, CategoriesTemplateType.TEMPLATE))
             }
         }
         return flatList
