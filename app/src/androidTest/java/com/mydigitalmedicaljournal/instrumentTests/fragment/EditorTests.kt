@@ -50,10 +50,15 @@ class EditorTests {
     }
 
     @Test
-    fun saveButtonSuccess() {
-        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText("hello")))
+    fun saveDeleteButtonSuccess() {
+        val title = "hello"
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText(title)))
         onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(1, TimeCheckBox()))
         onView(withId(R.id.save)).perform(click())
+        onView(withId(R.id.template_recycler)).check(matches(Utils.atPosition(0, withText(title))))
+        onView(withId(R.id.template_recycler)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, click()))
+        onView(withId(R.id.delete)).perform(click())
+        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
     }
 
     @Test

@@ -29,6 +29,7 @@ class PortraitTests {
 
     @Test
     fun drawerClosedAtLaunch() {
+        //TODO drawer doesn't always work depending on resoution
         onView(withId(R.id.drawer_layout)).check(matches(isClosed(Gravity.LEFT)))
     }
 

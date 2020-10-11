@@ -64,6 +64,6 @@ class TemplateFile {
 
     @Test
     fun getName() {
-        assertEquals(templateManager.getName(), "another test")
+        assertEquals(templateManager.getName(), "test")
     }
 }

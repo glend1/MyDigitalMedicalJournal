@@ -38,8 +38,8 @@ class ListDialogTest {
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }
-        onView(withText(testVal)).inRoot(isDialog()).perform(click())
         onView(withId(DialogInputList.id)).inRoot(isDialog()).check(matches(hasChildCount(3)))
+        onView(withText(testVal)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         assertEquals(adapter.localData[0], testUuid)
     }

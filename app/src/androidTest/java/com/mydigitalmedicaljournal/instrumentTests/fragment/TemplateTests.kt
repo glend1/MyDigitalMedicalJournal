@@ -23,11 +23,12 @@ import org.junit.Test
 class TemplateTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
-    private val dt = DummyTemplates(arrayOf("templates"))
+    private lateinit var dt: DummyTemplates
     private lateinit var templateList: List<TemplateList.FileList>
 
     @Before
     fun setup() {
+        dt = DummyTemplates(arrayOf("templates"))
         templateList = dt.get().get()
         activityScenarioRule.scenario.onActivity { activity ->
             val nav = activity.findNavController(R.id.nav_host_fragment)

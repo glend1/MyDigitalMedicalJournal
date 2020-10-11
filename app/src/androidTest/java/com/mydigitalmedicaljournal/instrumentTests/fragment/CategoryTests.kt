@@ -103,6 +103,9 @@ class CategoryTests {
 
     @Test
     fun noFilesManage() {
+        file1.delete()
+        file2.delete()
+        file3.delete()
         onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickManage()))
         onView(withText(R.string.no_templates)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
@@ -113,10 +116,7 @@ class CategoryTests {
         onView(withText(testTemplate)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
-        onView(withText(testTemplate)).inRoot(isDialog()).check(matches(isNotChecked()))
-        file1.delete()
-        file2.delete()
-        file3.delete()
+        onView(withText(testTemplate)).inRoot(isDialog()).check(matches(isChecked()))
     }
 
     class ClickDelete: ViewAction {
