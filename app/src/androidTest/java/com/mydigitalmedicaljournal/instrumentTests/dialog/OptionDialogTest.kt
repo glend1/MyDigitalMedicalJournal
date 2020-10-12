@@ -21,7 +21,6 @@ class OptionDialogTest {
 
     @Test
     fun optionDialogTest() {
-        //TODO this fails sometimes, i don't know why
         val selected = R.string.manage_categories
         var dialog: OptionDialog? = null
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
