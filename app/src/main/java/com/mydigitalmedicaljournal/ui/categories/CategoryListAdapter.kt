@@ -13,11 +13,11 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 
-class CategoryListAdapter(var json: Categories, val layout: Int) : RecyclerView.Adapter<ViewHolder>() {
+class CategoryListAdapter(var json: Categories) : RecyclerView.Adapter<ViewHolder>() {
     override fun getItemCount() = json.size()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(layout, parent, false)
+        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_manage, parent, false)
         return ViewHolder(layout)
     }
 
