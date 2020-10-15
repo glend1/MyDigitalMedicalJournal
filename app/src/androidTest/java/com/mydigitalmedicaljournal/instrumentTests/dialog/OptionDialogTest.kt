@@ -28,7 +28,7 @@ class OptionDialogTest {
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }
-        onView(withId(R.id.custom)).perform(click())
+        onView(withId(R.id.custom)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.manage_categories)).inRoot(isPlatformPopup()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         assertEquals(dialog!!.getSelected(), selected)
