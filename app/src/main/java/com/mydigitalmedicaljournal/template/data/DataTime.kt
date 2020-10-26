@@ -5,7 +5,6 @@ import com.mydigitalmedicaljournal.template.TemplateEnum
 
 class DataTime: GenericData() {
     override val type = TemplateEnum.TIME
-    var timeFormat: TimeFormat? = null
 
     enum class TimeFormat(val view: Int) {
         DATE(R.id.date),DATETIME(R.id.date_time),DURATION(R.id.duration);
