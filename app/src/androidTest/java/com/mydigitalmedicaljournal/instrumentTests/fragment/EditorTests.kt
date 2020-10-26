@@ -29,6 +29,7 @@ import org.junit.Test
 
 
 class EditorTests {
+    //TODO include assertions on data entry for the template
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 

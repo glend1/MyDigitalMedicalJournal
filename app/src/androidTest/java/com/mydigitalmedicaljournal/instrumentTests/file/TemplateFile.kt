@@ -12,6 +12,7 @@ import org.junit.Test
 import java.util.*
 
 class TemplateFile {
+    //TODO include assertions on data entry for the template
     private lateinit var templateManager: TemplateManager
     private val dtf = DummyTemplateFile("793b7045-d572-4110-b4c7-9e1dcfa251f1", "test")
 

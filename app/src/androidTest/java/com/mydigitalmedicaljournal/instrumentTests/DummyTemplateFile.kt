@@ -5,6 +5,7 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
 import java.util.*
 
 class DummyTemplateFile(private val fileName: String, name: String, private val directories: Array<String> = arrayOf()) {
+    //TODO refactor this to use actual template creation
     private val filePath = FileHelper(fileName, Utils.CONTEXT, directories)
 
     init {

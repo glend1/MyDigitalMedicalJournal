@@ -4,6 +4,7 @@ import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
 
 class DummyCategories(private val fileName: String) {
+    //TODO refactor this to use actal category creation
     companion object {
         const val FILENAME = "testCategories.json"
     }
