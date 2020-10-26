@@ -7,11 +7,8 @@ import com.mydigitalmedicaljournal.template.editor.EditorName
 import com.mydigitalmedicaljournal.template.editor.EditorTime
 import java.util.*
 
-class TemplateDefinition(private val id: UUID) {
+class TemplateDefinition(private val id: UUID, var name: String? = null, var time: DataTime.TimeFormat? = null, var data: MutableList<GenericData> = mutableListOf()) {
     //TODO validate as data is added?
-    var name: String? = null
-    var time: DataTime.TimeFormat? = null
-    var data = mutableListOf<GenericData>()
 
     fun getId() : UUID {
         return id

@@ -2,25 +2,40 @@ package com.mydigitalmedicaljournal.template.file
 
 import android.content.Context
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.google.gson.JsonParser
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.model.ValidData
+import com.mydigitalmedicaljournal.template.TemplateEnum
+import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.data.GenericData
 import java.util.*
 
 class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {
-    //TODO i think the way i need to convert to and from json will be different here, i may have to loop through all of the elements and convert them individually
     private val json by lazy { Gson() }
     private var file: FileHelper = FileHelper(id.toString(), context, templateFolder)
     private var data = {
         if (file.exists()) {
-            val dataString = file.read()
-            val type = object : TypeToken<TemplateDefinition>() {}.type!!
-            json.fromJson(dataString, type)
+            parse(file.read())
         } else {
             TemplateDefinition(id)
         }
     }.invoke()
+
+    private fun parse(string: String): TemplateDefinition {
+        val parsed = JsonParser.parseString(string).asJsonObject
+        val definitions = mutableListOf<GenericData>()
+        for (obj in parsed["data"].asJsonArray) {
+            val enum = json.fromJson(obj.asJsonObject["type"], TemplateEnum::class.java)
+            definitions.add(json.fromJson(obj, enum.className))
+        }
+        return TemplateDefinition(
+            json.fromJson(parsed["id"], UUID::class.java),
+            json.fromJson(parsed["name"], String::class.java),
+            json.fromJson(parsed["time"], DataTime.TimeFormat::class.java),
+            definitions
+        )
+    }
 
     fun setData(input: TemplateDefinition) : ValidData {
         val validData = input.validate()

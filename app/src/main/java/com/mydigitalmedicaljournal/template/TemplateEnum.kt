@@ -5,8 +5,12 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.data.*
 import com.mydigitalmedicaljournal.template.editor.*
 
-enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
-    //TODO create these types
+enum class TemplateEnum(
+    val id: Int,
+    val editorLayout: Int,
+    val listName: Int,
+    val className: Class<out GenericData>
+) {
     /*TODO abstract these types
         these refer to fields
             must contain only one of the following
@@ -32,35 +36,35 @@ enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
                 sliding bar
                 drop down?
      */
-    NAME(0, R.layout.editor_name, 0) {
-        override fun createEditor(view: View): GenericEditor {
+    NAME(0, R.layout.editor_name, 0, DataName::class.java) {
+        override fun createEditor(view: View): EditorName {
             return EditorName(view)
         }
-        override fun createData(): GenericData {
+        override fun createData(): DataName {
             return DataName()
         }
     },
-    TIME(1, R.layout.editor_time_format, 0) {
-        override fun createEditor(view: View): GenericEditor {
+    TIME(1, R.layout.editor_time_format, 0, DataTime::class.java) {
+        override fun createEditor(view: View): EditorTime {
             return EditorTime(view)
         }
-        override fun createData(): GenericData {
+        override fun createData(): DataTime {
             return DataTime()
         }
     },
-    TEST(2, R.layout.editor_test1, R.string.test1) {
-        override fun createEditor(view: View): GenericEditor {
+    TEST(2, R.layout.editor_test1, R.string.test1, DataTest::class.java) {
+        override fun createEditor(view: View): EditorTest {
             return EditorTest(view)
         }
-        override fun createData(): GenericData {
+        override fun createData(): DataTest {
             return DataTest()
         }
     },
-    TEST2(3, R.layout.editor_test2, R.string.test2) {
-        override fun createEditor(view: View): GenericEditor {
+    TEST2(3, R.layout.editor_test2, R.string.test2, DataTest2::class.java) {
+        override fun createEditor(view: View): EditorTest2 {
             return EditorTest2(view)
         }
-        override fun createData(): GenericData {
+        override fun createData(): DataTest2 {
             return DataTest2()
         }
     };
@@ -85,6 +89,5 @@ enum class TemplateEnum(val id: Int, val editorLayout: Int, val listName: Int) {
         }
     }
     abstract fun createEditor(view: View) : GenericEditor
-    //TODO this returns a generic type but i need to add specific data, i think
-    abstract fun createData():  GenericData
+    abstract fun createData(): GenericData
 }
