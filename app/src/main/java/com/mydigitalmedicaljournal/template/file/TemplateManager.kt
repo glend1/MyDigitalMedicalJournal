@@ -14,13 +14,7 @@ import java.util.*
 class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {
     private val json by lazy { Gson() }
     private var file: FileHelper = FileHelper(id.toString(), context, templateFolder)
-    private var data = {
-        if (file.exists()) {
-            parse(file.read())
-        } else {
-            TemplateDefinition(id)
-        }
-    }.invoke()
+    private var data = if (file.exists()) parse(file.read()) else TemplateDefinition(id)
 
     private fun parse(string: String): TemplateDefinition {
         val parsed = JsonParser.parseString(string).asJsonObject
@@ -37,7 +31,12 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
         )
     }
 
+    fun getData(): TemplateDefinition {
+        return data
+    }
+
     fun setData(input: TemplateDefinition) : ValidData {
+        //TODO validate before getting here
         val validData = input.validate()
         if (validData.getErrors().isEmpty()) {
             data = input
@@ -45,24 +44,19 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
         }
         return validData
     }
-    fun getData(): TemplateDefinition {
-        return data
-    }
+
     private fun save() {
         file.write(json.toJson(data))
     }
-    fun getId(): UUID {
-        return getData().getId()
-    }
-    fun getName(): String {
-        return getData().name!!
-    }
+
     fun delete(cat: Categories = Categories(context)) {
-        if (cat.deleteTemplate(getId())) {
+        if (cat.deleteTemplate(data.getId())) {
             file.delete()
         }
     }
+
     fun fileExists() : Boolean {
         return file.exists()
     }
+
 }

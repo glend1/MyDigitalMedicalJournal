@@ -60,11 +60,11 @@ class TemplateFile {
 
     @Test
     fun getId() {
-        assertEquals(templateManager.getId(), UUID.fromString("793b7045-d572-4110-b4c7-9e1dcfa251f1"))
+        assertEquals(templateManager.getData().getId(), UUID.fromString("793b7045-d572-4110-b4c7-9e1dcfa251f1"))
     }
 
     @Test
     fun getName() {
-        assertEquals(templateManager.getName(), "test")
+        assertEquals(templateManager.getData().name, "test")
     }
 }

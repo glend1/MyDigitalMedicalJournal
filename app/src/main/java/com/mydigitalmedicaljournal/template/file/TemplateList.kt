@@ -21,8 +21,8 @@ class TemplateList(private val context: Context, pathArray: Array<String> = arra
                 )
             val fileList =
                 FileList(
-                    template.getName(),
-                    template.getId()
+                    template.getData().name!!,
+                    template.getData().getId()
                 )
             list.add(fileList)
         }

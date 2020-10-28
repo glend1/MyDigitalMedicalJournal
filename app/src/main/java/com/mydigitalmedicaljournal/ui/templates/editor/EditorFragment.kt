@@ -57,7 +57,7 @@ class EditorFragment : Fragment() {
             if (templateManager.fileExists()) {
                 val alert =
                     ConfirmDialog(
-                        v.context.getString(R.string.Confirm_Template, templateManager.getName()),
+                        v.context.getString(R.string.Confirm_Template, templateManager.getData().name),
                         v.context.getString(R.string.Confirm_Template_Warning),
                         v.context
                     )
