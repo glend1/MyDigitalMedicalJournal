@@ -73,7 +73,6 @@ class EditorFragment : Fragment() {
     }
 
     private fun setupSaveButton() {
-        //TODO cannot save files with "data fields" opening them breaks the code
         root.findViewById<View>(R.id.save).setOnClickListener {
             val data = adapter.localData
             val validData = templateManager.setData(data)

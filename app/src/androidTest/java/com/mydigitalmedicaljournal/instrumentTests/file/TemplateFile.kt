@@ -61,15 +61,4 @@ class TemplateFile {
     fun getData() {
         assertNotNull(templateManager.getData())
     }
-
-    //TODO new file?
-    @Test
-    fun getId() {
-        assertEquals(templateManager.getData().getId(), UUID.fromString("793b7045-d572-4110-b4c7-9e1dcfa251f1"))
-    }
-
-    @Test
-    fun getName() {
-        assertEquals(templateManager.getData().name, "test")
-    }
 }

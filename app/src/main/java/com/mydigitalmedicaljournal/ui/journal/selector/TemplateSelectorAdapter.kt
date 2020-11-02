@@ -31,7 +31,7 @@ class TemplateSelectorAdapter(private val fileList: MutableList<TemplateList.Cat
         title.text = fileList[position].name.name
         if (holder.itemViewType == 1) {
             item.setOnClickListener {
-                //TODO this links to thw wrong fragment, this is placeholder
+                //TODO this links to the wrong fragment, this is placeholder
                 val bundle = bundleOf("data" to fileList[position].name.id)
                 item.findNavController().navigate(R.id.editorFragment, bundle)
             }
