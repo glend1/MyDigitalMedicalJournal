@@ -11,7 +11,7 @@ import java.util.*
 
 class TemplateFolder {
     private lateinit var data: List<TemplateList.FileList>
-    private val dt = DummyTemplates(arrayOf(DummyTemplates.folderName))
+    private val dt = DummyTemplates()
     private lateinit var templateList: TemplateList
 
     @Before
@@ -42,23 +42,25 @@ class TemplateFolder {
 
     @Test
     fun getNested() {
-        val dc = DummyCategories(DummyCategories.FILENAME)
+        val dc = DummyCategories()
         val categories = dc.get()
         categories.setTemplate(0, mutableListOf(data[1].id))
         categories.setTemplate(1, mutableListOf(data[0].id, data[2].id))
         categories.setTemplate(2, mutableListOf(data[1].id))
         val nl = dt.get().getNestedList(DummyCategories.FILENAME)
+        dc.delete()
         assertEquals(nl[1].templates.size, 2)
     }
 
     @Test
     fun getFlat() {
-        val dc = DummyCategories(DummyCategories.FILENAME)
+        val dc = DummyCategories()
         val categories = dc.get()
         categories.setTemplate(0, mutableListOf(data[1].id))
         categories.setTemplate(1, mutableListOf(data[0].id, data[2].id))
         categories.setTemplate(2, mutableListOf(data[1].id))
         val fl = dt.get().getCategoriesAndTemplates(DummyCategories.FILENAME)
+        dc.delete()
         assertEquals(fl.size, 7)
     }
 }

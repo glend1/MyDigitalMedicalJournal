@@ -12,13 +12,7 @@ class Categories(context: Context, filename: String = "categories.json") {
     private val type = object: TypeToken<MutableList<Category>>(){}.type!!
     private var data: MutableList<Category>
 
-    //TODO i think i need more constructors here
-    class Category(var name: String) {
-        val id: UUID = UUID.randomUUID()
-        var templates = mutableListOf<UUID>()
-    }
-
-    /*class Category {
+    class Category {
         val id: UUID
         var name: String
         var templates: MutableList<UUID>
@@ -35,12 +29,7 @@ class Categories(context: Context, filename: String = "categories.json") {
             this.templates = mutableListOf()
         }
 
-        constructor(id: UUID, name: String, templates: MutableList<UUID>) {
-            this.name = name
-            this.id = id
-            this.templates = templates
-        }
-    }*/
+    }
 
     init {
         data = if (file.exists()) {
@@ -110,6 +99,10 @@ class Categories(context: Context, filename: String = "categories.json") {
         }
         save()
         return true
+    }
+
+    fun delete() {
+        file.delete()
     }
 
 }

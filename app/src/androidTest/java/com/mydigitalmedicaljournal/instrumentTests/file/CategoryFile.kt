@@ -11,7 +11,7 @@ import java.util.*
 
 class CategoryFile {
     private lateinit var categories: Categories
-    private val dc = DummyCategories(DummyCategories.FILENAME)
+    private val dc = DummyCategories()
 
     @Before
     fun setup() {

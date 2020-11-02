@@ -16,7 +16,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategories
-import com.mydigitalmedicaljournal.instrumentTests.DummyTemplateFile
+import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.not
@@ -29,19 +29,11 @@ class CategoryTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
     private val dc = DummyCategories("categories.json")
-    private val pathArray = arrayOf("templates")
-    private val testTemplate = "lmno template"
     private val testCategory = "cat"
-    private val file1 = DummyTemplateFile("68aa63ff-1e34-49fd-afbd-bffecf95685c", "abc template", pathArray)
-    private val file2 = DummyTemplateFile("b132f1ab-d50b-4f84-a87e-bfbcadf91281", testTemplate, pathArray)
-    private val file3 = DummyTemplateFile("1c57893f-7f6c-4b8a-bcd2-97ca5d4cdc09", "xyz template", pathArray)
 
     @Before
     fun setup() {
         dc.get()
-        file1.get()
-        file2.get()
-        file3.get()
         activityScenarioRule.scenario.onActivity { activity ->
             val nav = activity.findNavController(R.id.nav_host_fragment)
             nav.navigate(R.id.nav_categories)
@@ -51,9 +43,6 @@ class CategoryTests {
     @After
     fun teardown() {
         dc.delete()
-        file1.delete()
-        file2.delete()
-        file3.delete()
     }
 
     @Test
@@ -103,20 +92,20 @@ class CategoryTests {
 
     @Test
     fun noFilesManage() {
-        file1.delete()
-        file2.delete()
-        file3.delete()
         onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickManage()))
         onView(withText(R.string.no_templates)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
     @Test
     fun changeManage() {
+        val dt = DummyTemplates(arrayOf("templates"))
+        dt.get()
         onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
-        onView(withText(testTemplate)).inRoot(isDialog()).perform(click())
+        onView(withText(DummyTemplates.data[1][1])).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
-        onView(withText(testTemplate)).inRoot(isDialog()).check(matches(isChecked()))
+        onView(withText(DummyTemplates.data[1][1])).inRoot(isDialog()).check(matches(isChecked()))
+        dt.delete()
     }
 
     class ClickDelete: ViewAction {

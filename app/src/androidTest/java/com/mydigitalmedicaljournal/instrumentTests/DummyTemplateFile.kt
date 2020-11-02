@@ -1,24 +1,29 @@
 package com.mydigitalmedicaljournal.instrumentTests
 
-import com.mydigitalmedicaljournal.json.FileHelper
+import com.mydigitalmedicaljournal.template.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import java.util.*
 
-class DummyTemplateFile(private val fileName: String, name: String, private val directories: Array<String> = arrayOf()) {
-    //TODO refactor this to use actual template creation
-    private val filePath = FileHelper(fileName, Utils.CONTEXT, directories)
+class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = directory) {
+    companion object {
+        val directory: Array<String> = arrayOf("test_templates")
+    }
+    private val template = TemplateManager(Utils.CONTEXT, UUID.fromString(fileName), dir)
 
     init {
-        filePath.write("{\"data\":[],\"id\":\"${fileName}\",\"name\":\"${name}\",\"time\":\"DURATION\"}")
+        //TODO i don't like how i have to create all this data
+        template.getData().name = name
+        template.getData().time = DataTime.TimeFormat.DATE
+        template.setData(template.getData())
     }
 
     fun get(): TemplateManager {
-        return TemplateManager(Utils.CONTEXT, UUID.fromString(fileName), directories)
+        return template
     }
 
     fun delete() {
-        if (filePath.exists()) {
-            filePath.delete()
+        if (template.fileExists()) {
+            template.delete()
         }
     }
 }
