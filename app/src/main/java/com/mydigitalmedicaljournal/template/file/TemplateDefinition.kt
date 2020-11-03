@@ -23,8 +23,7 @@ class TemplateDefinition(private val id: UUID, var name: String? = null, var tim
     }
 
     private fun someData(): Boolean {
-        //TODO implement this action
-        return true
+        return data.size != 0
     }
 
     fun validate(): ValidData {
