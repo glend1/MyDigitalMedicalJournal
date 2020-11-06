@@ -30,7 +30,7 @@ class TemplateDefinition(private val id: UUID, var name: String? = null, var tim
         val validData = ValidData()
         validData.add(EditorName.ERROR, validName())
         validData.add(EditorTime.ERROR, validDate())
-        validData.add("data present", someData())
+        validData.add("no data", someData())
         return validData
     }
 

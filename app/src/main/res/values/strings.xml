@@ -52,7 +52,7 @@
     <string name="add_icon">add</string>
     <string name="test1">test1</string>
     <string name="test2">test2</string>
-    <string name="time_format">Time Format:</string>
+    <string name="time_format">Time Type:</string>
     <string name="date">Date</string>
     <string name="duration">Duration</string>
     <string name="date_time">Date/Time</string>
@@ -63,4 +63,5 @@
     <string name="error_time">Error. Please select a Time Type.</string>
     <string name="file_not_found">You cannot delete a Template before you\'ve saved it.</string>
     <string name="TemplateSelector">Template Selector</string>
+    <string name="add_fields">Error. You must add some fields</string>
 </resources>
