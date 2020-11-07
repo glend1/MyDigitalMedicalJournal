@@ -52,7 +52,7 @@ class TemplateFile {
         val data = templateManager.getData()
         data.name = null
         data.time = null
-        val valid = templateManager.setData(data)
+        val valid = templateManager.setData()
         assertEquals(valid.getErrors().size, 2)
     }
 

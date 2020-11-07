@@ -45,6 +45,8 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
         return validData
     }
 
+    fun setData() = setData(data)
+
     private fun save() {
         file.write(json.toJson(data))
     }

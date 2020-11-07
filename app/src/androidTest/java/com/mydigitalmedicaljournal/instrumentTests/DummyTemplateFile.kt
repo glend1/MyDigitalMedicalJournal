@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests
 
+import com.mydigitalmedicaljournal.template.data.DataTest
 import com.mydigitalmedicaljournal.template.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import java.util.*
@@ -12,9 +13,11 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
 
     init {
         //TODO i don't like how i have to create all this data
-        template.getData().name = name
-        template.getData().time = DataTime.TimeFormat.DATE
-        template.setData(template.getData())
+        val data = template.getData()
+        data.name = name
+        data.time = DataTime.TimeFormat.DATE
+        data.data.add(DataTest())
+        template.setData()
     }
 
     fun get(): TemplateManager {

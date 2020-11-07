@@ -48,6 +48,7 @@ class EditorTests {
         onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.error_message)))
         activityScenarioRule.scenario.onActivity(Utils.isvisible(0, R.id.error))
         activityScenarioRule.scenario.onActivity(Utils.isvisible(1, R.id.error))
+        activityScenarioRule.scenario.onActivity(Utils.isvisible(2, R.id.text))
     }
 
     @Test
@@ -55,6 +56,10 @@ class EditorTests {
         val title = "hello"
         onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText(title)))
         onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(1, TimeCheckBox()))
+        onView(withId(R.id.add)).perform(click())
+        onView(withId(R.id.custom)).perform(click())
+        onView(withText(R.string.test2)).inRoot(RootMatchers.isPlatformPopup()).perform(click())
+        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.save)).perform(click())
         onView(withId(R.id.template_recycler)).check(matches(Utils.atPosition(0, withText(title))))
         onView(withId(R.id.template_recycler)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, click()))
