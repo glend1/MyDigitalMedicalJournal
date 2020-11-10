@@ -22,6 +22,7 @@ import com.mydigitalmedicaljournal.template.data.DataTime
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 import junit.framework.TestCase.assertEquals
+import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 import org.junit.Before
 import org.junit.Rule
@@ -74,12 +75,15 @@ class EditorTests {
     }
 
     @Test
-    fun useAddButton() {
+    fun useAddButtonAndDelete() {
         onView(withId(R.id.add)).perform(click())
         onView(withId(R.id.custom)).perform(click())
         onView(withText(R.string.test2)).inRoot(RootMatchers.isPlatformPopup()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        //TODO utils might be useless
         onView(withId(R.id.template)).check(matches(Utils.atPosition(2, withText("This is type 2"))))
+        onView(allOf(withId(R.id.delete), isDescendantOfA(withId(R.id.template)))).perform(click())
+        onView(withId(R.id.template)).check(matches(hasChildCount(2)))
     }
 
     @Test

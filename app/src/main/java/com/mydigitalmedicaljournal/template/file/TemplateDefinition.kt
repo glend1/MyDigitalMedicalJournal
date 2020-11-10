@@ -34,4 +34,8 @@ class TemplateDefinition(private val id: UUID, var name: String? = null, var tim
         return validData
     }
 
+    fun delete(position: Int) {
+        data.removeAt(position)
+    }
+
 }
