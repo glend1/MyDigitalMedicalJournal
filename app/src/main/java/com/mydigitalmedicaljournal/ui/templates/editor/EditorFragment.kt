@@ -52,7 +52,7 @@ class EditorFragment : Fragment() {
     }
 
     private fun setupDeleteButton() {
-        val v = root.findViewById<View>(R.id.delete)
+        val v = root.findViewById<View>(R.id.delete_template)
         v.setOnClickListener {
             if (templateManager.fileExists()) {
                 val alert =

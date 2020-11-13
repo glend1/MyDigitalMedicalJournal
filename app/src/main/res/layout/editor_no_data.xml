@@ -12,7 +12,7 @@
         android:paddingStart="@dimen/small"
         android:paddingEnd="@dimen/small"
         android:paddingTop="@dimen/large"
-        android:text="@string/add_fields"
+        android:text="@string/error_add_fields"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/error_text" />
 

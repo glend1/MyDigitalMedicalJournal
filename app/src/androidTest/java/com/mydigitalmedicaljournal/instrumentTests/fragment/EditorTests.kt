@@ -47,9 +47,9 @@ class EditorTests {
     fun saveButtonError() {
         onView(withId(R.id.save)).perform(click())
         onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.error_message)))
-        activityScenarioRule.scenario.onActivity(Utils.isvisible(0, R.id.error))
-        activityScenarioRule.scenario.onActivity(Utils.isvisible(1, R.id.error))
-        activityScenarioRule.scenario.onActivity(Utils.isvisible(2, R.id.text))
+        onView(withText(R.string.error_name)).check(matches(isDisplayed()))
+        onView(withText(R.string.error_time)).check(matches(isDisplayed()))
+        onView(withText(R.string.error_add_fields)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -64,7 +64,7 @@ class EditorTests {
         onView(withId(R.id.save)).perform(click())
         onView(withId(R.id.template_recycler)).check(matches(Utils.atPosition(0, withText(title))))
         onView(withId(R.id.template_recycler)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, click()))
-        onView(withId(R.id.delete)).perform(click())
+        onView(withId(R.id.delete_template)).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
     }
 
@@ -88,7 +88,7 @@ class EditorTests {
 
     @Test
     fun deleteButton() {
-        onView(withId(R.id.delete)).perform(click())
+        onView(withId(R.id.delete_template)).perform(click())
         onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.file_not_found)))
     }
 

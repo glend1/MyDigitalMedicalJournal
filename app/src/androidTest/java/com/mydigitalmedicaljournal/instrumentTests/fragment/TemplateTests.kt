@@ -11,7 +11,6 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
-import com.mydigitalmedicaljournal.instrumentTests.Utils
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matchers.not
@@ -56,9 +55,9 @@ class TemplateTests {
     @Test
     fun delete() {
         onView(withId(R.id.template_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, click()))
-        onView(withId(R.id.delete)).perform(click())
+        onView(withId(R.id.delete_template)).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        onView(withId(R.id.template_recycler)).check(matches(Utils.atPosition(0, not(withText(templateList[0].name)))))
+        onView(withId(R.id.template_recycler)).check(matches(not(hasDescendant(withText(templateList[0].name)))))
     }
 
     @Test

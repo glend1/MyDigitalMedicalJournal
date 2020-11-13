@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/delete"
+            app:layout_constraintEnd_toEndOf="@id/delete_template"
             app:layout_constraintStart_toEndOf="@+id/save"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -105,7 +105,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/delete"
+            android:id="@+id/delete_template"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
