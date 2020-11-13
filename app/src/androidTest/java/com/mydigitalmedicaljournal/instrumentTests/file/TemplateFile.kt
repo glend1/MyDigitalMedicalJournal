@@ -9,7 +9,6 @@ import org.junit.Before
 import org.junit.Test
 
 class TemplateFile {
-    //TODO include assertions on data entry for the template
     private lateinit var templateManager: TemplateManager
     private lateinit var dtf: DummyTemplateFile
 

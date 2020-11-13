@@ -12,7 +12,6 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
     private val template = TemplateManager(Utils.CONTEXT, UUID.fromString(fileName), dir)
 
     init {
-        //TODO i don't like how i have to create all this data
         val data = template.getData()
         data.name = name
         data.time = DataTime.TimeFormat.DATE
