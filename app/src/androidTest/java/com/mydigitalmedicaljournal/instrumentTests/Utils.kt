@@ -15,7 +15,7 @@ class Utils {
         @JvmStatic
         val CONTEXT: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
-        fun atPosition(position: Int, itemMatcher: Matcher<View?>): Matcher<View?>? {
+        fun atPosition(position: Int, itemMatcher: Matcher<View?>): Matcher<View?> {
             return object : BoundedMatcher<View?, RecyclerView>(RecyclerView::class.java) {
                 override fun describeTo(description: Description) {
                     description.appendText("has item at position $position: ")

@@ -24,7 +24,7 @@ class EditorFragment : Fragment() {
     private lateinit var templateManager: TemplateManager
     lateinit var root: View
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setTemplate()
         root = inflater.inflate(R.layout.fragment_editor, container, false)
         initRecycler()
