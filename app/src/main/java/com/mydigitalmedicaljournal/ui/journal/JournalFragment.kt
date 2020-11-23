@@ -11,6 +11,8 @@ import com.mydigitalmedicaljournal.R
 
 class JournalFragment : Fragment() {
 
+    //TODO inputs should have a autofill for the type of input they are, category could attempt to match against categories you have already saved
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //TODO complete this fragment
         val root = inflater.inflate(R.layout.fragment_journal, container, false)
