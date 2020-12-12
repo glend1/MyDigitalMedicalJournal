@@ -76,12 +76,13 @@ class CategoryFile {
     @Test
     fun setGetDeleteTemplate() {
         val templates = mutableListOf<UUID>()
-        templates.add(UUID.fromString("68aa63ff-1e34-49fd-afbd-bffecf95685c"))
-        templates.add(UUID.fromString("b132f1ab-d50b-4f84-a87e-bfbcadf91281"))
-        templates.add(UUID.fromString("4404623c-1696-42f2-b19e-fd4ff43ce544"))
+        val delete = DummyTemplates.data[1][0]
+        templates.add(UUID.fromString(DummyTemplates.data[0][0]))
+        templates.add(UUID.fromString(delete))
+        templates.add(UUID.fromString(DummyTemplates.data[2][0]))
         categories.setTemplate(2, templates)
         assertEquals(categories.getTemplate(2).size, 3)
-        categories.deleteTemplate(UUID.fromString("68aa63ff-1e34-49fd-afbd-bffecf95685c"))
+        categories.deleteTemplate(UUID.fromString(delete))
         assertEquals(categories.getTemplate(2).size, 2)
     }
 

@@ -27,16 +27,26 @@ class TemplateFolder {
 
     @Test
     fun testSize() {
-        assertEquals(data.size, 3)
+        assertEquals(data.size, DummyTemplates.data.size)
+    }
+
+    @Test
+    fun getFileList() {
+        assertEquals(templateList.getName(UUID.fromString(DummyTemplates.data[1][0])), data[1])
+    }
+
+    @Test
+    fun sorting() {
+        assertEquals(data[3].name, DummyTemplates.data[2][1])
     }
 
     @Test
     fun getName() {
-        assertEquals(data[1].name, "last test")
+        assertEquals(data[1].name, DummyTemplates.data[1][1])
     }
 
     @Test
     fun getId() {
-        assertEquals(data[1].id, UUID.fromString("8d319e52-dd89-4ca0-979b-407a1b41c8d5"))
+        assertEquals(data[1].id, UUID.fromString(DummyTemplates.data[1][0]))
     }
 }

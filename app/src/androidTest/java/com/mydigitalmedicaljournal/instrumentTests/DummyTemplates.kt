@@ -10,6 +10,7 @@ class DummyTemplates(private val dir : Array<String> = DummyTemplateFile.directo
         val data = arrayOf(
             arrayOf("793b7045-d572-4110-b4c7-9e1dcfa251f1", "another test"),
             arrayOf("8d319e52-dd89-4ca0-979b-407a1b41c8d5", "last test"),
+            arrayOf("7a0771c2-5689-42b3-bb3d-1532d16be909", "zz test"),
             arrayOf("a866ce4a-c509-4d22-9bc3-734ca7c3d649", "this is a test")
         )
     }

@@ -62,6 +62,6 @@ class TemplateTests {
 
     @Test
     fun displayNumber() {
-        onView(withId(R.id.template_recycler)).check(matches(hasChildCount(3)))
+        onView(withId(R.id.template_recycler)).check(matches(hasChildCount(DummyTemplates.data.size)))
     }
 }
