@@ -1,10 +1,10 @@
 package com.mydigitalmedicaljournal.template.file
 
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.data.DataTime
-import com.mydigitalmedicaljournal.template.data.GenericData
-import com.mydigitalmedicaljournal.template.editor.EditorName
-import com.mydigitalmedicaljournal.template.editor.EditorTime
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.GenericData
+import com.mydigitalmedicaljournal.template.fields.editor.EditorName
+import com.mydigitalmedicaljournal.template.fields.editor.EditorTime
 import java.util.*
 
 class TemplateDefinition(private val id: UUID, var name: String? = null, var time: DataTime.TimeFormat? = null, var data: MutableList<GenericData> = mutableListOf()) {

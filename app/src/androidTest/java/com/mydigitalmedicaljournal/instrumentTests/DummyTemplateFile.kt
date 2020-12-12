@@ -1,7 +1,7 @@
 package com.mydigitalmedicaljournal.instrumentTests
 
-import com.mydigitalmedicaljournal.template.data.DataTest
-import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.DataTest
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import java.util.*
 

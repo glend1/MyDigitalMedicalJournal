@@ -1,7 +1,7 @@
 package com.mydigitalmedicaljournal.localTests
 
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

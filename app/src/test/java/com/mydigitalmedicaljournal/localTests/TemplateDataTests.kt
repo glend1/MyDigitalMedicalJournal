@@ -1,8 +1,8 @@
 package com.mydigitalmedicaljournal.localTests
 
 import com.mydigitalmedicaljournal.template.TemplateEnum
-import com.mydigitalmedicaljournal.template.data.DataName
-import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.DataName
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

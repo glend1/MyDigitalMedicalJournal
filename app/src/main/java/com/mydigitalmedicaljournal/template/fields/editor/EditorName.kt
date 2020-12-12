@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.template.editor
+package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.content.Context
 import android.view.View

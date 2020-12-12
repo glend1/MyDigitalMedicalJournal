@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.TemplateEnum
-import com.mydigitalmedicaljournal.template.data.GenericData
-import com.mydigitalmedicaljournal.template.editor.DeleteableEditor
-import com.mydigitalmedicaljournal.template.editor.GenericEditor
+import com.mydigitalmedicaljournal.template.fields.data.GenericData
+import com.mydigitalmedicaljournal.template.fields.editor.DeleteableEditor
+import com.mydigitalmedicaljournal.template.fields.editor.GenericEditor
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 

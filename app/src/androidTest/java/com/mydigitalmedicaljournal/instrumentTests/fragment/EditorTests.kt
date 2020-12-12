@@ -18,7 +18,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.Utils
-import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 import junit.framework.TestCase.assertEquals

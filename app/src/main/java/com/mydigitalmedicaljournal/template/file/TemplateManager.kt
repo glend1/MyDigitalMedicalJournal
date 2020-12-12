@@ -7,8 +7,8 @@ import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.TemplateEnum
-import com.mydigitalmedicaljournal.template.data.DataTime
-import com.mydigitalmedicaljournal.template.data.GenericData
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import java.util.*
 
 class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {

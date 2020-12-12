@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.template.data
+package com.mydigitalmedicaljournal.template.fields.data
 
 import com.mydigitalmedicaljournal.template.TemplateEnum
 

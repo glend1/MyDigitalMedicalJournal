@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.template.editor
+package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.view.View
 import android.widget.RadioButton
@@ -6,7 +6,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.data.DataTime
+import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
