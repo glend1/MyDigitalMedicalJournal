@@ -132,7 +132,7 @@ class CategoryTests {
 
     @Test
     fun displayNumber() {
-        onView(withId(R.id.category_recycler)).check(matches(hasChildCount(3)))
+        onView(withId(R.id.category_recycler)).check(matches(hasChildCount(DummyCategories.data.size)))
     }
 }
 

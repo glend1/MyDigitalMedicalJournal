@@ -1,6 +1,7 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategories
+import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
 import com.mydigitalmedicaljournal.model.Categories
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -40,17 +41,17 @@ class CategoryFile {
 
     @Test
     fun testSize() {
-        assertEquals(categories.size(), 3)
+        assertEquals(categories.size(), DummyCategories.data.size)
     }
 
     @Test
     fun testSort() {
-        assertEquals(categories.getName(1), "cat")
+        assertEquals(categories.getName(1), DummyCategories.data[1].name)
     }
 
     @Test
     fun getName() {
-        assertEquals(categories.getName(2), "dog")
+        assertEquals(categories.getName(2), DummyCategories.data[2].name)
     }
 
     @Test
@@ -70,7 +71,7 @@ class CategoryFile {
     @Test
     fun testRemove() {
         categories.remove(0)
-        assertEquals(categories.getName(0), "cat")
+        assertEquals(categories.getName(0), DummyCategories.data[1].name)
     }
 
     @Test
