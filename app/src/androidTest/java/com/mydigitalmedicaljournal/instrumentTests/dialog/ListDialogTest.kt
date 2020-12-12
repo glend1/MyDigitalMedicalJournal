@@ -9,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.file.TemplateList
+import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.DialogInputList
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
@@ -28,9 +28,9 @@ class ListDialogTest {
         val testVal = "test2"
         val testUuid = UUID.fromString("93c9ca2a-627d-495d-a67f-e6e6c38afe3b")
         val list = listOf(
-            TemplateList.FileList("test", UUID.fromString("f8145027-8a4d-4f9b-b4b5-2ebf049983e3")),
-            TemplateList.FileList(testVal, testUuid),
-            TemplateList.FileList("test3", UUID.fromString("99cb8d9a-26f1-4bd8-8959-84fba7367151"))
+            FileList("test", UUID.fromString("f8145027-8a4d-4f9b-b4b5-2ebf049983e3")),
+            FileList(testVal, testUuid),
+            FileList("test3", UUID.fromString("99cb8d9a-26f1-4bd8-8959-84fba7367151"))
         )
         val adapter = ManageCategoriesAdapter(list, mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->

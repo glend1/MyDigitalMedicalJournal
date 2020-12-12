@@ -1,17 +1,18 @@
 package com.mydigitalmedicaljournal.model
 
 import android.content.Context
+import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.template.file.TemplateList
 
 class CategoriesAndTemplatesList(context: Context, templateFolder: Array<String> = arrayOf("templates"), categoryFile: String = "categories.json") {
-    data class NestedTemplates(val category: TemplateList.FileList) { val templates = mutableListOf<TemplateList.FileList>() }
+    data class NestedTemplates(val category: FileList) { var templates = mutableListOf<FileList>() }
     private var nestedList: MutableList<NestedTemplates>
     init {
         val categories = Categories(context, categoryFile)
         val templateList = TemplateList(context, templateFolder)
         val processedCategoryList = mutableListOf<NestedTemplates>()
         categories.get().forEach { category ->
-            val nt = NestedTemplates(TemplateList.FileList(category.name, category.id))
+            val nt = NestedTemplates(FileList(category.name, category.id))
             category.templates.forEach { template ->
                 val t = templateList.getName(template)
                 if (t != null) {

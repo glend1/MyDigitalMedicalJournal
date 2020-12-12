@@ -7,10 +7,10 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.file.TemplateList
+import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
-class TemplateListAdapter(private var fileList: List<TemplateList.FileList>) : RecyclerView.Adapter<ViewHolder>() {
+class TemplateListAdapter(private var fileList: List<FileList>) : RecyclerView.Adapter<ViewHolder>() {
     override fun getItemCount() = fileList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

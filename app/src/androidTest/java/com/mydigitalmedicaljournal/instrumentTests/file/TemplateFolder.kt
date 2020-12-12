@@ -1,6 +1,7 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
+import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -9,7 +10,7 @@ import org.junit.Test
 import java.util.*
 
 class TemplateFolder {
-    private lateinit var data: List<TemplateList.FileList>
+    private lateinit var data: List<FileList>
     private val dt = DummyTemplates()
     private lateinit var templateList: TemplateList
 

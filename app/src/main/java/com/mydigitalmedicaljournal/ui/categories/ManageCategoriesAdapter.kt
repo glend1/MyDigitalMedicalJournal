@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.file.TemplateList
+import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import java.util.*
-class ManageCategoriesAdapter(private val templateList: List<TemplateList.FileList>, private var savedList: MutableList<UUID>) : RecyclerView.Adapter<ViewHolder>() {
+class ManageCategoriesAdapter(private val templateList: List<FileList>, private var savedList: MutableList<UUID>) : RecyclerView.Adapter<ViewHolder>() {
     override fun getItemCount() = templateList.size
     var localData = mutableListOf<UUID>()
 

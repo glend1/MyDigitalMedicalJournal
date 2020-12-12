@@ -11,7 +11,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
-import com.mydigitalmedicaljournal.template.file.TemplateList
+import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matchers.not
 import org.junit.After
@@ -23,7 +23,7 @@ class TemplateTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
     private lateinit var dt: DummyTemplates
-    private lateinit var templateList: List<TemplateList.FileList>
+    private lateinit var templateList: List<FileList>
 
     @Before
     fun setup() {
