@@ -1,44 +1,44 @@
 package com.mydigitalmedicaljournal.instrumentTests.file
 
-import com.mydigitalmedicaljournal.instrumentTests.DummyCategories
-import com.mydigitalmedicaljournal.instrumentTests.DummyTemplateFile
-import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
-import com.mydigitalmedicaljournal.instrumentTests.Utils
-import com.mydigitalmedicaljournal.model.Categories
+import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.instrumentTests.*
 import com.mydigitalmedicaljournal.model.CategoriesAndTemplatesList
-import com.mydigitalmedicaljournal.template.file.TemplateList
 import org.junit.After
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
 
 class TemplatesAndCategories {
-    private lateinit var data: List<TemplateList.FileList>
-    private val dt = DummyTemplates()
-    private val dc = DummyCategories()
-    private lateinit var templateList: TemplateList
-    private lateinit var categoryList: Categories
     private lateinit var ct: CategoriesAndTemplatesList
+    private var dct = DummyCategoriesAndTemplates()
 
     @Before
     fun setup() {
-        templateList = dt.get()
-        data = templateList.get()
-        categoryList = dc.get()
-        categoryList.setTemplate(0, mutableListOf(data[1].id))
-        categoryList.setTemplate(1, mutableListOf(data[0].id, data[2].id))
-        categoryList.setTemplate(2, mutableListOf(data[1].id))
+        dct.setup()
         ct = CategoriesAndTemplatesList(Utils.CONTEXT, DummyTemplateFile.directory, DummyCategories.FILENAME)
     }
 
     @After
     fun teardown() {
-        dt.delete()
-        dc.delete()
+        dct.delete()
     }
 
     @Test
     fun getFlat() {
-        Assert.assertEquals(ct.getFlatList().size, 7)
+        assertEquals(ct.getFlatList().size, 9)
+    }
+
+    @Test
+    fun uncategorized() {
+        assertEquals(ct.getFlatList()[7].name.name, Utils.CONTEXT.getString(R.string.uncategoriezed))
+        assertEquals(ct.getFlatList()[8].name.name, DummyTemplates.data[2][1])
+    }
+
+    @Test
+    fun noTemplatesForACategory() {
+        ct.getFlatList().forEach {
+            assertNotEquals(it.name.name, DummyCategories.data[3].name)
+        }
     }
 }

@@ -62,7 +62,9 @@ class CategoryListAdapter(var json: Categories) : RecyclerView.Adapter<ViewHolde
                     adapter
                 )
             listDialog.setConfirm { _, _ ->
-                json.setTemplate(position, adapter.localData)
+                //generate clicked list
+                //json.setTemplate(position, adapter.localData)
+                json.setTemplate(position, adapter.getData())
             }
             listDialog.show()
         }

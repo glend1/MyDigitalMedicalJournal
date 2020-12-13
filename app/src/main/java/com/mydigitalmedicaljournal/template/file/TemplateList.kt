@@ -23,12 +23,16 @@ class TemplateList(context: Context, pathArray: Array<String> = arrayOf("templat
                     template.getData().name!!,
                     template.getData().getId()
                 )
-            list.add(fileList)
+            data.add(fileList)
         }
-        data = list.sortedBy { it.name }
+        sort()
     }
 
-    fun get(): List<FileList> {
+    private fun sort() {
+        data = (data.sortedBy { it.name }).toMutableList()
+    }
+
+    fun get(): MutableList<FileList> {
         return data
     }
 

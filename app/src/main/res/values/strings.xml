@@ -66,4 +66,5 @@
     <string name="error_add_fields">Error. You must add some fields</string>
     <string name="filter_templates">Filter Templates:</string>
     <string name="clear_button">clear</string>
+    <string name="uncategoriezed">(Uncategorized)</string>
 </resources>

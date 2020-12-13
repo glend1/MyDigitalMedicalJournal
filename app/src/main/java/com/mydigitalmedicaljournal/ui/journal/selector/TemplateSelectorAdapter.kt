@@ -10,10 +10,8 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.CategoriesAndTemplatesList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
-class TemplateSelectorAdapter(private val categoriesAndTemplates: CategoriesAndTemplatesList) : RecyclerView.Adapter<ViewHolder>() {
-
-    private val flatList = categoriesAndTemplates.getFlatList()
-    private var filteredList = flatList
+class TemplateSelectorAdapter(private var categoriesAndTemplates: CategoriesAndTemplatesList) : RecyclerView.Adapter<ViewHolder>() {
+    private var filteredList = categoriesAndTemplates.getFlatList()
 
     override fun getItemCount() = filteredList.size
 
@@ -42,12 +40,7 @@ class TemplateSelectorAdapter(private val categoriesAndTemplates: CategoriesAndT
     }
 
     fun filterList(s: CharSequence?) {
-        if (s.isNullOrEmpty()) {
-            filteredList = flatList
-        } else {
-            //TODO filter data
-            filteredList = mutableListOf()
-        }
+        filteredList = categoriesAndTemplates.getFlatList(s)
         notifyDataSetChanged()
     }
 }
