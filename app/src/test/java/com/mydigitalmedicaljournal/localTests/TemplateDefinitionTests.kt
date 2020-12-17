@@ -25,23 +25,30 @@ class TemplateDefinitionTests {
     @Test
     fun testName() {
         val newName = "test"
-        templateDefinition.name = newName
-        assertEquals(templateDefinition.name, newName)
+        templateDefinition.setName(newName)
+        assertEquals(templateDefinition.getName(), newName)
     }
 
     @Test
     fun testTime() {
         val newTime = DataTime.TimeFormat.DATE
-        templateDefinition.time = newTime
-        assertEquals(templateDefinition.time, newTime)
+        templateDefinition.setTime(newTime)
+        assertEquals(templateDefinition.getTime(), newTime)
     }
 
     @Test
-    fun validate() {
-        templateDefinition.name = "test"
-        templateDefinition.time = DataTime.TimeFormat.DATE
+    fun passValidation() {
+        templateDefinition.setName("test")
+        templateDefinition.setTime(DataTime.TimeFormat.DATE)
         templateDefinition.data.add(DataTest())
         val errors = templateDefinition.validate().getErrors()
         assertEquals(errors.size, 0)
     }
+
+    @Test
+    fun failValidation() {
+        val errors = templateDefinition.validate().getErrors()
+        assertEquals(errors.size, 3)
+    }
+
 }

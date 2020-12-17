@@ -19,7 +19,7 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
     override fun setup(view: View, adapter: EditorAdapter) {
         et = view.findViewById(R.id.editText)
         setEvent(adapter)
-        setField(adapter.localData.name)
+        setField(adapter.localData.getName())
     }
     override fun errorHandling(view: View, validData: ValidData) {
         val test = validData.getErrors()
@@ -48,6 +48,6 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
         et.setText(text)
     }
     private fun changeData(localData: TemplateDefinition, text: String) {
-        localData.name = text
+        localData.setName(text)
     }
 }

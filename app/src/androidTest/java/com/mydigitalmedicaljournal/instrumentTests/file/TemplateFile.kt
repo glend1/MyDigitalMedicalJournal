@@ -47,15 +47,6 @@ class TemplateFile {
     }
 
     @Test
-    fun setData() {
-        val data = templateManager.getData()
-        data.name = null
-        data.time = null
-        val valid = templateManager.setData()
-        assertEquals(valid.getErrors().size, 2)
-    }
-
-    @Test
     fun getData() {
         assertNotNull(templateManager.getData())
     }

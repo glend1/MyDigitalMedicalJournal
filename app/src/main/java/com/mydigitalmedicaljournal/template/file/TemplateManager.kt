@@ -36,7 +36,6 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
     }
 
     fun setData(input: TemplateDefinition) : ValidData {
-        //TODO validate before getting here
         val validData = input.validate()
         if (validData.getErrors().isEmpty()) {
             data = input

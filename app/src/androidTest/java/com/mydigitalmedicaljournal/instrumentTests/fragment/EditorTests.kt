@@ -113,7 +113,7 @@ class EditorTests {
         activityScenarioRule.scenario.onActivity { activity ->
             val recycler = activity.findViewById<RecyclerView>(R.id.template)
             val adapter = recycler.adapter as EditorAdapter
-            assertEquals(testText, adapter.localData.name)
+            assertEquals(testText, adapter.localData.getName())
         }
     }
 
@@ -139,7 +139,7 @@ class EditorTests {
         activityScenarioRule.scenario.onActivity { activity ->
             val recycler = activity.findViewById<RecyclerView>(R.id.template)
             val adapter = recycler.adapter as EditorAdapter
-            assertEquals(DataTime.TimeFormat.DATETIME, adapter.localData.time)
+            assertEquals(DataTime.TimeFormat.DATETIME, adapter.localData.getTime())
         }
     }
 }

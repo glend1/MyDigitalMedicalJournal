@@ -30,12 +30,12 @@ class EditorTime(itemView: View) : GenericEditor(itemView) {
     private fun setEvent(adapter: EditorAdapter) {
         rg.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
             radioGroup.findViewById<RadioButton>(i).requestFocus()
-            adapter.localData.time = getData(i)
+            adapter.localData.setTime(getData(i)!!)
         }
     }
 
     private fun setData(localData: TemplateDefinition) {
-        if (localData.time != null) { rg.check(localData.time!!.view) }
+        if (localData.getTime() != null) { rg.check(localData.getTime()!!.view) }
     }
 
     private fun getData(selected: Int): DataTime.TimeFormat? {

@@ -7,9 +7,8 @@ import com.mydigitalmedicaljournal.template.fields.editor.EditorName
 import com.mydigitalmedicaljournal.template.fields.editor.EditorTime
 import java.util.*
 
-class TemplateDefinition(private val id: UUID, var name: String? = null, var time: DataTime.TimeFormat? = null, var data: MutableList<GenericData> = mutableListOf()) {
-    //TODO validate as data is added?
-
+class TemplateDefinition(private val id: UUID, private var name: String? = null, private var time: DataTime.TimeFormat? = null, var data: MutableList<GenericData> = mutableListOf()) {
+    
     fun getId() : UUID {
         return id
     }
@@ -18,13 +17,33 @@ class TemplateDefinition(private val id: UUID, var name: String? = null, var tim
         return !name.isNullOrBlank()
     }
 
+    //TODO validate data
+    fun setName(string: String) {
+        name = string
+    }
+
+    fun getName(): String? {
+        return name
+    }
+
     private fun validDate(): Boolean {
         return time != null
+    }
+
+    //TODO validate data
+    fun setTime(format : DataTime.TimeFormat) {
+        time = format
+    }
+
+    fun getTime(): DataTime.TimeFormat? {
+        return time
     }
 
     private fun someData(): Boolean {
         return data.size != 0
     }
+
+    //TODO validate data field
 
     fun validate(): ValidData {
         val validData = ValidData()
