@@ -32,7 +32,7 @@ class TemplatesAndCategories {
     @Test
     fun uncategorized() {
         assertEquals(ct.getFlatList()[7].name.name, Utils.CONTEXT.getString(R.string.uncategoriezed))
-        assertEquals(ct.getFlatList()[8].name.name, DummyTemplates.data[2][1])
+        assertEquals(ct.getFlatList()[8].name.name, DummyTemplates.data[3][1])
     }
 
     @Test
