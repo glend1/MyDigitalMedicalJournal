@@ -1,8 +1,10 @@
 package com.mydigitalmedicaljournal.model
 
 import android.content.Context
+import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.template.file.TemplateList
+import java.util.*
 
 class CategoriesAndTemplatesList(context: Context, templateFolder: Array<String> = arrayOf("templates"), categoryFile: String = "categories.json") {
     data class NestedTemplates(val category: FileList) { var templates = mutableListOf<FileList>() }
@@ -11,7 +13,7 @@ class CategoriesAndTemplatesList(context: Context, templateFolder: Array<String>
         val categories = Categories(context, categoryFile)
         val templateList = TemplateList(context, templateFolder)
         val processedCategoryList = mutableListOf<NestedTemplates>()
-        val mutableTemplates = mutableListOf<FileList>()
+        val mutableTemplates = templateList.get().toMutableList()
         categories.get().forEach { category ->
             val nt = NestedTemplates(FileList(category.name, category.id))
             category.templates.forEach { template ->
@@ -24,6 +26,11 @@ class CategoriesAndTemplatesList(context: Context, templateFolder: Array<String>
             if (nt.templates.size > 0) {
                 processedCategoryList.add(nt)
             }
+        }
+        if (mutableTemplates.size > 0) {
+            val uncategorized = NestedTemplates(FileList(context.getString(R.string.uncategoriezed), UUID.fromString("766c280b-3146-47a8-8fa8-1c8763a75ceb")))
+            uncategorized.templates = mutableTemplates
+            processedCategoryList.add(uncategorized)
         }
         nestedList = processedCategoryList
     }
