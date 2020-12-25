@@ -12,7 +12,7 @@ class EditorTest2(itemView: View) : DeleteableEditor(itemView) {
             Log.i("EVENT2", "clicked")
         }
     }
-    override fun errorHandling(view: View, validData: ValidData) {
+    override fun errorHandlingOnSave(view: View, validData: ValidData) {
         Log.i("EVENT2", "error")
     }
 }

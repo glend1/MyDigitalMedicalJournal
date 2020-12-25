@@ -13,29 +13,37 @@ import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 class EditorTime(itemView: View) : GenericEditor(itemView) {
     companion object { const val ERROR = "DATE_ERROR" }
     private lateinit var rg: RadioGroup
+    val error: TextView = itemView.findViewById(R.id.error)
     override fun setup(view: View, adapter: EditorAdapter) {
         rg = view.findViewById(R.id.time_format)
         setEvent(adapter)
-        setData(adapter.localData)
-    }
-    override fun errorHandling(view: View, validData: ValidData) {
-        val test = validData.getErrors()
-        val error = view.findViewById<TextView>(R.id.error)
-        if (test.contains(ERROR)) {
-            error.visibility = View.VISIBLE
-        } else {
-            error.visibility = View.GONE
-        }
-    }
-    private fun setEvent(adapter: EditorAdapter) {
-        rg.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
-            radioGroup.findViewById<RadioButton>(i).requestFocus()
-            adapter.localData.setTime(getData(i)!!)
+        val time = adapter.localData.time
+        if (TemplateDefinition.validDate(time)) {
+            setData(time!!.view)
         }
     }
 
-    private fun setData(localData: TemplateDefinition) {
-        if (localData.getTime() != null) { rg.check(localData.getTime()!!.view) }
+    override fun errorHandlingOnSave(view: View, validData: ValidData) {
+        showError(!validData.getErrors().contains(ERROR))
+    }
+
+    private fun showError(bool: Boolean) {
+        if (bool) {
+            error.visibility = View.GONE
+        } else {
+            error.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setEvent(adapter: EditorAdapter) {
+        rg.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
+            radioGroup.findViewById<RadioButton>(i).requestFocus()
+            adapter.localData.time = getData(i)!!
+        }
+    }
+
+    private fun setData(selected: Int) {
+        rg.check(selected)
     }
 
     private fun getData(selected: Int): DataTime.TimeFormat? {

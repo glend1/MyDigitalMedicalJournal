@@ -12,24 +12,35 @@ import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
-class EditorName(itemView: View) : GenericEditor(itemView) {
+class EditorName(val itemView: View) : GenericEditor(itemView) {
     //TODO handle pysical keyboard
     companion object { const val ERROR = "NAME_ERROR" }
     private lateinit var et: EditText
+    private lateinit var adapter: EditorAdapter
+    val error: TextView = itemView.findViewById(R.id.error)
+
     override fun setup(view: View, adapter: EditorAdapter) {
+        this.adapter = adapter
         et = view.findViewById(R.id.editText)
         setEvent(adapter)
-        setField(adapter.localData.getName())
-    }
-    override fun errorHandling(view: View, validData: ValidData) {
-        val test = validData.getErrors()
-        val error = view.findViewById<TextView>(R.id.error)
-        if (test.contains(ERROR)) {
-            error.visibility = View.VISIBLE
-        } else {
-            error.visibility = View.GONE
+        val name = adapter.localData.name
+        if (TemplateDefinition.validName(name)) {
+            setField(name!!)
         }
     }
+
+    override fun errorHandlingOnSave(view: View, validData: ValidData) {
+        showError(!validData.getErrors().contains(ERROR))
+    }
+
+    private fun showError(bool: Boolean) {
+        if (bool) {
+            error.visibility = View.GONE
+        } else {
+            error.visibility = View.VISIBLE
+        }
+    }
+
     private fun setEvent(adapter: EditorAdapter) {
         et.addTextChangedListener {
             changeData(adapter.localData, it.toString())
@@ -44,10 +55,13 @@ class EditorName(itemView: View) : GenericEditor(itemView) {
             false
         }
     }
-    private fun setField(text: String?) {
+
+    private fun setField(text: String) {
         et.setText(text)
     }
+
     private fun changeData(localData: TemplateDefinition, text: String) {
-        localData.setName(text)
+        showError(TemplateDefinition.validName(text))
+        localData.name = text
     }
 }

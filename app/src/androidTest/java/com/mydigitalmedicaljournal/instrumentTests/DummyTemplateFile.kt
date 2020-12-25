@@ -13,8 +13,8 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
 
     init {
         val data = template.getData()
-        data.setName(name)
-        data.setTime(DataTime.TimeFormat.DATE)
+        data.name = name
+        data.time = DataTime.TimeFormat.DATE
         data.data.add(DataTest())
         template.setData()
     }

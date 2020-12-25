@@ -23,6 +23,7 @@ import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 import junit.framework.TestCase.assertEquals
 import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.not
 import org.hamcrest.Matcher
 import org.junit.Before
 import org.junit.Rule
@@ -113,8 +114,17 @@ class EditorTests {
         activityScenarioRule.scenario.onActivity { activity ->
             val recycler = activity.findViewById<RecyclerView>(R.id.template)
             val adapter = recycler.adapter as EditorAdapter
-            assertEquals(testText, adapter.localData.getName())
+            assertEquals(testText, adapter.localData.name)
         }
+    }
+
+    @Test
+    fun dynamicText() {
+        val testText = "hello"
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText(testText)))
+        onView(withText(R.string.error_name)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, TypeText("")))
+        onView(withText(R.string.error_name)).check(matches(isDisplayed()))
     }
 
     class TimeCheckBox: ViewAction {
@@ -139,7 +149,7 @@ class EditorTests {
         activityScenarioRule.scenario.onActivity { activity ->
             val recycler = activity.findViewById<RecyclerView>(R.id.template)
             val adapter = recycler.adapter as EditorAdapter
-            assertEquals(DataTime.TimeFormat.DATETIME, adapter.localData.getTime())
+            assertEquals(DataTime.TimeFormat.DATETIME, adapter.localData.time)
         }
     }
 }

@@ -44,12 +44,14 @@ class TemplateTests {
     fun add() {
         onView(withId(R.id.add)).perform(click())
         onView(withId(R.id.editText)).check(matches(withText("")))
+        onView(withText(R.string.error_name)).check(matches(not(isDisplayed())))
     }
 
     @Test
     fun edit() {
         onView(withId(R.id.template_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, click()))
         onView(withId(R.id.editText)).check(matches(withText(templateList[0].name)))
+        onView(withText(R.string.error_name)).check(matches(not(isDisplayed())))
     }
 
     @Test

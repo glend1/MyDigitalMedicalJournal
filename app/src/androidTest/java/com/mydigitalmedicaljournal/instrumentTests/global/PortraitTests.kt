@@ -34,6 +34,7 @@ class PortraitTests {
 
     @Test
     fun drawerOpens() {
+        //TODO this fails sometimes
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
         onView(withId(R.id.drawer_layout)).check(matches(isOpen(Gravity.LEFT)))
     }

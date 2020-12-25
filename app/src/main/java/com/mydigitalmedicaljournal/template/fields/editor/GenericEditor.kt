@@ -7,5 +7,5 @@ import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 abstract class GenericEditor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun setup(view: View, adapter: EditorAdapter)
-    abstract fun errorHandling(view: View, validData: ValidData)
+    abstract fun errorHandlingOnSave(view: View, validData: ValidData)
 }

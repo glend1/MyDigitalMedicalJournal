@@ -37,17 +37,18 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        //TODO this seems odd
         if (getItemViewType(position) != R.layout.editor_no_data) {
             if (position < OFFSET) {
                 val editor = holder as GenericEditor
                 val view = holder.itemView
                 editor.setup(view, this)
-                editor.errorHandling(view, validData)
+                editor.errorHandlingOnSave(view, validData)
             } else {
                 val editor = holder as DeleteableEditor
                 val view = holder.itemView
                 editor.setup(view, this)
-                editor.errorHandling(view, validData)
+                editor.errorHandlingOnSave(view, validData)
                 editor.delete(delete(position))
             }
         }
