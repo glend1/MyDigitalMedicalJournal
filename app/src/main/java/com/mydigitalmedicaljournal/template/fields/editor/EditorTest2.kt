@@ -6,7 +6,7 @@ import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
 //TODO delete this
-class EditorTest2(itemView: View) : DeleteableEditor(itemView) {
+class EditorTest2(itemView: View) : GenericEditor(itemView) {
     override fun setup(view: View, adapter: EditorAdapter) {
         view.setOnClickListener {
             Log.i("EVENT2", "clicked")

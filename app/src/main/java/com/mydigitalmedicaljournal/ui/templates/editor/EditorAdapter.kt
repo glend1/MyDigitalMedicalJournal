@@ -8,7 +8,6 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.fields.data.GenericData
-import com.mydigitalmedicaljournal.template.fields.editor.DeleteableEditor
 import com.mydigitalmedicaljournal.template.fields.editor.GenericEditor
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
@@ -37,20 +36,12 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        //TODO this seems odd
         if (getItemViewType(position) != R.layout.editor_no_data) {
-            if (position < OFFSET) {
-                val editor = holder as GenericEditor
-                val view = holder.itemView
-                editor.setup(view, this)
-                editor.errorHandlingOnSave(view, validData)
-            } else {
-                val editor = holder as DeleteableEditor
-                val view = holder.itemView
-                editor.setup(view, this)
-                editor.errorHandlingOnSave(view, validData)
-                editor.delete(delete(position))
-            }
+            val editor = holder as GenericEditor
+            val view = holder.itemView
+            editor.setup(view, this)
+            editor.errorHandlingOnSave(view, validData)
+            editor.delete(delete(position))
         }
     }
 
