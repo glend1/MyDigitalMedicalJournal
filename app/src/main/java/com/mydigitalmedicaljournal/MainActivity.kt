@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var dataSource: DataSource
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNav() {
         val navSet = setOf(R.id.nav_journal)
-        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(navSet, drawerLayout)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -46,6 +47,10 @@ class MainActivity : AppCompatActivity() {
 
         val navView: NavigationView = findViewById(R.id.nav_view)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, _, _ ->
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,6 +60,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            android.R.id.home -> {
+                val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
+                drawerLayout?.open()
+            }
             R.id.action_settings -> {
                 navController.navigate(R.id.nav_settings)
             }
