@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var dataSource: DataSource
-    private lateinit var drawerLayout: DrawerLayout
+    private var drawerLayout: DrawerLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
                 drawerLayout?.open()
             }
             R.id.action_settings -> {
