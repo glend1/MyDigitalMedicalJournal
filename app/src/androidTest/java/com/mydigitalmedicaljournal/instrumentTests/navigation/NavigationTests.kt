@@ -61,7 +61,7 @@ class NavigationTests {
     @Test
     fun categories() {
         navigation.navigate(R.id.nav_categories)
-        onView(withId(R.id.category_recycler)).check(matches(isDisplayed()))
+        onView(withId(R.id.recycler)).check(matches(isDisplayed()))
     }
 
     @Test

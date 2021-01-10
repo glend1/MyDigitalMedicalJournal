@@ -11,7 +11,6 @@ import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.input.DialogInputList
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -38,7 +37,7 @@ class ListDialogTest {
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }
-        onView(withId(DialogInputList.id)).inRoot(isDialog()).check(matches(hasChildCount(3)))
+        onView(withId(R.id.recycler)).inRoot(isDialog()).check(matches(hasChildCount(3)))
         onView(withText(testVal)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         assertEquals(adapter.getData()[0], testUuid)

@@ -14,19 +14,31 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 
 class CategoryListAdapter(var json: Categories) : RecyclerView.Adapter<ViewHolder>() {
-    override fun getItemCount() = json.size()
+    private fun isEmpty(): Boolean {
+        return json.size() <= 0
+    }
+
+    override fun getItemCount() = if (isEmpty()) { 1 } else { json.size() }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (isEmpty()) { R.layout.empty_recycler } else { R.layout.list_manage }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_manage, parent, false)
+        val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return ViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val title = holder.itemView.findViewById<TextView>(R.id.text)
-        title.text = json.getName(position)
-        bindRename(holder, position)
-        bindManage(holder, position)
-        bindDelete(holder, position)
+        val item = holder.itemView
+        if (isEmpty()) {
+            item.findViewById<TextView>(R.id.message).text = item.resources.getString(R.string.no_categories)
+        } else {
+            item.findViewById<TextView>(R.id.text).text = json.getName(position)
+            bindRename(holder, position)
+            bindManage(holder, position)
+            bindDelete(holder, position)
+        }
     }
 
     private fun bindDelete(holder: ViewHolder, position: Int) {

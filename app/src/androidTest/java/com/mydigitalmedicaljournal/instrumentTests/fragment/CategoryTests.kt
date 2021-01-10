@@ -69,10 +69,10 @@ class CategoryTests {
     @Test
     fun renameDialog() {
         val newName = "rabbit"
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickRename()))
+        onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickRename()))
         onView(withText(testCategory)).inRoot(isDialog()).perform(replaceText(newName))
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        onView(withId(R.id.category_recycler)).check(matches(hasDescendant(withText(newName))))
+        onView(withId(R.id.recycler)).check(matches(hasDescendant(withText(newName))))
     }
 
     class ClickManage: ViewAction {
@@ -92,7 +92,7 @@ class CategoryTests {
 
     @Test
     fun noFilesManage() {
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickManage()))
+        onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickManage()))
         onView(withText(R.string.no_templates)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
@@ -100,10 +100,10 @@ class CategoryTests {
     fun changeManage() {
         val dt = DummyTemplates(arrayOf("templates"))
         dt.get()
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
+        onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
         onView(withText(DummyTemplates.data[1][1])).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
+        onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
         onView(withText(DummyTemplates.data[1][1])).inRoot(isDialog()).check(matches(isChecked()))
         dt.delete()
     }
@@ -125,14 +125,14 @@ class CategoryTests {
 
     @Test
     fun deleteDialog() {
-        onView(withId(R.id.category_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickDelete()))
+        onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickDelete()))
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        onView(withId(R.id.category_recycler)).check(matches(not(hasDescendant(withText(testCategory)))))
+        onView(withId(R.id.recycler)).check(matches(not(hasDescendant(withText(testCategory)))))
     }
 
     @Test
     fun displayNumber() {
-        onView(withId(R.id.category_recycler)).check(matches(hasChildCount(DummyCategories.data.size)))
+        onView(withId(R.id.recycler)).check(matches(hasChildCount(DummyCategories.data.size)))
     }
 }
 

@@ -11,20 +11,32 @@ import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 
 class TemplateListAdapter(private var fileList: List<FileList>) : RecyclerView.Adapter<ViewHolder>() {
-    override fun getItemCount() = fileList.size
+    private fun isEmpty(): Boolean {
+        return fileList.isEmpty()
+    }
+
+    override fun getItemCount() = if (isEmpty()) { 1 } else { fileList.size }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (isEmpty()) { R.layout.empty_recycler } else { R.layout.list_item }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return ViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = holder.itemView
-        val title = item.findViewById<TextView>(R.id.text)
-        title.text = fileList[position].name
-        item.setOnClickListener {
-            val bundle = bundleOf("data" to fileList[position].id)
-            item.findNavController().navigate(R.id.editorFragment, bundle)
+        if (isEmpty()) {
+            item.findViewById<TextView>(R.id.message).text = item.resources.getString(R.string.no_templates)
+        } else {
+            val title = item.findViewById<TextView>(R.id.text)
+            title.text = fileList[position].name
+            item.setOnClickListener {
+                val bundle = bundleOf("data" to fileList[position].id)
+                item.findNavController().navigate(R.id.editorFragment, bundle)
+            }
         }
     }
 }

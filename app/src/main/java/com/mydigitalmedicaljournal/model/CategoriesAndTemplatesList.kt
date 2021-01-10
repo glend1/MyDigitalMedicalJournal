@@ -9,34 +9,47 @@ import java.util.*
 class CategoriesAndTemplatesList(context: Context, templateFolder: Array<String> = arrayOf("templates"), categoryFile: String = "categories.json") {
     data class NestedTemplates(val category: FileList) { var templates = mutableListOf<FileList>() }
     private var nestedList: MutableList<NestedTemplates>
+    private var noTemplates = false
     init {
-        val categories = Categories(context, categoryFile)
         val templateList = TemplateList(context, templateFolder)
         val processedCategoryList = mutableListOf<NestedTemplates>()
-        val mutableTemplates = templateList.get().toMutableList()
-        categories.get().forEach { category ->
-            val nt = NestedTemplates(FileList(category.name, category.id))
-            category.templates.forEach { template ->
-                val t = templateList.getName(template)
-                if (t != null) {
-                    nt.templates.add(t)
-                    mutableTemplates.remove(t)
+        if (templateList.get().size > 0) {
+            val categories = Categories(context, categoryFile)
+            val mutableTemplates = templateList.get().toMutableList()
+            categories.get().forEach { category ->
+                val nt = NestedTemplates(FileList(category.name, category.id))
+                category.templates.forEach { template ->
+                    val t = templateList.getName(template)
+                    if (t != null) {
+                        nt.templates.add(t)
+                        mutableTemplates.remove(t)
+                    }
+                }
+                if (nt.templates.size > 0) {
+                    processedCategoryList.add(nt)
                 }
             }
-            if (nt.templates.size > 0) {
-                processedCategoryList.add(nt)
+            if (mutableTemplates.size > 0) {
+                val uncategorized = NestedTemplates(
+                    FileList(
+                        context.getString(R.string.uncategoriezed),
+                        UUID.fromString("766c280b-3146-47a8-8fa8-1c8763a75ceb")
+                    )
+                )
+                uncategorized.templates = mutableTemplates
+                processedCategoryList.add(uncategorized)
             }
+        } else {
+            noTemplates = true
         }
-        if (mutableTemplates.size > 0) {
-            val uncategorized = NestedTemplates(FileList(context.getString(R.string.uncategoriezed), UUID.fromString("766c280b-3146-47a8-8fa8-1c8763a75ceb")))
-            uncategorized.templates = mutableTemplates
-            processedCategoryList.add(uncategorized)
-        }
-        nestedList = processedCategoryList
+            nestedList = processedCategoryList
     }
 
     class CategoriesTemplate(val name: FileList, val type: CategoriesTemplateType)
-    enum class CategoriesTemplateType { CATEGORY, TEMPLATE }
+
+    fun noTemplates(): Boolean {
+        return noTemplates
+    }
 
     fun getFlatList(chars: CharSequence? = null): MutableList<CategoriesTemplate> {
         return flatten(filter(chars))

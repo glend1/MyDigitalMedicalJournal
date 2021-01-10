@@ -57,7 +57,9 @@
     <string name="duration">Duration</string>
     <string name="date_time">Date/Time</string>
     <string name="add_field_text">Please Select a new Type of Field</string>
-    <string name="no_templates">No Templates found, Please add at least one.</string>
+    <string name="no_templates">No Templates, Please add at least one.</string>
+    <string name="no_categories">No Categories, Please add at least one.</string>
+    <string name="no_templates_filtered">Template filter returned no results</string>
     <string name="error_message">Errors found. Please correct those before retrying</string>
     <string name="error_name">Error. Please enter a valid name.</string>
     <string name="error_time">Error. Please select a Time Type.</string>

@@ -21,7 +21,7 @@ class ManageCategoriesFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_categories, container, false)
         val categories = Categories(requireContext())
         val viewAdapter = CategoryListAdapter(categories)
-        val templateList = root.findViewById<RecyclerView>(R.id.category_recycler)
+        val templateList = root.findViewById<RecyclerView>(R.id.recycler)
         val itemDecoration = CustomDivider(requireContext())
         templateList.addItemDecoration(itemDecoration)
         templateList.adapter = viewAdapter
@@ -37,7 +37,6 @@ class ManageCategoriesFragment : Fragment() {
                 viewAdapter.json.add(Categories.Category(add.getText()))
                 viewAdapter.notifyDataSetChanged()
             }
-            viewAdapter.notifyDataSetChanged()
             add.show()
         }
         return root
