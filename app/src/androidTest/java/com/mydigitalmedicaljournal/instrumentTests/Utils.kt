@@ -47,8 +47,7 @@ class Utils {
 
                 override fun matchesSafely(view: View?): Boolean {
                     try {
-                        //TODO refactor this to use code that isn't depreciated
-                        val resourcesDrawable = view?.resources?.getDrawable(resourceId)
+                        val resourcesDrawable = view?.resources?.getDrawable(resourceId, null)
                         if (view is ImageView) {
                             val imageView: ImageView = view
                             return if (imageView.drawable == null) {
