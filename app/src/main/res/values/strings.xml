@@ -65,7 +65,6 @@
     <string name="error_time">Error. Please select a Time Type.</string>
     <string name="file_not_found">You cannot delete a Template before you\'ve saved it.</string>
     <string name="TemplateSelector">Template Selector</string>
-    <string name="error_add_fields">Error. You must add some fields</string>
     <string name="filter_templates">Filter Templates:</string>
     <string name="clear_button">clear</string>
     <string name="uncategoriezed">(Uncategorized)</string>

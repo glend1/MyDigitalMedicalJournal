@@ -13,17 +13,8 @@ enum class TemplateEnum(
 ) {
     /*TODO abstract these types
         these refer to fields
-            must contain only one of the following
-                date
-                date/time
-                duration
-                    this logic should be added to the parent view
-            must contain only one
-                save button
-                    this logic should be added to the parent view
-            must contain only one
-                name
             optionally can contain one or many of the following
+                no field is event logging
                 radio group [multi]
                 check box [multi]
                 boolean
@@ -35,6 +26,7 @@ enum class TemplateEnum(
                 small text
                 sliding bar
                 drop down?
+         default values
      */
     NAME(0, R.layout.editor_name, 0, DataName::class.java) {
         override fun createEditor(view: View): EditorName {

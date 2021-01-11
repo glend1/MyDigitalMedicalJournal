@@ -49,7 +49,6 @@ class EditorTests {
         onView(withId(com.google.android.material.R.id.snackbar_text)).check(matches(withText(R.string.error_message)))
         onView(withText(R.string.error_name)).check(matches(isDisplayed()))
         onView(withText(R.string.error_time)).check(matches(isDisplayed()))
-        onView(withText(R.string.error_add_fields)).check(matches(isDisplayed()))
     }
 
     @Test

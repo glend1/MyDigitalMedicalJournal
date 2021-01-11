@@ -31,17 +31,12 @@ class TemplateDefinition(private val id: UUID, var name: String? = null, var tim
         return validDate(time)
     }
 
-    private fun someData(): Boolean {
-        return data.size != 0
-    }
-
     //TODO validate data field
 
     fun validate(): ValidData {
         val validData = ValidData()
         validData.add(EditorName.ERROR, validName())
         validData.add(EditorTime.ERROR, validDate())
-        validData.add("no data", someData())
         return validData
     }
 
