@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.localTests
 
-import com.mydigitalmedicaljournal.template.fields.data.DataTest
+import com.mydigitalmedicaljournal.template.fields.data.DataSimple
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import org.junit.Assert.assertEquals
@@ -40,7 +40,7 @@ class TemplateDefinitionTests {
     fun passValidation() {
         templateDefinition.name = "test"
         templateDefinition.time = DataTime.TimeFormat.DATE
-        templateDefinition.data.add(DataTest())
+        templateDefinition.data.add(DataSimple())
         val errors = templateDefinition.validate().getErrors()
         assertEquals(errors.size, 0)
     }

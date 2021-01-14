@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- TODO delete this -->
+    <!-- TODO placeholder xml -->
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/large"
-        android:text="This is type 1"
+        android:text="@string/rating"
         android:textSize="@dimen/title_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

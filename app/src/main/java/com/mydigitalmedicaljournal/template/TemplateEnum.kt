@@ -11,23 +11,8 @@ enum class TemplateEnum(
     val listName: Int,
     val className: Class<out GenericData>
 ) {
-    /*TODO abstract these types
-        these refer to fields
-            optionally can contain one or many of the following
-                no field is event logging
-                radio group [multi]
-                check box [multi]
-                boolean
-                big text
-                integer
-                    need more details here measurements/count
-                image map
-                    need more details here
-                small text
-                sliding bar
-                drop down?
-         default values
-     */
+    //TODO default values
+    //TODO no fields are for event logging
     NAME(0, R.layout.editor_name, 0, DataName::class.java) {
         override fun createEditor(view: View): EditorName {
             return EditorName(view)
@@ -44,20 +29,77 @@ enum class TemplateEnum(
             return DataTime()
         }
     },
-    TEST(2, R.layout.editor_test1, R.string.test1, DataTest::class.java) {
-        override fun createEditor(view: View): EditorTest {
-            return EditorTest(view)
+    //TODO SIMPLE: boolean
+    SIMPLE(2, R.layout.editor_simple, R.string.simple, DataSimple::class.java) {
+        override fun createEditor(view: View): EditorSimple {
+            return EditorSimple(view)
         }
-        override fun createData(): DataTest {
-            return DataTest()
+        override fun createData(): DataSimple {
+            return DataSimple()
         }
     },
-    TEST2(3, R.layout.editor_test2, R.string.test2, DataTest2::class.java) {
-        override fun createEditor(view: View): EditorTest2 {
-            return EditorTest2(view)
+    //TODO CHECK: check box [multi]
+    CHECK(3, R.layout.editor_check, R.string.check, DataCheck::class.java) {
+        override fun createEditor(view: View): EditorCheck {
+            return EditorCheck(view)
         }
-        override fun createData(): DataTest2 {
-            return DataTest2()
+
+        override fun createData(): DataCheck {
+            return DataCheck()
+        }
+    },
+    //TODO RADIO: radio group [multi]
+    RADIO(4, R.layout.editor_radio, R.string.radio, DataRadio::class.java) {
+        override fun createEditor(view: View): EditorRadio {
+            return EditorRadio(view)
+        }
+        override fun createData(): DataRadio {
+            return DataRadio()
+        }
+    },
+    //TODO DESCRIPTION: big text
+    DESCRIPTION(5, R.layout.editor_description, R.string.description, DataDescription::class.java) {
+        override fun createEditor(view: View): EditorDescription {
+            return EditorDescription(view)
+        }
+        override fun createData(): DataDescription {
+            return DataDescription()
+        }
+    },
+    //TODO TEXT: small text
+    TEXT(6, R.layout.editor_text, R.string.text, DataText::class.java) {
+        override fun createEditor(view: View): EditorText {
+            return EditorText(view)
+        }
+        override fun createData(): DataText {
+            return DataText()
+        }
+    },
+    //TODO RATING: sliding bar
+    RATING(7, R.layout.editor_rating, R.string.rating, DataRating::class.java) {
+        override fun createEditor(view: View): EditorRating {
+            return EditorRating(view)
+        }
+        override fun createData(): DataRating {
+            return DataRating()
+        }
+    },
+    //TODO VALUE: integer [need more details here measurements/count]
+    VALUE(8, R.layout.editor_value, R.string.value, DataValue::class.java) {
+        override fun createEditor(view: View): EditorValue {
+            return EditorValue(view)
+        }
+        override fun createData(): DataValue {
+            return DataValue()
+        }
+    },
+    //TODO IMAGE: image map [need more details here]
+    IMAGE(9, R.layout.editor_image, R.string.image, DataImage::class.java) {
+        override fun createEditor(view: View): EditorImage {
+            return EditorImage(view)
+        }
+        override fun createData(): DataImage {
+            return DataImage()
         }
     };
     companion object {

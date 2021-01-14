@@ -5,8 +5,7 @@ import android.view.View
 import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
 
-//TODO delete this
-class EditorTest(itemView: View): GenericEditor(itemView) {
+class EditorText(itemView: View): GenericEditor(itemView) {
     override fun setup(view: View, adapter: EditorAdapter) {
         view.setOnClickListener {
             Log.i("EVENT1", "clicked")

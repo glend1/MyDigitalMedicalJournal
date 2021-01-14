@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests
 
-import com.mydigitalmedicaljournal.template.fields.data.DataTest
+import com.mydigitalmedicaljournal.template.fields.data.DataSimple
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import java.util.*
@@ -15,7 +15,7 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
         val data = template.getData()
         data.name = name
         data.time = DataTime.TimeFormat.DATE
-        data.data.add(DataTest())
+        data.data.add(DataSimple())
         template.setData()
     }
 
