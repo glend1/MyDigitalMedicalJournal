@@ -5,49 +5,56 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/label"
+        android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:labelFor="@id/editText"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="true"
         android:padding="@dimen/medium"
         android:text="@string/time_format"
-        app:layout_constraintBottom_toTopOf="@id/error"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/time_format"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/label"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingStart="@dimen/large"
+        android:paddingEnd="@dimen/large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question">
 
 
         <RadioButton
             android:id="@+id/date"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/title_text"
+            android:layout_weight="1"
             android:padding="@dimen/medium"
-            android:text="@string/date" />
+            android:text="@string/date"
+            android:textSize="@dimen/title_text" />
 
         <RadioButton
             android:id="@+id/date_time"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/title_text"
+            android:layout_weight="1"
             android:padding="@dimen/medium"
-            android:text="@string/date_time" />
+            android:text="@string/date_time"
+            android:textSize="@dimen/title_text" />
 
         <RadioButton
             android:id="@+id/duration"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/title_text"
+            android:layout_weight="1"
             android:padding="@dimen/medium"
-            android:text="@string/duration" />
+            android:text="@string/duration"
+            android:textSize="@dimen/title_text" />
     </RadioGroup>
 
     <TextView

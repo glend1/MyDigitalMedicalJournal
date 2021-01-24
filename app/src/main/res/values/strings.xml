@@ -47,10 +47,10 @@
     <string name="Template_editor">Template Editor</string>
     <string name="save">Save</string>
     <string name="save_icon">save icon</string>
-    <string name="name_label">Name:</string>
+    <string name="name_label">Name</string>
     <string name="add_field">Add field</string>
     <string name="add_icon">add</string>
-    <string name="time_format">Time Type:</string>
+    <string name="time_format">Time Type</string>
     <string name="date">Date</string>
     <string name="duration">Duration</string>
     <string name="date_time">Date/Time</string>
@@ -72,6 +72,17 @@
     <string name="description">Large Text</string>
     <string name="text">Small Text</string>
     <string name="rating">Slider</string>
-    <string name="value">Value</string>
+    <string name="value">Value: </string>
     <string name="image">Image Map</string>
+    <string name="question">Question:</string>
+    <string name="min">Minimum:</string>
+    <string name="maximum">Maximum:</string>
+    <string name="error_min">You must enter a Minimum value</string>
+    <string name="error_max">You must enter a Maxiumum value</string>
+    <string name="error_min_max">Minimum and Maximum are not a valid Range</string>
+    <string name="add_label">Add Optional Label</string>
+    <string name="label">Label: </string>
+    <string name="unit">Unit:</string>
+    <string name="add_radio">Add Radio Button</string>
+    <string name="add_check">Add Checkbox</string>
 </resources>
