@@ -96,11 +96,11 @@ class EditorTests {
         }
 
         override fun getConstraints(): Matcher<View> {
-            return withId(R.id.editText)
+            return withId(R.id.nameEditText)
         }
 
         override fun perform(uiController: UiController?, view: View?) {
-            view!!.findViewById<EditText>(R.id.editText).setText(text)
+            view!!.findViewById<EditText>(R.id.nameEditText).setText(text)
         }
 
     }

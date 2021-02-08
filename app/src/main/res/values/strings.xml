@@ -73,6 +73,7 @@
     <string name="text">Small Text</string>
     <string name="rating">Slider</string>
     <string name="value">Value: </string>
+    <string name="value_label">Value</string>
     <string name="image">Image Map</string>
     <string name="question">Question:</string>
     <string name="min">Minimum:</string>
@@ -85,4 +86,5 @@
     <string name="unit">Unit:</string>
     <string name="add_radio">Add Radio Button</string>
     <string name="add_check">Add Checkbox</string>
+    <string name="error_question">Please write a question.</string>
 </resources>

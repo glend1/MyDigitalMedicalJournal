@@ -21,7 +21,7 @@ class EditorName(val itemView: View) : GenericEditor(itemView) {
 
     override fun setup(view: View, adapter: EditorAdapter) {
         this.adapter = adapter
-        et = view.findViewById(R.id.editText)
+        et = view.findViewById(R.id.nameEditText)
         setEvent(adapter)
         val name = adapter.localData.name
         if (TemplateDefinition.validName(name)) {

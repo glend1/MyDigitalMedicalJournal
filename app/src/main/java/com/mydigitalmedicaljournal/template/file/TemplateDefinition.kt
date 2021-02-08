@@ -44,4 +44,20 @@ class TemplateDefinition(private val id: UUID, var name: String? = null, var tim
         data.removeAt(position)
     }
 
+    fun moveDown(position: Int) {
+        val temp = data[position]
+        delete(position)
+        data.add(position+1, temp)
+    }
+
+    fun moveUp(position: Int) {
+        val temp = data[position]
+        delete(position)
+        data.add(position-1, temp)
+    }
+
+    fun size(): Int {
+        return data.size
+    }
+
 }

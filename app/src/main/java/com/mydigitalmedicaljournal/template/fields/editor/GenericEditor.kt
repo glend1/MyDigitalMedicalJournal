@@ -11,6 +11,12 @@ abstract class GenericEditor(itemView: View) : RecyclerView.ViewHolder(itemView)
     abstract fun setup(view: View, adapter: EditorAdapter)
     abstract fun errorHandlingOnSave(view: View, validData: ValidData)
     fun delete(listener: View.OnClickListener) {
-        itemView.findViewById<ImageView>(R.id.delete)?.setOnClickListener(listener)
+        itemView.findViewById<ImageView>(R.id.delete).setOnClickListener(listener)
+    }
+    fun moveUp(listener: View.OnClickListener) {
+        itemView.findViewById<ImageView>(R.id.up)?.setOnClickListener(listener)
+    }
+    fun moveDown(listener: View.OnClickListener) {
+        itemView.findViewById<ImageView>(R.id.down)?.setOnClickListener(listener)
     }
 }

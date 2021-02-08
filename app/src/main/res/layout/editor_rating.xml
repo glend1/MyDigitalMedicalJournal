@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/small"
-            android:text="@string/error_name"
+            android:text="@string/error_question"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/error_text"
             android:visibility="gone"
