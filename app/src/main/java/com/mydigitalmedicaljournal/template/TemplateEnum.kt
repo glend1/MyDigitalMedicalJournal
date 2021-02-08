@@ -85,7 +85,7 @@ enum class TemplateEnum(
         }
     },
     //TODO VALUE: integer [need more details here measurements/count]
-    VALUE(8, R.layout.editor_value, R.string.value, DataValue::class.java) {
+    VALUE(8, R.layout.editor_value, R.string.value_label, DataValue::class.java) {
         override fun createEditor(view: View): EditorValue {
             return EditorValue(view)
         }
