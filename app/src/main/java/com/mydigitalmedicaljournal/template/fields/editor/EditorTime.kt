@@ -1,52 +1,48 @@
 package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.view.View
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
-import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
+import com.mydigitalmedicaljournal.template.file.TemplateManager
 
-class EditorTime(itemView: View) : GenericEditor(itemView) {
-    companion object { const val ERROR = "DATE_ERROR" }
-    private lateinit var rg: RadioGroup
-    val error: TextView = itemView.findViewById(R.id.error)
-    override fun setup(view: View, adapter: EditorAdapter) {
-        rg = view.findViewById(R.id.time_format)
-        setEvent(adapter)
-        val time = adapter.localData.time
-        if (TemplateDefinition.validDate(time)) {
-            setData(time!!.view)
+class EditorTime(view: View, template: TemplateManager, position: Int?): GenericEditor(view, template, position) {
+    private var rg: RadioGroup = view.findViewById(R.id.time_format)
+    val error: TextView = view.findViewById(R.id.error)
+    private val data = template.getDate()
+    init {
+        selectRadio(data.time)
+        setSaveListener {
+            setData()
+            val errorRes = data.validate()
+            if (errorRes.isEmpty()) {
+                error.visibility = View.GONE
+                template.setData()
+                view.findNavController().navigateUp()
+            } else {
+                val errorText = view.context.resources.getText(errorRes[DataTime.TIME_FIELD]!!)
+                Snackbar.make(view, errorText, Snackbar.LENGTH_LONG).show()
+                error.text = errorText
+                error.visibility = View.VISIBLE
+            }
         }
     }
 
-    override fun errorHandlingOnSave(view: View, validData: ValidData) {
-        showError(!validData.getErrors().contains(ERROR))
-    }
-
-    private fun showError(bool: Boolean) {
-        if (bool) {
-            error.visibility = View.GONE
-        } else {
-            error.visibility = View.VISIBLE
+    private fun selectRadio(selected: DataTime.TimeFormat?) {
+        if (selected != null) {
+            rg.check(selected.view)
         }
     }
 
-    private fun setEvent(adapter: EditorAdapter) {
-        rg.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
-            radioGroup.findViewById<RadioButton>(i).requestFocus()
-            adapter.localData.time = getData(i)!!
-        }
+    private fun getRadio(): DataTime.TimeFormat? {
+        return DataTime.TimeFormat.getType(rg.checkedRadioButtonId)
     }
 
-    private fun setData(selected: Int) {
-        rg.check(selected)
+    private fun setData() {
+        data.time = getRadio()
     }
 
-    private fun getData(selected: Int): DataTime.TimeFormat? {
-        return DataTime.TimeFormat.getType(selected)
-    }
 }

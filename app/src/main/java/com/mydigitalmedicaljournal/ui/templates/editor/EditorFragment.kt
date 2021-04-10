@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
+import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
@@ -45,8 +48,11 @@ class EditorFragment : Fragment() {
                     requireContext()
                 )
             selectType.setConfirm { _, _ ->
-                val template = TemplateEnum.nameList[selectType.getSelected()]!!.createData()
-                adapter.add(template)
+                //TODO what is this commentted out for?
+                /*val template = TemplateEnum.nameList[selectType.getSelected()]!!.createData()
+                adapter.add(template)*/
+                val bundle = bundleOf("type" to TemplateEnum.nameList[selectType.getSelected()]!!, "filename" to templateManager.getId())
+                root.findNavController().navigate(R.id.fieldEditorFragment, bundle)
             }
             selectType.show()
         }
@@ -58,7 +64,7 @@ class EditorFragment : Fragment() {
             if (templateManager.fileExists()) {
                 val alert =
                     ConfirmDialog(
-                        v.context.getString(R.string.Confirm_Template, templateManager.getData().name),
+                        v.context.getString(R.string.Confirm_Template, (templateManager.getData().getData(0) as DataName).name),
                         v.context.getString(R.string.Confirm_Template_Warning),
                         v.context
                     )
@@ -75,13 +81,13 @@ class EditorFragment : Fragment() {
 
     private fun setupSaveButton() {
         root.findViewById<View>(R.id.save).setOnClickListener {
-            val data = adapter.localData
+            val data = adapter.templateManager.getData()
             val validData = templateManager.setData(data)
-            if (validData.getErrors().isEmpty()) {
+            if (validData.isEmpty()) {
                 navigateUp()
             } else {
                 Snackbar.make(root, getString(R.string.error_message), Snackbar.LENGTH_LONG).show()
-                adapter.validate(validData)
+                //adapter.validate(validData)
             }
         }
     }
@@ -95,7 +101,7 @@ class EditorFragment : Fragment() {
         val itemDecoration = CustomDivider(requireContext())
         recycler.addItemDecoration(itemDecoration)
         adapter = EditorAdapter(
-            templateManager.getData()
+            templateManager
         )
         recycler.adapter = adapter
     }

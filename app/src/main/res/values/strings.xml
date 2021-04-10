@@ -47,7 +47,7 @@
     <string name="Template_editor">Template Editor</string>
     <string name="save">Save</string>
     <string name="save_icon">save icon</string>
-    <string name="name_label">Name</string>
+    <string name="name">Name</string>
     <string name="add_field">Add field</string>
     <string name="add_icon">add</string>
     <string name="time_format">Time Type</string>
@@ -87,4 +87,12 @@
     <string name="add_radio">Add Radio Button</string>
     <string name="add_check">Add Checkbox</string>
     <string name="error_question">Please write a question.</string>
+    <string name="NAME_LENGTH">Error. Name field must not have more than 25 characters</string>
+    <string name="NAME_SYMBOLS">Error. Name field must not have special characters</string>
+    <string name="TIME_NOT_SET">Error. Time field is not set</string>
+    <string name="NAME_NOT_FOUND">Error. Name field is not set</string>
+    <string name="name_field">NAME_FIELD</string>
+    <string name="date_field">DATE_FIELD</string>
+    <string name="new_template">New Template</string>
+    <string name="new_template_instruction">Please enter a name and recording date format</string>
 </resources>

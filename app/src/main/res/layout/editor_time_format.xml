@@ -2,71 +2,126 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="wrap_content"
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@id/save"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:labelFor="@id/editText"
+            android:textColor="@color/colorAccent"
+            android:textAllCaps="true"
+            android:padding="@dimen/medium"
+            android:text="@string/time_format"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/time_format"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/large"
+            android:paddingEnd="@dimen/large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question">
+
+
+            <RadioButton
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/medium"
+                android:text="@string/date"
+                android:textSize="@dimen/title_text" />
+
+            <RadioButton
+                android:id="@+id/date_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/medium"
+                android:text="@string/date_time"
+                android:textSize="@dimen/title_text" />
+
+            <RadioButton
+                android:id="@+id/duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/medium"
+                android:text="@string/duration"
+                android:textSize="@dimen/title_text" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/small"
+            android:text="@string/error_time"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/error_text"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/time_format" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/save"
+    android:layout_width="match_parent"
+    android:background="@color/colorAccent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:labelFor="@id/editText"
-        android:textColor="@color/colorAccent"
-        android:textAllCaps="true"
-        android:padding="@dimen/medium"
-        android:text="@string/time_format"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/time_format"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/large"
-        android:paddingEnd="@dimen/large"
+        android:paddingTop="@dimen/large"
+        android:paddingBottom="@dimen/large"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question">
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <RadioButton
-            android:id="@+id/date"
-            android:layout_width="0dp"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/medium"
-            android:text="@string/date"
-            android:textSize="@dimen/title_text" />
+            android:contentDescription="@string/save_icon"
+            app:srcCompat="@drawable/ic_save"
+            app:tint="@color/textAlt" />
 
-        <RadioButton
-            android:id="@+id/date_time"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/medium"
-            android:text="@string/date_time"
-            android:textSize="@dimen/title_text" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/small"
+            android:text="@string/save"
+            android:textColor="@color/textAlt" />
 
-        <RadioButton
-            android:id="@+id/duration"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/medium"
-            android:text="@string/duration"
-            android:textSize="@dimen/title_text" />
-    </RadioGroup>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/error"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/small"
-        android:text="@string/error_time"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/error_text"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/time_format" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

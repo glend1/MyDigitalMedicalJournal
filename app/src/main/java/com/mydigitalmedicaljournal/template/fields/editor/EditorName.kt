@@ -1,67 +1,35 @@
 package com.mydigitalmedicaljournal.template.fields.editor
 
-import android.content.Context
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
-import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
+import com.mydigitalmedicaljournal.template.fields.data.DataName
+import com.mydigitalmedicaljournal.template.file.TemplateManager
 
-class EditorName(val itemView: View) : GenericEditor(itemView) {
+class EditorName(view: View, template: TemplateManager, position: Int?): GenericEditor(view, template, position) {
     //TODO handle pysical keyboard
-    companion object { const val ERROR = "NAME_ERROR" }
-    private lateinit var et: EditText
-    private lateinit var adapter: EditorAdapter
-    val error: TextView = itemView.findViewById(R.id.error)
+    private val et: EditText = view.findViewById(R.id.nameEditText)
+    val error: TextView = view.findViewById(R.id.error)
+    private val data = template.getName()
 
-    override fun setup(view: View, adapter: EditorAdapter) {
-        this.adapter = adapter
-        et = view.findViewById(R.id.nameEditText)
-        setEvent(adapter)
-        val name = adapter.localData.name
-        if (TemplateDefinition.validName(name)) {
-            setField(name!!)
-        }
-    }
-
-    override fun errorHandlingOnSave(view: View, validData: ValidData) {
-        showError(!validData.getErrors().contains(ERROR))
-    }
-
-    private fun showError(bool: Boolean) {
-        if (bool) {
-            error.visibility = View.GONE
-        } else {
-            error.visibility = View.VISIBLE
-        }
-    }
-
-    private fun setEvent(adapter: EditorAdapter) {
-        et.addTextChangedListener {
-            changeData(adapter.localData, it.toString())
-        }
-        et.setOnEditorActionListener { v, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                et.clearFocus()
-                val imm =
-                    v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
+    init {
+        et.setText(data.name)
+        setSaveListener {
+            data.name = et.text.toString()
+            val errorRes = data.validate()
+            if (errorRes.isEmpty()) {
+                error.visibility = View.GONE
+                template.setData()
+                view.findNavController().navigateUp()
+            } else {
+                val errorText = view.context.resources.getText(errorRes[DataName.NAME_FIELD]!!)
+                Snackbar.make(view, errorText, Snackbar.LENGTH_LONG).show()
+                error.text = errorText
+                error.visibility = View.VISIBLE
             }
-            false
         }
-    }
-
-    private fun setField(text: String) {
-        et.setText(text)
-    }
-
-    private fun changeData(localData: TemplateDefinition, text: String) {
-        showError(TemplateDefinition.validName(text))
-        localData.name = text
     }
 }

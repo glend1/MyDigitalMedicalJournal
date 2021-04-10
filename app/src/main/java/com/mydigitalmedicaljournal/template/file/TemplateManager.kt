@@ -5,13 +5,13 @@ import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.mydigitalmedicaljournal.json.FileHelper
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.model.ValidData
 import com.mydigitalmedicaljournal.template.TemplateEnum
+import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import java.util.*
 
-class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {
+class TemplateManager(private val context: Context, private val id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {
     private val json by lazy { Gson() }
     private var file: FileHelper = FileHelper(id.toString(), context, templateFolder)
     private var data = if (file.exists()) parse(file.read()) else TemplateDefinition(id)
@@ -25,19 +25,31 @@ class TemplateManager(private val context: Context, id: UUID = UUID.randomUUID()
         }
         return TemplateDefinition(
             json.fromJson(parsed["id"], UUID::class.java),
-            json.fromJson(parsed["name"], String::class.java),
-            json.fromJson(parsed["time"], DataTime.TimeFormat::class.java),
+            /*json.fromJson(parsed["name"], String::class.java),
+            json.fromJson(parsed["time"], DataTime.TimeFormat::class.java),*/
             definitions
         )
+    }
+
+    fun getId(): UUID {
+        return id
     }
 
     fun getData(): TemplateDefinition {
         return data
     }
 
-    fun setData(input: TemplateDefinition) : ValidData {
+    fun getName(): DataName {
+        return getData().getName()
+    }
+
+    fun getDate(): DataTime {
+        return getData().getTime()
+    }
+
+    fun setData(input: TemplateDefinition): MutableMap<Int, Int> {
         val validData = input.validate()
-        if (validData.getErrors().isEmpty()) {
+        if (validData.isEmpty()) {
             data = input
             save()
         }

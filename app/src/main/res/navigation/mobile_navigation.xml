@@ -57,9 +57,16 @@
     <fragment
         android:id="@+id/editorFragment"
         android:name="com.mydigitalmedicaljournal.ui.templates.editor.EditorFragment"
-        android:label="@string/Template_editor" />
+        android:label="@string/Template_editor" >
+        <action
+            android:id="@+id/action_editorFragment_to_fieldEditorFragment"
+            app:destination="@id/fieldEditorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/templateSelector"
         android:name="com.mydigitalmedicaljournal.ui.journal.selector.TemplateSelector"
         android:label="@string/TemplateSelector" />
+    <fragment
+        android:id="@+id/fieldEditorFragment"
+        android:name="com.mydigitalmedicaljournal.ui.templates.editor.field.FieldEditorFragment" />
 </navigation>

@@ -6,68 +6,112 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.fields.data.GenericData
-import com.mydigitalmedicaljournal.template.fields.editor.GenericEditor
-import com.mydigitalmedicaljournal.template.file.TemplateDefinition
+import com.mydigitalmedicaljournal.template.file.TemplateManager
 
-class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     //TODO rewrite this to use a listAdapter
-    private var validData: ValidData = ValidData()
-    companion object {
-        //TODO this is fragile
-        private const val OFFSET = 2
-        private fun positionToView(position: Int) : Int {
-            return position + OFFSET
-        }
-
-        private fun viewToPosition(position: Int) : Int {
-            return position - OFFSET
-        }
-    }
+    //private var validData: ValidData = ValidData()
+    private val localData = templateManager.getData()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-        return TemplateEnum.layoutList[viewType]!!.createEditor(layout)
+        /*val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
+        return TemplateEnum.layoutList[viewType]!!.createEditor(layout)*/
+        val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_item_delete, parent, false)
+        return EditorViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val editor = holder as GenericEditor
-        val view = holder.itemView
-        editor.setup(view, this)
-        editor.errorHandlingOnSave(view, validData)
-        if (viewToPosition(position) >= 0) {
-            editor.delete(delete(position))
-            if (localData.size() == 1) {
-                view.findViewById<ImageView>(R.id.up).visibility = GONE
-                view.findViewById<ImageView>(R.id.down).visibility = GONE
-            } else {
-                view.findViewById<ImageView>(R.id.up).visibility = VISIBLE
-                view.findViewById<ImageView>(R.id.down).visibility = VISIBLE
-                when (viewToPosition(position)) {
-                    (0) -> {
-                        view.findViewById<ImageView>(R.id.up).visibility = GONE
-                        editor.moveDown(moveDown(position))
-                    }
-                    (localData.size() - 1) -> {
-                        view.findViewById<ImageView>(R.id.down).visibility = GONE
-                        editor.moveUp(moveUp(position))
-                    }
-                    else -> {
-                        editor.moveUp(moveUp(position))
-                        editor.moveDown(moveDown(position))
+        val editor = holder as EditorViewHolder
+        //val view = holder.itemView
+        //editor.setup(view, this)
+        //editor.errorHandlingOnSave(view, validData)
+        editor.itemView.setOnClickListener {
+            val bundle = bundleOf("position" to position, "filename" to templateManager.getId())
+            holder.itemView.findNavController().navigate(R.id.fieldEditorFragment, bundle)
+        }
+        val downId = R.id.down
+        val upId = R.id.up
+        when (position) {
+            0 -> {
+                editor.text("NAME")
+                editor.visibility(R.id.delete, GONE)
+                editor.visibility(downId, GONE)
+                editor.visibility(upId, GONE)
+            }
+            1 -> {
+                editor.text("DATE")
+                editor.visibility(R.id.delete, GONE)
+                editor.visibility(downId, GONE)
+                editor.visibility(upId, GONE)
+            }
+            else -> {
+                editor.text("TEXT")
+                editor.delete(delete(position))
+                if (localData.size() - 1 == 2) {
+                    editor.visibility(downId, GONE)
+                    editor.visibility(upId, GONE)
+                } else {
+                    when (position) {
+                        (2) -> {
+                            editor.visibility(downId, VISIBLE)
+                            editor.visibility(upId, GONE)
+                            editor.moveDown(moveDown(position))
+                        }
+                        (localData.size() - 1) -> {
+                            editor.visibility(upId, VISIBLE)
+                            editor.visibility(downId, GONE)
+                            editor.moveUp(moveUp(position))
+                        }
+                        else -> {
+                            editor.visibility(downId, VISIBLE)
+                            editor.visibility(upId, VISIBLE)
+                            editor.moveUp(moveUp(position))
+                            editor.moveDown(moveDown(position))
+                        }
                     }
                 }
             }
         }
     }
 
-    override fun getItemCount(): Int = positionToView(localData.data.size)
+    override fun getItemCount(): Int = localData.size()
 
-    override fun getItemViewType(position: Int): Int {
+    fun add(template: GenericData) {
+        //validData = ValidData()
+        localData.add(template)
+        notifyDataSetChanged()
+    }
+
+    private fun delete(position: Int) : View.OnClickListener {
+        return View.OnClickListener {
+            localData.delete(position)
+            notifyDataSetChanged()
+        }
+    }
+
+    private fun moveUp(position: Int) : View.OnClickListener {
+        return View.OnClickListener {
+            localData.moveUp(position)
+            notifyDataSetChanged()
+        }
+    }
+
+    private fun moveDown(position: Int) : View.OnClickListener {
+        return View.OnClickListener {
+            localData.moveDown(position)
+            notifyDataSetChanged()
+            //TODO make this adapter more like the other adapters
+            //it.findFragment<EditorFragment>().findNavController().navigate(R.id.testFragment)
+        }
+    }
+
+    /*override fun getItemViewType(position: Int): Int {
         //TODO this is fragile
         return when (position) {
             0 -> TemplateEnum.NAME.editorLayout
@@ -84,32 +128,26 @@ class EditorAdapter(val localData: TemplateDefinition) : RecyclerView.Adapter<Re
         notifyDataSetChanged()
     }
 
-    fun add(template: GenericData) {
-        validData = ValidData()
-        localData.data.add(template)
-        notifyDataSetChanged()
-    }
+*/
 
-    private fun delete(position: Int) : View.OnClickListener {
-        return View.OnClickListener {
-            localData.delete(viewToPosition(position))
-            notifyDataSetChanged()
+    inner class EditorViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        //abstract fun setup(view: View, adapter: EditorAdapter)
+        //abstract fun errorHandlingOnSave(view: View, validData: ValidData)
+        fun text(text: String) {
+            itemView.findViewById<TextView>(R.id.text).text = text
+        }
+        fun visibility(id: Int, visibility: Int) {
+            itemView.findViewById<ImageView>(id).visibility = visibility
+        }
+        fun delete(listener: View.OnClickListener) {
+            itemView.findViewById<ImageView>(R.id.delete).setOnClickListener(listener)
+        }
+        fun moveUp(listener: View.OnClickListener) {
+            itemView.findViewById<ImageView>(R.id.up)?.setOnClickListener(listener)
+        }
+        fun moveDown(listener: View.OnClickListener) {
+            itemView.findViewById<ImageView>(R.id.down)?.setOnClickListener(listener)
         }
     }
 
-    private fun moveUp(position: Int) : View.OnClickListener {
-        return View.OnClickListener {
-            val relativePos = viewToPosition(position)
-            localData.moveUp(relativePos)
-            notifyDataSetChanged()
-        }
-    }
-
-    private fun moveDown(position: Int) : View.OnClickListener {
-        return View.OnClickListener {
-            val relativePos = viewToPosition(position)
-            localData.moveDown(relativePos)
-            notifyDataSetChanged()
-        }
-    }
 }

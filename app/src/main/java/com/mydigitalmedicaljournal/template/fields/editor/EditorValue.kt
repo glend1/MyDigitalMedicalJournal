@@ -2,16 +2,12 @@ package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.util.Log
 import android.view.View
-import com.mydigitalmedicaljournal.model.ValidData
-import com.mydigitalmedicaljournal.ui.templates.editor.EditorAdapter
+import com.mydigitalmedicaljournal.template.file.TemplateManager
 
-class EditorValue(itemView: View): GenericEditor(itemView) {
-    override fun setup(view: View, adapter: EditorAdapter) {
-        view.setOnClickListener {
-            Log.i("EVENT1", "clicked")
+class EditorValue(view: View, template: TemplateManager, position: Int?): GenericEditor(view, template, position) {
+    init {
+        setSaveListener {
+            Log.i("HELLO", "SAVE CLICKED")
         }
-    }
-    override fun errorHandlingOnSave(view: View, validData: ValidData) {
-        Log.i("EVENT1", "error")
     }
 }
