@@ -15,7 +15,7 @@ import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.SpinnerDialog
 import java.util.*
 
 class EditorFragment : Fragment() {
@@ -36,8 +36,9 @@ class EditorFragment : Fragment() {
 
     private fun setupAddButton() {
         root.findViewById<View>(R.id.add).setOnClickListener {
+            //TODO change this to a better type of dialog
             val selectType =
-                OptionDialog(
+                SpinnerDialog(
                     requireContext().getString(R.string.add_field),
                     requireContext().getString(R.string.add_field_text),
                     TemplateEnum.namedString,

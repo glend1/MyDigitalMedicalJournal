@@ -10,10 +10,10 @@ import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.CheckBoxDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
 
-class CategoryListAdapter(var json: Categories) : RecyclerView.Adapter<ViewHolder>() {
+class CategoryListAdapter(var json: Categories, private val container: ViewGroup?) : RecyclerView.Adapter<ViewHolder>() {
     private fun isEmpty(): Boolean {
         return json.size() <= 0
     }
@@ -61,17 +61,19 @@ class CategoryListAdapter(var json: Categories) : RecyclerView.Adapter<ViewHolde
     private fun bindManage(holder: ViewHolder, position: Int) {
         val manage = holder.itemView.findViewById<View>(R.id.manage)
         manage.setOnClickListener {
+            //TODO this will be weird if there are a lot of templates.
             val templateList = TemplateList(manage.context).get()
             val adapter =
                 ManageCategoriesAdapter(
                     templateList,
                     json.getTemplate(position)
                 )
-            val listDialog = ListDialog(
+            val listDialog = CheckBoxDialog(
                     manage.context.getString(R.string.Manage),
                     manage.context.getString(R.string.Manage_Text, json.getName(position)),
                     manage.context,
-                    adapter
+                    adapter,
+                    container
                 )
             listDialog.setConfirm { _, _ ->
                 //generate clicked list

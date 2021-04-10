@@ -10,7 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.ui._generics.dialogs.OptionDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.SpinnerDialog
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -22,9 +22,9 @@ class OptionDialogTest {
     @Test
     fun optionDialogTest() {
         val selected = R.string.manage_categories
-        var dialog: OptionDialog? = null
+        var dialog: SpinnerDialog? = null
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
-            dialog = OptionDialog("test", "test", arrayOf(R.string.drawer_categories,selected), activity as Context)
+            dialog = SpinnerDialog("test", "test", arrayOf(R.string.drawer_categories,selected), activity as Context)
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }

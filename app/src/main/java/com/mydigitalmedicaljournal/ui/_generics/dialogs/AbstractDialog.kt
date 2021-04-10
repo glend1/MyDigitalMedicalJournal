@@ -8,9 +8,10 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.AbstractDialogCan
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 
 abstract class AbstractDialog(title: String, message: String, protected val context: Context) {
+    //TODO these aren't very generic, refactor maybe
     //TODO this has default styling
     protected val builder = AlertDialog.Builder(context)
-    private lateinit var dialog: AlertDialog
+    protected lateinit var dialog: AlertDialog
     protected abstract var cancel: AbstractDialogCancel
     protected abstract var input: AbstractDialogInput
 
@@ -20,7 +21,11 @@ abstract class AbstractDialog(title: String, message: String, protected val cont
     }
 
     fun setConfirm(listener: DialogInterface.OnClickListener) {
-        builder.setPositiveButton(context.getString(R.string.Yes), listener)
+        setConfirm(R.string.Yes, listener)
+    }
+
+    fun setConfirm(name: Int, listener: DialogInterface.OnClickListener) {
+        builder.setPositiveButton(context.getString(name), listener)
     }
 
     fun show() {
