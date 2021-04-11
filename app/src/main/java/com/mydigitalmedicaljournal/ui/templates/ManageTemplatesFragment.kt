@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.dialogs.NewTemplateDialog
+import com.mydigitalmedicaljournal.ui.templates.dialog.NewTemplateDialog
 
 class ManageTemplatesFragment : Fragment() {
 

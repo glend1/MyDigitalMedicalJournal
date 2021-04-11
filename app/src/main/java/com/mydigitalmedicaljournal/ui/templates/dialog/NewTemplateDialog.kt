@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui._generics.dialogs
+package com.mydigitalmedicaljournal.ui.templates.dialog
 
 import android.content.Context
 import android.view.View
@@ -11,10 +11,10 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
+import com.mydigitalmedicaljournal.ui._generics.dialogs.AbstractDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.AbstractDialogCancel
 import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.DialogCancelNull
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
-import com.mydigitalmedicaljournal.ui._generics.dialogs.input.TemplateInput
 import java.util.*
 
 class NewTemplateDialog(title: String, message: String, context: Context, container: ViewGroup?) : AbstractDialog(title, message, context) {

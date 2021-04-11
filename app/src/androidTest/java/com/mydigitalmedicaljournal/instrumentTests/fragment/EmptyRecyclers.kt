@@ -12,7 +12,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategoriesAndTemplates
-import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
+import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 import org.junit.Rule
 import org.junit.Test
@@ -63,10 +63,10 @@ class EmptyRecyclers {
 
     @Test
     fun noTemplatesInDialog() {
-        var dialog: ListDialog?
+        var dialog: ManageCategoryTemplatesDialog?
         val adapter = ManageCategoriesAdapter(listOf(), mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
-            dialog = ListDialog("title", "message", activity as Context, adapter)
+            dialog = ManageCategoryTemplatesDialog("title", "message", activity as Context, adapter, container)
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
         }

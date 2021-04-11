@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui._generics.dialogs.input
+package com.mydigitalmedicaljournal.ui.categories.dialog
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,14 +8,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 
-class DialogInputCheckBox(
-    builder: AlertDialog.Builder,
-    context: Context,
-    adapter: ManageCategoriesAdapter,
-    container: ViewGroup?
-) : AbstractDialogInput {
+class DialogInputManageCategoryTemplates(builder: AlertDialog.Builder, context: Context, adapter: ManageCategoriesAdapter, container: ViewGroup?) :
+    AbstractDialogInput {
     init {
         if (adapter.itemCount > 0) {
             val input: View = LayoutInflater.from(context).inflate(R.layout.recycler_layout, container)

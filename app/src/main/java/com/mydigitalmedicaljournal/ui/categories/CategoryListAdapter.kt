@@ -10,8 +10,8 @@ import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.CheckBoxDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
+import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
 
 class CategoryListAdapter(var json: Categories, private val container: ViewGroup?) : RecyclerView.Adapter<ViewHolder>() {
     private fun isEmpty(): Boolean {
@@ -68,7 +68,7 @@ class CategoryListAdapter(var json: Categories, private val container: ViewGroup
                     templateList,
                     json.getTemplate(position)
                 )
-            val listDialog = CheckBoxDialog(
+            val listDialog = ManageCategoryTemplatesDialog(
                     manage.context.getString(R.string.Manage),
                     manage.context.getString(R.string.Manage_Text, json.getName(position)),
                     manage.context,

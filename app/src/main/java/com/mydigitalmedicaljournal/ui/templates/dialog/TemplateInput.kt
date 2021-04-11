@@ -1,4 +1,4 @@
-package com.mydigitalmedicaljournal.ui._generics.dialogs.input
+package com.mydigitalmedicaljournal.ui.templates.dialog
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,8 +9,10 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 
-class TemplateInput(builder: AlertDialog.Builder, val context: Context, container: ViewGroup?) : AbstractDialogInput {
+class TemplateInput(builder: AlertDialog.Builder, val context: Context, container: ViewGroup?) :
+    AbstractDialogInput {
     val view: View = LayoutInflater.from(context).inflate(R.layout.new_template, container)
     val dialogName : EditText = view.findViewById(R.id.dialog_name)
     private val errorName: TextView = view.findViewById(R.id.error_name)
