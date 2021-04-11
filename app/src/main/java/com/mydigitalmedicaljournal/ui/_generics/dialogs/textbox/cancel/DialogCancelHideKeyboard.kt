@@ -1,10 +1,11 @@
-package com.mydigitalmedicaljournal.ui._generics.dialogs.cancel
+package com.mydigitalmedicaljournal.ui._generics.dialogs.textbox.cancel
 
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
+import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.AbstractDialogCancel
 
 class DialogCancelHideKeyboard(builder: AlertDialog.Builder, val view: View) : AbstractDialogCancel {
     //TODO delete this if its not used

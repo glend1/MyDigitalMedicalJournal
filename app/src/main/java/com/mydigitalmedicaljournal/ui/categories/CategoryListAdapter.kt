@@ -10,7 +10,7 @@ import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.textbox.TextBoxDialog
 import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
 
 class CategoryListAdapter(var json: Categories, private val container: ViewGroup?) : RecyclerView.Adapter<ViewHolder>() {

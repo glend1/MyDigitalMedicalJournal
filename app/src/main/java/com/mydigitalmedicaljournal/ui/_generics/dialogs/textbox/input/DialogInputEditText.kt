@@ -1,11 +1,13 @@
-package com.mydigitalmedicaljournal.ui._generics.dialogs.input
+package com.mydigitalmedicaljournal.ui._generics.dialogs.textbox.input
 
 import android.content.Context
 import android.text.InputType
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 
-class DialogInputEditText(builder: AlertDialog.Builder, context : Context, text: String) : AbstractDialogInput {
+class DialogInputEditText(builder: AlertDialog.Builder, context : Context, text: String) :
+    AbstractDialogInput {
     private val input = EditText(context)
     init {
         input.inputType = InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE + InputType.TYPE_TEXT_FLAG_CAP_WORDS

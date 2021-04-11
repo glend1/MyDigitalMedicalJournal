@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.dialogs.TextBoxDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.textbox.TextBoxDialog
 
 class ManageCategoriesFragment : Fragment() {
 
