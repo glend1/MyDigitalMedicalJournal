@@ -15,7 +15,7 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    //TODO rewrite this to use a listAdapter
+    //TODO lots of commented out code here
     //private var validData: ValidData = ValidData()
     private val localData = templateManager.getData()
 
@@ -106,29 +106,9 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
         return View.OnClickListener {
             localData.moveDown(position)
             notifyDataSetChanged()
-            //TODO make this adapter more like the other adapters
             //it.findFragment<EditorFragment>().findNavController().navigate(R.id.testFragment)
         }
     }
-
-    /*override fun getItemViewType(position: Int): Int {
-        //TODO this is fragile
-        return when (position) {
-            0 -> TemplateEnum.NAME.editorLayout
-            1 -> TemplateEnum.TIME.editorLayout
-            else -> {
-                val relativePosition = viewToPosition(position)
-                localData.data[relativePosition].type.editorLayout
-            }
-        }
-    }
-
-    fun validate(vd: ValidData) {
-        validData = vd
-        notifyDataSetChanged()
-    }
-
-*/
 
     inner class EditorViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         //abstract fun setup(view: View, adapter: EditorAdapter)

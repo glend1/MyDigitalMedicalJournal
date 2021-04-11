@@ -17,7 +17,7 @@ import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
 import org.junit.Rule
 import org.junit.Test
 
-class EmptyRecyclers {
+class EmptyRecyclersTest {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 

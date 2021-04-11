@@ -5,17 +5,7 @@ import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import java.util.*
 
-//class TemplateDefinition(private val id: UUID, var name: String? = null, var time: DataTime.TimeFormat? = null, var data: MutableList<GenericData> = mutableListOf()) {
 class TemplateDefinition(private val id: UUID, private var data: MutableList<GenericData> = mutableListOf()) {
-    /*companion object {
-        fun validName(string: String?) : Boolean {
-            return !string.isNullOrBlank()
-        }
-
-        fun validDate(format: DataTime.TimeFormat?): Boolean {
-            return format != null
-        }
-    }*/
     
     fun getId() : UUID {
         return id
@@ -62,32 +52,5 @@ class TemplateDefinition(private val id: UUID, private var data: MutableList<Gen
     fun add(field: GenericData) {
         data.add(field)
     }
-
-
-
-    /*fun validate(): ValidData {
-        val validData = ValidData()
-        validData.add(EditorName.ERROR, validName())
-        validData.add(EditorTime.ERROR, validDate())
-        return validData
-    }
-
-    fun getName() {
-        return name
-    }
-
-    private fun validName(): Boolean {
-        return true //validName(name)
-    }
-
-    private fun validDate(): Boolean {
-        return true //validDate(time)
-    }*/
-
-    //TODO validate data field
-
-
-
-
 
 }
