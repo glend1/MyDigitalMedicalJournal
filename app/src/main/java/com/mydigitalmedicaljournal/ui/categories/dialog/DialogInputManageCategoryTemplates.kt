@@ -15,12 +15,12 @@ class DialogInputManageCategoryTemplates(builder: AlertDialog.Builder, context: 
     AbstractDialogInput {
     init {
         if (adapter.itemCount > 0) {
-            val input: View = LayoutInflater.from(context).inflate(R.layout.recycler_layout, container)
+            val input: View = LayoutInflater.from(context).inflate(R.layout.recycler_layout, container, false)
             input.findViewById<RecyclerView>(R.id.recycler).adapter = adapter
             builder.setView(input)
         } else {
             //TODO no styling information here
-            val input: View = LayoutInflater.from(context).inflate(R.layout.empty_recycler, container)
+            val input: View = LayoutInflater.from(context).inflate(R.layout.empty_recycler, container, false)
             input.findViewById<TextView>(R.id.message).text = context.getString(R.string.no_templates)
             builder.setView(input)
         }

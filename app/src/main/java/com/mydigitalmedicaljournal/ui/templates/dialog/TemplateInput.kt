@@ -11,9 +11,8 @@ import androidx.appcompat.app.AlertDialog
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInput
 
-class TemplateInput(builder: AlertDialog.Builder, val context: Context, container: ViewGroup?) :
-    AbstractDialogInput {
-    val view: View = LayoutInflater.from(context).inflate(R.layout.new_template, container)
+class TemplateInput(builder: AlertDialog.Builder, val context: Context, container: ViewGroup?) : AbstractDialogInput {
+    val view: View = LayoutInflater.from(context).inflate(R.layout.new_template, container, false)
     val dialogName : EditText = view.findViewById(R.id.dialog_name)
     private val errorName: TextView = view.findViewById(R.id.error_name)
     val dialogDate: RadioGroup = view.findViewById(R.id.dialog_date)
