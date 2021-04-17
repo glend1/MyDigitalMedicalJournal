@@ -1,7 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.fragment
 
 import android.content.Context
-import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
@@ -12,8 +11,8 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategoriesAndTemplates
-import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
 import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
+import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
 import org.junit.Rule
 import org.junit.Test
 

@@ -3,7 +3,6 @@ package com.mydigitalmedicaljournal.instrumentTests.fragment
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatRadioButton
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
