@@ -75,10 +75,6 @@ class NewTemplateDialog(title: String, message: String, context: Context, contai
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(listener)
     }
 
-    fun dismiss() {
-        dialog.dismiss()
-    }
-
     fun getTemplateId(): UUID {
         return templateManager.getId()
     }

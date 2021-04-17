@@ -31,4 +31,8 @@ abstract class AbstractDialog(title: String, message: String, protected val cont
         dialog = builder.create()
         dialog.show()
     }
+
+    fun dismiss() {
+        dialog.dismiss()
+    }
 }

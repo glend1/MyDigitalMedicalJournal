@@ -18,7 +18,7 @@ import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
-import com.mydigitalmedicaljournal.ui._generics.dialogs.SpinnerDialog
+import com.mydigitalmedicaljournal.ui._generics.dialogs.ListDialog
 import java.util.*
 
 class EditorFragment : Fragment() {
@@ -33,27 +33,26 @@ class EditorFragment : Fragment() {
         initRecycler()
         setupSaveButton()
         setupDeleteButton()
-        setupAddButton()
+        setupAddButton(container)
         return root
     }
 
-    private fun setupAddButton() {
+    private fun setupAddButton(container: ViewGroup?) {
         root.findViewById<View>(R.id.add).setOnClickListener {
             //TODO change this to a better type of dialog
             val selectType =
-                SpinnerDialog(
+                ListDialog(
                     requireContext().getString(R.string.add_field),
                     requireContext().getString(R.string.add_field_text),
                     TemplateEnum.namedString,
-                    requireContext()
+                    requireContext(),
+                    container
                 )
-            selectType.setConfirm { _, _ ->
-                //TODO what is this commentted out for?
-                /*val template = TemplateEnum.nameList[selectType.getSelected()]!!.createData()
-                adapter.add(template)*/
-                val bundle = bundleOf("type" to TemplateEnum.nameList[selectType.getSelected()]!!, "filename" to templateManager.getId())
+            selectType.setListener(fun (pos: Int) {
+                val bundle = bundleOf("type" to TemplateEnum.nameList[pos], "filename" to templateManager.getId())
                 root.findNavController().navigate(R.id.fieldEditorFragment, bundle)
-            }
+                selectType.dismiss()
+            })
             selectType.show()
         }
     }
