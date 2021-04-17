@@ -15,6 +15,7 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    //TODO move this adapter into its fragment?
     //TODO lots of commented out code here
     //private var validData: ValidData = ValidData()
     private val localData = templateManager.getData()
