@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Categories
-import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.textbox.TextBoxDialog
-import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
 
 class ManageCategoriesFragment : Fragment() {
 
@@ -96,26 +96,8 @@ class ManageCategoriesFragment : Fragment() {
         private fun bindManage(holder: ViewHolder, position: Int) {
             val manage = holder.itemView.findViewById<View>(R.id.manage)
             manage.setOnClickListener {
-                //TODO this will be weird if there are a lot of templates.
-                val templateList = TemplateList(manage.context).get()
-                val adapter =
-                    ManageCategoriesAdapter(
-                        templateList,
-                        json.getTemplate(position)
-                    )
-                val listDialog = ManageCategoryTemplatesDialog(
-                    manage.context.getString(R.string.Manage),
-                    manage.context.getString(R.string.Manage_Text, json.getName(position)),
-                    manage.context,
-                    adapter,
-                    container
-                )
-                listDialog.setConfirm { _, _ ->
-                    //generate clicked list
-                    //json.setTemplate(position, adapter.localData)
-                    json.setTemplate(position, adapter.getData())
-                }
-                listDialog.show()
+                val bundle = bundleOf("categoryPosition" to position)
+                container?.findNavController()?.navigate(R.id.manageCategoryTemplatesFragment, bundle)
             }
         }
 

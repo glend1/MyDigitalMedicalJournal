@@ -39,9 +39,9 @@ class TemplateFile {
         val dc = DummyCategories()
         val cat = dc.get()
         val templateNum = 1
-        cat.setTemplate(templateNum, mutableListOf(templateManager.getData().getId()))
+        cat.setTemplates(templateNum, mutableListOf(templateManager.getData().getId()))
         templateManager.delete(cat)
-        val result = cat.getTemplate(templateNum)
+        val result = cat.getTemplates(templateNum)
         dc.delete()
         assertEquals(result.size, 0)
     }

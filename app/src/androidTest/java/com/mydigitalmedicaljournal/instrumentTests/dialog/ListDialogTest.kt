@@ -10,8 +10,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.data.FileList
-import com.mydigitalmedicaljournal.ui.categories.dialog.ManageCategoryTemplatesDialog
-import com.mydigitalmedicaljournal.ui.categories.ManageCategoriesAdapter
+import com.mydigitalmedicaljournal.ui.categories.templates.dialog.ManageCategoryTemplatesAdapter
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -31,7 +30,7 @@ class ListDialogTest {
             FileList(testVal, testUuid),
             FileList("test3", UUID.fromString("99cb8d9a-26f1-4bd8-8959-84fba7367151"))
         )
-        val adapter = ManageCategoriesAdapter(list, mutableListOf())
+        val adapter = ManageCategoryTemplatesAdapter(list, mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
             dialog = ManageCategoryTemplatesDialog("title", "message", activity as Context, adapter, container)
             dialog!!.setConfirm { _, _ -> }

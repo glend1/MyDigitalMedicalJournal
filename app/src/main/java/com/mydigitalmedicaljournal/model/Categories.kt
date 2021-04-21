@@ -57,11 +57,15 @@ class Categories(context: Context, filename: String = "categories.json") {
         return data
     }
 
-    fun getTemplate(i: Int): MutableList<UUID> {
+    fun getCategory(pos: Int): Category {
+        return data[pos]
+    }
+
+    fun getTemplates(i: Int): MutableList<UUID> {
         return data[i].templates
     }
 
-    fun setTemplate(i: Int, templates: MutableList<UUID>) {
+    fun setTemplates(i: Int, templates: MutableList<UUID>) {
         data[i].templates = templates
         save()
     }

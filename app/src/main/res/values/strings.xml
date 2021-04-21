@@ -34,8 +34,6 @@
     <string name="delete_icon">Delete</string>
     <string name="Rename">Rename</string>
     <string name="Rename_Text">Please type the new name for \"%1$s\"</string>
-    <string name="Manage">Manage</string>
-    <string name="Manage_Text">Please select which Templates should belong to \"%1$s\"</string>
     <string name="Confirm_Category">Are you sure you want to delete Category named \"%1$s\"</string>
     <string name="Confirm_Category_Warning">You will not loose any data or any saved templates. This action cannot be undone.</string>
     <string name="Confirm_Template">Are you sure you want to delete Template named \"%1$s\"</string>
@@ -95,4 +93,5 @@
     <string name="date_field">DATE_FIELD</string>
     <string name="new_template">New Template</string>
     <string name="new_template_instruction">Please enter a name and recording date format</string>
+    <string name="manage_category_templates">Manage Category Templates</string>
 </resources>

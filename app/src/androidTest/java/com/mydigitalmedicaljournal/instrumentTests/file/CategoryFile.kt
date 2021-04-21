@@ -36,7 +36,7 @@ class CategoryFile {
                 ignored
          uuids that don't convert properly will be guessed
          */
-        assertNotNull(categories.getTemplate(1))
+        assertNotNull(categories.getTemplates(1))
     }
 
     @Test
@@ -81,10 +81,10 @@ class CategoryFile {
         templates.add(UUID.fromString(DummyTemplates.data[0][0]))
         templates.add(UUID.fromString(delete))
         templates.add(UUID.fromString(DummyTemplates.data[2][0]))
-        categories.setTemplate(2, templates)
-        assertEquals(categories.getTemplate(2).size, 3)
+        categories.setTemplates(2, templates)
+        assertEquals(categories.getTemplates(2).size, 3)
         categories.deleteTemplate(UUID.fromString(delete))
-        assertEquals(categories.getTemplate(2).size, 2)
+        assertEquals(categories.getTemplates(2).size, 2)
     }
 
 }

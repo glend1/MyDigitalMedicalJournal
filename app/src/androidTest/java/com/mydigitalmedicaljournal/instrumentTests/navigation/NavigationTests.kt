@@ -13,7 +13,7 @@ import org.junit.Test
 class NavigationTests {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
-    var navigation = Utils.Navigation(activityScenarioRule)
+    private var navigation = Utils.Navigation(activityScenarioRule)
 
 
     @Test

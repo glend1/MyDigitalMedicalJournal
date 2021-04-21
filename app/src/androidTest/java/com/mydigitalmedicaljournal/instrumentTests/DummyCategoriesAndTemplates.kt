@@ -21,9 +21,9 @@ class DummyCategoriesAndTemplates(categoryFile: String = DummyCategories.FILENAM
     fun setup() {
         dt.get()
         val categoryList = dc.get()
-        categoryList.setTemplate(0, data[0])
-        categoryList.setTemplate(1, data[1])
-        categoryList.setTemplate(2, data[2])
+        categoryList.setTemplates(0, data[0])
+        categoryList.setTemplates(1, data[1])
+        categoryList.setTemplates(2, data[2])
     }
 
     fun delete() {

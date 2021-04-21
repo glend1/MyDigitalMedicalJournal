@@ -20,7 +20,7 @@ import org.junit.Test
 class PortraitTests {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
-    var navigation = Utils.Navigation(activityScenarioRule)
+    private var navigation = Utils.Navigation(activityScenarioRule)
 
     @Before
     fun setup() {

@@ -53,7 +53,11 @@
     <fragment
         android:id="@+id/nav_categories"
         android:name="com.mydigitalmedicaljournal.ui.categories.ManageCategoriesFragment"
-        android:label="@string/manage_categories" />
+        android:label="@string/manage_categories" >
+        <action
+            android:id="@+id/action_nav_categories_to_manageCategoryTemplatesFragment"
+            app:destination="@id/manageCategoryTemplatesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editorFragment"
         android:name="com.mydigitalmedicaljournal.ui.templates.editor.EditorFragment"
@@ -69,4 +73,8 @@
     <fragment
         android:id="@+id/fieldEditorFragment"
         android:name="com.mydigitalmedicaljournal.ui.templates.editor.field.FieldEditorFragment" />
+    <fragment
+        android:id="@+id/manageCategoryTemplatesFragment"
+        android:name="com.mydigitalmedicaljournal.ui.categories.templates.ManageCategoryTemplatesFragment"
+        android:label="@string/manage_category_templates" />
 </navigation>
