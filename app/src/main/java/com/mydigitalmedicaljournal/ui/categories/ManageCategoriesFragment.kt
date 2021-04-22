@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.model.Categories
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import com.mydigitalmedicaljournal.ui._generics.EmptyAdapter
 import com.mydigitalmedicaljournal.ui._generics.dialogs.ConfirmDialog
 import com.mydigitalmedicaljournal.ui._generics.dialogs.textbox.TextBoxDialog
 
@@ -48,36 +48,21 @@ class ManageCategoriesFragment : Fragment() {
 
     }
 
-    class Adapter(var json: Categories, private val container: ViewGroup?) : RecyclerView.Adapter<ViewHolder>() {
-        private fun isEmpty(): Boolean {
-            return json.size() <= 0
-        }
-
+    class Adapter(var json: Categories, private val container: ViewGroup?) : EmptyAdapter() {
+        override val message = R.string.no_categories
+        override val layout = R.layout.list_manage
         override fun getItemCount() = if (isEmpty()) { 1 } else { json.size() }
+        override fun isEmpty() = json.size() <= 0
 
-        override fun getItemViewType(position: Int): Int {
-            return if (isEmpty()) { R.layout.empty_recycler } else { R.layout.list_manage }
+        override fun bindView(view: View, position: Int) {
+            view.findViewById<TextView>(R.id.text).text = json.getName(position)
+            bindRename(view, position)
+            bindManage(view, position)
+            bindDelete(view, position)
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-            return ViewHolder(layout)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val item = holder.itemView
-            if (isEmpty()) {
-                item.findViewById<TextView>(R.id.message).text = item.resources.getString(R.string.no_categories)
-            } else {
-                item.findViewById<TextView>(R.id.text).text = json.getName(position)
-                bindRename(holder, position)
-                bindManage(holder, position)
-                bindDelete(holder, position)
-            }
-        }
-
-        private fun bindDelete(holder: ViewHolder, position: Int) {
-            val delete = holder.itemView.findViewById<View>(R.id.delete)
+        private fun bindDelete(view: View, position: Int) {
+            val delete = view.findViewById<View>(R.id.delete)
             delete.setOnClickListener {
                 val alert =
                     ConfirmDialog(
@@ -93,16 +78,16 @@ class ManageCategoriesFragment : Fragment() {
             }
         }
 
-        private fun bindManage(holder: ViewHolder, position: Int) {
-            val manage = holder.itemView.findViewById<View>(R.id.manage)
+        private fun bindManage(view: View, position: Int) {
+            val manage = view.findViewById<View>(R.id.manage)
             manage.setOnClickListener {
                 val bundle = bundleOf("categoryPosition" to position)
                 container?.findNavController()?.navigate(R.id.manageCategoryTemplatesFragment, bundle)
             }
         }
 
-        private fun bindRename(holder: ViewHolder, position: Int) {
-            val rename = holder.itemView.findViewById<View>(R.id.rename)
+        private fun bindRename(view: View, position: Int) {
+            val rename = view.findViewById<View>(R.id.rename)
             rename.setOnClickListener {
                 val textBox =
                     TextBoxDialog(

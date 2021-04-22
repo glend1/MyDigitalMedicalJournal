@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -16,7 +15,7 @@ import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.template.data.TemplatesAsMap
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import com.mydigitalmedicaljournal.ui._generics.EmptyAdapter
 import java.util.*
 
 class ManageCategoryTemplatesFragment : Fragment() {
@@ -44,38 +43,14 @@ class ManageCategoryTemplatesFragment : Fragment() {
         return root
     }
 
-    class Adapter(private val templateList: List<FileList>, savedList: MutableList<UUID>) : RecyclerView.Adapter<ViewHolder>() {
+    class Adapter(private val templateList: List<FileList>, savedList: MutableList<UUID>) : EmptyAdapter() {
+        override val message = R.string.no_templates
+        override val layout = R.layout.list_manage_item
         private val templateMap = TemplatesAsMap(templateList, savedList)
         private val data = templateMap.data
-
-        fun isEmpty(): Boolean {
-            return data.isEmpty()
-        }
-
         override fun getItemCount() = if (isEmpty()) { 1 } else { data.size }
-
-        override fun getItemViewType(position: Int): Int {
-            return if (isEmpty()) { R.layout.empty_recycler } else { R.layout.list_manage_item }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-            return ViewHolder(layout)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val item = holder.itemView
-            if (isEmpty()) {
-                item.findViewById<TextView>(R.id.message).text = item.resources.getString(R.string.no_templates)
-            } else {
-                val checkBox = item.findViewById<CheckBox>(R.id.checkBox)!!
-                checkBox.text = templateList[position].name
-                setState(checkBox, position)
-                checkBox.setOnCheckedChangeListener { _, isChecked ->
-                    data[templateList[position]] = isChecked
-                }
-            }
-        }
+        override fun isEmpty() = data.isEmpty()
+        fun getData() = templateMap.flatten()
 
         private fun setState(checkBox: CheckBox, position: Int) {
             if (data[templateMap.getFromPosition(position)]!!) {
@@ -83,8 +58,13 @@ class ManageCategoryTemplatesFragment : Fragment() {
             }
         }
 
-        fun getData(): MutableList<UUID> {
-            return templateMap.flatten()
+        override fun bindView(view: View, position: Int) {
+            val checkBox = view.findViewById<CheckBox>(R.id.checkBox)!!
+            checkBox.text = templateList[position].name
+            setState(checkBox, position)
+            checkBox.setOnCheckedChangeListener { _, isChecked ->
+                data[templateList[position]] = isChecked
+            }
         }
     }
 }

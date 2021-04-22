@@ -14,11 +14,10 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.template.file.TemplateList
 import com.mydigitalmedicaljournal.ui._generics.CustomDivider
-import com.mydigitalmedicaljournal.ui._generics.ViewHolder
+import com.mydigitalmedicaljournal.ui._generics.EmptyAdapter
 import com.mydigitalmedicaljournal.ui.templates.dialog.NewTemplateDialog
 
 class ManageTemplatesFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,34 +49,18 @@ class ManageTemplatesFragment : Fragment() {
         }
         return root
     }
-
-    class Adapter(private var fileList: List<FileList>) : RecyclerView.Adapter<ViewHolder>() {
-        private fun isEmpty(): Boolean {
-            return fileList.isEmpty()
-        }
-
+    class Adapter(private var fileList: List<FileList>) : EmptyAdapter() {
+        override val message = R.string.no_templates
+        override val layout = R.layout.list_item
         override fun getItemCount() = if (isEmpty()) { 1 } else { fileList.size }
+        override fun isEmpty() = fileList.isEmpty()
 
-        override fun getItemViewType(position: Int): Int {
-            return if (isEmpty()) { R.layout.empty_recycler } else { R.layout.list_item }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-            return ViewHolder(layout)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val item = holder.itemView
-            if (isEmpty()) {
-                item.findViewById<TextView>(R.id.message).text = item.resources.getString(R.string.no_templates)
-            } else {
-                val title = item.findViewById<TextView>(R.id.text)
-                title.text = fileList[position].name
-                item.setOnClickListener {
-                    val bundle = bundleOf("data" to fileList[position].id)
-                    item.findNavController().navigate(R.id.editorFragment, bundle)
-                }
+        override fun bindView(view: View, position: Int) {
+            val title = view.findViewById<TextView>(R.id.text)
+            title.text = fileList[position].name
+            view.setOnClickListener {
+                val bundle = bundleOf("data" to fileList[position].id)
+                view.findNavController().navigate(R.id.editorFragment, bundle)
             }
         }
     }
