@@ -39,7 +39,6 @@ class EditorFragment : Fragment() {
 
     private fun setupAddButton(container: ViewGroup?) {
         root.findViewById<View>(R.id.add).setOnClickListener {
-            //TODO change this to a better type of dialog
             val selectType =
                 ListDialog(
                     requireContext().getString(R.string.add_field),
