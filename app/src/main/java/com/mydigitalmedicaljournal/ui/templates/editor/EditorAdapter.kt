@@ -15,23 +15,15 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    //TODO move this adapter into its fragment?
-    //TODO lots of commented out code here
-    //private var validData: ValidData = ValidData()
     private val localData = templateManager.getData()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        /*val layout = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
-        return TemplateEnum.layoutList[viewType]!!.createEditor(layout)*/
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.list_item_delete, parent, false)
         return EditorViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val editor = holder as EditorViewHolder
-        //val view = holder.itemView
-        //editor.setup(view, this)
-        //editor.errorHandlingOnSave(view, validData)
         editor.itemView.setOnClickListener {
             val bundle = bundleOf("position" to position, "filename" to templateManager.getId())
             holder.itemView.findNavController().navigate(R.id.fieldEditorFragment, bundle)
@@ -84,7 +76,7 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
     override fun getItemCount(): Int = localData.size()
 
     fun add(template: GenericData) {
-        //validData = ValidData()
+        //TODO validate this
         localData.add(template)
         notifyDataSetChanged()
     }
@@ -107,13 +99,10 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
         return View.OnClickListener {
             localData.moveDown(position)
             notifyDataSetChanged()
-            //it.findFragment<EditorFragment>().findNavController().navigate(R.id.testFragment)
         }
     }
 
     inner class EditorViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        //abstract fun setup(view: View, adapter: EditorAdapter)
-        //abstract fun errorHandlingOnSave(view: View, validData: ValidData)
         fun text(text: String) {
             itemView.findViewById<TextView>(R.id.text).text = text
         }
