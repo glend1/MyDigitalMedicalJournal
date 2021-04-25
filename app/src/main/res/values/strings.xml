@@ -94,4 +94,6 @@
     <string name="new_template">New Template</string>
     <string name="new_template_instruction">Please enter a name and recording date format</string>
     <string name="manage_category_templates">Manage Category Templates</string>
+    <string name="filename_notset">ERROR: Filename not set</string>
+    <string name="enum_notset">ERROR: Field type not set</string>
 </resources>
