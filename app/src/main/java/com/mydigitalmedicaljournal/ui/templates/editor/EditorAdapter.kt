@@ -11,7 +11,6 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -74,12 +73,6 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
     }
 
     override fun getItemCount(): Int = localData.size()
-
-    fun add(template: GenericData) {
-        //TODO validate this
-        localData.add(template)
-        notifyDataSetChanged()
-    }
 
     private fun delete(position: Int) : View.OnClickListener {
         return View.OnClickListener {
