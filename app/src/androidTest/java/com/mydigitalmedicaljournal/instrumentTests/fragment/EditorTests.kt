@@ -3,6 +3,7 @@ package com.mydigitalmedicaljournal.instrumentTests.fragment
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatRadioButton
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
@@ -112,7 +113,7 @@ class EditorTests {
         activityScenarioRule.scenario.onActivity { activity ->
             val recycler = activity.findViewById<RecyclerView>(R.id.template)
             val adapter = recycler.adapter as EditorAdapter
-            assertEquals(testText, adapter.localData.name)
+            assertEquals(testText, adapter.templateManager.getName())
         }
     }
 
@@ -147,7 +148,7 @@ class EditorTests {
         activityScenarioRule.scenario.onActivity { activity ->
             val recycler = activity.findViewById<RecyclerView>(R.id.template)
             val adapter = recycler.adapter as EditorAdapter
-            assertEquals(DataTime.TimeFormat.DATETIME, adapter.localData.time)
+            assertEquals(DataTime.TimeFormat.DATETIME, adapter.templateManager.getData().getTime())
         }
     }
 }

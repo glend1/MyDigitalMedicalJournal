@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.instrumentTests.fragment
 
-import android.content.Context
+import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
@@ -11,7 +11,6 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategoriesAndTemplates
-import com.mydigitalmedicaljournal.ui.categories.templates.dialog.ManageCategoryTemplatesAdapter
 import org.junit.Rule
 import org.junit.Test
 
@@ -61,13 +60,13 @@ class EmptyRecyclersTest {
 
     @Test
     fun noTemplatesInDialog() {
-        var dialog: ManageCategoryTemplatesDialog?
+        /*var dialog: ManageCategoryTemplatesDialog?
         val adapter = ManageCategoryTemplatesAdapter(listOf(), mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
             dialog = ManageCategoryTemplatesDialog("title", "message", activity as Context, adapter, container)
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
-        }
+        }*/
         onView(withText(R.string.no_templates)).inRoot(RootMatchers.isDialog()).check(matches(isDisplayed()))
     }
 

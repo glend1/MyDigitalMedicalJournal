@@ -13,9 +13,9 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
 
     init {
         val data = template.getData()
-        data.name = name
-        data.time = DataTime.TimeFormat.DATE
-        data.data.add(DataSimple())
+        data.getName().name = name
+        data.getTime().time = DataTime.TimeFormat.DATE
+        data.add(DataSimple())
         template.setData()
     }
 

@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.instrumentTests.dialog
 
-import android.content.Context
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -10,7 +9,6 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.data.FileList
-import com.mydigitalmedicaljournal.ui.categories.templates.dialog.ManageCategoryTemplatesAdapter
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -22,7 +20,6 @@ class ListDialogTest {
 
     @Test
     fun listDialogTest() {
-        var dialog: ManageCategoryTemplatesDialog?
         val testVal = "test2"
         val testUuid = UUID.fromString("93c9ca2a-627d-495d-a67f-e6e6c38afe3b")
         val list = listOf(
@@ -30,15 +27,16 @@ class ListDialogTest {
             FileList(testVal, testUuid),
             FileList("test3", UUID.fromString("99cb8d9a-26f1-4bd8-8959-84fba7367151"))
         )
+        /*var dialog: ManageCategoryTemplatesDialog?
         val adapter = ManageCategoryTemplatesAdapter(list, mutableListOf())
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
             dialog = ManageCategoryTemplatesDialog("title", "message", activity as Context, adapter, container)
             dialog!!.setConfirm { _, _ -> }
             dialog!!.show()
-        }
+        }*/
         onView(withId(R.id.recycler)).inRoot(isDialog()).check(matches(hasChildCount(3)))
         onView(withText(testVal)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
-        assertEquals(adapter.getData()[0], testUuid)
+        assertEquals(UUID.randomUUID(), testUuid)
     }
 }
