@@ -23,23 +23,17 @@ class NewTemplateDialog(title: String, message: String, context: Context, contai
     override var input: AbstractDialogInput = TemplateInput(builder, context, container)
     private val castInput = input as TemplateInput
     private val templateManager = TemplateManager(context)
-    private val name = DataName()
-    private val date = DataTime()
 
     init {
         setConfirm(R.string.save) { _, _ -> }
-        templateManager.getData().add(name)
-        templateManager.getData().add(date)
     }
 
-    private fun setName() : DataName {
-        name.name = castInput.dialogName.text.toString()
-        return name
+    private fun setName() {
+        templateManager.getName().name = castInput.dialogName.text.toString()
     }
 
-    private fun setDate() : DataTime {
-        date.time = DataTime.TimeFormat.getType(castInput.dialogDate.checkedRadioButtonId)
-        return date
+    private fun setDate() {
+        templateManager.getDate().time = DataTime.TimeFormat.getType(castInput.dialogDate.checkedRadioButtonId)
     }
 
     fun save(): Boolean {

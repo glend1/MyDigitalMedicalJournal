@@ -6,6 +6,13 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import java.util.*
 
 class TemplateDefinition(private val id: UUID, private var data: MutableList<GenericData> = mutableListOf()) {
+
+    init {
+        if (data.isEmpty()) {
+            data.add(DataName())
+            data.add(DataTime())
+        }
+    }
     
     fun getId() : UUID {
         return id
