@@ -23,53 +23,84 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val editor = holder as EditorViewHolder
+        setTextAndNavigation(editor, position, holder)
+        clearRecyclerButtons(editor)
+        setEditability(position, editor)
+    }
+
+    private fun setTextAndNavigation(editor: EditorViewHolder, position: Int, holder: RecyclerView.ViewHolder) {
+        editor.text(templateManager.getData().getData(position).listDisplay(holder.itemView.context))
         editor.itemView.setOnClickListener {
             val bundle = bundleOf("position" to position, "filename" to templateManager.getId())
             holder.itemView.findNavController().navigate(R.id.fieldEditorFragment, bundle)
         }
-        val downId = R.id.down
-        val upId = R.id.up
-        when (position) {
-            0 -> {
-                editor.text("NAME")
-                editor.visibility(R.id.delete, GONE)
-                editor.visibility(downId, GONE)
-                editor.visibility(upId, GONE)
-            }
-            1 -> {
-                editor.text("DATE")
-                editor.visibility(R.id.delete, GONE)
-                editor.visibility(downId, GONE)
-                editor.visibility(upId, GONE)
-            }
-            else -> {
-                editor.text("TEXT")
-                editor.delete(delete(position))
-                if (localData.size() - 1 == 2) {
-                    editor.visibility(downId, GONE)
-                    editor.visibility(upId, GONE)
-                } else {
-                    when (position) {
-                        (2) -> {
-                            editor.visibility(downId, VISIBLE)
-                            editor.visibility(upId, GONE)
-                            editor.moveDown(moveDown(position))
-                        }
-                        (localData.size() - 1) -> {
-                            editor.visibility(upId, VISIBLE)
-                            editor.visibility(downId, GONE)
-                            editor.moveUp(moveUp(position))
-                        }
-                        else -> {
-                            editor.visibility(downId, VISIBLE)
-                            editor.visibility(upId, VISIBLE)
-                            editor.moveUp(moveUp(position))
-                            editor.moveDown(moveDown(position))
-                        }
-                    }
-                }
-            }
+    }
+
+    private fun clearRecyclerButtons(editor: EditorViewHolder) {
+        editor.visibility(R.id.down, GONE)
+        editor.visibility(R.id.up, GONE)
+        editor.visibility(R.id.delete, GONE)
+    }
+
+    private fun setEditability(position: Int, editor: EditorViewHolder) {
+        if (position > 1) {
+            showDelete(position, editor)
+            multipleFields(position, editor)
         }
+    }
+
+    private fun isOneField(): Boolean {
+        return localData.size() - 1 == 2
+    }
+
+    private fun multipleFields(position: Int, editor: EditorViewHolder) {
+        if (!isOneField()) {
+            firstField(position, editor)
+            lastField(position, editor)
+            otherFields(position, editor)
+        }
+    }
+
+    private fun isFirstField(position: Int): Boolean {
+        return position == 2
+    }
+
+    private fun firstField(position: Int, editor: EditorViewHolder) {
+        if (isFirstField(position)) {
+            showDown(position, editor)
+        }
+    }
+
+    private fun isLastField(position: Int): Boolean {
+        return localData.size() - 1 == position
+    }
+
+    private fun lastField(position: Int, editor: EditorAdapter.EditorViewHolder) {
+        if (isLastField(position)) {
+            showUp(position, editor)
+        }
+    }
+
+    private fun otherFields(position: Int, editor: EditorAdapter.EditorViewHolder) {
+        if (!isFirstField(position) && !isLastField(position)) {
+            showDown(position, editor)
+            showUp(position, editor)
+        }
+    }
+
+    private fun showDown(position: Int, editor: EditorAdapter.EditorViewHolder) {
+        editor.visibility(R.id.down, VISIBLE)
+        editor.moveDown(moveDown(position))
+    }
+
+    private fun showUp(position: Int, editor: EditorViewHolder) {
+        editor.visibility(R.id.up, VISIBLE)
+        editor.moveUp(moveUp(position))
+    }
+
+    private fun showDelete(position: Int, editor: EditorViewHolder) {
+        editor.visibility(R.id.delete, VISIBLE)
+        editor.delete(delete(position))
     }
 
     override fun getItemCount(): Int = localData.size()
@@ -103,6 +134,7 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
             itemView.findViewById<ImageView>(id).visibility = visibility
         }
         fun delete(listener: View.OnClickListener) {
+            //TODO add a confirm box here
             itemView.findViewById<ImageView>(R.id.delete).setOnClickListener(listener)
         }
         fun moveUp(listener: View.OnClickListener) {

@@ -7,7 +7,7 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.input.AbstractDialogInpu
 import com.mydigitalmedicaljournal.ui._generics.dialogs.input.DialogInputSpinner
 
 class SpinnerDialog(title: String, message: String, data: Array<Int>, context: Context) : AbstractDialog(title, message, context) {
-
+    //TODO this isn't actually used anywhere, delete it?
     override var cancel: AbstractDialogCancel = DialogCancelNull(builder, context)
     override var input: AbstractDialogInput = DialogInputSpinner(builder, context, data)
 

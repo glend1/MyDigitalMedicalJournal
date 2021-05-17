@@ -5,7 +5,6 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
@@ -21,8 +20,7 @@ class EmptyRecyclersTest {
     @Test
     fun noTemplates() {
         activityScenarioRule.scenario.onActivity { activity ->
-            val nav = activity.findNavController(R.id.nav_host_fragment)
-            nav.navigate(R.id.nav_templates)
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.nav_templates)
         }
         onView(withId(R.id.message)).check(matches(isDisplayed()))
     }
@@ -30,17 +28,15 @@ class EmptyRecyclersTest {
     @Test
     fun noCategories() {
         activityScenarioRule.scenario.onActivity { activity ->
-            val nav = activity.findNavController(R.id.nav_host_fragment)
-            nav.navigate(R.id.nav_categories)
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.nav_categories)
         }
-        onView(withId(R.id.message)).check(matches(isDisplayed()))
+        onView(withText(R.string.no_categories)).check(matches(isDisplayed()))
     }
 
     @Test
     fun noSelector() {
         activityScenarioRule.scenario.onActivity { activity ->
-            val nav = activity.findNavController(R.id.nav_host_fragment)
-            nav.navigate(R.id.templateSelector)
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.templateSelector)
         }
         onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
     }
@@ -49,9 +45,8 @@ class EmptyRecyclersTest {
     fun noFilteredSelector() {
         var dtc : DummyCategoriesAndTemplates? = null
         activityScenarioRule.scenario.onActivity { activity ->
-            val nav = activity.findNavController(R.id.nav_host_fragment)
             dtc = DummyCategoriesAndTemplates("categories.json", arrayOf("templates"))
-            nav.navigate(R.id.templateSelector)
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.templateSelector)
         }
         onView(withId(R.id.search_view)).perform(typeText("pine"), closeSoftKeyboard())
         onView(withText(R.string.no_templates_filtered)).check(matches(isDisplayed()))
@@ -59,15 +54,19 @@ class EmptyRecyclersTest {
     }
 
     @Test
-    fun noTemplatesInDialog() {
-        /*var dialog: ManageCategoryTemplatesDialog?
-        val adapter = ManageCategoryTemplatesAdapter(listOf(), mutableListOf())
-        activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
-            dialog = ManageCategoryTemplatesDialog("title", "message", activity as Context, adapter, container)
-            dialog!!.setConfirm { _, _ -> }
-            dialog!!.show()
-        }*/
-        onView(withText(R.string.no_templates)).inRoot(RootMatchers.isDialog()).check(matches(isDisplayed()))
+    fun noTemplatesInCategory() {
+        activityScenarioRule.scenario.onActivity { activity ->
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.manageCategoryTemplatesFragment)
+        }
+        onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun noEditor() {
+        activityScenarioRule.scenario.onActivity { activity ->
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.editorFragment)
+        }
+        onView(withText(R.string.template_not_selected)).check(matches(isDisplayed()))
     }
 
 }

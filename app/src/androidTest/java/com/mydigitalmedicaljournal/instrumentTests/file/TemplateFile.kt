@@ -11,7 +11,6 @@ import org.junit.Test
 class TemplateFile {
     private lateinit var templateManager: TemplateManager
     private lateinit var dtf: DummyTemplateFile
-
     @Before
     fun setup() {
         dtf = DummyTemplateFile("793b7045-d572-4110-b4c7-9e1dcfa251f1", "test")

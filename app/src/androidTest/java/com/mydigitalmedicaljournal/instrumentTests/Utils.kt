@@ -2,10 +2,13 @@ package com.mydigitalmedicaljournal.instrumentTests
 
 import android.content.Context
 import android.content.res.Resources
+import android.os.IBinder
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Root
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -69,6 +72,25 @@ class Utils {
                 val nav = activity.findNavController(R.id.nav_host_fragment)
                 nav.navigate(fragment)
             }
+        }
+    }
+
+    class ActivityMatcher : TypeSafeMatcher<Root>() {
+        override fun describeTo(description: Description) {
+            description.appendText("is activity")
+        }
+
+        public override fun matchesSafely(root: Root): Boolean {
+            val type: Int = root.windowLayoutParams.get().type
+            if (type == WindowManager.LayoutParams.TYPE_BASE_APPLICATION) {
+                val windowToken: IBinder = root.decorView.windowToken
+                val appToken: IBinder = root.decorView.applicationWindowToken
+                if (windowToken === appToken) {
+                    //means this window isn't contained by any other windows.
+                    return true
+                }
+            }
+            return false
         }
     }
 

@@ -93,7 +93,7 @@ class CategoryTests {
     @Test
     fun noFilesManage() {
         onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickManage()))
-        onView(withText(R.string.no_templates)).inRoot(isDialog()).check(matches(isDisplayed()))
+        onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -101,10 +101,10 @@ class CategoryTests {
         val dt = DummyTemplates(arrayOf("templates"))
         dt.get()
         onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
-        onView(withText(DummyTemplates.data[1][1])).inRoot(isDialog()).perform(click())
-        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withText(DummyTemplates.data[1][1])).perform(click())
+        onView(withText(R.string.save)).perform(click())
         onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickManage()))
-        onView(withText(DummyTemplates.data[1][1])).inRoot(isDialog()).check(matches(isChecked()))
+        onView(withText(DummyTemplates.data[1][1])).check(matches(isChecked()))
         dt.delete()
     }
 

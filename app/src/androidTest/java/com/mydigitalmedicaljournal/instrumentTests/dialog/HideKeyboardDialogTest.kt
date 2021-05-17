@@ -2,6 +2,7 @@ package com.mydigitalmedicaljournal.instrumentTests.dialog
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
+import junit.framework.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 
@@ -11,13 +12,8 @@ class HideKeyboardDialogTest {
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
-    fun portraitTest() {
-
-    }
-
-    @Test
-    fun landscapeTest() {
-
+    fun writeTests() {
+        assertEquals("portrait", "landscape")
     }
 
 }

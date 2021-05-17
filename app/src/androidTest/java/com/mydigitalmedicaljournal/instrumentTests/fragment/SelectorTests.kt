@@ -22,7 +22,6 @@ import org.junit.Test
 class SelectorTests {
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
-
     private var dct = DummyCategoriesAndTemplates("categories.json", arrayOf("templates"))
 
     @Before
@@ -57,7 +56,7 @@ class SelectorTests {
     }
 
     @Test
-    fun templateNavigate() {
+    fun templateNavigateWILLFAIL() {
         //TODO finish this test when data entry is supported
         onView(withId(R.id.selector_recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, click()))
         onView(withId(R.id.selector_recycler)).check(matches(not(isDisplayed())))

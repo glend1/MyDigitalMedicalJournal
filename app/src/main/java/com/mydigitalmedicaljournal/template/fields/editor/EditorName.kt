@@ -10,7 +10,6 @@ import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorName(view: View, template: TemplateManager, position: Int?): GenericEditor(view, template, position) {
-    //TODO handle pysical keyboard
     private val et: EditText = view.findViewById(R.id.nameEditText)
     val error: TextView = view.findViewById(R.id.error)
     private val data = template.getName()

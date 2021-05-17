@@ -15,7 +15,6 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
         val data = template.getData()
         data.getName().name = name
         data.getTime().time = DataTime.TimeFormat.DATE
-        data.add(DataSimple())
         template.setData()
     }
 
@@ -27,5 +26,13 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
         if (template.fileExists()) {
             template.delete()
         }
+    }
+
+    fun addSimple(question: String): DataSimple {
+        val data = DataSimple()
+        data.question = question
+        template.getData().add(data)
+        template.setData()
+        return data
     }
 }

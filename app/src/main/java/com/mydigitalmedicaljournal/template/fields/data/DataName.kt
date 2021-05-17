@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.template.fields.data
 
+import android.content.Context
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 
@@ -13,12 +14,13 @@ class DataName: GenericData() {
     }
 
     override val type = TemplateEnum.NAME
+    override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : $name"
     private var nameError: Int? = null
     var name: String? = null
         set(value) {
             if (value.isNullOrBlank()) {
                 nameError = NAME_NOT_FOUND
-            } else if (Regex("^[\\w\\s\\d]+\$").containsMatchIn(value)) {
+            } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(value)) {
                 if (value.length <= 25) {
                     field = value
                     nameError = null

@@ -91,9 +91,16 @@
     <string name="NAME_NOT_FOUND">Error. Name field is not set</string>
     <string name="name_field">NAME_FIELD</string>
     <string name="date_field">DATE_FIELD</string>
+
+    <string name="QUESTION_LENGTH">Error. Question field must not have more than 80 characters</string>
+    <string name="QUESTION_SYMBOLS">Error. Question field must not have special characters</string>
+    <string name="QUESTION_NOT_FOUND">Error. Question field is not set</string>
+    <string name="question_field">QUESTION_FIELD</string>
+
     <string name="new_template">New Template</string>
     <string name="new_template_instruction">Please enter a name and recording date format</string>
     <string name="manage_category_templates">Manage Category Templates</string>
     <string name="filename_notset">ERROR: Filename not set</string>
     <string name="enum_notset">ERROR: Field type not set</string>
+    <string name="template_not_selected" type="id">Error. No Template Selected</string>
 </resources>

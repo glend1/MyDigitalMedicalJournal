@@ -11,6 +11,8 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
+import com.mydigitalmedicaljournal.instrumentTests.Utils
+import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.data.FileList
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matchers.not
@@ -43,15 +45,14 @@ class TemplateTests {
     @Test
     fun add() {
         onView(withId(R.id.add)).perform(click())
-        onView(withId(R.id.nameEditText)).check(matches(withText("")))
-        onView(withText(R.string.error_name)).check(matches(not(isDisplayed())))
+        onView(withText(R.string.new_template_instruction)).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
     @Test
-    fun edit() {
+    fun navigate() {
+        val text = "${Utils.CONTEXT.resources.getString(TemplateEnum.NAME.listName)} : ${templateList[0].name}"
         onView(withId(R.id.template_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, click()))
-        onView(withId(R.id.nameEditText)).check(matches(withText(templateList[0].name)))
-        onView(withText(R.string.error_name)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.template)).check(matches(Utils.atPosition(0, withText(text))))
     }
 
     @Test

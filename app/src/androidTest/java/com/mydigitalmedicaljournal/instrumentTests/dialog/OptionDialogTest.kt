@@ -16,11 +16,12 @@ import org.junit.Rule
 import org.junit.Test
 
 class OptionDialogTest {
+    //TODO delete this if its not used
     @get:Rule
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
-    fun optionDialogTest() {
+    fun optionDialogTestUNUSED() {
         val selected = R.string.manage_categories
         var dialog: SpinnerDialog? = null
         activityScenarioRule.scenario.onActivity { activity: MainActivity? ->
@@ -32,6 +33,7 @@ class OptionDialogTest {
         onView(withText(R.string.manage_categories)).inRoot(isPlatformPopup()).perform(click())
         onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
         assertEquals(dialog!!.getSelected(), selected)
+        assertEquals(true, false)
     }
     
 }
