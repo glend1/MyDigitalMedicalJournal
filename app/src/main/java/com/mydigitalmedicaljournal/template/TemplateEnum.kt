@@ -87,7 +87,8 @@ enum class TemplateEnum(
         }
     },
     //TODO IMAGE: image map [need more details here]
-    IMAGE(8, R.layout.editor_image, true, R.string.image, DataImage::class.java) {
+    //TODO change this to true to make it visible in the list
+    IMAGE(8, R.layout.editor_image, false, R.string.image, DataImage::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorImage {
             return EditorImage(view, template, position)
         }
