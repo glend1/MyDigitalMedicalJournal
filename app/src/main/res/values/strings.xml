@@ -67,8 +67,7 @@
     <string name="simple">Yes/No Question</string>
     <string name="check">Select Multiple</string>
     <string name="radio">Select Single</string>
-    <string name="description">Large Text</string>
-    <string name="text">Small Text</string>
+    <string name="description">Description</string>
     <string name="rating">Slider</string>
     <string name="value">Value: </string>
     <string name="value_label">Value</string>

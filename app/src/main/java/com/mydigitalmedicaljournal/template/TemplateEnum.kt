@@ -68,17 +68,8 @@ enum class TemplateEnum(
             return DataDescription()
         }
     },
-    //TODO TEXT: small text
-    TEXT(6, R.layout.editor_text, true, R.string.text, DataText::class.java) {
-        override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorText {
-            return EditorText(view, template, position)
-        }
-        override fun createData(): DataText {
-            return DataText()
-        }
-    },
     //TODO RATING: sliding bar
-    RATING(7, R.layout.editor_rating, true, R.string.rating, DataRating::class.java) {
+    RATING(6, R.layout.editor_rating, true, R.string.rating, DataRating::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorRating {
             return EditorRating(view, template, position)
         }
@@ -87,7 +78,7 @@ enum class TemplateEnum(
         }
     },
     //TODO VALUE: integer [need more details here measurements/count]
-    VALUE(8, R.layout.editor_value, true, R.string.value_label, DataValue::class.java) {
+    VALUE(7, R.layout.editor_value, true, R.string.value_label, DataValue::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorValue {
             return EditorValue(view, template, position)
         }
@@ -96,7 +87,7 @@ enum class TemplateEnum(
         }
     },
     //TODO IMAGE: image map [need more details here]
-    IMAGE(9, R.layout.editor_image, true, R.string.image, DataImage::class.java) {
+    IMAGE(8, R.layout.editor_image, true, R.string.image, DataImage::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorImage {
             return EditorImage(view, template, position)
         }
