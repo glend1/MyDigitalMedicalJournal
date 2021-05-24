@@ -12,7 +12,7 @@ class HideKeyboardDialogTest {
     val activityScenarioRule = activityScenarioRule<MainActivity>()
 
     @Test
-    fun writeTests() {
+    fun writeTestsWILLFAIL() {
         assertEquals("portrait", "landscape")
     }
 
