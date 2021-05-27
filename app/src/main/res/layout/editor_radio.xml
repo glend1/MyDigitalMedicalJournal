@@ -76,9 +76,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rating_label_recycler"
+            android:id="@+id/radio_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/question_layout">
 
             <!-- TODO this should use list_item_delete -->
@@ -86,11 +87,11 @@
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/addRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_radio"
-            app:layout_constraintTop_toBottomOf="@+id/rating_label_recycler" />
+            app:layout_constraintTop_toBottomOf="@+id/radio_recycler" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
