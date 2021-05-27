@@ -2,10 +2,8 @@ package com.mydigitalmedicaljournal.template.fields.data
 
 import android.content.Context
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.TemplateEnum
 
-class DataDescription: GenericData() {
-    override val type = TemplateEnum.DESCRIPTION
+abstract class GenericQuestionData: GenericData() {
     companion object {
         const val QUESTION_FIELD = R.string.question_field
         const val QUESTION_LENGTH = R.string.QUESTION_LENGTH
@@ -37,6 +35,9 @@ class DataDescription: GenericData() {
         if (questionError != null) {
             errors[QUESTION_FIELD] = questionError!!
         }
+        validateAfterQuestion(errors)
         return errors
     }
+
+    abstract fun validateAfterQuestion(errors: MutableMap<Int, Int>)
 }

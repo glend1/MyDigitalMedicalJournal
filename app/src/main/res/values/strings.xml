@@ -101,5 +101,6 @@
     <string name="manage_category_templates">Manage Category Templates</string>
     <string name="filename_notset">ERROR: Filename not set</string>
     <string name="enum_notset">ERROR: Field type not set</string>
-    <string name="template_not_selected" type="id">Error. No Template Selected</string>
+    <string name="template_not_selected">Error. No Template Selected</string>
+    <string name="number_errors">%1$s errors found.</string>
 </resources>

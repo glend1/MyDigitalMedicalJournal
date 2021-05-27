@@ -1,6 +1,6 @@
 package com.mydigitalmedicaljournal.localTests
 
-import com.mydigitalmedicaljournal.template.fields.data.DataSimple
+import com.mydigitalmedicaljournal.template.fields.data.question.DataSimple
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import org.junit.Assert.assertEquals

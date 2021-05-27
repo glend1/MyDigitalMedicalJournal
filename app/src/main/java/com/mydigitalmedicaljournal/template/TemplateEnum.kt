@@ -3,7 +3,9 @@ package com.mydigitalmedicaljournal.template
 import android.view.View
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.*
+import com.mydigitalmedicaljournal.template.fields.data.question.*
 import com.mydigitalmedicaljournal.template.fields.editor.*
+import com.mydigitalmedicaljournal.template.fields.editor.question.*
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 enum class TemplateEnum(
