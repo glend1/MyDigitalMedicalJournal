@@ -103,4 +103,6 @@
     <string name="enum_notset">ERROR: Field type not set</string>
     <string name="template_not_selected">Error. No Template Selected</string>
     <string name="number_errors">%1$s errors found.</string>
+    <string name="up_icon">Up</string>
+    <string name="down_icon">Down</string>
 </resources>
