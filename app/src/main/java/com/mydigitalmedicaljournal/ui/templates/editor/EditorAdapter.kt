@@ -134,7 +134,6 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
             itemView.findViewById<ImageView>(id).visibility = visibility
         }
         fun delete(listener: View.OnClickListener) {
-            //TODO add a confirm box here
             itemView.findViewById<ImageView>(R.id.delete).setOnClickListener(listener)
         }
         fun moveUp(listener: View.OnClickListener) {
