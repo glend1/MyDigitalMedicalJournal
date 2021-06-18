@@ -107,4 +107,8 @@
     <string name="down_icon">Down</string>
     <string name="option">Option:</string>
     <string name="OPTION_NOT_ENOUGH">Error. You must have at least 2 valid Radio Options</string>
+    <string name="CHECK_LENGTH">Error. Checkbox field must not have more than 25 characters</string>
+    <string name="CHECK_SYMBOLS">>Error. Checkbox field must not have special characters</string>
+    <string name="CHECK_NOT_FOUND">Error. Checkbox field is not set</string>
+    <string name="CHECK_NOT_ENOUGH">Error. You must have at least 2 valid Checkbox Options</string>
 </resources>

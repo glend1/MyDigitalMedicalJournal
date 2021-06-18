@@ -82,8 +82,6 @@
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/question_layout">
 
-            <!-- TODO this should use list_item_delete -->
-
         </androidx.recyclerview.widget.RecyclerView>
 
         <TextView

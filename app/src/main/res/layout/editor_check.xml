@@ -76,22 +76,33 @@ android:layout_height="match_parent">
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/checkbox_recycler"
+            android:id="@+id/check_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/question_layout">
 
-            <!-- TODO this should use list_item_delete -->
-
         </androidx.recyclerview.widget.RecyclerView>
 
+        <TextView
+            android:id="@+id/check_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/small"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/error_text"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/check_recycler"
+            app:layout_constraintBottom_toTopOf="@id/addCheck"/>
+
         <Button
-            android:id="@+id/addCheckBox"
+            android:id="@+id/addCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_check"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox_recycler" />
+            app:layout_constraintTop_toBottomOf="@+id/check_error" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

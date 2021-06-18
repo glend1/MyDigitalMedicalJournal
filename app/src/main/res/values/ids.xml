@@ -4,4 +4,5 @@
     <item name="time_field" type="id"/>
     <item name="question_field" type="id"/>
     <item name="radio_count" type="id" />
+    <item name="check_count" type="id" />
 </resources>
