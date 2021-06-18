@@ -5,7 +5,6 @@ import com.mydigitalmedicaljournal.R
 
 abstract class GenericQuestionData: GenericData() {
     companion object {
-        const val QUESTION_FIELD = R.string.question_field
         const val QUESTION_LENGTH = R.string.QUESTION_LENGTH
         const val QUESTION_SYMBOLS = R.string.QUESTION_SYMBOLS
         const val QUESTION_NOT_FOUND = R.string.QUESTION_NOT_FOUND
@@ -30,14 +29,11 @@ abstract class GenericQuestionData: GenericData() {
             }
         }
 
-    override fun validate(): MutableMap<Int, Int> {
-        val errors = mutableMapOf<Int, Int>()
-        if (questionError != null) {
-            errors[QUESTION_FIELD] = questionError!!
-        }
+    override fun validate(): MutableMap<Int, Int?> {
+        val errors = mutableMapOf(Pair(R.id.question_field, questionError))
         validateAfterQuestion(errors)
         return errors
     }
 
-    abstract fun validateAfterQuestion(errors: MutableMap<Int, Int>)
+    abstract fun validateAfterQuestion(errors: MutableMap<Int, Int?>)
 }

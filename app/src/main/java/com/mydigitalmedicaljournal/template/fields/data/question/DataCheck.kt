@@ -5,7 +5,7 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 
 class DataCheck: GenericQuestionData() {
     override val type = TemplateEnum.CHECK
-    override fun validateAfterQuestion(errors: MutableMap<Int, Int>) {
+    override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
         TODO("Not yet implemented")
     }
 }

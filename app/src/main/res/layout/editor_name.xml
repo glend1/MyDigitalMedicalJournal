@@ -12,6 +12,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/name_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -20,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:labelFor="@id/nameEditText"
+                android:labelFor="@id/name"
                 android:padding="@dimen/medium"
                 android:text="@string/name"
                 android:textAllCaps="true"
@@ -29,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/nameEditText"
+                android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/large"
@@ -51,7 +52,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

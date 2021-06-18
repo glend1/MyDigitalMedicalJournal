@@ -5,7 +5,7 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 
 class DataImage: GenericQuestionData() {
     override val type = TemplateEnum.IMAGE
-    override fun validateAfterQuestion(errors: MutableMap<Int, Int>) {
+    override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
         TODO("Not yet implemented")
     }
 }

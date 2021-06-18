@@ -1,15 +1,19 @@
 package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 abstract class GenericQuestionEditor(view: View, template: TemplateManager, position: Int?): GenericEditor(view, template, position) {
+    private val error: TextView = view.findViewById(R.id.error)
     private val et: EditText = view.findViewById(R.id.editText)
 
     fun setup(data: GenericQuestionData) {
+        errorTextViews[R.id.question_field] = error
         setInitialQuestion(data)
         setInitialData()
         setSaveListener {
@@ -27,16 +31,6 @@ abstract class GenericQuestionEditor(view: View, template: TemplateManager, posi
         data.question = et.text.toString()
     }
 
-    private fun showQuestionError(errorRes: MutableMap<Int, Int>) {
-        showError(view.findViewById(R.id.error), errorRes[GenericQuestionData.QUESTION_FIELD]!!)
-    }
-
-    override fun showErrors(errorRes: MutableMap<Int, Int>) {
-        showQuestionError(errorRes)
-        showOtherErrors()
-    }
-
     abstract fun setData()
     abstract fun setInitialData()
-    abstract fun showOtherErrors()
 }

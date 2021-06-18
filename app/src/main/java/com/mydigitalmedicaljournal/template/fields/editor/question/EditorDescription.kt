@@ -18,7 +18,6 @@ class EditorDescription(view: View, template: TemplateManager, position: Int?): 
         setup(data)
     }
 
-    override fun showOtherErrors() {}
     override fun setData() {}
     override fun setInitialData() {}
 }

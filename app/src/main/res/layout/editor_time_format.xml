@@ -12,6 +12,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/time_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,10 +22,10 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:labelFor="@id/editText"
-            android:textColor="@color/colorAccent"
-            android:textAllCaps="true"
             android:padding="@dimen/medium"
             android:text="@string/time_format"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

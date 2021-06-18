@@ -47,9 +47,9 @@ class TemplateManager(private val context: Context, private val id: UUID = UUID.
         return getData().getTime()
     }
 
-    private fun setData(input: TemplateDefinition): MutableMap<Int, Int> {
+    private fun setData(input: TemplateDefinition): Boolean {
         val validData = input.validate()
-        if (validData.isEmpty()) {
+        if (validData) {
             data = input
             save()
         }

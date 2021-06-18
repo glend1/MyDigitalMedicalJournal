@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.dialogs.AbstractDialog
@@ -28,38 +27,32 @@ class NewTemplateDialog(title: String, message: String, context: Context, contai
         setConfirm(R.string.save) { _, _ -> }
     }
 
-    private fun setName() {
+    private fun setName(): MutableMap<Int, Int?> {
         templateManager.getName().name = castInput.dialogName.text.toString()
+        return templateManager.getData().getName().validate()
     }
 
-    private fun setDate() {
+    private fun setDate(): MutableMap<Int, Int?> {
         templateManager.getDate().time = DataTime.TimeFormat.getType(castInput.dialogDate.checkedRadioButtonId)
+        return templateManager.getData().getTime().validate()
     }
 
     fun save(): Boolean {
-        setName()
-        setDate()
-        templateManager.setData()
-        val errors = templateManager.getData().validate()
-        if (errors.isEmpty()) {
+        val validName = setName()
+        val validTime = setDate()
+        if (templateManager.setData()) {
             return true
         } else {
-            if (!errors.containsKey(DataName.NAME_FIELD)) {
-                castInput.errorName(GONE, null)
+            var nameVis = GONE
+            var timeVis = GONE
+            if (validName[R.id.name_field] != null) {
+                nameVis = VISIBLE
             }
-            if (!errors.containsKey(DataTime.TIME_FIELD)) {
-                castInput.errorDate(GONE, null)
+            if (validTime[R.id.time_field] != null) {
+                timeVis = VISIBLE
             }
-            errors.forEach { (k, v) ->
-                when (k) {
-                    DataName.NAME_FIELD -> {
-                        castInput.errorName(VISIBLE, v)
-                    }
-                    DataTime.TIME_FIELD -> {
-                        castInput.errorDate(VISIBLE, v)
-                    }
-                }
-            }
+            castInput.errorName(nameVis, validName[R.id.name_field])
+            castInput.errorDate(timeVis, validTime[R.id.time_field])
             Snackbar.make(castInput.view, R.string.error_message, Snackbar.LENGTH_LONG).show()
             return false
         }

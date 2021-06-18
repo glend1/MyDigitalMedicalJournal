@@ -7,7 +7,6 @@ import com.mydigitalmedicaljournal.template.TemplateEnum
 class DataTime: GenericData() {
 
     companion object {
-        const val TIME_FIELD = R.string.date_field
         const val TIME_NOT_SET = R.string.TIME_NOT_SET
     }
 
@@ -27,14 +26,18 @@ class DataTime: GenericData() {
 
     override val type = TemplateEnum.TIME
     override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : ${context.getString(time!!.displayName)}"
+    var timeError: Int? = null
     var time: TimeFormat? = null
-
-    override fun validate(): MutableMap<Int, Int> {
-        val errors = mutableMapOf<Int, Int>()
-        if (time == null) {
-            errors[TIME_FIELD] = TIME_NOT_SET
+        set(value) {
+            if (value == null) {
+                timeError = TIME_NOT_SET
+            } else {
+                timeError = null
+                field = value
+            }
         }
-        return errors
+    override fun validate(): MutableMap<Int, Int?> {
+        return mutableMapOf(Pair(R.id.time_field, timeError))
     }
 
 

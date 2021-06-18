@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:labelFor="@id/text"
+        android:paddingStart="@dimen/xlarge"
+        android:paddingTop="@dimen/medium"
+        android:paddingEnd="0dp"
+        android:paddingBottom="@dimen/medium"
+        android:text="@string/option"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
+        android:importantForAutofill="no"
+        android:inputType="textShortMessage|textNoSuggestions|textCapWords"
+        app:layout_constraintEnd_toStartOf="@+id/up"
+        app:layout_constraintStart_toEndOf="@+id/label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/up"
+        android:layout_width="44dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/up_icon"
+        android:paddingStart="@dimen/medium"
+        android:paddingEnd="@dimen/medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/down"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_up" />
+
+    <ImageView
+        android:id="@+id/down"
+        android:layout_width="44dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/down_icon"
+        android:paddingStart="@dimen/medium"
+        android:paddingEnd="@dimen/medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_down" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/delete_icon"
+        android:paddingStart="@dimen/medium"
+        android:paddingEnd="@dimen/medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_delete" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:padding="@dimen/small"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/error_text"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

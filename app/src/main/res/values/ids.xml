@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="name_field"/>
-    <item name="time_field" type="id" />
+    <item name="name_field" type="id"/>
+    <item name="time_field" type="id"/>
+    <item name="question_field" type="id"/>
+    <item name="radio_count" type="id" />
 </resources>

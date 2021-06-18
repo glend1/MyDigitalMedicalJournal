@@ -1,6 +1,7 @@
-package com.mydigitalmedicaljournal.template.fields.editor
+    package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
@@ -9,7 +10,8 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.GenericData
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
-abstract class GenericEditor(protected val view: View, protected val template: TemplateManager, protected val position: Int?) {
+    abstract class GenericEditor(protected val view: View, protected val template: TemplateManager, protected val position: Int?) {
+    protected val errorTextViews = mutableMapOf<Int, TextView>()
     private val saveButton: ConstraintLayout = view.findViewById(R.id.save)
     protected fun setSaveListener(listener: View.OnClickListener) {
         saveButton.setOnClickListener(listener)
@@ -17,24 +19,31 @@ abstract class GenericEditor(protected val view: View, protected val template: T
 
     fun validate(data: GenericData) {
         val errorRes = data.validate()
-        if (errorRes.isEmpty()) {
+        val errorNum = data.errorCount(errorRes)
+        if (errorNum == 0) {
             template.setData()
             view.findNavController().navigateUp()
         } else {
-            Snackbar.make(view, toastMessage(errorRes), Snackbar.LENGTH_LONG).show()
             showErrors(errorRes)
+            Snackbar.make(view, toastMessage(errorNum), Snackbar.LENGTH_LONG).show()
         }
     }
 
-    protected fun showError(error: TextView, text: Int) {
-        error.text = view.context.resources.getText(text)
-        error.visibility = View.VISIBLE
+    private fun showErrors(errorRes : MutableMap<Int, Int?>) {
+        errorRes.forEach{ (id, i) ->
+            val textView = errorTextViews[id]
+            if (textView != null) {
+                if (i == null) {
+                    textView.visibility = View.GONE
+                } else {
+                    textView.visibility = View.VISIBLE
+                    textView.text = textView.resources.getString(i)
+                }
+            }
+        }
     }
 
-    abstract fun showErrors(errorRes : MutableMap<Int, Int>)
-
-
-    private fun toastMessage(errorRes: MutableMap<Int, Int>): String {
-        return view.context.getString(R.string.number_errors, errorRes.size.toString())
+    private fun toastMessage(errorsNum : Int): String {
+        return view.context.getString(R.string.number_errors, errorsNum.toString())
     }
 }

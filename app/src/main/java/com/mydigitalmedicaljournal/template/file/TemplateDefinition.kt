@@ -50,10 +50,27 @@ class TemplateDefinition(private val id: UUID, private var data: MutableList<Gen
         return data.size
     }
 
-    fun validate(): MutableMap<Int, Int> {
-        val valid = mutableMapOf<Int, Int>()
+    fun validate(): Boolean {
+        val valid = mutableMapOf<Int, Int?>()
         data.forEach{field -> valid.putAll(field.validate())}
-        return valid
+        return hasNoErrors(errorCount(valid))
+    }
+
+    private fun errorCount(valid: MutableMap<Int, Int?>): Int {
+        var errorsNum = 0
+        valid.forEach{ (id, i) ->
+            if (i != null) {
+                errorsNum++
+            }
+        }
+        return errorsNum
+    }
+
+    private fun hasNoErrors(errorCount: Int): Boolean {
+        if (errorCount == 0) {
+            return true
+        }
+        return false
     }
 
     fun add(field: GenericData) {

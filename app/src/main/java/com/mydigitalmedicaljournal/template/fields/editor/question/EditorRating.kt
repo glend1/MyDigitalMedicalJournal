@@ -6,10 +6,6 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorRating(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
 
-    override fun showOtherErrors() {
-        TODO("Not yet implemented")
-    }
-
     override fun setData() {
         TODO("Not yet implemented")
     }

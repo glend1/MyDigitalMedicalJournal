@@ -2,14 +2,17 @@ package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.view.View
 import android.widget.RadioGroup
+import android.widget.TextView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorTime(view: View, template: TemplateManager, position: Int?): GenericEditor(view, template, position) {
+    private var error: TextView = view.findViewById(R.id.error)
     private var rg: RadioGroup = view.findViewById(R.id.time_format)
     private val data = template.getDate()
     init {
+        errorTextViews[R.id.time_field] = error
         selectRadio(data.time)
         setSaveListener {
             setData()
@@ -30,9 +33,4 @@ class EditorTime(view: View, template: TemplateManager, position: Int?): Generic
     private fun setData() {
         data.time = getRadio()
     }
-
-    override fun showErrors(errorRes: MutableMap<Int, Int>) {
-        showError(view.findViewById(R.id.error), errorRes[DataTime.TIME_FIELD]!!)
-    }
-
 }

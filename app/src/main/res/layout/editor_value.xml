@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/queation_layout"
+            android:id="@+id/question_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/text">
@@ -80,7 +80,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/queation_layout">
+            app:layout_constraintTop_toBottomOf="@+id/question_layout">
 
             <TextView
                 android:id="@+id/unit"
