@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:labelFor="@id/question_input"
+                android:labelFor="@id/editText"
                 android:paddingStart="@dimen/xlarge"
                 android:paddingTop="@dimen/medium"
                 android:paddingEnd="0dp"
@@ -50,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/question_input"
+                android:id="@+id/editText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/large"
@@ -62,7 +62,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/question_error"
+                android:id="@+id/error"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/small"
@@ -72,7 +72,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question_input" />
+                app:layout_constraintTop_toBottomOf="@id/editText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- TODO FUTURE UPDATE add dialog to select unit, allow you to remove units, dialog allows you to filter options -->
