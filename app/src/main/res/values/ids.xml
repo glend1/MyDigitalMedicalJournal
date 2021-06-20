@@ -5,4 +5,5 @@
     <item name="question_field" type="id"/>
     <item name="radio_count" type="id" />
     <item name="check_count" type="id" />
+    <item name="unit_field" type="id" />
 </resources>

@@ -111,4 +111,6 @@
     <string name="CHECK_SYMBOLS">>Error. Checkbox field must not have special characters</string>
     <string name="CHECK_NOT_FOUND">Error. Checkbox field is not set</string>
     <string name="CHECK_NOT_ENOUGH">Error. You must have at least 2 valid Checkbox Options</string>
+    <string name="UNIT_LENGTH">Error. Unit field must not have more than 10 characters</string>
+    <string name="UNIT_NOT_FOUND">Error. Unit field is not set</string>
 </resources>

@@ -26,6 +26,8 @@ class EditorFragment : Fragment() {
     private var templateManager: TemplateManager? = null
     lateinit var root: View
 
+    //TODO is it weird that you dont have to save for new additions to be added, but you do for reodering them
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setTemplate()
         root = inflater.inflate(R.layout.fragment_editor, container, false)
