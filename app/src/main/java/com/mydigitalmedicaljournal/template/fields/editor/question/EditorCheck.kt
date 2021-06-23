@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.question.DataCheck
-import com.mydigitalmedicaljournal.template.fields.data.question.DataRadio
 import com.mydigitalmedicaljournal.template.fields.editor.GenericQuestionEditor
 import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 import com.mydigitalmedicaljournal.template.file.TemplateManager
@@ -28,12 +27,14 @@ class EditorCheck(view: View, template: TemplateManager, position: Int?): Generi
         setup(data)
     }
 
-    override fun setData() {}
+    override fun setData() {
+        data.setFormData((checkRecycler.adapter as SortableEditorAdapter).getData())
+    }
 
     override fun setInitialData() {
         errorTextViews[R.id.check_count] = checkCount
-        val viewAdapter = SortableEditorAdapter(data.data, errorTextViews)
-        if (data.data.isEmpty()) {
+        val viewAdapter = SortableEditorAdapter(data.getFormData(), errorTextViews)
+        if (data.getFormData().isEmpty()) {
             viewAdapter.add("")
             viewAdapter.add("")
         }

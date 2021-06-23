@@ -4,7 +4,6 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
-import com.mydigitalmedicaljournal.template.fields.editor.question.EditorRadio
 
 class DataRadio: GenericQuestionData() {
     companion object {
@@ -15,13 +14,28 @@ class DataRadio: GenericQuestionData() {
     }
 
     override val type = TemplateEnum.RADIO
-    val data = mutableListOf<String>()
-    var radioError: Int? = null
+    private var data = mutableListOf<String?>()
+    private var radioErrors = mutableListOf<Int?>()
+    private var radioError: Int? = null
+
+    fun setFormData(input: MutableList<String?>) {
+        data = mutableListOf()
+        radioErrors = mutableListOf()
+        input.forEach {
+            val error = validateString(it)
+            data.add(if (error == null) {it} else {null})
+            radioErrors.add(error)
+        }
+    }
+
+    fun getFormData(): MutableList<String?> {
+        return data
+    }
 
     override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
         var total = 0
-        data.indices.forEach {
-            errors[SortableEditorAdapter.getPosition(it)] = validateString(data[it])
+        radioErrors.indices.forEach {
+            errors[SortableEditorAdapter.getPosition(it)] = radioErrors[it]
             if (errors[SortableEditorAdapter.getPosition(it)] == null) {
                 total++
             }

@@ -11,12 +11,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 
-class SortableEditorAdapter(private val data: MutableList<String>, private val errorTextViews: MutableMap<Int, TextView>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SortableEditorAdapter(data: MutableList<String?>, private val errorTextViews: MutableMap<Int, TextView>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object{
-        const val offset = -1000
+        private const val offset = -1000
         fun getPosition(position: Int): Int {
             return offset + position
         }
+    }
+
+    private val data = mutableListOf<String?>()
+    init {
+        this.data.addAll(data)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,7 +38,7 @@ class SortableEditorAdapter(private val data: MutableList<String>, private val e
         notifyDataSetChanged()
     }
 
-    fun getData(): MutableList<String> {
+    fun getData(): MutableList<String?> {
         return data
     }
 

@@ -27,12 +27,14 @@ class EditorRadio(view: View, template: TemplateManager, position: Int?): Generi
         setup(data)
     }
 
-    override fun setData() {}
+    override fun setData() {
+        data.setFormData((radioRecycler.adapter as SortableEditorAdapter).getData())
+    }
 
     override fun setInitialData() {
         errorTextViews[R.id.radio_count] = radioCount
-        val viewAdapter = SortableEditorAdapter(data.data, errorTextViews)
-        if (data.data.isEmpty()) {
+        val viewAdapter = SortableEditorAdapter(data.getFormData(), errorTextViews)
+        if (data.getFormData().isEmpty()) {
             viewAdapter.add("")
             viewAdapter.add("")
         }

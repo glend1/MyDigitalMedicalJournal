@@ -14,13 +14,28 @@ class DataCheck: GenericQuestionData() {
     }
 
     override val type = TemplateEnum.CHECK
-    val data = mutableListOf<String>()
-    var checkError: Int? = null
+    private var data = mutableListOf<String?>()
+    private var checkErrors = mutableListOf<Int?>()
+    private var checkError: Int? = null
+
+    fun setFormData(input: MutableList<String?>) {
+        data = mutableListOf()
+        checkErrors = mutableListOf()
+        input.forEach {
+            val error = validateString(it)
+            data.add(if (error == null) {it} else {null})
+            checkErrors.add(error)
+        }
+    }
+
+    fun getFormData(): MutableList<String?> {
+        return data
+    }
 
     override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
         var total = 0
-        data.indices.forEach {
-            errors[SortableEditorAdapter.getPosition(it)] = validateString(data[it])
+        checkErrors.indices.forEach {
+            errors[SortableEditorAdapter.getPosition(it)] = checkErrors[it]
             if (errors[SortableEditorAdapter.getPosition(it)] == null) {
                 total++
             }
