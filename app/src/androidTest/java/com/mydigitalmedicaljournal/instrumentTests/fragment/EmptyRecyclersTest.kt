@@ -1,6 +1,5 @@
 package com.mydigitalmedicaljournal.instrumentTests.fragment
 
-import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText

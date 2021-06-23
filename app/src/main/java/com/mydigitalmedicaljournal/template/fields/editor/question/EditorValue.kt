@@ -1,17 +1,12 @@
 package com.mydigitalmedicaljournal.template.fields.editor.question
 
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
-import com.mydigitalmedicaljournal.template.fields.data.question.DataRadio
 import com.mydigitalmedicaljournal.template.fields.data.question.DataValue
 import com.mydigitalmedicaljournal.template.fields.editor.GenericQuestionEditor
-import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 import com.mydigitalmedicaljournal.template.file.TemplateManager
-import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 
 class EditorValue(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
     val data = if (position != null) {

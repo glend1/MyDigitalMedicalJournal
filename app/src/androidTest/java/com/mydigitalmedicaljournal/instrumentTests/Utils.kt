@@ -6,7 +6,6 @@ import android.os.IBinder
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Root
 import androidx.test.espresso.matcher.BoundedMatcher

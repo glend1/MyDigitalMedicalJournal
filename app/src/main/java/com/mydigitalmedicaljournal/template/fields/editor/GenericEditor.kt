@@ -1,7 +1,6 @@
     package com.mydigitalmedicaljournal.template.fields.editor
 
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController

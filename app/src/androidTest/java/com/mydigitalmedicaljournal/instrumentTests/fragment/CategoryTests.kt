@@ -2,7 +2,6 @@ package com.mydigitalmedicaljournal.instrumentTests.fragment
 
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
