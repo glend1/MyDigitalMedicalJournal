@@ -26,7 +26,7 @@ class DataTime: GenericData() {
 
     override val type = TemplateEnum.TIME
     override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : ${context.getString(time!!.displayName)}"
-    var timeError: Int? = null
+    private var timeError: Int? = null
     var time: TimeFormat? = null
         set(value) {
             if (value == null) {

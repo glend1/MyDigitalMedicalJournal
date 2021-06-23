@@ -2,10 +2,7 @@ package com.mydigitalmedicaljournal.template.fields.data.question
 
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
-import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
-import com.mydigitalmedicaljournal.template.fields.data.question.DataValue.Companion.UNIT_LENGTH
-import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 
 class DataValue: GenericQuestionData() {
     override val type = TemplateEnum.VALUE
@@ -15,7 +12,7 @@ class DataValue: GenericQuestionData() {
         const val UNIT_NOT_FOUND = R.string.UNIT_NOT_FOUND
     }
 
-    var unitError: Int? = null
+    private var unitError: Int? = null
     var unit: String? = null
         set(value) {
             if (value.isNullOrBlank()) {
