@@ -6,4 +6,7 @@
     <item name="radio_count" type="id" />
     <item name="check_count" type="id" />
     <item name="unit_field" type="id" />
+    <item name="max_error" type="id" />
+    <item name="min_error" type="id" />
+    <item name="min_max_range" type="id" />
 </resources>
