@@ -10,6 +10,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategoriesAndTemplates
+import com.mydigitalmedicaljournal.instrumentTests.Utils
 import org.junit.Rule
 import org.junit.Test
 
@@ -30,7 +31,8 @@ class EmptyRecyclersTest {
         activityScenarioRule.scenario.onActivity { activity ->
             activity.findNavController(R.id.nav_host_fragment).navigate(R.id.nav_categories)
         }
-        onView(withText(R.string.no_categories)).check(matches(isDisplayed()))
+
+        onView(withText(Utils.CONTEXT.getString(R.string.no_data,Utils.CONTEXT.getString(R.string.category)))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -38,7 +40,7 @@ class EmptyRecyclersTest {
         activityScenarioRule.scenario.onActivity { activity ->
             activity.findNavController(R.id.nav_host_fragment).navigate(R.id.templateSelector)
         }
-        onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.getString(R.string.no_data, Utils.CONTEXT.getString(R.string.template)))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -58,7 +60,7 @@ class EmptyRecyclersTest {
         activityScenarioRule.scenario.onActivity { activity ->
             activity.findNavController(R.id.nav_host_fragment).navigate(R.id.manageCategoryTemplatesFragment)
         }
-        onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.getString(R.string.no_data, Utils.CONTEXT.getString(R.string.template)))).check(matches(isDisplayed()))
     }
 
     @Test

@@ -14,20 +14,22 @@ import java.util.*
 class TemplateManager(private val context: Context, private val id: UUID = UUID.randomUUID(), templateFolder: Array<String> = arrayOf("templates")) {
     private val json by lazy { Gson() }
     private var file: FileHelper = FileHelper(id.toString(), context, templateFolder)
-    private var data = if (file.exists()) parse(file.read()) else TemplateDefinition(id)
+    private var data = if (file.exists()) parse(file.read()) else TemplateDefinition(id, mutableListOf(), context)
 
     private fun parse(string: String): TemplateDefinition {
         val parsed = JsonParser.parseString(string).asJsonObject
         val definitions = mutableListOf<GenericData>()
         for (obj in parsed["data"].asJsonArray) {
             val enum = json.fromJson(obj.asJsonObject["type"], TemplateEnum::class.java)
-            definitions.add(json.fromJson(obj, enum.className))
+            val element = json.fromJson(obj, enum.className)
+            element.setContext(context)
+            definitions.add(element)
         }
         return TemplateDefinition(
             json.fromJson(parsed["id"], UUID::class.java),
             /*json.fromJson(parsed["name"], String::class.java),
             json.fromJson(parsed["time"], DataTime.TimeFormat::class.java),*/
-            definitions
+            definitions, context
         )
     }
 

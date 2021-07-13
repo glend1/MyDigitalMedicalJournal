@@ -71,11 +71,11 @@ class EditorTests {
     @Test
     fun delete() {
         onView(withId(R.id.delete_template)).perform(click())
-        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withText(R.string.yes)).inRoot(isDialog()).perform(click())
         activityScenarioRule.scenario.onActivity { activity ->
             activity.findNavController(R.id.nav_host_fragment).navigate(R.id.nav_templates)
         }
-        onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.getString(R.string.no_data, Utils.CONTEXT.getString(R.string.template)))).check(matches(isDisplayed()))
     }
 
     class ClickImage(private val id: Int): ViewAction {

@@ -1,33 +1,30 @@
 package com.mydigitalmedicaljournal.template.fields.data.question
 
+import android.content.Context
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 
-class DataValue: GenericQuestionData() {
+class DataValue(context: Context): GenericQuestionData(context) {
     override val type = TemplateEnum.VALUE
 
-    companion object {
-        const val UNIT_LENGTH = R.string.UNIT_LENGTH
-        const val UNIT_NOT_FOUND = R.string.UNIT_NOT_FOUND
-    }
-
-    private var unitError: Int? = null
+    @Transient private var unitError: String? = null
     var unit: String? = null
         set(value) {
+            val length = 10
             if (value.isNullOrBlank()) {
-                unitError = UNIT_NOT_FOUND
+                unitError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.unit))
             } else {
-                if (value.length <= 10) {
+                if (value.length <= length) {
                     field = value
                     unitError = null
                 } else {
-                    unitError = UNIT_LENGTH
+                    unitError = getStrRes(R.string.LENGTH, getStrRes(R.string.unit), length.toString())
                 }
             }
         }
 
-    override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
+    override fun validateAfterQuestion(errors: MutableMap<Int, String?>) {
         errors[R.id.unit_field] = unitError
     }
 }

@@ -13,9 +13,11 @@ import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 
 class EditorCheck(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
     val data = if (position != null) {
-        template.getData().getData(position) as DataCheck
+        val newData = template.getData().getData(position) as DataCheck
+        newData.setContext(view.context)
+        newData
     } else {
-        val newData = DataCheck()
+        val newData = DataCheck(view.context)
         template.getData().add(newData)
         newData
     }

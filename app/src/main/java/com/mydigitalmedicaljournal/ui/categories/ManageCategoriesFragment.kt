@@ -33,8 +33,8 @@ class ManageCategoriesFragment : Fragment() {
         root.findViewById<View>(R.id.add).setOnClickListener {
             val add =
                 TextBoxDialog(
-                    getString(R.string.New),
-                    getString(R.string.New_Text),
+                    getString(R.string.new_value, getString(R.string.category)),
+                    getString(R.string.new_category_text),
                     "",
                     requireContext()
                 )
@@ -49,8 +49,8 @@ class ManageCategoriesFragment : Fragment() {
     }
 
     class Adapter(var json: Categories, private val container: ViewGroup?) : EmptyAdapter() {
-        override val message = R.string.no_categories
         override val layout = R.layout.list_manage
+        override val message =  container!!.context.getString(R.string.no_data, container.context.getString(R.string.category))
         override fun getItemCount() = if (isEmpty()) { 1 } else { json.size() }
         override fun isEmpty() = json.size() <= 0
 
@@ -66,8 +66,8 @@ class ManageCategoriesFragment : Fragment() {
             delete.setOnClickListener {
                 val alert =
                     ConfirmDialog(
-                        delete.context.getString(R.string.Confirm_Category, json.getName(position)),
-                        delete.context.getString(R.string.Confirm_Category_Warning),
+                        delete.context.getString(R.string.confirm_delete, delete.context.getString(R.string.category), json.getName(position)),
+                        delete.context.getString(R.string.confirm_category_warning),
                         delete.context
                     )
                 alert.setConfirm { _, _ ->
@@ -91,8 +91,8 @@ class ManageCategoriesFragment : Fragment() {
             rename.setOnClickListener {
                 val textBox =
                     TextBoxDialog(
-                        rename.context.getString(R.string.Rename),
-                        rename.context.getString(R.string.Rename_Text, json.getName(position)),
+                        rename.context.getString(R.string.rename),
+                        rename.context.getString(R.string.rename_text, json.getName(position)),
                         json.getName(position),
                         rename.context
                     )

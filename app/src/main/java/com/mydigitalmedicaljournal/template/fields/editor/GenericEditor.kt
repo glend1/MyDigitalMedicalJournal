@@ -28,7 +28,7 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
         }
     }
 
-    private fun showErrors(errorRes : MutableMap<Int, Int?>) {
+    private fun showErrors(errorRes : MutableMap<Int, String?>) {
         errorRes.forEach{ (id, i) ->
             val textView = errorTextViews[id]
             if (textView != null) {
@@ -36,7 +36,7 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
                     textView.visibility = View.GONE
                 } else {
                     textView.visibility = View.VISIBLE
-                    textView.text = textView.resources.getString(i)
+                    textView.text = i
                 }
             }
         }

@@ -15,7 +15,7 @@ import java.util.*
 class FieldEditorFragment : Fragment() {
     private var enumType: TemplateEnum? = null
     private var template: TemplateManager? = null
-    private var error: Int? = null
+    private var error: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val position = arguments?.get("position") as Int?
@@ -31,7 +31,7 @@ class FieldEditorFragment : Fragment() {
 
     private fun layoutError(inflater: LayoutInflater, container: ViewGroup?): View {
         val view = inflater.inflate(R.layout.empty_recycler, container, false)
-        view.findViewById<TextView>(R.id.message).text = requireContext().resources.getString(error!!)
+        view.findViewById<TextView>(R.id.message).text = error!!
         return view
     }
 
@@ -48,7 +48,7 @@ class FieldEditorFragment : Fragment() {
             setEnumType(position, type)
             enumType!!.editorLayout
         } else {
-            error = R.string.filename_notset
+            error = requireContext().resources.getString(R.string.NOT_FOUND, requireContext().resources.getString(R.string.filename))
             null
         }
     }
@@ -62,7 +62,7 @@ class FieldEditorFragment : Fragment() {
                 type
             }
             else -> {
-                error = R.string.enum_notset
+                error = requireContext().resources.getString(R.string.NOT_FOUND, requireContext().resources.getString(R.string.field_type))
                 null
             }
         }

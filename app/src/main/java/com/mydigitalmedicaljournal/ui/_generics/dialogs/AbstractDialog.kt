@@ -20,7 +20,7 @@ abstract class AbstractDialog(title: String, message: String, protected val cont
     }
 
     fun setConfirm(listener: DialogInterface.OnClickListener) {
-        setConfirm(R.string.Yes, listener)
+        setConfirm(R.string.yes, listener)
     }
 
     fun setConfirm(name: Int, listener: DialogInterface.OnClickListener) {

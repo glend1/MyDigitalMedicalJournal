@@ -64,8 +64,8 @@ class EditorFragment : Fragment() {
             if (templateManager!!.fileExists()) {
                 val alert =
                     ConfirmDialog(
-                        v.context.getString(R.string.Confirm_Template, (templateManager!!.getData().getData(0) as DataName).name),
-                        v.context.getString(R.string.Confirm_Template_Warning),
+                        v.context.getString(R.string.confirm_delete, v.context.getString(R.string.category), (templateManager!!.getData().getData(0) as DataName).name),
+                        v.context.getString(R.string.confirm_template_warning),
                         v.context
                     )
                 alert.setConfirm { _, _ ->
@@ -74,7 +74,7 @@ class EditorFragment : Fragment() {
                 }
                 alert.show()
             } else {
-                Snackbar.make(root, getString(R.string.file_not_found), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(root, getString(R.string.template_file_not_found), Snackbar.LENGTH_LONG).show()
             }
         }
     }
@@ -99,7 +99,7 @@ class EditorFragment : Fragment() {
             result = true
             EditorAdapter(templateManager!!)
         } else {
-            NoTemplateSelectedAdapter()
+            NoTemplateSelectedAdapter(requireContext())
         }
         return result
     }
@@ -120,9 +120,9 @@ class EditorFragment : Fragment() {
         super.onPause()
     }
 
-    class NoTemplateSelectedAdapter: EmptyAdapter() {
-        override val message: Int
-            get() = R.string.template_not_selected
+    class NoTemplateSelectedAdapter(private val context: Context) : EmptyAdapter() {
+        override val message: String
+            get() = context.getString(R.string.template_not_selected)
         override val layout: Int
             get() = R.layout.empty_recycler
 

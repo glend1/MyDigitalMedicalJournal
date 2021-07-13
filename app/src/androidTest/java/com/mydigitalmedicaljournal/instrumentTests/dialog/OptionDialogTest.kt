@@ -31,7 +31,7 @@ class OptionDialogTest {
         }
         onView(withId(R.id.custom)).inRoot(isDialog()).perform(click())
         onView(withText(R.string.manage_categories)).inRoot(isPlatformPopup()).perform(click())
-        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withText(R.string.yes)).inRoot(isDialog()).perform(click())
         assertEquals(dialog!!.getSelected(), selected)
         assertEquals(true, false)
     }

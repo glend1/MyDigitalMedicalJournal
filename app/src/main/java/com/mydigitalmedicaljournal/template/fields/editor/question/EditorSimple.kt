@@ -7,9 +7,11 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorSimple(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
         val data = if (position != null) {
-            template.getData().getData(position) as DataSimple
+            val newData = template.getData().getData(position) as DataSimple
+            newData.setContext(view.context)
+            newData
         } else {
-            val newData = DataSimple()
+            val newData = DataSimple(view.context)
             template.getData().add(newData)
             newData
         }

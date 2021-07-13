@@ -1,22 +1,17 @@
 package com.mydigitalmedicaljournal.template.fields.data.question
 
+import android.content.Context
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 
-class DataCheck: GenericQuestionData() {
-    companion object {
-        const val CHECK_LENGTH = R.string.CHECK_LENGTH
-        const val CHECK_SYMBOLS = R.string.CHECK_SYMBOLS
-        const val CHECK_NOT_FOUND = R.string.CHECK_NOT_FOUND
-        const val CHECK_NOT_ENOUGH = R.string.CHECK_NOT_ENOUGH
-    }
+class DataCheck(context: Context): GenericQuestionData(context) {
 
     override val type = TemplateEnum.CHECK
     private var data = mutableListOf<String?>()
-    private var checkErrors = mutableListOf<Int?>()
-    private var checkError: Int? = null
+    @Transient private var checkErrors = mutableListOf<String?>()
+    @Transient private var checkError: String? = null
 
     fun setFormData(input: MutableList<String?>) {
         data = mutableListOf()
@@ -32,7 +27,7 @@ class DataCheck: GenericQuestionData() {
         return data
     }
 
-    override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
+    override fun validateAfterQuestion(errors: MutableMap<Int, String?>) {
         var total = 0
         checkErrors.indices.forEach {
             errors[SortableEditorAdapter.getPosition(it)] = checkErrors[it]
@@ -40,21 +35,22 @@ class DataCheck: GenericQuestionData() {
                 total++
             }
         }
-        checkError = if (total >= 2) { null } else { CHECK_NOT_ENOUGH }
+        checkError = if (total >= 2) { null } else { getStrRes(R.string.NOT_ENOUGH, getStrRes(R.string.Check)) }
         errors[R.id.check_count] = checkError
     }
 
-    private fun validateString(str: String?): Int? {
+    private fun validateString(str: String?): String? {
         return if (str.isNullOrBlank()) {
-            CHECK_NOT_FOUND
+            getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check))
         } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(str)) {
-            if (str.length <= 25) {
+            val length = 25
+            if (str.length <= length) {
                 null
             } else {
-                CHECK_LENGTH
+                getStrRes(R.string.LENGTH, getStrRes(R.string.check), length.toString())
             }
         } else {
-            CHECK_SYMBOLS
+            getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.check))
         }
     }
 }

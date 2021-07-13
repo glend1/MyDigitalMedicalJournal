@@ -27,12 +27,12 @@ class NewTemplateDialog(title: String, message: String, context: Context, contai
         setConfirm(R.string.save) { _, _ -> }
     }
 
-    private fun setName(): MutableMap<Int, Int?> {
+    private fun setName(): MutableMap<Int, String?> {
         templateManager.getName().name = castInput.dialogName.text.toString()
         return templateManager.getData().getName().validate()
     }
 
-    private fun setDate(): MutableMap<Int, Int?> {
+    private fun setDate(): MutableMap<Int, String?> {
         templateManager.getDate().time = DataTime.TimeFormat.getType(castInput.dialogDate.checkedRadioButtonId)
         return templateManager.getData().getTime().validate()
     }
@@ -43,17 +43,20 @@ class NewTemplateDialog(title: String, message: String, context: Context, contai
         if (templateManager.setData()) {
             return true
         } else {
+            var errors = 0
             var nameVis = GONE
             var timeVis = GONE
             if (validName[R.id.name_field] != null) {
                 nameVis = VISIBLE
+                errors++
             }
             if (validTime[R.id.time_field] != null) {
                 timeVis = VISIBLE
+                errors++
             }
             castInput.errorName(nameVis, validName[R.id.name_field])
             castInput.errorDate(timeVis, validTime[R.id.time_field])
-            Snackbar.make(castInput.view, R.string.error_message, Snackbar.LENGTH_LONG).show()
+            Snackbar.make(castInput.view, context.getString(R.string.number_errors, errors.toString()), Snackbar.LENGTH_LONG).show()
             return false
         }
     }

@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mydigitalmedicaljournal.R
 
 abstract class EmptyAdapter : RecyclerView.Adapter<ViewHolder>() {
-    abstract val message: Int
+
+    abstract val message: String
     abstract val layout: Int
     abstract override fun getItemCount(): Int
     abstract fun isEmpty(): Boolean
@@ -19,7 +20,7 @@ abstract class EmptyAdapter : RecyclerView.Adapter<ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val view = holder.itemView
         if (isEmpty()) {
-            view.findViewById<TextView>(R.id.message).text = view.resources.getString(message)
+            view.findViewById<TextView>(R.id.message).text = message
         } else {
             bindView(view, position)
         }

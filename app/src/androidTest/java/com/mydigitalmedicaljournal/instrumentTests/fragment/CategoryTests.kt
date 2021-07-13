@@ -17,6 +17,7 @@ import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyCategories
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplates
+import com.mydigitalmedicaljournal.instrumentTests.Utils
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.not
@@ -48,7 +49,7 @@ class CategoryTests {
     @Test
     fun addDialog() {
         onView(withId(R.id.add)).perform(click())
-        onView(withText(R.string.New)).inRoot(isDialog()).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.getString(R.string.new_value, Utils.CONTEXT.getString(R.string.category)))).inRoot(isDialog()).check(matches(isDisplayed()))
     }
 
     class ClickRename: ViewAction {
@@ -71,7 +72,7 @@ class CategoryTests {
         val newName = "rabbit"
         onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickRename()))
         onView(withText(testCategory)).inRoot(isDialog()).perform(replaceText(newName))
-        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withText(R.string.yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.recycler)).check(matches(hasDescendant(withText(newName))))
     }
 
@@ -93,7 +94,7 @@ class CategoryTests {
     @Test
     fun noFilesManage() {
         onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, ClickManage()))
-        onView(withText(R.string.no_templates)).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.getString(R.string.no_data, Utils.CONTEXT.getString(R.string.template)))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -126,7 +127,7 @@ class CategoryTests {
     @Test
     fun deleteDialog() {
         onView(withId(R.id.recycler)).perform(actionOnItemAtPosition<ViewHolder>(1, ClickDelete()))
-        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withText(R.string.yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.recycler)).check(matches(not(hasDescendant(withText(testCategory)))))
     }
 

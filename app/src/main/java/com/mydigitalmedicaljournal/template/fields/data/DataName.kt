@@ -4,34 +4,30 @@ import android.content.Context
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 
-class DataName: GenericData() {
-
-    companion object {
-        const val NAME_LENGTH = R.string.NAME_LENGTH
-        const val NAME_SYMBOLS = R.string.NAME_SYMBOLS
-        const val NAME_NOT_FOUND = R.string.NAME_NOT_FOUND
-    }
+class DataName(context: Context): GenericData(context) {
 
     override val type = TemplateEnum.NAME
+    //TODO remove parameter
     override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : $name"
-    private var nameError: Int? = null
+    @Transient private var nameError: String? = null
     var name: String? = null
         set(value) {
+            val length = 25
             if (value.isNullOrBlank()) {
-                nameError = NAME_NOT_FOUND
+                nameError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.name))
             } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(value)) {
-                if (value.length <= 25) {
+                if (value.length <= length) {
                     field = value
                     nameError = null
                 } else {
-                    nameError = NAME_LENGTH
+                    nameError = getStrRes(R.string.LENGTH, getStrRes(R.string.name), length.toString())
                 }
             } else {
-                nameError = NAME_SYMBOLS
+                nameError = getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.name))
             }
         }
 
-    override fun validate(): MutableMap<Int, Int?> {
+    override fun validate(): MutableMap<Int, String?> {
         return mutableMapOf(Pair(R.id.name_field, nameError))
     }
 }

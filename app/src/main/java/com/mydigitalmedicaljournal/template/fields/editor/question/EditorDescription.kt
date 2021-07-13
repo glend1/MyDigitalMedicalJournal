@@ -7,9 +7,11 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorDescription(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
     val data: DataDescription = if (position != null) {
-        template.getData().getData(position) as DataDescription
+        val newData = template.getData().getData(position) as DataDescription
+        newData.setContext(view.context)
+        newData
     } else {
-        val newData = DataDescription()
+        val newData = DataDescription(view.context)
         template.getData().add(newData)
         newData
     }

@@ -29,7 +29,7 @@ class NewTemplateDialog {
             val context = activity as Context
             val newTemplate =
                 NewTemplateDialog(
-                    context.getString(R.string.new_template),
+                    context.getString(R.string.new_value, context.getString(R.string.template)),
                     context.getString(R.string.new_template_instruction),
                     context,
                     activity.window.decorView.rootView as ViewGroup

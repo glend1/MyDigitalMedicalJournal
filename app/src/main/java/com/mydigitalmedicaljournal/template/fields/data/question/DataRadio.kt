@@ -1,22 +1,17 @@
 package com.mydigitalmedicaljournal.template.fields.data.question
 
+import android.content.Context
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 
-class DataRadio: GenericQuestionData() {
-    companion object {
-        const val OPTION_LENGTH = R.string.OPTION_LENGTH
-        const val OPTION_SYMBOLS = R.string.OPTION_SYMBOLS
-        const val OPTION_NOT_FOUND = R.string.OPTION_NOT_FOUND
-        const val OPION_NOT_ENOUGH = R.string.OPTION_NOT_ENOUGH
-    }
+class DataRadio(context: Context): GenericQuestionData(context) {
 
     override val type = TemplateEnum.RADIO
     private var data = mutableListOf<String?>()
-    private var radioErrors = mutableListOf<Int?>()
-    private var radioError: Int? = null
+    @Transient private var radioErrors = mutableListOf<String?>()
+    @Transient private var radioError: String? = null
 
     fun setFormData(input: MutableList<String?>) {
         data = mutableListOf()
@@ -32,7 +27,7 @@ class DataRadio: GenericQuestionData() {
         return data
     }
 
-    override fun validateAfterQuestion(errors: MutableMap<Int, Int?>) {
+    override fun validateAfterQuestion(errors: MutableMap<Int, String?>) {
         var total = 0
         radioErrors.indices.forEach {
             errors[SortableEditorAdapter.getPosition(it)] = radioErrors[it]
@@ -40,21 +35,22 @@ class DataRadio: GenericQuestionData() {
                 total++
             }
         }
-        radioError = if (total >= 2) { null } else { OPION_NOT_ENOUGH }
+        radioError = if (total >= 2) { null } else { getStrRes(R.string.NOT_ENOUGH, getStrRes(R.string.Radio)) }
         errors[R.id.radio_count] = radioError
     }
 
-    private fun validateString(str: String?): Int? {
+    private fun validateString(str: String?): String? {
         return if (str.isNullOrBlank()) {
-            OPTION_NOT_FOUND
+            getStrRes(R.string.NOT_FOUND, getStrRes(R.string.Radio))
         } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(str)) {
-            if (str.length <= 25) {
+            val length = 25
+            if (str.length <= length) {
                 null
             } else {
-                OPTION_LENGTH
+                getStrRes(R.string.LENGTH, getStrRes(R.string.Radio), length.toString())
             }
         } else {
-            OPTION_SYMBOLS
+            getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.Radio))
         }
     }
 }

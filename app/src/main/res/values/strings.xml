@@ -1,10 +1,14 @@
 <resources>
     <!-- TODO refactor resources-->
+    <!-- app strings-->
     <string name="app_name">My Digital Medical Journal</string>
     <string name="app_name_short">M. Journal</string>
     <string name="nav_header_subtitle">\@MyDigitalMedicalJournal</string>
     <string name="nav_header_desc">My Digital Medical Journal Logo</string>
-
+    <!--words-->
+    <string name="category">Category</string>
+    <string name="template">Template</string>
+    <!-- fragment/navigation name strings-->
     <string name="drawer_templates">Templates</string>
     <string name="drawer_categories">Categories</string>
     <string name="drawer_category_manage">Manage</string>
@@ -18,6 +22,12 @@
     <string name="action_instructions">Instructions</string>
     <string name="action_social">Social</string>
     <string name="action_support">Support</string>
+    <string name="manage_templates">Manage Templates</string>
+    <string name="manage_categories">Manage Categories</string>
+    <string name="template_editor">Template Editor</string>
+    <string name="template_selector">Template Selector</string>
+    <string name="manage_category_templates">Manage Category Templates</string>
+    <!-- settings fragment strings-->
     <string name="settings_weight">Weight</string>
     <string name="settings_volume">Volume</string>
     <string name="settings_length">Length</string>
@@ -25,98 +35,71 @@
     <string name="settings_date">Date Format</string>
     <string name="settings_duration">Duration</string>
     <string name="settings_measures">Measures</string>
-    <string name="manage_templates">Manage Templates</string>
-    <string name="manage_categories">Manage Categories</string>
+    <!-- clickables strings-->
     <string name="rename">Rename</string>
     <string name="manage">Manage</string>
     <string name="delete">Delete</string>
-    <string name="rename_icon">Rename</string>
-    <string name="manage_icon">Manage</string>
-    <string name="delete_icon">Delete</string>
-    <string name="Rename">Rename</string>
-    <string name="Rename_Text">Please type the new name for \"%1$s\"</string>
-    <string name="Confirm_Category">Are you sure you want to delete Category named \"%1$s\"</string>
-    <string name="Confirm_Category_Warning">You will not loose any data or any saved templates. This action cannot be undone.</string>
-    <string name="Confirm_Template">Are you sure you want to delete Template named \"%1$s\"</string>
-    <string name="Confirm_Template_Warning">You will not loose any data. This action cannot be undone.</string>
-    <string name="New">Add New Category</string>
-    <string name="New_Text">Please type the name for the new category</string>
-    <string name="Cancel">Cancel</string>
-    <string name="Yes">Yes</string>
-    <string name="Template_editor">Template Editor</string>
+    <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="save_icon">save icon</string>
-    <string name="name">Name</string>
+    <string name="yes">Yes</string>
     <string name="add_field">Add field</string>
-    <string name="add_icon">add</string>
+    <string name="clear_button">Clear</string>
+    <string name="add_label">Add Optional Label</string>
+    <string name="add_radio">Add Radio Button</string>
+    <string name="add_check">Add Checkbox</string>
+    <!--information strings-->
+    <string name="rename_text">Please type a new name for \"%1$s\"</string>
+    <string name="new_category_text">Please type a name for this Category</string>
+    <string name="new_value">New %1$s</string>
+    <string name="add_field_text">Please Select a new Type of Field</string>
+    <string name="new_template_instruction">Please enter a Name and Date Format</string>
+    <!--warning strings-->
+    <string name="confirm_delete">Are you sure you want to delete %1$s named \"%2$s\"</string>
+    <string name="confirm_category_warning">You will not loose any data or any saved Templates. This action cannot be undone.</string>
+    <string name="confirm_template_warning">You will not loose any data. This action cannot be undone.</string>
+    <!--labels-->
+    <string name="name">Name</string>
     <string name="time_format">Time Type</string>
     <string name="date">Date</string>
     <string name="duration">Duration</string>
     <string name="date_time">Date/Time</string>
-    <string name="add_field_text">Please Select a new Type of Field</string>
-    <string name="no_templates">No Templates, Please add at least one.</string>
-    <string name="no_categories">No Categories, Please add at least one.</string>
-    <string name="no_templates_filtered">Template filter returned no results</string>
-    <string name="error_message">Errors found. Please correct those before retrying</string>
-    <string name="error_name">Error. Please enter a valid name.</string>
-    <string name="error_time">Error. Please select a Time Type.</string>
-    <string name="file_not_found">You cannot delete a Template before you\'ve saved it.</string>
-    <string name="TemplateSelector">Template Selector</string>
-    <string name="filter_templates">Filter Templates:</string>
-    <string name="clear_button">clear</string>
+    <string name="filter_templates">Filter Templates</string>
     <string name="uncategoriezed">(Uncategorized)</string>
     <string name="simple">Yes/No Question</string>
     <string name="check">Select Multiple</string>
     <string name="radio">Select Single</string>
     <string name="description">Description</string>
     <string name="rating">Slider</string>
-    <string name="value">Value: </string>
-    <string name="value_label">Value</string>
+    <string name="value">Value</string>
     <string name="image">Image Map</string>
-    <string name="question">Question:</string>
-    <string name="min">Minimum:</string>
-    <string name="maximum">Maximum:</string>
-    <string name="error_min">You must enter a Minimum value</string>
-    <string name="error_max">You must enter a Maxiumum value</string>
-    <string name="error_min_max">Minimum and Maximum are not a valid Range</string>
-    <string name="add_label">Add Optional Label</string>
-    <string name="label">Label: </string>
-    <string name="unit">Unit:</string>
-    <string name="add_radio">Add Radio Button</string>
-    <string name="add_check">Add Checkbox</string>
-    <string name="error_question">Please write a question.</string>
-    <string name="NAME_LENGTH">Error. Name field must not have more than 25 characters</string>
-    <string name="OPTION_LENGTH">Error. Option field must not have more than 25 characters</string>
-    <string name="NAME_SYMBOLS">Error. Name field must not have special characters</string>
-    <string name="OPTION_SYMBOLS">Error. Option field must not have special characters</string>
-    <string name="TIME_NOT_SET">Error. Time field is not set</string>
-    <string name="NAME_NOT_FOUND">Error. Name field is not set</string>
-    <string name="OPTION_NOT_FOUND">Error. Option field is not set</string>
-
-    <string name="QUESTION_LENGTH">Error. Question field must not have more than 80 characters</string>
-    <string name="QUESTION_SYMBOLS">Error. Question field must not have special characters</string>
-    <string name="QUESTION_NOT_FOUND">Error. Question field is not set</string>
-
-    <string name="new_template">New Template</string>
-    <string name="new_template_instruction">Please enter a name and recording date format</string>
-    <string name="manage_category_templates">Manage Category Templates</string>
-    <string name="filename_notset">ERROR: Filename not set</string>
-    <string name="enum_notset">ERROR: Field type not set</string>
-    <string name="template_not_selected">Error. No Template Selected</string>
+    <string name="question">Question</string>
+    <string name="minimum">Minimum</string>
+    <string name="maximum">Maximum</string>
+    <string name="label">Label</string>
+    <string name="unit">Unit</string>
+    <string name="option">Option</string>
+    <!--alt text-->
+    <string name="add_category">Add Category</string>
+    <string name="add_entry">Add Entry</string>
+    <string name="add_template">Add Template</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
+    <!--error strings-->
+    <string name="no_data">No %1$s, Please add at least one.</string>
+    <string name="no_templates_filtered">Template filter returned no results</string>
+    <string name="template_file_not_found">You cannot delete a Template before you\'ve saved it.</string>
     <string name="number_errors">%1$s errors found.</string>
-    <string name="up_icon">Up</string>
-    <string name="down_icon">Down</string>
-    <string name="option">Option:</string>
-    <string name="OPTION_NOT_ENOUGH">Error. You must have at least 2 valid Radio Options</string>
-    <string name="CHECK_LENGTH">Error. Checkbox field must not have more than 25 characters</string>
-    <string name="CHECK_SYMBOLS">>Error. Checkbox field must not have special characters</string>
-    <string name="CHECK_NOT_FOUND">Error. Checkbox field is not set</string>
-    <string name="CHECK_NOT_ENOUGH">Error. You must have at least 2 valid Checkbox Options</string>
-    <string name="UNIT_LENGTH">Error. Unit field must not have more than 10 characters</string>
-    <string name="UNIT_NOT_FOUND">Error. Unit field is not set</string>
-    <string name="MIN_RATING_SIZE">min rating size</string>
-    <string name="MAX_RATING_SIZE">max rating size</string>
-    <string name="MIN_RATING_NOT_FOUND">min rating not found</string>
-    <string name="MAX_RATING_NOT_FOUND">max rating not found</string>
-    <string name="MIN_MAX_NOT_VALID">minmax out of range</string>
+    <string name="template_not_selected">ERROR. No Template Selected</string>
+    <string name="MIN_MAX_NOT_VALID">ERROR: Minimum and Maximum are not a valid Range</string>
+    <string name="RATING_SIZE">ERROR: %1$s not a valid size</string>
+    <string name="NOT_ENOUGH">ERROR: You must have at least 2 %1$s Options</string>
+    <string name="SPECIAL_SYMBOLS">ERROR: %1$s must not have special characters</string>
+    <string name="NOT_FOUND">ERROR: %1$s not set</string>
+    <string name="LENGTH">ERROR: %1$s must not have more than %2$s characters</string>
+    <!--compound strings -->
+    <string name="Radio">Radio Button</string>
+    <string name="Check">Checkbox</string>
+    <string name="filename">Filename</string>
+    <string name="field_type">Field Type</string>
+
 </resources>

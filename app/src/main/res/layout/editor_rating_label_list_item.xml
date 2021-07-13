@@ -52,7 +52,7 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/delete_icon"
+        android:contentDescription="@string/delete"
         android:paddingStart="@dimen/medium"
         android:paddingEnd="@dimen/medium"
         app:layout_constraintBottom_toBottomOf="parent"

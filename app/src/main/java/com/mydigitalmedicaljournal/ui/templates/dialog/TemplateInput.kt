@@ -22,13 +22,13 @@ class TemplateInput(builder: AlertDialog.Builder, val context: Context, containe
         builder.setView(view)
     }
 
-    fun errorName(visibility: Int, error: Int?) {
-        errorName.text = error?.let { context.resources.getString(it)}
+    fun errorName(visibility: Int, error: String?) {
+        errorName.text = error!!
         errorName.visibility = visibility
     }
 
-    fun errorDate(visibility: Int, error: Int?) {
-        errorDate.text = error?.let { context.resources.getString(it)}
+    fun errorDate(visibility: Int, error: String?) {
+        errorDate.text = error!!
         errorDate.visibility = visibility
     }
 }

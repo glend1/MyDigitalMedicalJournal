@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.template
 
+import android.content.Context
 import android.view.View
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.fields.data.*
@@ -21,16 +22,16 @@ enum class TemplateEnum(
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorName {
             return EditorName(view, template, position)
         }
-        override fun createData(): DataName {
-            return DataName()
+        override fun createData(context: Context): DataName {
+            return DataName(context)
         }
     },
     TIME(1, R.layout.editor_time_format, false, R.string.date, DataTime::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorTime {
             return EditorTime(view, template, position)
         }
-        override fun createData(): DataTime {
-            return DataTime()
+        override fun createData(context: Context): DataTime {
+            return DataTime(context)
         }
     },
     //TODO SIMPLE: boolean
@@ -38,8 +39,8 @@ enum class TemplateEnum(
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorSimple {
             return EditorSimple(view, template, position)
         }
-        override fun createData(): DataSimple {
-            return DataSimple()
+        override fun createData(context: Context): DataSimple {
+            return DataSimple(context)
         }
     },
     //TODO CHECK: check box [multi]
@@ -48,8 +49,8 @@ enum class TemplateEnum(
             return EditorCheck(view, template, position)
         }
 
-        override fun createData(): DataCheck {
-            return DataCheck()
+        override fun createData(context: Context): DataCheck {
+            return DataCheck(context)
         }
     },
     //TODO RADIO: radio group [multi]
@@ -57,8 +58,8 @@ enum class TemplateEnum(
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorRadio {
             return EditorRadio(view, template, position)
         }
-        override fun createData(): DataRadio {
-            return DataRadio()
+        override fun createData(context: Context): DataRadio {
+            return DataRadio(context)
         }
     },
     //TODO DESCRIPTION: big text
@@ -66,8 +67,8 @@ enum class TemplateEnum(
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorDescription {
             return EditorDescription(view, template, position)
         }
-        override fun createData(): DataDescription {
-            return DataDescription()
+        override fun createData(context: Context): DataDescription {
+            return DataDescription(context)
         }
     },
     //TODO RATING: sliding bar
@@ -75,17 +76,17 @@ enum class TemplateEnum(
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorRating {
             return EditorRating(view, template, position)
         }
-        override fun createData(): DataRating {
-            return DataRating()
+        override fun createData(context: Context): DataRating {
+            return DataRating(context)
         }
     },
     //TODO VALUE: integer [need more details here measurements/count]
-    VALUE(7, R.layout.editor_value, true, R.string.value_label, DataValue::class.java) {
+    VALUE(7, R.layout.editor_value, true, R.string.value, DataValue::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorValue {
             return EditorValue(view, template, position)
         }
-        override fun createData(): DataValue {
-            return DataValue()
+        override fun createData(context: Context): DataValue {
+            return DataValue(context)
         }
     },
     //TODO IMAGE: image map [need more details here]
@@ -94,8 +95,8 @@ enum class TemplateEnum(
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorImage {
             return EditorImage(view, template, position)
         }
-        override fun createData(): DataImage {
-            return DataImage()
+        override fun createData(context: Context): DataImage {
+            return DataImage(context)
         }
     };
     companion object {
@@ -119,5 +120,5 @@ enum class TemplateEnum(
         }
     }
     abstract fun createEditor(view: View, template: TemplateManager, position: Int?) : GenericEditor
-    abstract fun createData(): GenericData
+    abstract fun createData(context: Context): GenericData
 }

@@ -6,6 +6,6 @@ import com.mydigitalmedicaljournal.R
 
 class DialogCancelNull(builder: AlertDialog.Builder, context : Context) : AbstractDialogCancel {
     init {
-        builder.setNeutralButton(context.getString(R.string.Cancel), null)
+        builder.setNeutralButton(context.getString(R.string.cancel), null)
     }
 }

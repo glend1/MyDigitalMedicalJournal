@@ -10,9 +10,11 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
 
 class EditorRating(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
     val data = if (position != null) {
-        template.getData().getData(position) as DataRating
+        val newData = template.getData().getData(position) as DataRating
+        newData.setContext(view.context)
+        newData
     } else {
-        val newData = DataRating()
+        val newData = DataRating(view.context)
         template.getData().add(newData)
         newData
     }

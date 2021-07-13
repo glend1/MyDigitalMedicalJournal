@@ -10,7 +10,7 @@ import com.mydigitalmedicaljournal.ui._generics.dialogs.cancel.AbstractDialogCan
 class DialogCancelHideKeyboard(builder: AlertDialog.Builder, val view: View) : AbstractDialogCancel {
     //TODO delete this if its not used
     init {
-        builder.setNeutralButton(view.context.getString(R.string.Cancel)) { _, _ -> clearKeyboard() }
+        builder.setNeutralButton(view.context.getString(R.string.cancel)) { _, _ -> clearKeyboard() }
         builder.setOnDismissListener { clearKeyboard() }
     }
 

@@ -1,5 +1,6 @@
 package com.mydigitalmedicaljournal.ui.templates
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +25,7 @@ class ManageTemplatesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_templates, container, false)
-        val viewAdapter = Adapter(TemplateList(requireContext()).get())
+        val viewAdapter = Adapter(TemplateList(requireContext()).get(), requireContext())
         val templateList = root.findViewById<RecyclerView>(R.id.template_recycler)
         val itemDecoration = CustomDivider(requireContext())
         templateList.addItemDecoration(itemDecoration)
@@ -32,7 +33,7 @@ class ManageTemplatesFragment : Fragment() {
         root.findViewById<View>(R.id.add).setOnClickListener {
             val newTemplate =
                 NewTemplateDialog(
-                    requireContext().getString(R.string.new_template),
+                    requireContext().getString(R.string.new_value, requireContext().getString(R.string.template)),
                     requireContext().getString(R.string.new_template_instruction),
                     requireContext(),
                     container
@@ -49,8 +50,8 @@ class ManageTemplatesFragment : Fragment() {
         }
         return root
     }
-    class Adapter(private var fileList: List<FileList>) : EmptyAdapter() {
-        override val message = R.string.no_templates
+    class Adapter(private var fileList: List<FileList>, context: Context) : EmptyAdapter() {
+        override val message = context.getString(R.string.no_data, context.getString(R.string.template))
         override val layout = R.layout.list_item
         override fun getItemCount() = if (isEmpty()) { 1 } else { fileList.size }
         override fun isEmpty() = fileList.isEmpty()

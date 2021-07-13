@@ -59,7 +59,7 @@ class TemplateTests {
     fun delete() {
         onView(withId(R.id.template_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, click()))
         onView(withId(R.id.delete_template)).perform(click())
-        onView(withText(R.string.Yes)).inRoot(isDialog()).perform(click())
+        onView(withText(R.string.yes)).inRoot(isDialog()).perform(click())
         onView(withId(R.id.template_recycler)).check(matches(not(hasDescendant(withText(templateList[0].name)))))
     }
 

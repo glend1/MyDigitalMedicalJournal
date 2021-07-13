@@ -74,7 +74,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/small"
-            android:text="@string/error_time"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/error_text"
             android:visibility="gone"
@@ -110,7 +109,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/save_icon"
+            android:contentDescription="@string/save"
             app:srcCompat="@drawable/ic_save"
             app:tint="@color/textAlt" />
 

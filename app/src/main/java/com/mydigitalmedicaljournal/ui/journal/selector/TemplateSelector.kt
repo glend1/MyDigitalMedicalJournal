@@ -62,7 +62,7 @@ class TemplateSelector : Fragment() {
             if (isEmpty()) {
                 val error = item.findViewById<TextView>(R.id.message)
                 if (categoriesAndTemplates.noTemplates()) {
-                    error.text = item.resources.getString(R.string.no_templates)
+                    error.text = item.context.getString(R.string.no_data, item.context.getString(R.string.template))
                 } else {
                     error.text = item.resources.getString(R.string.no_templates_filtered)
                 }

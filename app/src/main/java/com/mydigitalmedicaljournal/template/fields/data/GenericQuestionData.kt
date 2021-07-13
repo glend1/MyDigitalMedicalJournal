@@ -3,37 +3,33 @@ package com.mydigitalmedicaljournal.template.fields.data
 import android.content.Context
 import com.mydigitalmedicaljournal.R
 
-abstract class GenericQuestionData: GenericData() {
-    companion object {
-        const val QUESTION_LENGTH = R.string.QUESTION_LENGTH
-        const val QUESTION_SYMBOLS = R.string.QUESTION_SYMBOLS
-        const val QUESTION_NOT_FOUND = R.string.QUESTION_NOT_FOUND
-    }
+abstract class GenericQuestionData(context: Context): GenericData(context) {
 
     override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : $question"
-    private var questionError: Int? = null
+    @Transient private var questionError: String? = null
 
     var question: String? = null
         set(value) {
+            val length = 80
             if (value.isNullOrBlank()) {
-                questionError = QUESTION_NOT_FOUND
+                questionError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.question))
             } else if (Regex("^[\\w\\s\\d]+\$").containsMatchIn(value)) {
-                if (value.length <= 80) {
+                if (value.length <= length) {
                     field = value
                     questionError = null
                 } else {
-                    questionError = QUESTION_LENGTH
+                    questionError = getStrRes(R.string.LENGTH, getStrRes(R.string.question), length.toString())
                 }
             } else {
-                questionError = QUESTION_SYMBOLS
+                questionError = getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.question))
             }
         }
 
-    override fun validate(): MutableMap<Int, Int?> {
+    override fun validate(): MutableMap<Int, String?> {
         val errors = mutableMapOf(Pair(R.id.question_field, questionError))
         validateAfterQuestion(errors)
         return errors
     }
 
-    abstract fun validateAfterQuestion(errors: MutableMap<Int, Int?>)
+    abstract fun validateAfterQuestion(errors: MutableMap<Int, String?>)
 }

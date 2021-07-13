@@ -4,11 +4,7 @@ import android.content.Context
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 
-class DataTime: GenericData() {
-
-    companion object {
-        const val TIME_NOT_SET = R.string.TIME_NOT_SET
-    }
+class DataTime(context: Context): GenericData(context) {
 
     enum class TimeFormat(val view: Int, val displayName: Int) {
         DATE(R.id.date, R.string.date),DATETIME(R.id.date_time, R.string.date_time),DURATION(R.id.duration, R.string.duration);
@@ -26,17 +22,17 @@ class DataTime: GenericData() {
 
     override val type = TemplateEnum.TIME
     override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : ${context.getString(time!!.displayName)}"
-    private var timeError: Int? = null
+    @Transient private var timeError: String? = null
     var time: TimeFormat? = null
         set(value) {
             if (value == null) {
-                timeError = TIME_NOT_SET
+                timeError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.time_format))
             } else {
                 timeError = null
                 field = value
             }
         }
-    override fun validate(): MutableMap<Int, Int?> {
+    override fun validate(): MutableMap<Int, String?> {
         return mutableMapOf(Pair(R.id.time_field, timeError))
     }
 

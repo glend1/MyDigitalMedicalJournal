@@ -13,9 +13,11 @@ import com.mydigitalmedicaljournal.ui._generics.CustomDivider
 
 class EditorRadio(view: View, template: TemplateManager, position: Int?): GenericQuestionEditor(view, template, position) {
     val data = if (position != null) {
-        template.getData().getData(position) as DataRadio
+        val newData = template.getData().getData(position) as DataRadio
+        newData.setContext(view.context)
+        newData
     } else {
-        val newData = DataRadio()
+        val newData = DataRadio(view.context)
         template.getData().add(newData)
         newData
     }

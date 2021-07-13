@@ -45,7 +45,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/rename_icon"
+                    android:contentDescription="@string/rename"
                     app:srcCompat="@drawable/ic_rename" />
 
                 <TextView
@@ -85,7 +85,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/manage_icon"
+                    android:contentDescription="@string/manage"
                     app:srcCompat="@drawable/ic_manage" />
 
                 <TextView
@@ -124,7 +124,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/delete_icon"
+                    android:contentDescription="@string/delete"
                     app:srcCompat="@drawable/ic_delete" />
 
                 <TextView
