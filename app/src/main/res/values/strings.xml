@@ -1,5 +1,4 @@
 <resources>
-    <!-- TODO refactor resources-->
     <!-- app strings-->
     <string name="app_name">My Digital Medical Journal</string>
     <string name="app_name_short">M. Journal</string>
