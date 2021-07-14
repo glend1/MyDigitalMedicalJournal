@@ -59,7 +59,7 @@ class TemplateDefinition(private val id: UUID, private var data: MutableList<Gen
 
     private fun errorCount(valid: MutableMap<Int, String?>): Int {
         var errorsNum = 0
-        valid.forEach{ (id, i) ->
+        valid.forEach{ (_, i) ->
             if (i != null) {
                 errorsNum++
             }
