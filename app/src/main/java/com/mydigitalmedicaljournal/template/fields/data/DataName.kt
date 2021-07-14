@@ -7,8 +7,7 @@ import com.mydigitalmedicaljournal.template.TemplateEnum
 class DataName(context: Context): GenericData(context) {
 
     override val type = TemplateEnum.NAME
-    //TODO remove parameter
-    override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : $name"
+    override fun listDisplay(): String = "${getStrRes(type.listName)} : $name"
     @Transient private var nameError: String? = null
     var name: String? = null
         set(value) {

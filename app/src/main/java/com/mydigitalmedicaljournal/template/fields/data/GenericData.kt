@@ -6,7 +6,7 @@ import com.mydigitalmedicaljournal.template.TemplateEnum
 abstract class GenericData(@Transient private var context: Context) {
     abstract val type: TemplateEnum
     abstract fun validate(): MutableMap<Int, String?>
-    abstract fun listDisplay(context: Context): String
+    abstract fun listDisplay(): String
     fun errorCount(res: MutableMap<Int, String?>): Int {
         var count = 0
         for ((_, i) in res) {

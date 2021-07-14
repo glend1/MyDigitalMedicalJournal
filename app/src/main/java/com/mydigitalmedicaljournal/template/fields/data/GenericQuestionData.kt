@@ -5,7 +5,7 @@ import com.mydigitalmedicaljournal.R
 
 abstract class GenericQuestionData(context: Context): GenericData(context) {
 
-    override fun listDisplay(context: Context): String = "${context.getString(type.listName)} : $question"
+    override fun listDisplay(): String = "${getStrRes(type.listName)} : $question"
     @Transient private var questionError: String? = null
 
     var question: String? = null

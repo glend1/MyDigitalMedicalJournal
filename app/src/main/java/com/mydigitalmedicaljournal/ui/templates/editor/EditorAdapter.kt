@@ -29,7 +29,7 @@ class EditorAdapter(val templateManager: TemplateManager) : RecyclerView.Adapter
     }
 
     private fun setTextAndNavigation(editor: EditorViewHolder, position: Int, holder: RecyclerView.ViewHolder) {
-        editor.text(templateManager.getData().getData(position).listDisplay(holder.itemView.context))
+        editor.text(templateManager.getData().getData(position).listDisplay())
         editor.itemView.setOnClickListener {
             val bundle = bundleOf("position" to position, "filename" to templateManager.getId())
             holder.itemView.findNavController().navigate(R.id.fieldEditorFragment, bundle)
