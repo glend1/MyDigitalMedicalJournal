@@ -1,6 +1,5 @@
-package com.mydigitalmedicaljournal.localTests
+package com.mydigitalmedicaljournal.instrumentTests
 
-import com.mydigitalmedicaljournal.template.fields.data.question.DataSimple
 import com.mydigitalmedicaljournal.template.fields.data.DataTime
 import com.mydigitalmedicaljournal.template.file.TemplateDefinition
 import org.junit.Assert.assertEquals
@@ -14,7 +13,7 @@ class TemplateDefinitionTests {
 
     @Before
     fun setup() {
-        templateDefinition = TemplateDefinition(templateId)
+        templateDefinition = TemplateDefinition(templateId, context = Utils.CONTEXT)
     }
 
     @Test
@@ -40,15 +39,15 @@ class TemplateDefinitionTests {
     fun passValidation() {
         templateDefinition.getName().name = "test"
         templateDefinition.getTime().time = DataTime.TimeFormat.DATE
-        templateDefinition.add(DataSimple())
-        val errors = templateDefinition.validate()
-        assertEquals(errors.size, 0)
+        assertEquals(templateDefinition.validate(), true)
     }
 
     @Test
     fun failValidation() {
-        val errors = templateDefinition.validate()
-        assertEquals(errors.size, 3)
+        //TODO potential case where name/time are null and never checked causing them to validate and allowing a corrupting save
+        templateDefinition.getName().name = null
+        templateDefinition.getTime().time = null
+        assertEquals(templateDefinition.validate(), false)
     }
 
 }

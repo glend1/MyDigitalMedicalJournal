@@ -29,7 +29,7 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
     }
 
     fun addSimple(question: String): DataSimple {
-        val data = DataSimple()
+        val data = DataSimple(Utils.CONTEXT)
         data.question = question
         template.getData().add(data)
         template.setData()
