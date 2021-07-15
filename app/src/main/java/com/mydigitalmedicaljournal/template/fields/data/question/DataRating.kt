@@ -39,7 +39,6 @@ class DataRating(context: Context): GenericQuestionData(context) {
     }
 
     private fun validateNumber(value: Int?, type: String): String? {
-        //TODDO this needs to be worked after i have refactoed strings.xml
         if (value == null) {
             return getStrRes(R.string.NOT_FOUND, type)
         } else {
