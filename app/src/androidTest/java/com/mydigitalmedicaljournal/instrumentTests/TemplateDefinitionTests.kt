@@ -44,9 +44,6 @@ class TemplateDefinitionTests {
 
     @Test
     fun failValidation() {
-        //TODO potential case where name/time are null and never checked causing them to validate and allowing a corrupting save
-        templateDefinition.getName().name = null
-        templateDefinition.getTime().time = null
         assertEquals(templateDefinition.validate(), false)
     }
 

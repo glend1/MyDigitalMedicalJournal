@@ -8,7 +8,7 @@ class DataName(context: Context): GenericData(context) {
 
     override val type = TemplateEnum.NAME
     override fun listDisplay(): String = "${getStrRes(type.listName)} : $name"
-    @Transient private var nameError: String? = null
+    @Transient private var nameError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.name))
     var name: String? = null
         set(value) {
             val length = 25

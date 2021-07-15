@@ -8,21 +8,21 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 class DataRating(context: Context): GenericQuestionData(context) {
 
     override val type = TemplateEnum.RATING
-    @Transient private var minError: String? = null
+    @Transient private var minError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.minimum))
     var minVal: Int? = null
         set(value) {
             minError = validateNumber(value, getStrRes(R.string.minimum))
             if (minError == null) { field = value }
             validateRange()
         }
-    @Transient private var maxError: String? = null
+    @Transient private var maxError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.maximum))
     var maxVal: Int? = null
         set(value) {
             maxError = validateNumber(value, getStrRes(R.string.maximum))
             if (maxError == null) { field = value }
             validateRange()
         }
-    @Transient private var rangeError: String? = null
+    @Transient private var rangeError: String? = getStrRes(R.string.MIN_MAX_NOT_VALID)
     override fun validateAfterQuestion(errors: MutableMap<Int, String?>) {
         errors[R.id.max_error] = maxError
         errors[R.id.min_error] = minError

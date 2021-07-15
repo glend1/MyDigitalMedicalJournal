@@ -10,8 +10,11 @@ class DataCheck(context: Context): GenericQuestionData(context) {
 
     override val type = TemplateEnum.CHECK
     private var data = mutableListOf<String?>()
-    @Transient private var checkErrors = mutableListOf<String?>()
-    @Transient private var checkError: String? = null
+    @Transient private var checkErrors = mutableListOf<String?>(
+        getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check)),
+        getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check))
+    )
+    @Transient private var checkError: String? = getStrRes(R.string.NOT_ENOUGH, getStrRes(R.string.Check))
 
     fun setFormData(input: MutableList<String?>) {
         data = mutableListOf()

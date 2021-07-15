@@ -6,7 +6,7 @@ import com.mydigitalmedicaljournal.R
 abstract class GenericQuestionData(context: Context): GenericData(context) {
 
     override fun listDisplay(): String = "${getStrRes(type.listName)} : $question"
-    @Transient private var questionError: String? = null
+    @Transient private var questionError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.question))
 
     var question: String? = null
         set(value) {

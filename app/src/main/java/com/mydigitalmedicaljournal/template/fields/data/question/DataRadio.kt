@@ -10,8 +10,11 @@ class DataRadio(context: Context): GenericQuestionData(context) {
 
     override val type = TemplateEnum.RADIO
     private var data = mutableListOf<String?>()
-    @Transient private var radioErrors = mutableListOf<String?>()
-    @Transient private var radioError: String? = null
+    @Transient private var radioErrors = mutableListOf<String?>(
+        getStrRes(R.string.NOT_FOUND, getStrRes(R.string.Radio)),
+        getStrRes(R.string.NOT_FOUND, getStrRes(R.string.Radio))
+    )
+    @Transient private var radioError: String? = getStrRes(R.string.NOT_ENOUGH, getStrRes(R.string.Radio))
 
     fun setFormData(input: MutableList<String?>) {
         data = mutableListOf()

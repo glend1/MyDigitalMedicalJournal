@@ -8,7 +8,7 @@ import com.mydigitalmedicaljournal.template.fields.data.GenericQuestionData
 class DataValue(context: Context): GenericQuestionData(context) {
     override val type = TemplateEnum.VALUE
 
-    @Transient private var unitError: String? = null
+    @Transient private var unitError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.unit))
     var unit: String? = null
         set(value) {
             val length = 10
