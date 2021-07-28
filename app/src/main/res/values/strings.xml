@@ -90,15 +90,20 @@
     <string name="number_errors">%1$s errors found.</string>
     <string name="template_not_selected">ERROR. No Template Selected</string>
     <string name="MIN_MAX_NOT_VALID">ERROR: Minimum and Maximum are not a valid Range</string>
-    <string name="RATING_SIZE">ERROR: %1$s not a valid size</string>
     <string name="NOT_ENOUGH">ERROR: You must have at least 2 %1$s Options</string>
     <string name="SPECIAL_SYMBOLS">ERROR: %1$s must not have special characters</string>
     <string name="NOT_FOUND">ERROR: %1$s not set</string>
     <string name="LENGTH">ERROR: %1$s must not have more than %2$s characters</string>
+    <string name="other_errors">ERROR. there are other errors present before this value can be checked</string>
+    <string name="in_use">ERROR: %1$s already in use</string>
+    <string name="too_big">ERROR. %1$s is too big</string>
+    <string name="too_small">ERROR. %1$s is too small</string>
     <!--compound strings -->
     <string name="Radio">Radio Button</string>
     <string name="Check">Checkbox</string>
     <string name="filename">Filename</string>
     <string name="field_type">Field Type</string>
+
+
 
 </resources>

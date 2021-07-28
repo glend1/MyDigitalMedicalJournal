@@ -15,7 +15,7 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
         val data = template.getData()
         data.getName().name = name
         data.getTime().time = DataTime.TimeFormat.DATE
-        template.setData()
+        template.validateAndSave()
     }
 
     fun get(): TemplateManager {
@@ -32,7 +32,7 @@ class DummyTemplateFile(fileName: String, name: String, dir : Array<String> = di
         val data = DataSimple(Utils.CONTEXT)
         data.question = question
         template.getData().add(data)
-        template.setData()
+        template.validateAndSave()
         return data
     }
 }

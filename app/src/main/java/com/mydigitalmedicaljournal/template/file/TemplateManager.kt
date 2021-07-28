@@ -49,18 +49,15 @@ class TemplateManager(private val context: Context, private val id: UUID = UUID.
         return getData().getTime()
     }
 
-    private fun setData(input: TemplateDefinition): Boolean {
-        val validData = input.validate()
+    fun validateAndSave() : Boolean {
+        val validData = data.validate()
         if (validData) {
-            data = input
             save()
         }
         return validData
     }
 
-    fun setData() = setData(data)
-
-    private fun save() {
+    fun save() {
         file.write(json.toJson(data))
     }
 

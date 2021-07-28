@@ -40,7 +40,7 @@ class NewTemplateDialog(title: String, message: String, context: Context, contai
     fun save(): Boolean {
         val validName = setName()
         val validTime = setDate()
-        if (templateManager.setData()) {
+        if (templateManager.validateAndSave()) {
             return true
         } else {
             var errors = 0

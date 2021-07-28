@@ -20,7 +20,7 @@ import com.mydigitalmedicaljournal.template.file.TemplateManager
         val errorRes = data.validate()
         val errorNum = data.errorCount(errorRes)
         if (errorNum == 0) {
-            template.setData()
+            template.save()
             view.findNavController().navigateUp()
         } else {
             showErrors(errorRes)

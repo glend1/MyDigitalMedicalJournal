@@ -81,7 +81,7 @@ class EditorFragment : Fragment() {
 
     private fun setupSaveButton() {
         root.findViewById<View>(R.id.save).setOnClickListener {
-            templateManager!!.setData()
+            templateManager!!.save()
             navigateUp()
         }
     }
