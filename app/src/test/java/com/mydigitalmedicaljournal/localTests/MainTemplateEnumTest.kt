@@ -7,11 +7,11 @@ import org.junit.Test
 class MainTemplateEnumTest {
     @Test
     fun testLayoutList() {
-        assertEquals(TemplateEnum.layoutList.size, 4)
+        assertEquals(TemplateEnum.layoutList.size, 9)
     }
 
     @Test
     fun testNameList() {
-        assertEquals(TemplateEnum.nameList.size, 2)
+        assertEquals(TemplateEnum.nameList.size, 6)
     }
 }
