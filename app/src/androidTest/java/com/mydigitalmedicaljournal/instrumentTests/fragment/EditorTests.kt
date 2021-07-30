@@ -35,8 +35,6 @@ class EditorTests {
     private val position = 3
     private val testText = "second"
 
-    //TODO test next pages
-
     fun navigate() {
         activityScenarioRule.scenario.onActivity { activity ->
             val bundle = bundleOf("data" to templateManager.getId())
