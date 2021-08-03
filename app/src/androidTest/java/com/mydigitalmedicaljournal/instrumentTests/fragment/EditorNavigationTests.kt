@@ -45,7 +45,6 @@ class EditorNavigationTests {
         dtf.delete()
     }
 
-    //TODO test this fragment
     @Test
     fun name() {
         onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(0, click()))

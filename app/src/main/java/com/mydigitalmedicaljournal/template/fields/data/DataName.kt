@@ -5,21 +5,23 @@ import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.template.TemplateEnum
 
 class DataName(context: Context): GenericData(context) {
+    companion object {
+        const val LENGTH = 25
+    }
 
     override val type = TemplateEnum.NAME
     override fun listDisplay(): String = "${getStrRes(type.listName)} : $name"
     @Transient private var nameError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.name))
     var name: String? = null
         set(value) {
-            val length = 25
             if (value.isNullOrBlank()) {
                 nameError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.name))
             } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(value)) {
-                if (value.length <= length) {
+                if (value.length <= LENGTH) {
                     field = value
                     nameError = null
                 } else {
-                    nameError = getStrRes(R.string.LENGTH, getStrRes(R.string.name), length.toString())
+                    nameError = getStrRes(R.string.LENGTH, getStrRes(R.string.name), LENGTH.toString())
                 }
             } else {
                 nameError = getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.name))
