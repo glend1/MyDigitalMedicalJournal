@@ -51,7 +51,6 @@ class EditorNavigationTests {
         onView(withId(R.id.name_text)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun time() {
         onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(1, click()))
