@@ -57,7 +57,6 @@ class EditorNavigationTests {
         onView(withId(R.id.time)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun newYesNo() {
         onView(withId(R.id.add)).perform(click())
