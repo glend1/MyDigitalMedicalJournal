@@ -76,6 +76,7 @@ class CategoryTests {
         onView(withId(R.id.recycler)).check(matches(hasDescendant(withText(newName))))
     }
 
+    //TODO these can be refactored
     class ClickManage: ViewAction {
         override fun getDescription(): String {
             return "manage was not clicked"
