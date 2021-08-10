@@ -9,7 +9,10 @@ import android.widget.ImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Root
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
 import androidx.test.espresso.matcher.BoundedMatcher
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
@@ -64,6 +67,20 @@ class Utils {
             }
         }
 
+    }
+
+    class ClickImage(private val id: Int): ViewAction {
+        override fun getDescription(): String {
+            return "button not clicked"
+        }
+
+        override fun getConstraints(): Matcher<View> {
+            return ViewMatchers.withId(id)
+        }
+
+        override fun perform(uiController: UiController?, view: View?) {
+            view!!.findViewById<ImageView>(id).performClick()
+        }
     }
 
     class Navigation(private val activityScenarioRule: ActivityScenarioRule<MainActivity>) {

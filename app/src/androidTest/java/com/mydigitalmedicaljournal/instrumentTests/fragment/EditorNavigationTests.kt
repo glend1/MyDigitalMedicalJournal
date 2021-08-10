@@ -65,7 +65,6 @@ class EditorNavigationTests {
         onView(withId(R.id.yes_no)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun newMultiple() {
         onView(withId(R.id.add)).perform(click())
@@ -109,4 +108,6 @@ class EditorNavigationTests {
         onView(withId(R.id.recycler)).inRoot(isDialog()).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(5, click()))
         onView(withId(R.id.value)).check(matches(isDisplayed()))
     }
+
+    //TODO test reordering
 }

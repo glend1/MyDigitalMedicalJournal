@@ -8,6 +8,10 @@ import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 
 class DataCheck(context: Context): GenericQuestionData(context) {
 
+    companion object {
+        const val LENGTH = 25
+    }
+
     override val type = TemplateEnum.CHECK
     private var data = mutableListOf<String?>()
     @Transient private var checkErrors = mutableListOf<String?>(
@@ -46,11 +50,10 @@ class DataCheck(context: Context): GenericQuestionData(context) {
         return if (str.isNullOrBlank()) {
             getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check))
         } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(str)) {
-            val length = 25
-            if (str.length <= length) {
+            if (str.length <= LENGTH) {
                 null
             } else {
-                getStrRes(R.string.LENGTH, getStrRes(R.string.check), length.toString())
+                getStrRes(R.string.LENGTH, getStrRes(R.string.check), LENGTH.toString())
             }
         } else {
             getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.check))

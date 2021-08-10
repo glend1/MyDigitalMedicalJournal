@@ -76,42 +76,27 @@ class EditorTests {
         onView(withText(Utils.CONTEXT.getString(R.string.no_data, Utils.CONTEXT.getString(R.string.template)))).check(matches(isDisplayed()))
     }
 
-    class ClickImage(private val id: Int): ViewAction {
-        override fun getDescription(): String {
-            return "button not clicked"
-        }
-
-        override fun getConstraints(): Matcher<View> {
-            return withId(id)
-        }
-
-        override fun perform(uiController: UiController?, view: View?) {
-            view!!.findViewById<ImageView>(id).performClick()
-        }
-
-    }
-
     @Test
     fun moveFieldUp() {
-        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, ClickImage(R.id.up)))
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, Utils.ClickImage(R.id.up)))
         onView(withId(R.id.template)).check(matches(Utils.atPosition(position-1, withSubstring(testText))))
     }
 
     @Test
     fun moveFieldDown() {
-        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, ClickImage(R.id.down)))
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, Utils.ClickImage(R.id.down)))
         onView(withId(R.id.template)).check(matches(Utils.atPosition(position+1, withSubstring(testText))))
     }
 
     @Test
     fun deleteField() {
-        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, ClickImage(R.id.delete)))
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, Utils.ClickImage(R.id.delete)))
         onView(withId(R.id.template)).check(matches(not(Utils.atPosition(position, withSubstring(testText)))))
     }
 
     @Test
     fun save() {
-        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, ClickImage(R.id.delete)))
+        onView(withId(R.id.template)).perform(RecyclerViewActions.actionOnItemAtPosition<ViewHolder>(position, Utils.ClickImage(R.id.delete)))
         onView(withId(R.id.save)).perform(click())
         navigate()
         onView(withId(R.id.template)).check(matches(not(Utils.atPosition(position, withSubstring(testText)))))
