@@ -8,6 +8,10 @@ import com.mydigitalmedicaljournal.template.fields.editor.SortableEditorAdapter
 
 class DataRadio(context: Context): GenericQuestionData(context) {
 
+    companion object {
+        const val LENGTH = 25
+    }
+
     override val type = TemplateEnum.RADIO
     private var data = mutableListOf<String?>()
     @Transient private var radioErrors = mutableListOf<String?>(
@@ -46,11 +50,10 @@ class DataRadio(context: Context): GenericQuestionData(context) {
         return if (str.isNullOrBlank()) {
             getStrRes(R.string.NOT_FOUND, getStrRes(R.string.Radio))
         } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(str)) {
-            val length = 25
-            if (str.length <= length) {
+            if (str.length <= LENGTH) {
                 null
             } else {
-                getStrRes(R.string.LENGTH, getStrRes(R.string.Radio), length.toString())
+                getStrRes(R.string.LENGTH, getStrRes(R.string.Radio), LENGTH.toString())
             }
         } else {
             getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.Radio))
