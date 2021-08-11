@@ -4,7 +4,7 @@ import android.widget.RadioGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
@@ -12,7 +12,6 @@ import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplateFile
 import com.mydigitalmedicaljournal.instrumentTests.Utils
-import com.mydigitalmedicaljournal.template.fields.data.DataName
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import org.junit.After
 import org.junit.Before

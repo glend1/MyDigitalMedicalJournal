@@ -14,12 +14,9 @@ import com.mydigitalmedicaljournal.MainActivity
 import com.mydigitalmedicaljournal.R
 import com.mydigitalmedicaljournal.instrumentTests.DummyTemplateFile
 import com.mydigitalmedicaljournal.instrumentTests.Utils
-import com.mydigitalmedicaljournal.template.fields.data.question.DataCheck
 import com.mydigitalmedicaljournal.template.fields.data.question.DataRadio
 import com.mydigitalmedicaljournal.template.file.TemplateManager
 import com.mydigitalmedicaljournal.ui._generics.ViewHolder
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
