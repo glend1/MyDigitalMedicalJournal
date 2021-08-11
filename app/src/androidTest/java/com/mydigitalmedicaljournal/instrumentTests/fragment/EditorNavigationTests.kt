@@ -73,7 +73,6 @@ class EditorNavigationTests {
         onView(withId(R.id.multiple)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun newSingle() {
         onView(withId(R.id.add)).perform(click())
