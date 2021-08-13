@@ -81,7 +81,6 @@ class EditorNavigationTests {
         onView(withId(R.id.single)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun newDescription() {
         onView(withId(R.id.add)).perform(click())
@@ -99,7 +98,6 @@ class EditorNavigationTests {
         onView(withId(R.id.slider)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun newValue() {
         onView(withId(R.id.add)).perform(click())
