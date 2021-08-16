@@ -57,7 +57,7 @@ class EditorNameTests {
     fun noName() {
         onView(withId(R.id.name)).perform(clearText())
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.NOT_FOUND, Utils.CONTEXT.resources.getString(R.string.name)))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.not_found, Utils.CONTEXT.resources.getString(R.string.name)))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -65,7 +65,7 @@ class EditorNameTests {
         onView(withId(R.id.name)).perform(clearText())
         onView(withId(R.id.name)).perform(typeText("12345678901234567890123456"))
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.LENGTH, Utils.CONTEXT.resources.getString(R.string.name), DataName.LENGTH.toString()))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.length, Utils.CONTEXT.resources.getString(R.string.name), DataName.LENGTH.toString()))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -73,6 +73,6 @@ class EditorNameTests {
         onView(withId(R.id.name)).perform(clearText())
         onView(withId(R.id.name)).perform(typeText("test!"))
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.SPECIAL_SYMBOLS, Utils.CONTEXT.resources.getString(R.string.name)))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.special_symbols, Utils.CONTEXT.resources.getString(R.string.name)))).check(matches(isDisplayed()))
     }
 }

@@ -44,7 +44,7 @@ enum class TemplateEnum(
         }
     },
     //TODO CHECK: check box [multi]
-    CHECK(3, R.layout.editor_check, true, R.string.check, DataCheck::class.java) {
+    CHECK(3, R.layout.editor_check, true, R.string.multiple, DataCheck::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorCheck {
             return EditorCheck(view, template, position)
         }
@@ -54,7 +54,7 @@ enum class TemplateEnum(
         }
     },
     //TODO RADIO: radio group [multi]
-    RADIO(4, R.layout.editor_radio, true, R.string.radio, DataRadio::class.java) {
+    RADIO(4, R.layout.editor_radio, true, R.string.single, DataRadio::class.java) {
         override fun createEditor(view: View, template: TemplateManager, position: Int?): EditorRadio {
             return EditorRadio(view, template, position)
         }

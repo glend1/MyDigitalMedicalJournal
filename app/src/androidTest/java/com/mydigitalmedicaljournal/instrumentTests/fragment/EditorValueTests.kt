@@ -63,14 +63,14 @@ class EditorValueTests {
     @Test
     fun noValue() {
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.unit_error)).check(matches(withText(Utils.CONTEXT.getString(R.string.NOT_FOUND, Utils.CONTEXT.getString(R.string.unit)))))
+        onView(withId(R.id.unit_error)).check(matches(withText(Utils.CONTEXT.getString(R.string.not_found, Utils.CONTEXT.getString(R.string.unit)))))
     }
 
     @Test
     fun valueTooLong() {
         onView(withId(R.id.unit_input)).perform(typeText("01234567890"))
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.unit_error)).check(matches(withText(Utils.CONTEXT.getString(R.string.LENGTH, Utils.CONTEXT.getString(R.string.unit), DataValue.LENGTH.toString()))))
+        onView(withId(R.id.unit_error)).check(matches(withText(Utils.CONTEXT.getString(R.string.length, Utils.CONTEXT.getString(R.string.unit), DataValue.LENGTH.toString()))))
     }
 
 }

@@ -127,49 +127,56 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/error_min"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/small"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/error_text"
-                android:visibility="gone"
-                app:layout_constraintEnd_toStartOf="@id/error_max"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/values" />
-
-            <TextView
-                android:id="@+id/error_max"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/small"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/error_text"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/error_min"
-                app:layout_constraintTop_toBottomOf="@id/values" />
-
-            <TextView
-                android:id="@+id/error_min_max"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/errors"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/small"
-                android:text="@string/MIN_MAX_NOT_VALID"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/error_text"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/error_min" />
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/values" >
+
+                <TextView
+                    android:id="@+id/error_min"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/small"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/error_text"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/error_max"/>
+
+                <TextView
+                    android:id="@+id/error_max"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/small"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/error_text"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/error_min"/>
+
+                <TextView
+                    android:id="@+id/error_min_max"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/small"
+                    android:text="@string/min_max_not_valid"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/error_text"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/error_min"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rating_label_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/error_min_max">
+                app:layout_constraintTop_toBottomOf="@+id/errors">
 
             </androidx.recyclerview.widget.RecyclerView>
 

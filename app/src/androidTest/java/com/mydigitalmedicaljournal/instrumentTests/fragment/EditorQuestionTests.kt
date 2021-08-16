@@ -61,7 +61,7 @@ class EditorQuestionTests {
     fun noQuestion() {
         onView(withId(R.id.editText)).perform(clearText())
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.NOT_FOUND, Utils.CONTEXT.resources.getString(R.string.question)))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.not_found, Utils.CONTEXT.resources.getString(R.string.question)))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -69,7 +69,7 @@ class EditorQuestionTests {
         onView(withId(R.id.editText)).perform(clearText())
         onView(withId(R.id.editText)).perform(typeText("123456789012345678901234567890123456789012345678901234567890123456789012345678901"))
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.LENGTH, Utils.CONTEXT.resources.getString(R.string.question), GenericQuestionData.LENGTH.toString()))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.length, Utils.CONTEXT.resources.getString(R.string.question), GenericQuestionData.LENGTH.toString()))).check(matches(isDisplayed()))
     }
 
     @Test
@@ -77,6 +77,6 @@ class EditorQuestionTests {
         onView(withId(R.id.editText)).perform(clearText())
         onView(withId(R.id.editText)).perform(typeText("test!"))
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.SPECIAL_SYMBOLS, Utils.CONTEXT.resources.getString(R.string.question)))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.special_symbols, Utils.CONTEXT.resources.getString(R.string.question)))).check(matches(isDisplayed()))
     }
 }

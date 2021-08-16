@@ -9,21 +9,21 @@ abstract class GenericQuestionData(context: Context): GenericData(context) {
     }
 
     override fun listDisplay(): String = "${getStrRes(type.listName)} : $question"
-    @Transient private var questionError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.question))
+    @Transient private var questionError: String? = getStrRes(R.string.not_found, getStrRes(R.string.question))
 
     var question: String? = null
         set(value) {
             if (value.isNullOrBlank()) {
-                questionError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.question))
+                questionError = getStrRes(R.string.not_found, getStrRes(R.string.question))
             } else if (Regex("^[\\w\\s\\d]+\$").containsMatchIn(value)) {
                 if (value.length <= LENGTH) {
                     field = value
                     questionError = null
                 } else {
-                    questionError = getStrRes(R.string.LENGTH, getStrRes(R.string.question), LENGTH.toString())
+                    questionError = getStrRes(R.string.length, getStrRes(R.string.question), LENGTH.toString())
                 }
             } else {
-                questionError = getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.question))
+                questionError = getStrRes(R.string.special_symbols, getStrRes(R.string.question))
             }
         }
 

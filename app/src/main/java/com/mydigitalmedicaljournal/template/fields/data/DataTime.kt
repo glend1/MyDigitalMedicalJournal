@@ -22,11 +22,11 @@ class DataTime(context: Context): GenericData(context) {
 
     override val type = TemplateEnum.TIME
     override fun listDisplay(): String = "${getStrRes(type.listName)} : ${getStrRes(time!!.displayName)}"
-    @Transient private var timeError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.time_format))
+    @Transient private var timeError: String? = getStrRes(R.string.not_found, getStrRes(R.string.time_format))
     var time: TimeFormat? = null
         set(value) {
             if (value == null) {
-                timeError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.time_format))
+                timeError = getStrRes(R.string.not_found, getStrRes(R.string.time_format))
             } else {
                 timeError = null
                 field = value

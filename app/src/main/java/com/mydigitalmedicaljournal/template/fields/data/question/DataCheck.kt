@@ -15,10 +15,10 @@ class DataCheck(context: Context): GenericQuestionData(context) {
     override val type = TemplateEnum.CHECK
     private var data = mutableListOf<String?>()
     @Transient private var checkErrors = mutableListOf<String?>(
-        getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check)),
-        getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check))
+        getStrRes(R.string.not_found, getStrRes(R.string.multiple)),
+        getStrRes(R.string.not_found, getStrRes(R.string.multiple))
     )
-    @Transient private var checkError: String? = getStrRes(R.string.NOT_ENOUGH, getStrRes(R.string.Check))
+    @Transient private var checkError: String? = getStrRes(R.string.not_enough, getStrRes(R.string.check))
 
     fun setFormData(input: MutableList<String?>) {
         data = mutableListOf()
@@ -42,21 +42,21 @@ class DataCheck(context: Context): GenericQuestionData(context) {
                 total++
             }
         }
-        checkError = if (total >= 2) { null } else { getStrRes(R.string.NOT_ENOUGH, getStrRes(R.string.Check)) }
+        checkError = if (total >= 2) { null } else { getStrRes(R.string.not_enough, getStrRes(R.string.check)) }
         errors[R.id.check_count] = checkError
     }
 
     private fun validateString(str: String?): String? {
         return if (str.isNullOrBlank()) {
-            getStrRes(R.string.NOT_FOUND, getStrRes(R.string.check))
+            getStrRes(R.string.not_found, getStrRes(R.string.multiple))
         } else if (Regex("^[\\w\\s\\d?]+\$").containsMatchIn(str)) {
             if (str.length <= LENGTH) {
                 null
             } else {
-                getStrRes(R.string.LENGTH, getStrRes(R.string.check), LENGTH.toString())
+                getStrRes(R.string.length, getStrRes(R.string.multiple), LENGTH.toString())
             }
         } else {
-            getStrRes(R.string.SPECIAL_SYMBOLS, getStrRes(R.string.check))
+            getStrRes(R.string.special_symbols, getStrRes(R.string.multiple))
         }
     }
 }

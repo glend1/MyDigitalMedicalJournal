@@ -48,7 +48,7 @@ class FieldEditorFragment : Fragment() {
             setEnumType(position, type)
             enumType!!.editorLayout
         } else {
-            error = requireContext().resources.getString(R.string.NOT_FOUND, requireContext().resources.getString(R.string.filename))
+            error = requireContext().resources.getString(R.string.not_found, requireContext().resources.getString(R.string.filename))
             null
         }
     }
@@ -62,7 +62,7 @@ class FieldEditorFragment : Fragment() {
                 type
             }
             else -> {
-                error = requireContext().resources.getString(R.string.NOT_FOUND, requireContext().resources.getString(R.string.field_type))
+                error = requireContext().resources.getString(R.string.not_found, requireContext().resources.getString(R.string.field_type))
                 null
             }
         }

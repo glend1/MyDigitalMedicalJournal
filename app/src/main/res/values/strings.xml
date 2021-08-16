@@ -65,8 +65,8 @@
     <string name="filter_templates">Filter Templates</string>
     <string name="uncategoriezed">(Uncategorized)</string>
     <string name="simple">Yes/No Question</string>
-    <string name="check">Select Multiple</string>
-    <string name="radio">Select Single</string>
+    <string name="multiple">Select Multiple</string>
+    <string name="single">Select Single</string>
     <string name="description">Description</string>
     <string name="rating">Slider</string>
     <string name="value">Value</string>
@@ -88,19 +88,19 @@
     <string name="no_templates_filtered">Template filter returned no results</string>
     <string name="template_file_not_found">You cannot delete a Template before you\'ve saved it.</string>
     <string name="number_errors">%1$s errors found.</string>
-    <string name="template_not_selected">ERROR. No Template Selected</string>
-    <string name="MIN_MAX_NOT_VALID">ERROR: Minimum and Maximum are not a valid Range</string>
-    <string name="NOT_ENOUGH">ERROR: You must have at least 2 %1$s Options</string>
-    <string name="SPECIAL_SYMBOLS">ERROR: %1$s must not have special characters</string>
-    <string name="NOT_FOUND">ERROR: %1$s not set</string>
-    <string name="LENGTH">ERROR: %1$s must not have more than %2$s characters</string>
-    <string name="other_errors">ERROR. there are other errors present before this value can be checked</string>
+    <string name="template_not_selected">ERROR: No Template Selected</string>
+    <string name="min_max_not_valid">ERROR: Minimum and Maximum are not a valid Range</string>
+    <string name="not_enough">ERROR: You must have at least 2 %1$s Options</string>
+    <string name="special_symbols">ERROR: %1$s must not have special characters</string>
+    <string name="not_found">ERROR: %1$s not set</string>
+    <string name="length">ERROR: %1$s must not have more than %2$s characters</string>
+    <string name="other_errors">ERROR: Min and/or Max values are not valid. Fix these first</string>
     <string name="in_use">ERROR: %1$s already in use</string>
-    <string name="too_big">ERROR. %1$s is too big</string>
-    <string name="too_small">ERROR. %1$s is too small</string>
+    <string name="too_big">ERROR: %1$s is too big</string>
+    <string name="too_small">ERROR: %1$s is too small</string>
     <!--compound strings -->
-    <string name="Radio">Radio Button</string>
-    <string name="Check">Checkbox</string>
+    <string name="radio">Radio Button</string>
+    <string name="check">Checkbox</string>
     <string name="filename">Filename</string>
     <string name="field_type">Field Type</string>
 

@@ -68,21 +68,21 @@ class EditorMultipleTests {
     @Test
     fun noOption() {
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.check_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.NOT_FOUND, Utils.CONTEXT.getString(R.string.check))))))
+        onView(withId(R.id.check_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.not_found, Utils.CONTEXT.getString(R.string.multiple))))))
     }
 
     @Test
     fun optionTooLong() {
         onView(withId(R.id.check_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, typeText("012345678901234567890123456")))
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.check_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.LENGTH, Utils.CONTEXT.getString(R.string.check), DataCheck.LENGTH.toString())))))
+        onView(withId(R.id.check_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.length, Utils.CONTEXT.getString(R.string.multiple), DataCheck.LENGTH.toString())))))
     }
 
     @Test
     fun optionSpecialCharacters() {
         onView(withId(R.id.check_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, typeText("test!")))
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.check_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.SPECIAL_SYMBOLS, Utils.CONTEXT.getString(R.string.check))))))
+        onView(withId(R.id.check_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.special_symbols, Utils.CONTEXT.getString(R.string.multiple))))))
     }
 
     @Test

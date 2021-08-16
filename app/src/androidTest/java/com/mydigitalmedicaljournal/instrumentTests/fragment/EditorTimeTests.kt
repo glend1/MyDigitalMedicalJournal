@@ -57,6 +57,6 @@ class EditorTimeTests {
             activity.findViewById<RadioGroup>(R.id.time_format).clearCheck()
         }
         onView(withId(R.id.save)).perform(click())
-        onView(withText(Utils.CONTEXT.resources.getString(R.string.NOT_FOUND, Utils.CONTEXT.resources.getString(R.string.time_format)))).check(matches(isDisplayed()))
+        onView(withText(Utils.CONTEXT.resources.getString(R.string.not_found, Utils.CONTEXT.resources.getString(R.string.time_format)))).check(matches(isDisplayed()))
     }
 }

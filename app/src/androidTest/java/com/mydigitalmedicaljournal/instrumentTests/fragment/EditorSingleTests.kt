@@ -66,21 +66,21 @@ class EditorSingleTests {
     @Test
     fun noOption() {
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.radio_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.NOT_FOUND, Utils.CONTEXT.getString(R.string.Radio))))))
+        onView(withId(R.id.radio_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.not_found, Utils.CONTEXT.getString(R.string.radio))))))
     }
 
     @Test
     fun optionTooLong() {
         onView(withId(R.id.radio_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, typeText("012345678901234567890123456")))
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.radio_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.LENGTH, Utils.CONTEXT.getString(R.string.Radio), DataRadio.LENGTH.toString())))))
+        onView(withId(R.id.radio_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.length, Utils.CONTEXT.getString(R.string.radio), DataRadio.LENGTH.toString())))))
     }
 
     @Test
     fun optionSpecialCharacters() {
         onView(withId(R.id.radio_recycler)).perform(actionOnItemAtPosition<ViewHolder>(0, typeText("test!")))
         onView(withId(R.id.save)).perform(click())
-        onView(withId(R.id.radio_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.SPECIAL_SYMBOLS, Utils.CONTEXT.getString(R.string.Radio))))))
+        onView(withId(R.id.radio_recycler)).check(matches(Utils.atPosition(0, withText(Utils.CONTEXT.getString(R.string.special_symbols, Utils.CONTEXT.getString(R.string.radio))))))
     }
 
     @Test

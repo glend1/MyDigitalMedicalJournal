@@ -12,17 +12,17 @@ class DataValue(context: Context): GenericQuestionData(context) {
 
     override val type = TemplateEnum.VALUE
 
-    @Transient private var unitError: String? = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.unit))
+    @Transient private var unitError: String? = getStrRes(R.string.not_found, getStrRes(R.string.unit))
     var unit: String? = null
         set(value) {
             if (value.isNullOrBlank()) {
-                unitError = getStrRes(R.string.NOT_FOUND, getStrRes(R.string.unit))
+                unitError = getStrRes(R.string.not_found, getStrRes(R.string.unit))
             } else {
                 if (value.length <= LENGTH) {
                     field = value
                     unitError = null
                 } else {
-                    unitError = getStrRes(R.string.LENGTH, getStrRes(R.string.unit), LENGTH.toString())
+                    unitError = getStrRes(R.string.length, getStrRes(R.string.unit), LENGTH.toString())
                 }
             }
         }
