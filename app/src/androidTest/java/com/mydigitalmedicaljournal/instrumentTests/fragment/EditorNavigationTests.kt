@@ -89,7 +89,6 @@ class EditorNavigationTests {
         onView(withId(R.id.description)).check(matches(isDisplayed()))
     }
 
-    //TODO test this fragment
     @Test
     fun newSilder() {
         onView(withId(R.id.add)).perform(click())
